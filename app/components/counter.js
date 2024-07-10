@@ -1,17 +1,17 @@
-import { load, html } from "emmy-dom";
+import { load, html } from "emmy-dom"
 
 export function counter ({ el }) {
-  el.className = 'flex flex-col justify-center items-center space-y-3';
-  const [counter, setCounter] = el.useState(0);
+  el.className = 'flex flex-col justify-center items-center space-y-3'
+  const [counter, setCounter] = el.useState(0)
 
   el.useEffect(() => {
-    console.log('Counter value changed to', counter());
-  }, [counter]);
+    console.log('Counter value changed to', counter())
+  }, [counter])
 
   el.useEffect(() => {
-    el.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1));
-    el.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1));
-  }, ['didMount']);
+    el.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1))
+    el.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1))
+  }, [])
 
   return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
@@ -24,7 +24,7 @@ export function counter ({ el }) {
         -
       </button>
     </div>
-  `;
+  `
 }
 
-load(counter, 'Counter');
+load(counter, 'Counter')

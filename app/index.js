@@ -1,8 +1,8 @@
-import { load, html } from "emmy-dom";
-import "./components/counter.js";
+import { load, html } from "emmy-dom"
+import "./components/counter.js"
 
 export function app({ el }) {
-  el.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full text-white';
+  el.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full text-white'
 
   return html`
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
@@ -28,7 +28,7 @@ export function app({ el }) {
       </svg>
       View Emmy.js on GitHub
     </a>
-  `;
+  `
 }
 
-export const App = load(app, 'App');
+export const App = load(app, 'App')
