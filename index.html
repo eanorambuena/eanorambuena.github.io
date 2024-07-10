@@ -1,75 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta author="eanorambuena, reveal.js">
-		<title>eanorambuena</title>
-
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
-
-		<!-- headers and boxes configuration -->
-		<link rel="stylesheet" href="my_css/style.css">
-		<link rel="stylesheet" href="my_css/text.css">
-
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-
-<!-- Slides begin -->
-
-<section data-background-color="rgb(26, 82, 118)" data-auto-animate>
-<h2 style="color:white"><b>Emmanuel</b> Norambuena</h2>
-</section>
-
-<section data-background-color="rgb(26, 82, 118)" data-auto-animate>
-<h2 style="color:white"><b>Emmanuel</b> Norambuena</h2>
-<h3 style="color:white">OSS Developer</h3>
-</section>
-
-<section data-background-color="rgb(26, 82, 118)">
-<h3 style="color:white">Natural Quantum Script</h3>
-<pre><code data-line-numbers="1|2-4|5">q0  q1
-X
-H
-.---X
-c1
-</code></pre>
-</section>
-
-<section data-background-color="rgb(26, 82, 118)" data-auto-animate>
-<h2 style="color:white"><b>Emmanuel</b> Norambuena</h2>
-</section>
-
-<section data-background-color="rgb(26, 82, 118)" data-auto-animate>
-<h2 style="color:white"><b>Emmanuel</b> Norambuena</h2>
-<h3 style="color:white">OSS Developer</h3>
-</section>
-
-<!-- Slides end -->
-
-			</div>
-		</div>
-
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+  <head>
+    <title>eanorambuena.github.io</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="icon" href="https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico" type="image/x-icon">
+    
+    
+    <link rel="stylesheet" href="./styles/index.css">
+    
+  </head>
+  <body class="antialiased h-screen w-screen flex flex-col justify-center items-center bg-slate-900">
+    <main class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
+      
+      <emmy-app></emmy-app>
+      <script type='module' src='./app/index.js'></script>
+      
+    </main>
+  </body>
 </html>
