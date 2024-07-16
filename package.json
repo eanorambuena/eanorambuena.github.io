@@ -4,9 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently --raw 'npm run watch' 'vite'",
+    "ssr": "node prerender.js",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod": "npm run ssr && vite build && vite preview",
+    "watch": "watch 'npm run ssr' ./app"
   },
   "devDependencies": {
     "@tailwindcss/forms": "0.5.7",
@@ -14,7 +17,7 @@
     "autoprefixer": "10.4.19",
     "concurrently": "8.2.2",
     "postcss": "8.4.39",
-    "tailwindcss": "3.4.4",
+    "tailwindcss": "3.4.5",
     "vite": "5.3.1",
     "watch": "1.0.2"
   },

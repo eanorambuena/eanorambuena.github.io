@@ -1,16 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Emmanuel Norambuena</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#0F172A">
-    <link rel="icon" href="https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles/index.css">
+    <title>eanorambuena.github.io</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name='theme-color' content='#0F172A'>
+    <meta name='description' content='Emmanuel Norambuena - Software Engineer'>
+    <meta name='author' content='Emmanuel Norambuena'>
+    <link rel='icon' href='https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico' type='image/x-icon'>
+    <link rel='stylesheet' href='./styles/index.css'>
   </head>
-  <body class="antialiased h-screen w-screen flex flex-col justify-center items-center bg-slate-900">
-    <main class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
-      <emmy-app></emmy-app>
-      <script type='module' src='./app/index.js'></script>
+  <body class='box-border m-0 p-0 antialiased h-fit flex flex-col justify-center items-center bg-slate-950'>
+    <main class='flex flex-col justify-center items-center text-center w-[90%] md:max-w-md h-full'>
+      
+    <emmy-app state="{'rerenderCount':0}" class="flex flex-col justify-center items-center text-center w-full h-full text-white gap-6 px-6 py-10">
+    <header class="flex flex-col justify-center items-center selection:text-center w-full h-full text-white gap-6 p-6">
+      <h1 class="text-8xl font-bold">Emmanuel Norambuena</h1>
+      <p class="text-2xl">Fullstack Developer</p>
+    </header>
+
+    <main class="flex flex-col justify-center items-center text-center w-full h-full text-white gap-6 p-6">
+      <h2 class="text-3xl font-bold text-purple-500">Projects</h2>
+      <section class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
+        <emmy-card title="Emmy.js" description="A lightweight library for building web components" image="https://i.imgur.com/1zO7Z8b.png"></emmy-card>
+        <emmy-card title="IdsApp" description="A mobile app for managing your tasks" image="https://i.imgur.com/1zO7Z8b.png"></emmy-card>
+      </section>
+    </main>
+  </emmy-app>
+    <script type="module">
+      import { loadGlobalEmmy } from 'emmy-dom'
+      loadGlobalEmmy({})
+      
+    import { load, html } from "emmy-dom";
+  
+      
+    function app({ el }) {
+  el.className = 'flex flex-col justify-center items-center text-center w-full h-full text-white gap-6 px-6 py-10'
+
+  return html`
+    <header class='flex flex-col justify-center items-center selection:text-center w-full h-full text-white gap-6 p-6'>
+      <h1 class='text-8xl font-bold'>Emmanuel Norambuena</h1>
+      <p class='text-2xl'>Fullstack Developer</p>
+    </header>
+
+    <main class='flex flex-col justify-center items-center text-center w-full h-full text-white gap-6 p-6'>
+      <h2 class='text-3xl font-bold text-purple-500'>Projects</h2>
+      <section class='grid grid-cols-1 gap-4 p-4 md:grid-cols-2'>
+        <Card title='Emmy.js' description='A lightweight library for building web components' image='https://i.imgur.com/1zO7Z8b.png' />
+        <Card title='IdsApp' description='A mobile app for managing your tasks' image='https://i.imgur.com/1zO7Z8b.png' />
+      </section>
+    </main>
+  `
+}
+    load(app, 'App')
+    document.querySelectorAll('emmy-app').forEach((element) => {
+      element.connectedCallback()
+    })
+  
+    function card({ el, props }) {
+  el.className = 'flex flex-col justify-center items-center text-center w-full h-full text-white border-2 border-white rounded-lg p-5 gap-6 p-6'
+  const { title, description, image } = props()
+  
+  return html`
+    <h3 class='text-2xl font-bold'>${title()}</h3>
+    <p>${description()}</p>
+    <img src='${image()}' alt='${title()}' class='w-64 h-64 object-cover rounded-lg' />
+  `
+}
+    load(card, 'Card')
+    document.querySelectorAll('emmy-card').forEach((element) => {
+      element.connectedCallback()
+    })
+  
+    </script>
+  
     </main>
   </body>
 </html>
