@@ -1,9 +1,7 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, ContactShadows, Edges, Float, Clone, useGLTF } from '@react-three/drei'
-import { useRef, useState, useEffect, useMemo } from 'react'
+import { Html, ContactShadows, Edges, Float } from '@react-three/drei'
+import { useRef, useState, useEffect } from 'react'
 import * as THREE from 'three'
-
-useGLTF.preload('/models/cabinet.glb')
 
 const groups = [
   {
@@ -28,10 +26,85 @@ const groups = [
   },
 ]
 
-const CAB_SCALE = 2.8
-const CAB_W = 0.496 * CAB_SCALE
-const CAB_H = 0.492 * CAB_SCALE
-const CAB_D = 0.298 * CAB_SCALE
+const BW = 0.7
+const BH = 0.45
+const BD = 0.5
+const WT = 0.02
+const FLAP_D = 0.15
+const FLAP_ANGLE = 0.5
+
+function CardboardBox({ color }) {
+  return (
+    <group>
+      {/* Back wall */}
+      <mesh position={[0, 0, -BD / 2 + WT / 2]}>
+        <boxGeometry args={[BW, BH, WT]} />
+        <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
+      </mesh>
+      {/* Front wall */}
+      <mesh position={[0, 0, BD / 2 - WT / 2]}>
+        <boxGeometry args={[BW, BH, WT]} />
+        <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
+      </mesh>
+      {/* Left wall */}
+      <mesh position={[-BW / 2 + WT / 2, 0, 0]}>
+        <boxGeometry args={[WT, BH, BD - WT * 2]} />
+        <meshStandardMaterial color="#151515" metalness={0.3} roughness={0.7} />
+      </mesh>
+      {/* Right wall */}
+      <mesh position={[BW / 2 - WT / 2, 0, 0]}>
+        <boxGeometry args={[WT, BH, BD - WT * 2]} />
+        <meshStandardMaterial color="#151515" metalness={0.3} roughness={0.7} />
+      </mesh>
+      {/* Bottom */}
+      <mesh position={[0, -BH / 2 + WT / 2, 0]}>
+        <boxGeometry args={[BW - WT * 2, WT, BD - WT * 2]} />
+        <meshStandardMaterial color="#111" metalness={0.3} roughness={0.8} />
+      </mesh>
+      {/* Interior dark floor */}
+      <mesh position={[0, -BH / 2 + WT, 0]}>
+        <planeGeometry args={[BW - WT * 3, BD - WT * 3]} />
+        <meshBasicMaterial color="#080808" />
+      </mesh>
+
+      {/* Front flap */}
+      <group position={[0, BH / 2, BD / 2]}>
+        <mesh position={[0, 0, FLAP_D / 2]} rotation={[-FLAP_ANGLE, 0, 0]}>
+          <boxGeometry args={[BW - WT * 2, WT, FLAP_D]} />
+          <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
+        </mesh>
+      </group>
+      {/* Back flap */}
+      <group position={[0, BH / 2, -BD / 2]}>
+        <mesh position={[0, 0, -FLAP_D / 2]} rotation={[FLAP_ANGLE, 0, 0]}>
+          <boxGeometry args={[BW - WT * 2, WT, FLAP_D]} />
+          <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
+        </mesh>
+      </group>
+      {/* Left flap */}
+      <group position={[-BW / 2, BH / 2, 0]}>
+        <mesh position={[-FLAP_D / 2, 0, 0]} rotation={[0, 0, FLAP_ANGLE]}>
+          <boxGeometry args={[FLAP_D, WT, BD - WT * 2]} />
+          <meshStandardMaterial color="#151515" metalness={0.3} roughness={0.7} />
+        </mesh>
+      </group>
+      {/* Right flap */}
+      <group position={[BW / 2, BH / 2, 0]}>
+        <mesh position={[FLAP_D / 2, 0, 0]} rotation={[0, 0, -FLAP_ANGLE]}>
+          <boxGeometry args={[FLAP_D, WT, BD - WT * 2]} />
+          <meshStandardMaterial color="#151515" metalness={0.3} roughness={0.7} />
+        </mesh>
+      </group>
+
+      {/* Edge lines */}
+      <mesh>
+        <boxGeometry args={[BW, BH, BD]} />
+        <meshBasicMaterial transparent opacity={0} />
+        <Edges color={color} opacity={0.3} transparent threshold={15} />
+      </mesh>
+    </group>
+  )
+}
 
 function SkillItem({ label, color, index, total, isOpen }) {
   const groupRef = useRef()
@@ -39,11 +112,11 @@ function SkillItem({ label, color, index, total, isOpen }) {
   const wasOpen = useRef(false)
 
   const angle = (index / total) * Math.PI * 2 - Math.PI / 2
-  const spreadR = 0.7
+  const spreadR = 0.6
   const spreadX = Math.cos(angle) * spreadR
-  const spreadZ = Math.sin(angle) * spreadR * 0.35
-  const spreadY = (index - (total - 1) / 2) * 0.3
-  const restY = (index - (total - 1) / 2) * 0.16
+  const spreadZ = Math.sin(angle) * spreadR * 0.3
+  const spreadY = (index - (total - 1) / 2) * 0.25
+  const restY = (index - (total - 1) / 2) * 0.14
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return
@@ -57,7 +130,7 @@ function SkillItem({ label, color, index, total, isOpen }) {
 
     groupRef.current.position.x = isOpen ? spreadX * eased : 0
     groupRef.current.position.y = isOpen ? spreadY * eased : restY
-    groupRef.current.position.z = isOpen ? 0.65 * eased : 0
+    groupRef.current.position.z = isOpen ? 0.5 * eased : 0
     const s = isOpen ? 1.0 : 0.5 + 0.5 * (1 - eased)
     groupRef.current.scale.set(s, s, s)
   })
@@ -65,11 +138,11 @@ function SkillItem({ label, color, index, total, isOpen }) {
   return (
     <group ref={groupRef}>
       <mesh>
-        <boxGeometry args={[0.28, 0.09, 0.14]} />
+        <boxGeometry args={[0.22, 0.08, 0.12]} />
         <meshStandardMaterial
           color={isOpen ? color : '#181828'}
-          metalness={0.75}
-          roughness={0.2}
+          metalness={0.7}
+          roughness={0.25}
           envMapIntensity={1.2}
         />
         <Edges
@@ -79,14 +152,14 @@ function SkillItem({ label, color, index, total, isOpen }) {
           threshold={15}
         />
       </mesh>
-      <mesh position={[0, 0, 0.072]}>
-        <planeGeometry args={[0.22, 0.06]} />
+      <mesh position={[0, 0, 0.062]}>
+        <planeGeometry args={[0.17, 0.05]} />
         <meshBasicMaterial color={color} transparent opacity={isOpen ? 0.25 : 0.04} />
       </mesh>
-      <Html position={[0, 0, 0.085]} center>
+      <Html position={[0, 0, 0.075]} center>
         <div style={{
           color: isOpen ? '#fff' : '#a1a1aa',
-          fontSize: '7px',
+          fontSize: '6px',
           fontWeight: 600,
           whiteSpace: 'nowrap',
           fontFamily: 'Inter, sans-serif',
@@ -102,30 +175,15 @@ function SkillItem({ label, color, index, total, isOpen }) {
   )
 }
 
-function Cabinet({ group, column }) {
+function BoxGroup({ group, column }) {
   const [hovered, setHovered] = useState(false)
   const n = group.skills.length
-  const x = (column - 1.5) * 1.6
-  const { scene } = useGLTF('/models/cabinet.glb')
-
-  const coloredScene = useMemo(() => {
-    const s = scene.clone()
-    s.traverse((child) => {
-      if (child.isMesh && child.material) {
-        child.material = child.material.clone()
-        child.material.color.set(group.color)
-        child.material.metalness = 0.5
-        child.material.roughness = 0.3
-        child.material.needsUpdate = true
-      }
-    })
-    return s
-  }, [scene, group.color])
+  const x = (column - 1.5) * 1.2
 
   return (
-    <Float speed={1.0 + column * 0.12} rotationIntensity={0.06} floatIntensity={0.15}>
+    <Float speed={1.0 + column * 0.1} rotationIntensity={0.05} floatIntensity={0.15}>
       <group
-        position={[x, 0.15, 0]}
+        position={[x, 0.1, 0]}
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={() => setHovered(false)}
         onFocus={() => setHovered(true)}
@@ -134,12 +192,12 @@ function Cabinet({ group, column }) {
         role="button"
         aria-label={`${group.title} skills`}
       >
-        <primitive object={coloredScene} scale={CAB_SCALE} />
+        <CardboardBox color={group.color} />
 
-        <Html position={[0, CAB_H / 2 + 0.3, 0]} center>
+        <Html position={[0, BH / 2 + 0.35, 0]} center>
           <div style={{
             color: group.color,
-            fontSize: '10px',
+            fontSize: '9px',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.15em',
@@ -152,14 +210,8 @@ function Cabinet({ group, column }) {
         </Html>
 
         {group.skills.map((skill, i) => (
-          <group key={skill} position={[0, (i - (n - 1) / 2) * 0.16, -0.05]}>
-            <SkillItem
-              label={skill}
-              color={group.color}
-              index={i}
-              total={n}
-              isOpen={hovered}
-            />
+          <group key={skill} position={[0, (i - (n - 1) / 2) * 0.14, -0.03]}>
+            <SkillItem label={skill} color={group.color} index={i} total={n} isOpen={hovered} />
           </group>
         ))}
       </group>
@@ -187,19 +239,18 @@ function Scene() {
       <directionalLight position={[5, 5, 5]} intensity={1.2} />
       <directionalLight position={[-3, 2, 4]} intensity={0.5} color="#a855f7" />
       <pointLight position={[0, 5, 0]} intensity={0.4} color="#3b82f6" />
-      <directionalLight position={[-2, 3, -4]} intensity={0.3} color="#a855f7" />
 
       <group position={[0, 0.4, 0]} ref={groupRef}>
         {groups.map((g, i) => (
-          <Cabinet key={g.title} group={g} column={i} />
+          <BoxGroup key={g.title} group={g} column={i} />
         ))}
       </group>
 
       <ContactShadows
-        position={[0, -0.6, 0]}
+        position={[0, -0.4, 0]}
         opacity={0.2}
-        scale={12}
-        blur={3.5}
+        scale={10}
+        blur={3}
         far={3}
       />
     </>
@@ -221,9 +272,9 @@ export default function Skills3D() {
   if (reduced) return null
 
   return (
-    <div class="w-full h-[500px] md:h-[600px]" aria-label="3D skills cabinets">
+    <div class="w-full h-[500px] md:h-[600px]" aria-label="3D skills boxes">
       <Canvas
-        camera={{ position: [0, 0.5, 7], fov: 45 }}
+        camera={{ position: [0, 0.5, 6], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true }}
         onCreated={({ gl }) => {
