@@ -17,12 +17,12 @@ const groups = [
   {
     title: 'Backend',
     color: '#22c55e',
-    skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'Serverless'],
+    skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'SST', 'Serverless'],
   },
   {
     title: 'DevOps',
     color: '#f97316',
-    skills: ['AWS', 'Docker', 'Git', 'CI/CD', 'Linux'],
+    skills: ['AWS', 'Azure', 'Docker', 'Git', 'CI/CD', 'Linux'],
   },
 ]
 
