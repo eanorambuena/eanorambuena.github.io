@@ -1,33 +1,24 @@
 import ScrollReveal from './ScrollReveal.jsx'
+import { useLang } from '../i18n/useLang.jsx'
 
 const skillCategories = [
-  {
-    title: 'Frontend',
-    skills: ['React', 'TypeScript', 'Next.js', 'Vue', 'Tailwind CSS', 'Vite'],
-  },
-  {
-    title: 'Mobile',
-    skills: ['React Native', 'Tamagui', 'Expo'],
-  },
-  {
-    title: 'Backend',
-    skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'Serverless'],
-  },
-  {
-    title: 'DevOps & Tools',
-    skills: ['AWS', 'Docker', 'Git', 'CI/CD', 'Linux'],
-  },
+  { title: 'Frontend', skills: ['React', 'TypeScript', 'Next.js', 'Vue', 'Tailwind CSS', 'Vite'] },
+  { title: 'Mobile', skills: ['React Native', 'Tamagui', 'Expo'] },
+  { title: 'Backend', skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'Serverless'] },
+  { title: 'DevOps', skills: ['AWS', 'Docker', 'Git', 'CI/CD', 'Linux'] },
 ]
 
 export default function Skills() {
+  const { t } = useLang()
+
   return (
     <section id="skills" class="py-28 px-4 relative">
       <div class="max-w-4xl mx-auto">
         <ScrollReveal>
           <div class="text-center mb-16">
-            <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">Toolbox</p>
+            <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">{t.skills.subtitle}</p>
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-              Skills
+              {t.skills.title}
             </h2>
           </div>
         </ScrollReveal>

@@ -1,30 +1,27 @@
 import ScrollReveal from './ScrollReveal.jsx'
+import { useLang } from '../i18n/useLang.jsx'
 
 const experiences = [
   {
     company: 'NeuralWorks SpA',
-    role: 'Fullstack Software Engineer Intern',
     date: '2024 - 2025',
-    description: 'Owned the frontend migration from React Native Paper to Tamagui. Reduced AI tooling costs from $200 to $0 per user monthly.',
     tags: ['React Native', 'TypeScript', 'Tamagui', 'AI'],
   },
   {
     company: 'Acofuz',
-    role: 'Software Engineer (Front-End)',
     date: '2024',
-    description: 'Built GIS visualization app from scratch for a global mining company. Architected frontend with React, TypeScript, and Vite.',
     tags: ['React', 'TypeScript', 'GIS', 'Vite'],
   },
   {
     company: 'IDS UC',
-    role: 'Application Architect',
     date: '2023 - 2024',
-    description: 'Architected peer evaluation platform for 1,500+ concurrent students using Next.js and React. Cut manual grading time by 60% across 3+ university deployments.',
     tags: ['Next.js', 'React', 'PostgreSQL', 'AWS'],
   },
 ]
 
-function TimelineItem({ exp, index }) {
+function TimelineItem({ exp, index, t }) {
+  const item = t.experience.items[index]
+
   return (
     <ScrollReveal delay={index * 120}>
       <div class="relative pl-12 pb-16 last:pb-0">
@@ -34,8 +31,8 @@ function TimelineItem({ exp, index }) {
             <h3 class="font-bold text-lg">{exp.company}</h3>
             <span class="text-xs text-gray-300 font-mono">{exp.date}</span>
           </div>
-          <p class="text-purple-400 text-sm mb-3 font-medium">{exp.role}</p>
-          <p class="text-gray-200 text-sm leading-relaxed mb-3">{exp.description}</p>
+          <p class="text-purple-400 text-sm mb-3 font-medium">{item.role}</p>
+          <p class="text-gray-200 text-sm leading-relaxed mb-3">{item.desc}</p>
           <div class="flex flex-wrap gap-2">
             {exp.tags.map((t) => (
               <span class="text-xs px-3 py-1 rounded-full bg-dark-900/50 text-gray-200 border border-gray-700/50">{t}</span>
@@ -48,22 +45,24 @@ function TimelineItem({ exp, index }) {
 }
 
 export default function Experience() {
+  const { t } = useLang()
+
   return (
     <section id="experience" class="py-32 px-4 relative">
       <div class="max-w-2xl mx-auto">
         <ScrollReveal>
           <div class="text-center mb-20">
-            <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">Career</p>
+            <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">{t.experience.subtitle}</p>
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-              Experience
+              {t.experience.title}
             </h2>
-            <p class="text-gray-300 mt-4 max-w-md mx-auto">Startup experience building products that scale.</p>
+            <p class="text-gray-300 mt-4 max-w-md mx-auto">{t.experience.desc}</p>
           </div>
         </ScrollReveal>
         <div class="relative">
           <div class="absolute left-[23px] top-2 bottom-4 w-px bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent" />
           {experiences.map((exp, i) => (
-            <TimelineItem key={exp.company} exp={exp} index={i} />
+            <TimelineItem key={exp.company} exp={exp} index={i} t={t} />
           ))}
         </div>
       </div>
