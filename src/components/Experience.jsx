@@ -32,13 +32,13 @@ function TimelineItem({ exp, index }) {
         <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 hover:border-purple-500/20 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5">
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-bold text-lg">{exp.company}</h3>
-            <span class="text-xs text-gray-400 font-mono">{exp.date}</span>
+            <span class="text-xs text-gray-300 font-mono">{exp.date}</span>
           </div>
           <p class="text-purple-400 text-sm mb-3 font-medium">{exp.role}</p>
-          <p class="text-gray-300 text-sm leading-relaxed mb-3">{exp.description}</p>
+          <p class="text-gray-200 text-sm leading-relaxed mb-3">{exp.description}</p>
           <div class="flex flex-wrap gap-2">
             {exp.tags.map((t) => (
-              <span class="text-xs px-3 py-1 rounded-full bg-dark-900/50 text-gray-300 border border-gray-700/50">{t}</span>
+              <span class="text-xs px-3 py-1 rounded-full bg-dark-900/50 text-gray-200 border border-gray-700/50">{t}</span>
             ))}
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function Experience() {
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
               Experience
             </h2>
-            <p class="text-gray-400 mt-4 max-w-md mx-auto">Startup experience building products that scale.</p>
+            <p class="text-gray-300 mt-4 max-w-md mx-auto">Startup experience building products that scale.</p>
           </div>
         </ScrollReveal>
         <div class="relative">

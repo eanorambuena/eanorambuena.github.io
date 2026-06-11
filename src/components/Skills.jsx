@@ -38,7 +38,7 @@ export default function Skills() {
                 <h3 class="font-bold text-purple-400 mb-3 text-sm uppercase tracking-wider">{cat.title}</h3>
                 <div class="flex flex-wrap gap-2">
                   {cat.skills.map((s) => (
-                    <span class="text-xs sm:text-sm px-2 sm:px-3 py-1.5 rounded-lg bg-dark-900 text-gray-300 border border-gray-700 hover:border-purple-500/50 transition-colors">{s}</span>
+                    <span class="text-xs sm:text-sm px-2 sm:px-3 py-1.5 rounded-lg bg-dark-900 text-gray-200 border border-gray-700 hover:border-purple-500/50 transition-colors">{s}</span>
                   ))}
                 </div>
               </div>

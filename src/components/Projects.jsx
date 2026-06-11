@@ -36,7 +36,7 @@ function ProjectCard({ project, index }) {
         <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${project.color} opacity-60 group-hover:opacity-80 transition-opacity`} />
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-500 pointer-events-none" />
         <h3 class="text-xl font-bold mb-2 relative">{project.title}</h3>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed relative">{project.description}</p>
+        <p class="text-gray-200 text-sm mb-4 leading-relaxed relative">{project.description}</p>
         <div class="flex flex-wrap gap-2 mb-4 relative">
           {project.tags.map((t) => (
             <span class="text-xs px-3 py-1 rounded-full bg-purple-900/20 text-purple-300 border border-purple-800/30">{t}</span>
@@ -62,7 +62,7 @@ export default function Projects() {
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
               Projects
             </h2>
-            <p class="text-gray-400 mt-4 max-w-md mx-auto">Real products shipped for real users — from open source to fintech to mining.</p>
+            <p class="text-gray-300 mt-4 max-w-md mx-auto">Real products shipped for real users — from open source to fintech to mining.</p>
           </div>
         </ScrollReveal>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

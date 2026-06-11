@@ -6,7 +6,7 @@ export default function Contact() {
         <h2 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
           Get in Touch
         </h2>
-        <p class="text-gray-300 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+        <p class="text-gray-200 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
           Building something in Chile that matters? I'm looking for the right founding team.
           If you move fast and think big, let's talk.
         </p>
@@ -26,12 +26,12 @@ export default function Contact() {
             Connect on LinkedIn →
           </a>
         </div>
-        <div class="flex gap-6 justify-center mt-10 text-gray-400">
+        <div class="flex gap-6 justify-center mt-10 text-gray-300">
           <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">GitHub</a>
           <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">X</a>
           <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">LinkedIn</a>
         </div>
-        <p class="text-gray-500 text-sm mt-8">
+        <p class="text-gray-400 text-sm mt-8">
           Based in Chile · Open to remote · Connected to the Chilean startup ecosystem
         </p>
       </div>

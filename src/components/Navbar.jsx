@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
+import { useLang } from '../i18n/useLang.jsx'
 
 const links = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Open Source', href: '#opensource' },
-  { label: 'Contact', href: '#contact' },
+  { labelKey: 'projects', href: '#projects' },
+  { labelKey: 'experience', href: '#experience' },
+  { labelKey: 'skills', href: '#skills' },
+  { labelKey: 'opensource', href: '#opensource' },
+  { labelKey: 'contact', href: '#contact' },
 ]
 
 export default function Navbar() {
+  const { lang, toggleLang, t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -68,15 +70,24 @@ export default function Navbar() {
     >
       <div class="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} />
       <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          class="text-sm font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-300 hover:to-blue-400 transition-all"
-          aria-label="Scroll to top"
-        >
-          EN
-        </button>
+        <div class="flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            class="text-xs font-mono font-bold px-2 py-1 rounded-lg bg-purple-500/10 text-purple-400 hover:bg-purple-500/20 transition-all border border-purple-500/20"
+            aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+          >
+            {lang === 'es' ? 'EN' : 'ES'}
+          </button>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            class="text-sm font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
+            aria-label="Scroll to top"
+          >
+            EN
+          </button>
+        </div>
         <div class="hidden md:flex items-center gap-1">
-          {links.map(({ label, href }) => (
+          {links.map(({ labelKey, href }) => (
             <button
               key={href}
               onClick={() => scrollTo(href.slice(1))}
@@ -84,16 +95,16 @@ export default function Navbar() {
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
                   ? 'text-purple-300 bg-purple-500/10'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                  : 'text-gray-300 hover:text-gray-200 hover:bg-white/5'
               }`}
             >
-              {label}
+              {t.nav[labelKey]}
             </button>
           ))}
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+          class="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -110,7 +121,7 @@ export default function Navbar() {
       {menuOpen && (
         <div id="mobile-menu" class="md:hidden bg-dark-950/95 backdrop-blur-xl border-b border-gray-800/50">
           <div class="px-6 py-4 flex flex-col gap-2">
-            {links.map(({ label, href }) => (
+            {links.map(({ labelKey, href }) => (
               <button
                 key={href}
                 onClick={() => scrollTo(href.slice(1))}
@@ -118,10 +129,10 @@ export default function Navbar() {
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
                     ? 'text-purple-300 bg-purple-500/10'
-                    : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                    : 'text-gray-300 hover:text-gray-200 hover:bg-white/5'
                 }`}
               >
-                {label}
+                {t.nav[labelKey]}
               </button>
             ))}
           </div>

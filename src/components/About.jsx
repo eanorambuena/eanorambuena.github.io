@@ -14,7 +14,7 @@ export default function About() {
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 rounded-2xl p-8 md:p-10 space-y-5 text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
+          <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 rounded-2xl p-8 md:p-10 space-y-5 text-gray-200 text-lg leading-relaxed max-w-2xl mx-auto">
             <p>
               I'm a product engineer who ships fast and thinks in systems.
               I've built platforms serving <span class="text-white">1,500+ concurrent users</span>,
