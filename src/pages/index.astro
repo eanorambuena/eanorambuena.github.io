@@ -1,16 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.jsx';
-import Projects from '../components/Projects.jsx';
+import About from '../components/About.jsx';
 import Experience from '../components/Experience.jsx';
+import Projects from '../components/Projects.jsx';
 import Skills from '../components/Skills.jsx';
+import OpenSource from '../components/OpenSource.jsx';
+import Contact from '../components/Contact.jsx';
 ---
 
 <Layout>
   <main class="relative z-10">
     <Hero client:load />
+    <About client:visible />
+    <Experience client:visible />
+    <div class="relative h-24 -mt-1 overflow-hidden">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full">
+        <path d="M0,30 C360,80 1080,0 1440,40 L1440,100 L0,100 Z" fill="rgba(168,85,247,0.02)" />
+      </svg>
+    </div>
     <Projects client:load />
-    <Experience client:load />
+    <OpenSource client:visible />
     <Skills client:load />
+    <Contact client:visible />
   </main>
 </Layout>

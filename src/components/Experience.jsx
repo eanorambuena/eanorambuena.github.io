@@ -1,48 +1,49 @@
+import ScrollReveal from './ScrollReveal.jsx'
+
 const experiences = [
   {
     company: 'NeuralWorks SpA',
     role: 'Fullstack Software Engineer Intern',
     date: '2024 - 2025',
-    description: 'Led frontend migration from React Native Paper to Tamagui. Reduced AI tooling costs from $200 to $0 per user monthly. Built cross-platform mobile experience.',
+    description: 'Led frontend migration from React Native Paper to Tamagui. Reduced AI tooling costs from $200 to $0 per user monthly.',
     tags: ['React Native', 'TypeScript', 'Tamagui', 'AI'],
   },
   {
     company: 'Acofuz',
     role: 'Software Engineer (Front-End)',
     date: '2024',
-    description: 'Built GIS visualization app from scratch for a global mining company. Architected frontend with React, TypeScript, and Vite. Integrated geospatial data layers and interactive maps.',
+    description: 'Built GIS visualization app from scratch for a global mining company. Architected frontend with React, TypeScript, and Vite.',
     tags: ['React', 'TypeScript', 'GIS', 'Vite'],
   },
   {
     company: 'IDS UC',
     role: 'Application Architect',
     date: '2023 - 2024',
-    description: 'Developed and maintained peer evaluation platform for 1,500+ concurrent students using Next.js and React. Implemented real-time dashboards and automated workflows reducing manual grading time by 60%.',
+    description: 'Developed peer evaluation platform for 1,500+ concurrent students using Next.js and React. Reduced manual grading time by 60%.',
     tags: ['Next.js', 'React', 'PostgreSQL', 'AWS'],
   },
 ]
 
 function TimelineItem({ exp, index }) {
   return (
-    <div
-      class="relative pl-12 pb-16 last:pb-0"
-      style={{ animation: `fadeInUp 0.6s ${index * 0.2}s both` }}
-    >
-      <div class="absolute left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-purple-500 border-2 border-dark-950 z-10" />
-      <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 hover:border-purple-500/20 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="font-bold text-lg">{exp.company}</h3>
-          <span class="text-xs text-gray-500 font-mono">{exp.date}</span>
-        </div>
-        <p class="text-purple-400 text-sm mb-3 font-medium">{exp.role}</p>
-        <p class="text-gray-400 text-sm leading-relaxed mb-3">{exp.description}</p>
-        <div class="flex flex-wrap gap-2">
-          {exp.tags.map((t) => (
-            <span class="text-xs px-3 py-1 rounded-full bg-dark-900/50 text-gray-400 border border-gray-700/50">{t}</span>
-          ))}
+    <ScrollReveal delay={index * 120}>
+      <div class="relative pl-12 pb-16 last:pb-0">
+        <div class="absolute left-[11px] top-1 w-2.5 h-2.5 rounded-full bg-purple-500 border-2 border-dark-950 z-10" />
+        <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 hover:border-purple-500/20 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg">{exp.company}</h3>
+            <span class="text-xs text-gray-500 font-mono">{exp.date}</span>
+          </div>
+          <p class="text-purple-400 text-sm mb-3 font-medium">{exp.role}</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-3">{exp.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {exp.tags.map((t) => (
+              <span class="text-xs px-3 py-1 rounded-full bg-dark-900/50 text-gray-400 border border-gray-700/50">{t}</span>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </ScrollReveal>
   )
 }
 
@@ -50,13 +51,15 @@ export default function Experience() {
   return (
     <section id="experience" class="py-32 px-4 relative">
       <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-20" style={{ animation: 'fadeInUp 0.6s both' }}>
-          <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">Career</p>
-          <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-            Experience
-          </h2>
-          <p class="text-gray-500 mt-4 max-w-md mx-auto">Where I've been and what I've done.</p>
-        </div>
+        <ScrollReveal>
+          <div class="text-center mb-20">
+            <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">Career</p>
+            <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+              Experience
+            </h2>
+            <p class="text-gray-500 mt-4 max-w-md mx-auto">Startup experience building products that scale.</p>
+          </div>
+        </ScrollReveal>
         <div class="relative">
           <div class="absolute left-[23px] top-2 bottom-4 w-px bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent" />
           {experiences.map((exp, i) => (

@@ -1,24 +1,40 @@
+---
+import Navbar from '../components/Navbar.jsx'
+import EasterEgg from '../components/EasterEgg.jsx'
+---
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emmanuel Norambuena - Fullstack Product Engineer</title>
-    <meta name="description" content="Emmanuel Norambuena - Fullstack Product Engineer. React, TypeScript, Node.js, Three.js." />
+    <title>Emmanuel Norambuena — Product Engineer & Builder</title>
+    <meta name="description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
     <meta name="author" content="Emmanuel Norambuena" />
     <link rel="icon" href="https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      @import "tailwindcss";
+      @theme {
+        --color-dark-950: #020617;
+        --color-dark-900: #0a0a1a;
+        --color-dark-800: #1a1a2e;
+      }
+    </style>
   </head>
   <body class="bg-dark-950 text-white antialiased min-h-screen overflow-x-hidden font-['Inter',sans-serif]">
-    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.03),transparent_50%)] pointer-events-none z-0" />
+    <div class="fixed inset-0 pointer-events-none z-[1]" style="background-image: radial-gradient(rgba(168,85,247,0.06) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="fixed inset-0 pointer-events-none z-[1]" style="background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168,85,247,0.06), transparent), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59,130,246,0.05), transparent);"></div>
+    <EasterEgg client:load />
+    <Navbar client:load />
     <slot />
     <footer class="relative z-10 text-center text-gray-600 text-sm py-12 border-t border-gray-800/50">
       <div class="max-w-md mx-auto space-y-2">
         <p>Emmanuel Norambuena</p>
         <a href="mailto:eanorambuena@uc.cl" class="hover:text-purple-400 transition-colors">eanorambuena@uc.cl</a>
-        <p class="text-xs">Built with Astro, React & Three.js</p>
+        <p class="text-xs text-gray-700">Built with Astro, React & Three.js</p>
       </div>
     </footer>
   </body>
