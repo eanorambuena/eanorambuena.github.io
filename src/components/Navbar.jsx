@@ -64,7 +64,7 @@ export default function Navbar() {
     <nav
       class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50 shadow-lg shadow-black/10'
+          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/50'
           : 'bg-transparent'
       }`}
     >
@@ -73,14 +73,14 @@ export default function Navbar() {
         <div class="flex items-center gap-3">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            class="text-base font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent tracking-tight"
+            class="text-base font-bold text-white tracking-tight"
             aria-label="Scroll to top"
           >
             E·N
           </button>
           <button
             onClick={toggleLang}
-            class="text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg bg-purple-500/15 text-purple-300 hover:bg-purple-500/25 hover:text-purple-200 transition-all border border-purple-500/25 hover:border-purple-500/40"
+            class="text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 hover:text-purple-200 transition-all border border-purple-500/30"
             aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             {lang === 'es' ? 'EN' : 'ES'}
@@ -94,8 +94,8 @@ export default function Navbar() {
               aria-current={active === href ? 'true' : undefined}
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
-                  ? 'text-purple-300 bg-purple-500/10'
-                  : 'text-zinc-100 hover:text-white hover:bg-white/5'
+                  ? 'text-white bg-white/10'
+                  : 'text-zinc-400 hover:text-white hover:bg-white/5'
               }`}
             >
               {t.nav[labelKey]}
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-zinc-100 hover:text-white transition-colors"
+          class="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -119,7 +119,7 @@ export default function Navbar() {
         </button>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" class="md:hidden bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800/50">
+        <div id="mobile-menu" class="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
           <div class="px-6 py-4 flex flex-col gap-2">
             {links.map(({ labelKey, href }) => (
               <button
@@ -128,8 +128,8 @@ export default function Navbar() {
                 aria-current={active === href ? 'true' : undefined}
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
-                    ? 'text-purple-300 bg-purple-500/10'
-                    : 'text-zinc-100 hover:text-white hover:bg-white/5'
+                    ? 'text-white bg-white/10'
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {t.nav[labelKey]}
