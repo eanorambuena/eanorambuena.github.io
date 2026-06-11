@@ -111,7 +111,7 @@ export default function Navbar() {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-zinc-300 hover:text-white transition-colors"
+          class="md:hidden p-3 text-zinc-300 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"

@@ -10,11 +10,11 @@ import Skills3D from './Skills3D.jsx'
         <span data-lang="es">{es.skills.subtitle}</span>
         <span data-lang="en" hidden>{en.skills.subtitle}</span>
       </p>
-      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+      <h2 class="text-4xl md:text-5xl font-bold gradient-text">
         <span data-lang="es">{es.skills.title}</span>
         <span data-lang="en" hidden>{en.skills.title}</span>
       </h2>
     </div>
-    <Skills3D client:load />
+    <Skills3D client:visible />
   </div>
 </section>

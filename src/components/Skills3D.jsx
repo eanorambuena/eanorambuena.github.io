@@ -1,6 +1,7 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, ContactShadows, Float, Clone, useGLTF } from '@react-three/drei'
+import { Html, ContactShadows, Float, useGLTF } from '@react-three/drei'
 import { useRef, useState, useEffect, useMemo } from 'react'
+import * as THREE from 'three'
 
 useGLTF.preload('/models/box.glb')
 
@@ -33,11 +34,11 @@ function SkillItem({ label, color, index, total, isOpen }) {
   const wasOpen = useRef(false)
 
   const angle = (index / total) * Math.PI * 2 - Math.PI / 2
-  const spreadR = 0.7
+  const spreadR = 0.8
   const spreadX = Math.cos(angle) * spreadR
   const spreadZ = Math.sin(angle) * spreadR * 0.35
-  const spreadY = (index - (total - 1) / 2) * 0.3
-  const restY = (index - (total - 1) / 2) * 0.18
+  const spreadY = (index - (total - 1) / 2) * 0.35
+  const restY = (index - (total - 1) / 2) * 0.2
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return
@@ -51,7 +52,7 @@ function SkillItem({ label, color, index, total, isOpen }) {
 
     groupRef.current.position.x = isOpen ? spreadX * eased : 0
     groupRef.current.position.y = isOpen ? spreadY * eased : restY
-    groupRef.current.position.z = isOpen ? 0.6 * eased : 0
+    groupRef.current.position.z = isOpen ? 0.7 * eased : 0
     const s = isOpen ? 1.0 : 0.5 + 0.5 * (1 - eased)
     groupRef.current.scale.set(s, s, s)
   })
@@ -59,17 +60,17 @@ function SkillItem({ label, color, index, total, isOpen }) {
   return (
     <group ref={groupRef}>
       <mesh>
-        <boxGeometry args={[0.3, 0.1, 0.16]} />
+        <boxGeometry args={[0.5, 0.15, 0.2]} />
         <meshStandardMaterial
-          color={isOpen ? color : '#1e1e2e'}
+          color={isOpen ? color : '#2a2a3e'}
           metalness={0.5}
           roughness={0.3}
         />
       </mesh>
-      <Html position={[0, 0, 0.09]} center>
+      <Html position={[0, 0, 0.11]} center>
         <div style={{
-          color: isOpen ? '#fff' : '#c4c4c7',
-          fontSize: '10px',
+          color: isOpen ? '#fff' : '#e4e4e7',
+          fontSize: '13px',
           fontWeight: 700,
           whiteSpace: 'nowrap',
           fontFamily: 'Inter, sans-serif',
@@ -85,9 +86,9 @@ function SkillItem({ label, color, index, total, isOpen }) {
 }
 
 function BoxSkillGroup({ group, column }) {
-  const [hovered, setHovered] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const n = group.skills.length
-  const x = (column - 1.5) * 1.4
+  const x = (column - 1.5) * 2.0
   const { scene } = useGLTF('/models/box.glb')
 
   const coloredScene = useMemo(() => {
@@ -95,10 +96,19 @@ function BoxSkillGroup({ group, column }) {
     s.traverse((child) => {
       if (child.isMesh && child.material) {
         child.material = child.material.clone()
-        child.material.color.set(group.color)
-        child.material.metalness = 0.1
-        child.material.roughness = 0.6
+        child.material.emissive = new THREE.Color(group.color)
+        child.material.emissiveIntensity = 0.12
+        child.material.roughness = 0.7
+        child.material.metalness = 0.0
         child.material.needsUpdate = true
+
+        const edges = new THREE.EdgesGeometry(child.geometry)
+        const lineMat = new THREE.LineBasicMaterial({
+          color: group.color,
+          transparent: true,
+          opacity: 0.4,
+        })
+        child.add(new THREE.LineSegments(edges, lineMat))
       }
     })
     return s
@@ -107,21 +117,22 @@ function BoxSkillGroup({ group, column }) {
   return (
     <Float speed={0.8 + column * 0.1} rotationIntensity={0.04} floatIntensity={0.12}>
       <group
-        position={[x, 0.1, 0]}
-        onPointerEnter={() => setHovered(true)}
-        onPointerLeave={() => setHovered(false)}
-        onFocus={() => setHovered(true)}
-        onBlur={() => setHovered(false)}
+        position={[x, 0.15, 0]}
+        onPointerEnter={() => setIsOpen(true)}
+        onPointerLeave={() => setIsOpen(false)}
+        onClick={() => setIsOpen((v) => !v)}
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setIsOpen(false)}
         tabIndex={0}
         role="button"
         aria-label={`${group.title} skills`}
       >
-        <primitive object={coloredScene} scale={2.5} />
+        <primitive object={coloredScene} scale={3.5} />
 
-        <Html position={[0, 0.72, 0]} center>
+        <Html position={[0, 1.0, 0]} center>
           <div style={{
             color: group.color,
-            fontSize: '13px',
+            fontSize: '16px',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.18em',
@@ -135,7 +146,7 @@ function BoxSkillGroup({ group, column }) {
 
         {group.skills.map((skill, i) => (
           <group key={skill} position={[0, (i - (n - 1) / 2) * 0.18, 0]}>
-            <SkillItem label={skill} color={group.color} index={i} total={n} isOpen={hovered} />
+            <SkillItem label={skill} color={group.color} index={i} total={n} isOpen={isOpen} />
           </group>
         ))}
       </group>
@@ -196,9 +207,9 @@ export default function Skills3D() {
   if (reduced) return null
 
   return (
-    <div class="w-full h-[500px] md:h-[600px]" aria-label="3D skills boxes">
+    <div class="w-full h-[550px] md:h-[650px]" aria-label="3D skills boxes">
       <Canvas
-        camera={{ position: [0, 0.5, 6.5], fov: 45 }}
+        camera={{ position: [0, 0.5, 7.5], fov: 40 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true }}
         onCreated={({ gl }) => {

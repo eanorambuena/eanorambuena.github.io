@@ -51,6 +51,13 @@ import { es, en } from '../i18n/translations'
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <style>
       @import "tailwindcss";
+      .gradient-text {
+        color: #c084fc;
+        background: linear-gradient(to right, #c084fc, #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
       *:focus-visible {
         outline: 2px solid #a855f7;
         outline-offset: 2px;

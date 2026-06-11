@@ -16,11 +16,11 @@ import Hero3D from './Hero3D.jsx'
           <h1 class="text-5xl md:text-7xl font-bold leading-tight">
             <span class="text-white">Emmanuel</span>
             <br />
-            <span class="bg-gradient-to-r from-purple-400 via-violet-500 to-blue-500 bg-clip-text text-transparent">
+            <span class="gradient-text">
               Norambuena
             </span>
           </h1>
-          <p class="text-xl text-zinc-300 leading-relaxed max-w-lg">
+          <p class="text-2xl text-zinc-300 leading-relaxed max-w-lg">
             <span data-lang="es">{es.hero.desc}</span>
             <span data-lang="en" hidden>{en.hero.desc}</span>
             <span class="text-purple-400/80">
@@ -52,7 +52,7 @@ import Hero3D from './Hero3D.jsx'
         </div>
       </div>
       <div class="hidden md:flex items-center justify-center h-full">
-        <Hero3D client:load />
+        <Hero3D client:visible />
       </div>
     </div>
   </div>
