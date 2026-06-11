@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, ContactShadows, Edges, RoundedBox } from '@react-three/drei'
+import { Float, Html, ContactShadows, Edges } from '@react-three/drei'
 import { useRef, useState, useEffect } from 'react'
 
 const groups = [
@@ -25,60 +25,71 @@ const groups = [
   },
 ]
 
-function Drawer({ label, color, yPosition, index }) {
+function SkillItem({ label, color, index, total, isOpen }) {
   const groupRef = useRef()
-  const [hovered, setHovered] = useState(false)
+
+  const angle = (index / total) * Math.PI * 2 - Math.PI / 2
+  const spreadR = 0.9
+  const spreadX = Math.cos(angle) * spreadR
+  const spreadZ = Math.sin(angle) * spreadR * 0.5
+  const spreadY = (index - (total - 1) / 2) * 0.35
+  const restY = (index - (total - 1) / 2) * 0.18
 
   useFrame(() => {
     if (groupRef.current) {
-      const targetZ = hovered ? 0.55 : 0
-      groupRef.current.position.z += (targetZ - groupRef.current.position.z) * 0.08
+      const speed = 0.065
+      const tx = isOpen ? spreadX : 0
+      const ty = isOpen ? spreadY : restY
+      const tz = isOpen ? 0.9 : 0
+      const ts = isOpen ? 1.0 : 0.3
+
+      groupRef.current.position.x += (tx - groupRef.current.position.x) * speed
+      groupRef.current.position.y += (ty - groupRef.current.position.y) * speed
+      groupRef.current.position.z += (tz - groupRef.current.position.z) * speed
+
+      const s = groupRef.current.scale.x + (ts - groupRef.current.scale.x) * speed
+      groupRef.current.scale.set(s, s, s)
     }
   })
 
   return (
-    <group ref={groupRef} position={[0, yPosition, 0]}>
-      <RoundedBox
-        args={[0.72, 0.17, 0.3]}
-        radius={0.025}
-        smoothness={4}
-        onPointerEnter={() => setHovered(true)}
-        onPointerLeave={() => setHovered(false)}
-      >
+    <group ref={groupRef}>
+      <mesh>
+        <boxGeometry args={[0.32, 0.1, 0.16]} />
         <meshStandardMaterial
-          color={hovered ? color : '#181828'}
+          color={isOpen ? color : '#181828'}
           metalness={0.75}
           roughness={0.2}
           envMapIntensity={1.2}
         />
         <Edges
-          color={hovered ? '#ffffff' : color}
-          opacity={hovered ? 0.6 : 0.2}
+          color={isOpen ? '#ffffff' : color}
+          opacity={isOpen ? 0.5 : 0.12}
           transparent
           threshold={15}
         />
-      </RoundedBox>
-      <mesh position={[0, 0, 0.152]}>
-        <planeGeometry args={[0.62, 0.1]} />
+      </mesh>
+      <mesh position={[0, 0, 0.082]}>
+        <planeGeometry args={[0.26, 0.07]} />
         <meshBasicMaterial
           color={color}
           transparent
-          opacity={hovered ? 0.3 : 0.06}
+          opacity={isOpen ? 0.2 : 0.04}
         />
       </mesh>
       <Html
-        position={[0, 0, hovered ? 0.22 : 0.16]}
+        position={[0, 0, isOpen ? 0.14 : 0.09]}
         center
       >
         <div style={{
-          color: hovered ? '#fff' : '#a1a1aa',
-          fontSize: '10px',
+          color: isOpen ? '#fff' : '#a1a1aa',
+          fontSize: '8px',
           fontWeight: 600,
           whiteSpace: 'nowrap',
           fontFamily: 'Inter, sans-serif',
-          letterSpacing: '0.03em',
-          textShadow: hovered ? `0 0 14px ${color}88` : 'none',
-          transition: 'color 0.3s',
+          letterSpacing: '0.02em',
+          textShadow: isOpen ? `0 0 12px ${color}88` : 'none',
+          transition: 'color 0.25s',
           pointerEvents: 'none',
         }}>
           {label}
@@ -89,57 +100,66 @@ function Drawer({ label, color, yPosition, index }) {
 }
 
 function Cabinet({ group, column, row }) {
+  const [hovered, setHovered] = useState(false)
   const n = group.skills.length
-  const drawerPitch = 0.25
-  const cabH = n * drawerPitch + 0.1
-  const cabW = 0.85
-  const cabD = 0.45
+  const cabH = n * 0.2 + 0.3
+  const cabW = 0.5
+  const cabD = 0.4
 
   const x = (column - 0.5) * 4.5
   const z = (row - 0.5) * 2.5 - 0.5
 
   return (
-    <group position={[x, 0, z]}>
-      <mesh>
-        <boxGeometry args={[cabW, cabH, cabD]} />
-        <meshStandardMaterial
-          color="#080808"
-          metalness={0.9}
-          roughness={0.3}
-          transparent
-          opacity={0.12}
-        />
-        <Edges color={group.color} opacity={0.3} transparent threshold={15} />
-      </mesh>
+    <Float speed={1.2} rotationIntensity={0.12} floatIntensity={0.25}>
+      <group
+        position={[x, 0.2, z]}
+        onPointerEnter={() => setHovered(true)}
+        onPointerLeave={() => setHovered(false)}
+      >
+        <mesh>
+          <boxGeometry args={[cabW, cabH, cabD]} />
+          <meshStandardMaterial
+            color="#080808"
+            metalness={0.9}
+            roughness={0.3}
+            transparent
+            opacity={hovered ? 0.2 : 0.1}
+          />
+          <Edges
+            color={group.color}
+            opacity={hovered ? 0.7 : 0.25}
+            transparent
+            threshold={15}
+          />
+        </mesh>
 
-      <Html position={[0, cabH / 2 + 0.35, 0]} center>
-        <div style={{
-          color: group.color,
-          fontSize: '11px',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '0.15em',
-          fontFamily: 'Inter, sans-serif',
-          textShadow: `0 0 20px ${group.color}44`,
-          pointerEvents: 'none',
-        }}>
-          {group.title}
-        </div>
-      </Html>
+        <Html position={[0, cabH / 2 + 0.4, 0]} center>
+          <div style={{
+            color: group.color,
+            fontSize: '10px',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            fontFamily: 'Inter, sans-serif',
+            textShadow: `0 0 20px ${group.color}66`,
+            pointerEvents: 'none',
+          }}>
+            {hovered ? `~ ${group.title} ~` : group.title}
+          </div>
+        </Html>
 
-      {group.skills.map((skill, i) => {
-        const y = (i - (n - 1) / 2) * drawerPitch
-        return (
-          <Drawer
+        {group.skills.map((skill, i) => (
+          <SkillItem
             key={skill}
             label={skill}
             color={group.color}
-            yPosition={y}
             index={i}
+            total={n}
+            isOpen={hovered}
           />
-        )
-      })}
-    </group>
+        ))}
+      </group>
+    </Float>
   )
 }
 
@@ -148,10 +168,10 @@ function Scene() {
   const autoRotate = useRef(0)
 
   useFrame(({ clock, mouse }) => {
-    autoRotate.current = clock.elapsedTime * 0.15
+    autoRotate.current = clock.elapsedTime * 0.12
     if (groupRef.current) {
-      const targetY = mouse.x * 0.25 + Math.sin(autoRotate.current) * 0.15
-      const targetX = -mouse.y * 0.1 + Math.sin(autoRotate.current * 0.5) * 0.05
+      const targetY = mouse.x * 0.2 + Math.sin(autoRotate.current) * 0.12
+      const targetX = -mouse.y * 0.08 + Math.sin(autoRotate.current * 0.5) * 0.04
       groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.02
       groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.02
     }
@@ -162,8 +182,7 @@ function Scene() {
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1.2} />
       <directionalLight position={[-3, 2, 4]} intensity={0.5} color="#a855f7" />
-      <pointLight position={[0, 5, 0]} intensity={0.6} color="#3b82f6" />
-      <spotLight position={[0, 4, 4]} angle={0.4} penumbra={0.8} intensity={0.8} color="#ffffff" />
+      <pointLight position={[0, 5, 0]} intensity={0.5} color="#3b82f6" />
 
       <group position={[0, 0.4, 0]} ref={groupRef}>
         {groups.map((g, i) => (
@@ -173,7 +192,7 @@ function Scene() {
 
       <ContactShadows
         position={[0, -1.2, 0]}
-        opacity={0.35}
+        opacity={0.3}
         scale={20}
         blur={2.5}
         far={4}
