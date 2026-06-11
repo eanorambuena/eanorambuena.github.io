@@ -21,9 +21,9 @@ const experiences = [
     index: 2,
   },
   {
-    company: '[Nombre Organización]',
+    company: 'Open Source UC',
     date: '2023 - 2024',
-    tags: ['Liderazgo', 'Coordinación', 'Equipos'],
+    tags: ['Liderazgo', 'Eventos', 'Streaming', 'Comunidad'],
     index: 3,
   },
 ]
@@ -56,11 +56,11 @@ const experiences = [
                 <h3 class="font-bold text-white text-lg">{exp.company}</h3>
                 <span class="text-xs text-zinc-300 font-mono">{exp.date}</span>
               </div>
-              <p class="text-purple-400 text-sm mb-3 font-medium">
+              <p class="text-purple-400 text-base mb-3 font-medium">
                 <span data-lang="es">{es.experience.items[exp.index].role}</span>
                 <span data-lang="en" hidden>{en.experience.items[exp.index].role}</span>
               </p>
-              <p class="text-zinc-300 text-sm leading-relaxed mb-3">
+              <p class="text-zinc-300 text-base leading-relaxed mb-3">
                 <span data-lang="es">{es.experience.items[exp.index].desc}</span>
                 <span data-lang="en" hidden>{en.experience.items[exp.index].desc}</span>
               </p>

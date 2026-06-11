@@ -32,19 +32,19 @@ const es = {
     items: [
       {
         role: 'Ingeniero de Software Fullstack',
-        desc: 'Lideré la migración frontend de React Native Paper a Tamagui. Reduje costos de herramientas de IA de $200 a $0 por usuario al mes.',
+        desc: 'Arquitecté despliegue cross-platform con Expo/EAS y migré el UI de React Native Paper a Tamagui. Reduje costos de IA de $200 a $0 con Cursor Rules. Desplegué APIs serverless en AWS con SST y Pulumi.',
       },
       {
         role: 'Ingeniero de Software (Front-End)',
-        desc: 'Construí una app de visualización GIS desde cero para una minera global. Arquitecté el frontend con React, TypeScript y Vite.',
+        desc: 'Construí app de visualización GIS desde cero para una minera global. Backend completo con FastAPI, Django y PostgreSQL. Frontend con React, TypeScript, Vite y Azure DevOps.',
       },
       {
         role: 'Arquitecto de Aplicaciones',
-        desc: 'Diseñé una plataforma de evaluación entre pares para 1,500+ estudiantes concurrentes con Next.js y React. Reduje el tiempo de corrección manual en 60%.',
+        desc: 'Diseñé plataforma de evaluación entre pares para 1,500+ estudiantes UC con Next.js y React. Migré base de datos en Supabase y reduje tiempo de corrección manual en 60%.',
       },
       {
         role: 'Coordinador General',
-        desc: 'Coordiné equipos multidisciplinarios y lideré la organización de eventos tecnológicos. Gestión de voluntarios, logística y comunicación con stakeholders.',
+        desc: 'Coordiné y gestioné la transmisión en vivo de charlas tecnológicas sobre diversos temas. Lideré equipos, logística y producción de eventos para la comunidad Open Source UC.',
       },
     ],
   },
@@ -109,19 +109,19 @@ const en = {
     items: [
       {
         role: 'Fullstack Software Engineer Intern',
-        desc: 'Owned the frontend migration from React Native Paper to Tamagui. Reduced AI tooling costs from $200 to $0 per user monthly.',
+        desc: 'Architected cross-platform deployment with Expo/EAS and led UI migration from React Native Paper to Tamagui. Reduced AI costs from $200 to $0 using Cursor Rules. Deployed serverless APIs on AWS with SST and Pulumi.',
       },
       {
         role: 'Software Engineer (Front-End)',
-        desc: 'Built GIS visualization app from scratch for a global mining company. Architected frontend with React, TypeScript, and Vite.',
+        desc: 'Built GIS visualization app from scratch for a global mining company. Complete backend with FastAPI, Django, and PostgreSQL. Frontend with React, TypeScript, Vite, and Azure DevOps.',
       },
       {
         role: 'Application Architect',
-        desc: 'Architected peer evaluation platform for 1,500+ concurrent students using Next.js and React. Cut manual grading time by 60%.',
+        desc: 'Architected peer evaluation platform for 1,500+ UC students using Next.js and React. Managed Supabase database migration and cut manual grading time by 60%.',
       },
       {
         role: 'General Coordinator',
-        desc: 'Led multidisciplinary teams and organized tech events. Managed volunteers, logistics, and stakeholder communication.',
+        desc: 'Coordinated and managed live streaming of tech talks on various topics. Led teams, logistics, and event production for the Open Source UC community.',
       },
     ],
   },
