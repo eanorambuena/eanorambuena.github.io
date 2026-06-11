@@ -68,7 +68,7 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div class="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} />
+      <div class="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
       <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <button
@@ -88,10 +88,11 @@ export default function Navbar() {
         </div>
         <div class="hidden md:flex items-center gap-1">
           {links.map(({ labelKey, href }) => (
-            <button
+            <a
               key={href}
-              onClick={() => scrollTo(href.slice(1))}
-              aria-current={active === href ? 'true' : undefined}
+              href={href}
+              onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
+              aria-current={active === href ? 'page' : undefined}
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
                   ? 'text-white bg-white/10'
@@ -99,7 +100,7 @@ export default function Navbar() {
               }`}
             >
               {t.nav[labelKey]}
-            </button>
+            </a>
           ))}
         </div>
         <button
@@ -119,13 +120,14 @@ export default function Navbar() {
         </button>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" class="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
+        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" class="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
           <div class="px-6 py-4 flex flex-col gap-2">
             {links.map(({ labelKey, href }) => (
-              <button
+              <a
                 key={href}
-                onClick={() => scrollTo(href.slice(1))}
-                aria-current={active === href ? 'true' : undefined}
+                href={href}
+                onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
+                aria-current={active === href ? 'page' : undefined}
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
                     ? 'text-white bg-white/10'
@@ -133,7 +135,7 @@ export default function Navbar() {
                 }`}
               >
                 {t.nav[labelKey]}
-              </button>
+              </a>
             ))}
           </div>
         </div>

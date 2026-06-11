@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect, useState } from 'react'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import useScrollProgress from './useScrollProgress.jsx'
 import * as THREE from 'three'
@@ -183,9 +183,20 @@ function Scene({ scroll }) {
 
 export default function ThreeBackground() {
   const scroll = useScrollProgress()
+  const [reduced, setReduced] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReduced(mq.matches)
+    const handler = (e) => setReduced(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  if (reduced) return null
 
   return (
-    <div class="w-full h-full">
+    <div class="w-full h-full" aria-hidden="true">
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
         <Scene scroll={scroll} />
       </Canvas>

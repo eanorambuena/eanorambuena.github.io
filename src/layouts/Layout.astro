@@ -5,17 +5,51 @@ import ThreeBackground from '../components/ThreeBackground.jsx'
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emmanuel Norambuena — Product Engineer & Builder</title>
     <meta name="description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
     <meta name="author" content="Emmanuel Norambuena" />
-    <link rel="icon" href="https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://eanorambuena.me" />
+    <link rel="alternate" hreflang="es" href="https://eanorambuena.me" />
+    <link rel="alternate" hreflang="en" href="https://eanorambuena.me" />
+    <link rel="alternate" hreflang="x-default" href="https://eanorambuena.me" />
+    <script>
+      (function() {
+        var lang = localStorage.getItem('portfolio-lang') || 'es'
+        document.documentElement.lang = lang
+        window.addEventListener('langchange', function() {
+          document.documentElement.lang = localStorage.getItem('portfolio-lang') || 'es'
+        })
+      })()
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eanorambuena.me" />
+    <meta property="og:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
+    <meta property="og:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
+    <meta property="og:image" content="https://eanorambuena.me/og-image.png" />
+    <meta property="og:site_name" content="Emmanuel Norambuena" />
+    <meta property="og:locale" content="es_CL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@eanorambuena" />
+    <meta name="twitter:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
+    <meta name="twitter:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
+    <meta name="twitter:image" content="https://eanorambuena.me/og-image.png" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Emmanuel Norambuena",
+      "url": "https://eanorambuena.me",
+      "jobTitle": "Product Engineer",
+      "email": "eanorambuena@uc.cl",
+      "sameAs": ["https://github.com/eanorambuena", "https://linkedin.com/in/eanorambuena"]
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <style>
       @import "tailwindcss";
       *:focus-visible {
@@ -45,8 +79,8 @@ import ThreeBackground from '../components/ThreeBackground.jsx'
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background-image: radial-gradient(rgba(168,85,247,0.06) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168,85,247,0.06), transparent), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59,130,246,0.05), transparent);"></div>
     <EasterEgg client:load />
-    <div class="fixed inset-0 z-0 pointer-events-none">
-      <ThreeBackground client:load />
+    <div class="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <ThreeBackground client:visible />
     </div>
     <Navbar client:load />
     <slot />
