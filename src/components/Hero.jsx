@@ -1,8 +1,5 @@
-import { lazy, Suspense } from 'react'
 import ScrollReveal from './ScrollReveal.jsx'
 import { useLang } from '../i18n/useLang.jsx'
-
-const ThreeScene = lazy(() => import('./ThreeBackground.jsx'))
 
 export default function Hero() {
   const { t } = useLang()
