@@ -1,5 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useRef, useMemo } from 'react'
+import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
 function TorusKnot() {
@@ -126,16 +127,29 @@ function StarField() {
   )
 }
 
+function Scene() {
+  return (
+    <>
+      <fog attach="fog" args={['#020617', 5, 15]} />
+      <ambientLight intensity={0.2} />
+      <directionalLight position={[5, 5, 5]} intensity={2} color="#a855f7" />
+      <directionalLight position={[-3, -2, 4]} intensity={1} color="#3b82f6" />
+      <TorusKnot />
+      <OrbitalRing />
+      <StarField />
+      <EffectComposer>
+        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.9} intensity={0.8} />
+        <ChromaticAberration offset={[0.0005, 0.0005]} />
+      </EffectComposer>
+    </>
+  )
+}
+
 export default function ThreeBackground() {
   return (
     <div class="w-full h-full min-h-[300px]">
-      <Canvas camera={{ position: [0, 0, 4.5], fov: 50 }}>
-        <ambientLight intensity={0.2} />
-        <directionalLight position={[5, 5, 5]} intensity={2} color="#a855f7" />
-        <directionalLight position={[-3, -2, 4]} intensity={1} color="#3b82f6" />
-        <TorusKnot />
-        <OrbitalRing />
-        <StarField />
+      <Canvas camera={{ position: [0, 0, 4.5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
+        <Scene />
       </Canvas>
     </div>
   )
