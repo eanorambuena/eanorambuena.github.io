@@ -56,16 +56,6 @@ export default function Hero() {
               </div>
             </div>
           </ScrollReveal>
-          <div class="hidden md:flex items-center justify-center">
-            <div class="w-full aspect-square max-w-lg relative">
-              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
-              <div class="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 bg-black/50">
-                <Suspense fallback={<div class="w-full h-full min-h-[300px] bg-black/50 rounded-2xl animate-pulse" />}>
-                  <ThreeScene />
-                </Suspense>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">

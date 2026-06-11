@@ -4,6 +4,10 @@ import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postpro
 import useScrollProgress from './useScrollProgress.jsx'
 import * as THREE from 'three'
 
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3)
+}
+
 function TorusKnot({ scroll }) {
   const meshRef = useRef()
   const wireRef = useRef()
@@ -11,22 +15,34 @@ function TorusKnot({ scroll }) {
   useFrame(({ clock, mouse }) => {
     if (meshRef.current) {
       const t = clock.getElapsedTime()
-      const baseSpeed = 0.15 + scroll * 0.2
-      const targetX = t * baseSpeed + mouse.y * 1.5
-      const targetY = t * (baseSpeed + 0.05) + mouse.x * 1.5
+      const s = Math.min(scroll * 1.2, 1)
+      const phase = easeOutCubic(s)
+
+      const scale = 1 + phase * 18
+      meshRef.current.scale.setScalar(scale)
+
+      const opacity = Math.max(0, 1 - (scroll - 0.5) * 2.2)
+      meshRef.current.material.opacity = opacity
+      meshRef.current.material.transparent = true
+
+      const baseSpeed = 0.15 + phase * 0.6
+      const targetX = t * baseSpeed + mouse.y * 2 * (1 + phase * 2)
+      const targetY = t * (baseSpeed + 0.05) + mouse.x * 2 * (1 + phase * 2)
       meshRef.current.rotation.x += (targetX - meshRef.current.rotation.x) * 0.05
       meshRef.current.rotation.y += (targetY - meshRef.current.rotation.y) * 0.05
-      const floatY = Math.sin(t * 0.3) * 0.15
-      meshRef.current.position.y = floatY - scroll * 0.3
 
-      const hue = 0.76 + Math.sin(t * 0.04 + scroll * 2) * 0.07
+      const floatY = Math.sin(t * 0.3) * 0.15
+      meshRef.current.position.y = floatY - scroll * 0.5
+
+      const hue = 0.76 + Math.sin(t * 0.04 + scroll * 3) * 0.07
       meshRef.current.material.color.setHSL(hue, 0.7, 0.55)
-      meshRef.current.scale.setScalar(1 + scroll * 0.15)
     }
     if (wireRef.current && meshRef.current) {
       wireRef.current.rotation.copy(meshRef.current.rotation)
       wireRef.current.position.copy(meshRef.current.position)
       wireRef.current.scale.copy(meshRef.current.scale)
+      const wireOpacity = Math.min(1, Math.max(0, (scroll - 0.3) * 2))
+      wireRef.current.material.opacity = wireOpacity * 0.5
     }
   })
 
@@ -48,7 +64,7 @@ function TorusKnot({ scroll }) {
           color="#a855f7"
           wireframe
           transparent
-          opacity={0.12}
+          opacity={0}
         />
       </mesh>
     </group>
@@ -72,9 +88,11 @@ function OrbitalRing({ scroll }) {
 
   useFrame(({ clock }) => {
     if (ref.current) {
-      const speed = 0.08 + scroll * 0.05
-      ref.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.15) * 0.3
+      const speed = 0.08 + scroll * 0.15
+      ref.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.15 + scroll * 2) * 0.5
       ref.current.rotation.y = clock.getElapsedTime() * speed
+      ref.current.material.size = 0.025 + scroll * 0.04
+      ref.current.material.opacity = Math.max(0, 1 - scroll * 1.2)
     }
   })
 
@@ -137,7 +155,7 @@ function CameraController({ scroll }) {
   const { camera } = useThree()
 
   useFrame(() => {
-    const targetZ = 4.5 - scroll * 1.5
+    const targetZ = 5 + scroll * 3
     camera.position.z += (targetZ - camera.position.z) * 0.05
   })
 
@@ -147,7 +165,7 @@ function CameraController({ scroll }) {
 function Scene({ scroll }) {
   return (
     <>
-      <fog attach="fog" args={['#000000', 5, 15]} />
+      <fog attach="fog" args={['#000000', 5, 30]} />
       <ambientLight intensity={0.2} />
       <directionalLight position={[5, 5, 5]} intensity={2} color="#a855f7" />
       <directionalLight position={[-3, -2, 4]} intensity={1} color="#3b82f6" />
@@ -156,8 +174,8 @@ function Scene({ scroll }) {
       <OrbitalRing scroll={scroll} />
       <StarField />
       <EffectComposer>
-        <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.9} intensity={0.8} />
-        <ChromaticAberration offset={[0.0005, 0.0005]} />
+        <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.6 + scroll * 1.5} />
+        <ChromaticAberration offset={[0.0005 + scroll * 0.001, 0.0005 + scroll * 0.001]} />
       </EffectComposer>
     </>
   )
@@ -167,8 +185,8 @@ export default function ThreeBackground() {
   const scroll = useScrollProgress()
 
   return (
-    <div class="w-full h-full min-h-[300px]">
-      <Canvas camera={{ position: [0, 0, 4.5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
+    <div class="w-full h-full">
+      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
         <Scene scroll={scroll} />
       </Canvas>
     </div>
