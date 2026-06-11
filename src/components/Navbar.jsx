@@ -73,14 +73,16 @@ export default function Navbar() {
         <div class="flex items-center gap-3">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            class="flex-shrink-0"
+            class="flex-shrink-0 bg-transparent border-none p-0 outline-none focus:outline-none focus:ring-0"
             aria-label="Scroll to top"
           >
-            <img
-              src="https://avatars.githubusercontent.com/u/38821970?v=4"
-              alt="Emmanuel Norambuena"
-              class="w-10 h-10 rounded-full object-cover"
-            />
+            <div class="w-10 h-10 rounded-full overflow-hidden">
+              <img
+                src="https://avatars.githubusercontent.com/u/38821970?v=4"
+                alt="Emmanuel Norambuena"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </button>
           <button
             onClick={toggleLang}

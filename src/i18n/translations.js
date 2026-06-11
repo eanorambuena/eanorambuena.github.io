@@ -64,6 +64,10 @@ const es = {
   footer: {
     built: 'Hecho con Astro, React & Three.js',
   },
+  trustedBy: {
+    subtitle: 'Confianza',
+    title: 'Empresas que confían en mi trabajo',
+  },
   opensourceGH: 'Ver en GitHub →',
 }
 
@@ -132,6 +136,10 @@ const en = {
   },
   footer: {
     built: 'Built with Astro, React & Three.js',
+  },
+  trustedBy: {
+    subtitle: 'Trust',
+    title: 'Companies I\'ve Worked With',
   },
   opensourceGH: 'View on GitHub →',
 }
