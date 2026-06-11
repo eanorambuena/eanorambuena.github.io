@@ -42,6 +42,10 @@ const es = {
         role: 'Arquitecto de Aplicaciones',
         desc: 'Diseñé una plataforma de evaluación entre pares para 1,500+ estudiantes concurrentes con Next.js y React. Reduje el tiempo de corrección manual en 60%.',
       },
+      {
+        role: 'Coordinador General',
+        desc: 'Coordiné equipos multidisciplinarios y lideré la organización de eventos tecnológicos. Gestión de voluntarios, logística y comunicación con stakeholders.',
+      },
     ],
   },
   skills: {
@@ -114,6 +118,10 @@ const en = {
       {
         role: 'Application Architect',
         desc: 'Architected peer evaluation platform for 1,500+ concurrent students using Next.js and React. Cut manual grading time by 60%.',
+      },
+      {
+        role: 'General Coordinator',
+        desc: 'Led multidisciplinary teams and organized tech events. Managed volunteers, logistics, and stakeholder communication.',
       },
     ],
   },
