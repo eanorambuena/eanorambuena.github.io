@@ -1,34 +1,70 @@
+import ThreeBackground from './ThreeBackground.jsx'
+
 export default function Hero() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
-      <div class="space-y-6 max-w-3xl">
-        <h1 class="text-6xl md:text-8xl font-bold bg-gradient-to-r from-purple-400 via-violet-500 to-blue-500 bg-clip-text text-transparent">
-          Emmanuel Norambuena
-        </h1>
-        <p class="text-2xl md:text-3xl text-gray-300 font-light">
-          Fullstack Product Engineer
-        </p>
-        <p class="text-lg text-gray-500 max-w-xl mx-auto">
-          Building products with React, TypeScript & Node.js.
-          Passionate about great UX, clean code, and AI-first development.
-        </p>
-        <div class="flex gap-4 justify-center pt-4">
-          <button onClick={() => scrollTo('projects')} class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-medium transition-all hover:scale-105">
-            View Projects
-          </button>
-          <a href="mailto:eanorambuena@uc.cl" class="px-8 py-3 border border-gray-600 hover:border-purple-500 rounded-full font-medium transition-all hover:scale-105">
-            Contact
-          </a>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-950 to-purple-950/20 z-0" />
+      <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center min-h-screen py-20">
+          <div class="space-y-8">
+            <div class="space-y-4">
+              <p class="text-purple-400 font-mono text-sm tracking-widest uppercase">
+                Fullstack Product Engineer
+              </p>
+              <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                <span class="bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
+                  Emmanuel
+                </span>
+                <br />
+                <span class="bg-gradient-to-r from-purple-400 via-violet-500 to-blue-500 bg-clip-text text-transparent">
+                  Norambuena
+                </span>
+              </h1>
+              <p class="text-lg text-gray-400 leading-relaxed max-w-md">
+                Building products people love with React, TypeScript, and Node.js.
+                <span class="text-purple-400/80"> 3+ years shipping at startups and scale.</span>
+              </p>
+            </div>
+            <div class="flex gap-4">
+              <button onClick={() => scrollTo('projects')} class="px-8 py-3.5 bg-purple-600 hover:bg-purple-500 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 active:scale-95">
+                View Projects
+              </button>
+              <a href="mailto:eanorambuena@uc.cl" class="px-8 py-3.5 border border-gray-700 hover:border-purple-500/50 rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-95">
+                Get in Touch
+              </a>
+            </div>
+            <div class="flex gap-5 text-gray-500 pt-2">
+              <a href="https://linkedin.com/in/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors" aria-label="LinkedIn">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://github.com/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors" aria-label="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+              <a href="https://x.com/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors" aria-label="X">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center justify-center">
+            <div class="w-full aspect-square max-w-lg relative">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
+              <div class="relative w-full h-full rounded-2xl overflow-hidden border border-purple-500/10 bg-dark-900/30">
+                <ThreeBackground />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-6 justify-center pt-6 text-gray-400">
-          <a href="https://linkedin.com/in/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors text-lg" aria-label="LinkedIn">in</a>
-          <a href="https://github.com/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors text-lg" aria-label="GitHub">GH</a>
-          <a href="https://x.com/eanorambuena" target="_blank" class="hover:text-purple-400 transition-colors text-lg" aria-label="X / Twitter">𝕏</a>
-        </div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <button onClick={() => scrollTo('projects')} class="text-gray-500 hover:text-purple-400 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </button>
       </div>
     </section>
   )
