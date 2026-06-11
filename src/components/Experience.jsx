@@ -29,7 +29,7 @@ function TimelineItem({ exp, index, t }) {
         <div class="bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/30 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-bold text-white text-lg">{exp.company}</h3>
-            <span class="text-xs text-zinc-500 font-mono">{exp.date}</span>
+            <span class="text-xs text-zinc-400 font-mono">{exp.date}</span>
           </div>
           <p class="text-purple-400 text-sm mb-3 font-medium">{item.role}</p>
           <p class="text-zinc-300 text-sm leading-relaxed mb-3">{item.desc}</p>

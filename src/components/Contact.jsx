@@ -29,12 +29,12 @@ export default function Contact() {
             {t.contact.btnLinkedin}
           </a>
         </div>
-        <div class="flex gap-6 justify-center mt-10 text-zinc-500">
+        <div class="flex gap-6 justify-center mt-10 text-zinc-400">
           <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">GitHub</a>
           <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">X</a>
           <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors text-sm font-medium">LinkedIn</a>
         </div>
-        <p class="text-zinc-500 text-sm mt-8">
+        <p class="text-zinc-400 text-sm mt-8">
           Based in Chile · Open to remote · Connected to the Chilean startup ecosystem
         </p>
       </div>

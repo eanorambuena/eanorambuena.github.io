@@ -21,7 +21,7 @@ function TorusKnot({ scroll }) {
       const scale = 1 + phase * 18
       meshRef.current.scale.setScalar(scale)
 
-      const opacity = Math.max(0, 1 - (scroll - 0.5) * 2.2)
+      const opacity = Math.min(1, Math.max(0, 1 - easeOutCubic(Math.max(0, (scroll - 0.78) / 0.22))))
       meshRef.current.material.opacity = opacity
       meshRef.current.material.transparent = true
 
@@ -41,7 +41,7 @@ function TorusKnot({ scroll }) {
       wireRef.current.rotation.copy(meshRef.current.rotation)
       wireRef.current.position.copy(meshRef.current.position)
       wireRef.current.scale.copy(meshRef.current.scale)
-      const wireOpacity = Math.min(1, Math.max(0, (scroll - 0.3) * 2))
+      const wireOpacity = Math.min(1, Math.max(0, (scroll - 0.7) / 0.3))
       wireRef.current.material.opacity = wireOpacity * 0.5
     }
   })
@@ -92,7 +92,7 @@ function OrbitalRing({ scroll }) {
       ref.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.15 + scroll * 2) * 0.5
       ref.current.rotation.y = clock.getElapsedTime() * speed
       ref.current.material.size = 0.025 + scroll * 0.04
-      ref.current.material.opacity = Math.max(0, 1 - scroll * 1.2)
+      ref.current.material.opacity = 0.5 * (1 - easeOutCubic(Math.min(scroll * 1.4, 1)))
     }
   })
 
@@ -174,7 +174,7 @@ function Scene({ scroll }) {
       <OrbitalRing scroll={scroll} />
       <StarField />
       <EffectComposer>
-        <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.6 + scroll * 1.5} />
+        <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.6 + scroll * 1.4} />
         <ChromaticAberration offset={[0.0005 + scroll * 0.001, 0.0005 + scroll * 0.001]} />
       </EffectComposer>
     </>
