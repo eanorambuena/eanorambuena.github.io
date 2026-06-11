@@ -1,0 +1,35 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Emmanuel Norambuena - Fullstack Product Engineer' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content="Emmanuel Norambuena - Fullstack Product Engineer. React, TypeScript, Node.js, Three.js." />
+    <meta name="author" content="Emmanuel Norambuena" />
+    <link rel="icon" href="https://raw.githubusercontent.com/emmyjs/emmyjs.github.io/main/public/favicon.ico" type="image/x-icon" />
+  </head>
+  <body class="bg-dark-950 text-white antialiased min-h-screen overflow-x-hidden">
+    <slot />
+    <footer class="relative z-10 text-center text-gray-500 text-sm py-8">
+      <p>Emmanuel Norambuena · <a href="mailto:eanorambuena@uc.cl" class="hover:text-purple-400 transition-colors">eanorambuena@uc.cl</a></p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  @import "tailwindcss";
+
+  @theme {
+    --color-dark-950: #020617;
+    --color-dark-900: #0a0a1a;
+    --color-dark-800: #1a1a2e;
+  }
+</style>
