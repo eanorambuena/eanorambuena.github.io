@@ -147,7 +147,7 @@ function CameraController({ scroll }) {
 function Scene({ scroll }) {
   return (
     <>
-      <fog attach="fog" args={['#020617', 5, 15]} />
+      <fog attach="fog" args={['#09090b', 5, 15]} />
       <ambientLight intensity={0.2} />
       <directionalLight position={[5, 5, 5]} intensity={2} color="#a855f7" />
       <directionalLight position={[-3, -2, 4]} intensity={1} color="#3b82f6" />

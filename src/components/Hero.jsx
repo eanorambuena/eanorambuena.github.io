@@ -12,7 +12,7 @@ export default function Hero() {
 
   return (
     <section class="relative min-h-screen flex items-center overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-950 to-purple-950/20 z-0" />
+      <div class="absolute inset-0 bg-gradient-to-br from-zinc-950 via-zinc-950 to-purple-950/20 z-0" />
       <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12">
         <div class="grid md:grid-cols-2 gap-12 items-center min-h-screen py-20">
           <ScrollReveal>
@@ -30,7 +30,7 @@ export default function Hero() {
                     Norambuena
                   </span>
                 </h1>
-                <p class="text-lg text-gray-200 leading-relaxed max-w-md">
+                <p class="text-lg text-zinc-100 leading-relaxed max-w-md">
                   {t.hero.desc}
                   <span class="text-purple-400/80">{t.hero.descAccent}</span>
                 </p>
@@ -39,11 +39,11 @@ export default function Hero() {
                 <button onClick={() => scrollTo('projects')} class="px-8 py-3.5 bg-purple-600 hover:bg-purple-500 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 active:scale-95">
                   {t.hero.btnProjects}
                 </button>
-                <a href="mailto:eanorambuena@uc.cl" class="px-8 py-3.5 border border-gray-600 hover:border-purple-500/50 rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-95">
+                <a href="mailto:eanorambuena@uc.cl" class="px-8 py-3.5 border border-zinc-600 hover:border-purple-500/50 rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-95">
                   {t.hero.btnContact}
                 </a>
               </div>
-              <div class="flex gap-5 text-gray-200 pt-2">
+              <div class="flex gap-5 text-zinc-100 pt-2">
                 <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition-colors" aria-label="GitHub (opens in new tab)">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                 </a>
@@ -59,8 +59,8 @@ export default function Hero() {
           <div class="hidden md:flex items-center justify-center">
             <div class="w-full aspect-square max-w-lg relative">
               <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
-              <div class="relative w-full h-full rounded-2xl overflow-hidden border border-purple-500/10 bg-dark-900/30">
-                <Suspense fallback={<div class="w-full h-full min-h-[300px] bg-dark-900/30 rounded-2xl animate-pulse" />}>
+              <div class="relative w-full h-full rounded-2xl overflow-hidden border border-purple-500/10 bg-zinc-900/30">
+                <Suspense fallback={<div class="w-full h-full min-h-[300px] bg-zinc-900/30 rounded-2xl animate-pulse" />}>
                   <ThreeScene />
                 </Suspense>
               </div>
@@ -69,7 +69,7 @@ export default function Hero() {
         </div>
       </div>
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <button onClick={() => scrollTo('projects')} class="text-gray-400 hover:text-purple-400 transition-colors">
+        <button onClick={() => scrollTo('projects')} class="text-zinc-400 hover:text-purple-400 transition-colors">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>

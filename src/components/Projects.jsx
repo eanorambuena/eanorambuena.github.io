@@ -49,11 +49,11 @@ const linkLabels = { en: { github: 'GitHub →', demo: 'Live Demo →' }, es: { 
 function ProjectCard({ project, index, t, lang }) {
   return (
     <ScrollReveal delay={index * 100}>
-      <div class="group relative bg-dark-800/40 backdrop-blur-sm border border-gray-800 hover:border-purple-500/40 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/5 overflow-hidden">
+      <div class="group relative bg-zinc-800/40 backdrop-blur-sm border border-zinc-800 hover:border-purple-500/40 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/5 overflow-hidden">
         <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${project.color} opacity-60 group-hover:opacity-80 transition-opacity`} />
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 transition-all duration-500 pointer-events-none" />
         <h3 class="text-xl font-bold mb-2 relative">{project.title}</h3>
-        <p class="text-gray-200 text-sm mb-4 leading-relaxed relative">{(lang === 'es' ? descES : descEN)[project.descKey]}</p>
+        <p class="text-zinc-100 text-sm mb-4 leading-relaxed relative">{(lang === 'es' ? descES : descEN)[project.descKey]}</p>
         <div class="flex flex-wrap gap-2 mb-4 relative">
           {project.tags.map((t) => (
             <span class="text-xs px-3 py-1 rounded-full bg-purple-900/20 text-purple-300 border border-purple-800/30">{t}</span>
@@ -81,7 +81,7 @@ export default function Projects() {
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
               {t.projects.title}
             </h2>
-            <p class="text-gray-200 mt-4 max-w-md mx-auto">{t.projects.desc}</p>
+            <p class="text-zinc-100 mt-4 max-w-md mx-auto">{t.projects.desc}</p>
           </div>
         </ScrollReveal>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

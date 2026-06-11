@@ -64,7 +64,7 @@ export default function Navbar() {
     <nav
       class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-dark-950/80 backdrop-blur-xl border-b border-gray-800/50 shadow-lg shadow-black/10'
+          ? 'bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-800/50 shadow-lg shadow-black/10'
           : 'bg-transparent'
       }`}
     >
@@ -95,7 +95,7 @@ export default function Navbar() {
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
                   ? 'text-purple-300 bg-purple-500/10'
-                  : 'text-gray-200 hover:text-white hover:bg-white/5'
+                  : 'text-zinc-100 hover:text-white hover:bg-white/5'
               }`}
             >
               {t.nav[labelKey]}
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-gray-200 hover:text-white transition-colors"
+          class="md:hidden p-2 text-zinc-100 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -119,7 +119,7 @@ export default function Navbar() {
         </button>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" class="md:hidden bg-dark-950/95 backdrop-blur-xl border-b border-gray-800/50">
+        <div id="mobile-menu" class="md:hidden bg-zinc-950/95 backdrop-blur-xl border-b border-zinc-800/50">
           <div class="px-6 py-4 flex flex-col gap-2">
             {links.map(({ labelKey, href }) => (
               <button
@@ -129,7 +129,7 @@ export default function Navbar() {
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
                     ? 'text-purple-300 bg-purple-500/10'
-                    : 'text-gray-200 hover:text-white hover:bg-white/5'
+                    : 'text-zinc-100 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {t.nav[labelKey]}
