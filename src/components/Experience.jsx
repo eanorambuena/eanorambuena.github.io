@@ -29,7 +29,7 @@ function TimelineItem({ exp, index, t }) {
         <div class="bg-dark-800/30 backdrop-blur-sm border border-gray-800/60 hover:border-purple-500/20 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/5">
           <div class="flex justify-between items-start mb-2">
             <h3 class="font-bold text-lg">{exp.company}</h3>
-            <span class="text-xs text-gray-300 font-mono">{exp.date}</span>
+            <span class="text-xs text-gray-200 font-mono">{exp.date}</span>
           </div>
           <p class="text-purple-400 text-sm mb-3 font-medium">{item.role}</p>
           <p class="text-gray-200 text-sm leading-relaxed mb-3">{item.desc}</p>
@@ -56,7 +56,7 @@ export default function Experience() {
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
               {t.experience.title}
             </h2>
-            <p class="text-gray-300 mt-4 max-w-md mx-auto">{t.experience.desc}</p>
+            <p class="text-gray-200 mt-4 max-w-md mx-auto">{t.experience.desc}</p>
           </div>
         </ScrollReveal>
         <div class="relative">

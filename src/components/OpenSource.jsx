@@ -24,7 +24,7 @@ export default function OpenSource() {
           <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
             {t.opensource.title}
           </h2>
-          <p class="text-gray-300 mt-4 max-w-md mx-auto">{t.opensource.desc}</p>
+          <p class="text-gray-200 mt-4 max-w-md mx-auto">{t.opensource.desc}</p>
         </div>
         <div class="max-w-lg mx-auto">
           {repos.map((repo) => (
@@ -40,7 +40,7 @@ export default function OpenSource() {
               </div>
               <h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">{repo.name}</h3>
               <p class="text-gray-200 text-sm mb-4 max-w-sm mx-auto leading-relaxed">{repo.descKey}</p>
-              <div class="flex items-center justify-center gap-4 text-sm text-gray-300">
+              <div class="flex items-center justify-center gap-4 text-sm text-gray-200">
                 <span class="flex items-center gap-1.5">
                   <span class={`w-2.5 h-2.5 rounded-full ${repo.langColor}`} />
                   {repo.lang}
@@ -59,7 +59,7 @@ export default function OpenSource() {
             href="https://github.com/eanorambuena"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm text-gray-300 hover:text-purple-400 transition-colors font-medium"
+            class="text-sm text-gray-200 hover:text-purple-400 transition-colors font-medium"
           >
             {t.opensource.viewAll}
           </a>

@@ -81,7 +81,7 @@ export default function Projects() {
             <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
               {t.projects.title}
             </h2>
-            <p class="text-gray-300 mt-4 max-w-md mx-auto">{t.projects.desc}</p>
+            <p class="text-gray-200 mt-4 max-w-md mx-auto">{t.projects.desc}</p>
           </div>
         </ScrollReveal>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

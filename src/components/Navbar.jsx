@@ -72,18 +72,18 @@ export default function Navbar() {
       <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            class="text-base font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent tracking-tight"
+            aria-label="Scroll to top"
+          >
+            E·N
+          </button>
+          <button
             onClick={toggleLang}
-            class="text-xs font-mono font-bold px-2 py-1 rounded-lg bg-purple-500/10 text-purple-400 hover:bg-purple-500/20 transition-all border border-purple-500/20"
+            class="text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg bg-purple-500/15 text-purple-300 hover:bg-purple-500/25 hover:text-purple-200 transition-all border border-purple-500/25 hover:border-purple-500/40"
             aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             {lang === 'es' ? 'EN' : 'ES'}
-          </button>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            class="text-sm font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
-            aria-label="Scroll to top"
-          >
-            EN
           </button>
         </div>
         <div class="hidden md:flex items-center gap-1">
@@ -95,7 +95,7 @@ export default function Navbar() {
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
                   ? 'text-purple-300 bg-purple-500/10'
-                  : 'text-gray-300 hover:text-gray-200 hover:bg-white/5'
+                  : 'text-gray-200 hover:text-white hover:bg-white/5'
               }`}
             >
               {t.nav[labelKey]}
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+          class="md:hidden p-2 text-gray-200 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -129,7 +129,7 @@ export default function Navbar() {
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
                     ? 'text-purple-300 bg-purple-500/10'
-                    : 'text-gray-300 hover:text-gray-200 hover:bg-white/5'
+                    : 'text-gray-200 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {t.nav[labelKey]}
