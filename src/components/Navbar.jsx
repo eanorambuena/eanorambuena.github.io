@@ -65,7 +65,7 @@ export default function Navbar() {
       class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/50'
-          : 'bg-transparent'
+          : 'bg-black/40'
       }`}
     >
       <div class="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
@@ -96,7 +96,7 @@ export default function Navbar() {
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
                 active === href
                   ? 'text-white bg-white/10'
-                  : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                  : 'text-zinc-300 hover:text-white hover:bg-white/5'
               }`}
             >
               {t.nav[labelKey]}
@@ -105,7 +105,7 @@ export default function Navbar() {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          class="md:hidden p-2 text-zinc-400 hover:text-white transition-colors"
+          class="md:hidden p-2 text-zinc-300 hover:text-white transition-colors"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -131,7 +131,7 @@ export default function Navbar() {
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
                   active === href
                     ? 'text-white bg-white/10'
-                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                    : 'text-zinc-300 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {t.nav[labelKey]}

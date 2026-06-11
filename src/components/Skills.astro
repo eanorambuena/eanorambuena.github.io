@@ -1,0 +1,20 @@
+---
+import { es, en } from '../i18n/translations'
+import Skills3D from './Skills3D.jsx'
+---
+
+<section id="skills" class="py-28 px-4 relative">
+  <div class="max-w-5xl mx-auto">
+    <div data-reveal class="text-center mb-16">
+      <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
+        <span data-lang="es">{es.skills.subtitle}</span>
+        <span data-lang="en" hidden>{en.skills.subtitle}</span>
+      </p>
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+        <span data-lang="es">{es.skills.title}</span>
+        <span data-lang="en" hidden>{en.skills.title}</span>
+      </h2>
+    </div>
+    <Skills3D client:load />
+  </div>
+</section>
