@@ -2,9 +2,13 @@
 import { es, en } from '../i18n/translations'
 ---
 
-<section id="about" class="py-28 px-4 relative bg-white/[.02]">
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
-  <div class="max-w-3xl mx-auto">
+<section id="about" class="py-28 px-4 relative bg-white/[.02] overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="/about-bg.jpeg" alt="" class="w-full h-full object-cover opacity-20" aria-hidden="true" loading="lazy" />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+  </div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent z-10" />
+  <div class="max-w-3xl mx-auto relative z-10">
     <div data-reveal class="text-center mb-12">
       <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
         <span data-lang="es">{es.about.subtitle}</span>
