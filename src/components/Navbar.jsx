@@ -16,6 +16,7 @@ export default function Navbar() {
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [muted, setMuted] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -120,6 +121,19 @@ export default function Navbar() {
             </button>
             <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
+          <button
+            onClick={() => setMuted(!muted)}
+            class="p-2 text-zinc-300 hover:text-white transition-colors"
+            aria-label={muted ? 'Unmute sound' : 'Mute sound'}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {muted ? (
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+              ) : (
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
+              )}
+            </svg>
+          </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             class="md:hidden p-3 text-zinc-300 hover:text-white transition-colors"
