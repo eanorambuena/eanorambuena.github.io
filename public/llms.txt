@@ -1,0 +1,42 @@
+# Emmanuel Norambuena — Product Engineer & Builder
+
+https://eanorambuena.github.io
+
+## About
+Product Engineer specializing in AI infrastructure, full-stack development, and real-time systems. Based in Chile. Creator of Emmy.js (web component library), Kalmate (financial terminal), Peer Evaluation Platform, and Neural client management system.
+
+## Key pages
+- Portfolio: https://eanorambuena.github.io/
+- GitHub: https://github.com/eanorambuena
+- LinkedIn: https://linkedin.com/in/eanorambuena
+
+## Projects
+
+### Emmy.js
+Lightweight library for building web components using functional programming patterns. Open source with 1,000+ npm downloads.
+- GitHub: https://github.com/emmyjs/emmy-dom
+- Web: https://emmyjs.pages.dev
+
+### Kalmate
+Bloomberg-style financial terminal with real-time market data via Yahoo Finance. Built with Nuxt 3 and TradingView charts.
+- Web: https://kalmate.app
+
+### Peer Evaluation Platform
+Platform serving 1,500+ concurrent students with real-time dashboards and automated cross-review. Cut grading time by 60% across 3+ universities.
+
+### GIS App for Mining
+Frontend GIS visualization app for Acofuz, used by Procel and Antofagasta Minerals. Handles 50k+ geospatial data points.
+
+### Neural
+User management and client administration dashboard with role-based access and real-time updates.
+
+## Experience
+- NeuralWorks SpA (2024-2025): React Native, TypeScript, AI
+- Acofuz (2024): React, TypeScript, GIS
+- IDS UC (2023-2024): Next.js, React, PostgreSQL, AWS
+- Open Source UC (2023-2024): Leadership, Events, Community
+
+## Contact
+- Email: eanorambuena@uc.cl
+- GitHub: https://github.com/eanorambuena
+- LinkedIn: https://linkedin.com/in/eanorambuena
