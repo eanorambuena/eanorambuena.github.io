@@ -1,6 +1,11 @@
 ---
 import Navbar from '../components/Navbar.jsx'
 import { es, en } from '../i18n/translations'
+const site = Astro.site
+const siteUrl = site?.origin || 'https://eanorambuena.me'
+const ogImage = `${siteUrl}/og-image.png`
+const ogImageW = 1200
+const ogImageH = 630
 ---
 
 <!DOCTYPE html>
@@ -12,10 +17,10 @@ import { es, en } from '../i18n/translations'
     <meta name="description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
     <meta name="author" content="Emmanuel Norambuena" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="canonical" href="https://eanorambuena.github.io" />
-    <link rel="alternate" hreflang="es" href="https://eanorambuena.github.io" />
-    <link rel="alternate" hreflang="en" href="https://eanorambuena.github.io" />
-    <link rel="alternate" hreflang="x-default" href="https://eanorambuena.github.io" />
+    <link rel="canonical" href={siteUrl} />
+    <link rel="alternate" hreflang="es" href={siteUrl} />
+    <link rel="alternate" hreflang="en" href={siteUrl} />
+    <link rel="alternate" hreflang="x-default" href={siteUrl} />
     <script>
       (function() {
         var lang = localStorage.getItem('portfolio-lang') || 'es'
@@ -26,33 +31,39 @@ import { es, en } from '../i18n/translations'
       })()
     </script>
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://eanorambuena.github.io" />
+    <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
     <meta property="og:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
-    <meta property="og:image" content="https://eanorambuena.github.io/og-image.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content={String(ogImageW)} />
+    <meta property="og:image:height" content={String(ogImageH)} />
+    <meta property="og:image:alt" content="Emmanuel Norambuena — Product Engineer & Builder" />
     <meta property="og:site_name" content="Emmanuel Norambuena" />
     <meta property="og:locale" content="es_CL" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@eanorambuena" />
     <meta name="twitter:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
     <meta name="twitter:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
-    <meta name="twitter:image" content="https://eanorambuena.github.io/og-image.png" />
+    <meta name="twitter:image" content={ogImage} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": "https://eanorambuena.github.io",
+      "url": siteUrl,
       "name": "Emmanuel Norambuena",
       "alternateName": "Emmanuel Norambuena — Product Engineer & Builder",
-      "inLanguage": ["es", "en"]
+      "inLanguage": ["es", "en"],
+      "description": "Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile.",
+      "image": ogImage
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Emmanuel Norambuena",
-      "url": "https://eanorambuena.github.io",
+      "url": siteUrl,
       "jobTitle": "Product Engineer",
       "email": "eanorambuena@uc.cl",
-      "image": "https://eanorambuena.github.io/eanorambuena.jpg",
+      "image": `${siteUrl}/eanorambuena.jpg`,
       "nationality": "Chile",
       "birthPlace": "Chile",
       "knowsAbout": ["Software Engineering", "React", "TypeScript", "AI", "Product Development", "Web Development", "Full Stack"],
@@ -63,8 +74,20 @@ import { es, en } from '../i18n/translations'
       },
       "sameAs": ["https://github.com/eanorambuena", "https://linkedin.com/in/eanorambuena", "https://linktr.ee/eanorambuena"]
     })} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": siteUrl,
+      "name": "Emmanuel Norambuena — Product Engineer & Builder",
+      "description": "Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile.",
+      "image": ogImage,
+      "mainEntity": {
+        "@id": siteUrl + "#person"
+      },
+      "dateModified": "2026-06-11"
+    })} />
+    <link rel="me" href="https://github.com/eanorambuena" />
+    <link rel="me" href="https://linkedin.com/in/eanorambuena" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <style>
       @import "tailwindcss";
