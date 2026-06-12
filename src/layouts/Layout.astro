@@ -2,10 +2,12 @@
 import Navbar from '../components/Navbar.jsx'
 import { es, en } from '../i18n/translations'
 const site = Astro.site
-const siteUrl = site?.origin || 'https://eanorambuena.me'
-const ogImage = `${siteUrl}/og-image.png`
+const siteUrl = site?.origin || 'https://eanorambuena.github.io'
+const ogImage = `${siteUrl}/og-image.svg`
+const ogImagePng = `${siteUrl}/og-image.png`
 const ogImageW = 1200
 const ogImageH = 630
+const dateModified = new Date().toISOString().split('T')[0]
 ---
 
 <!DOCTYPE html>
@@ -14,13 +16,32 @@ const ogImageH = 630
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emmanuel Norambuena — Product Engineer & Builder</title>
-    <meta name="description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
+    <meta name="description" content="Emmanuel Norambuena es un Product Engineer chileno especializado en AI infrastructure, full-stack development y real-time systems. Reduje costos de IA de $200/usuario a $0 y construí plataformas para 1,500+ usuarios." />
     <meta name="author" content="Emmanuel Norambuena" />
+    <meta name="keywords" content="eanorambuena, Emmanuel Norambuena, Product Engineer Chile, AI infrastructure, full-stack developer Chile, React developer, Three.js, NeuralWorks, Pontificia Universidad Católica de Chile, startup Chile, desarrollo web Chile" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/og-image.svg" />
     <link rel="canonical" href={siteUrl} />
     <link rel="alternate" hreflang="es" href={siteUrl} />
-    <link rel="alternate" hreflang="en" href={siteUrl} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />
     <link rel="alternate" hreflang="x-default" href={siteUrl} />
+    <link rel="me" href="https://github.com/eanorambuena" />
+    <link rel="me" href="https://linkedin.com/in/eanorambuena" />
+    <link rel="me" href="https://x.com/eanorambuena" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
+
     <script>
       (function() {
         var lang = localStorage.getItem('portfolio-lang') || 'es'
@@ -30,67 +51,140 @@ const ogImageH = 630
         })
       })()
     </script>
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
-    <meta property="og:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:description" content="Product Engineer chileno. AI infrastructure, full-stack development, real-time systems. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios concurrentes." />
+    <meta property="og:image" content={ogImagePng} />
     <meta property="og:image:width" content={String(ogImageW)} />
     <meta property="og:image:height" content={String(ogImageH)} />
     <meta property="og:image:alt" content="Emmanuel Norambuena — Product Engineer & Builder" />
     <meta property="og:site_name" content="Emmanuel Norambuena" />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:country-name" content="Chile" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@eanorambuena" />
+    <meta name="twitter:site" content="@eanorambuena" />
     <meta name="twitter:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
-    <meta name="twitter:description" content="Emmanuel Norambuena — Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile." />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:description" content="Product Engineer chileno. AI infrastructure, full-stack, real-time systems." />
+    <meta name="twitter:image" content={ogImagePng} />
+
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": siteUrl,
       "name": "Emmanuel Norambuena",
       "alternateName": "Emmanuel Norambuena — Product Engineer & Builder",
-      "inLanguage": ["es", "en"],
-      "description": "Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile.",
-      "image": ogImage
+      "inLanguage": ["es-CL", "en-US"],
+      "description": "Portfolio personal de Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, full-stack development, y real-time systems.",
+      "image": ogImagePng,
+      "author": {
+        "@type": "Person",
+        "@id": siteUrl + "#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": siteUrl + "/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": siteUrl + "#person",
       "name": "Emmanuel Norambuena",
+      "givenName": "Emmanuel",
+      "familyName": "Norambuena",
       "url": siteUrl,
       "jobTitle": "Product Engineer",
       "email": "eanorambuena@uc.cl",
       "image": `${siteUrl}/eanorambuena.jpg`,
-      "nationality": "Chile",
-      "birthPlace": "Chile",
-      "knowsAbout": ["Software Engineering", "React", "TypeScript", "AI", "Product Development", "Web Development", "Full Stack"],
-      "alumniOf": "Pontificia Universidad Católica de Chile",
+      "nationality": {
+        "@type": "Country",
+        "name": "Chile"
+      },
+      "birthPlace": {
+        "@type": "Country",
+        "name": "Chile"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Chile",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CL"
+        }
+      },
+      "knowsAbout": [
+        "Software Engineering",
+        "React",
+        "TypeScript",
+        "Artificial Intelligence",
+        "AI Infrastructure",
+        "Product Development",
+        "Web Development",
+        "Full Stack Development",
+        "Three.js",
+        "Node.js",
+        "AWS",
+        "PostgreSQL",
+        "React Native"
+      ],
+      "knowsLanguage": ["Spanish", "English"],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Pontificia Universidad Católica de Chile",
+        "url": "https://www.uc.cl"
+      },
       "worksFor": {
         "@type": "Organization",
-        "name": "NeuralWorks SpA"
+        "name": "NeuralWorks SpA",
+        "url": "https://neuralworks.cl"
       },
-      "sameAs": ["https://github.com/eanorambuena", "https://linkedin.com/in/eanorambuena", "https://linktr.ee/eanorambuena"]
+      "sameAs": [
+        "https://github.com/eanorambuena",
+        "https://linkedin.com/in/eanorambuena",
+        "https://x.com/eanorambuena",
+        "https://linktr.ee/eanorambuena"
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfilePage",
-      "url": siteUrl,
+      "url": siteUrl + "/",
       "name": "Emmanuel Norambuena — Product Engineer & Builder",
-      "description": "Product Engineer. AI infrastructure, full-stack development, and real-time systems. Based in Chile.",
-      "image": ogImage,
+      "description": "Portfolio de Emmanuel Norambuena, Product Engineer. AI infrastructure, full-stack development, real-time systems.",
+      "image": [ogImagePng, `${siteUrl}/eanorambuena.jpg`],
       "mainEntity": {
         "@id": siteUrl + "#person"
       },
-      "dateModified": "2026-06-11"
+      "dateCreated": "2024-01-01",
+      "dateModified": dateModified,
+      "datePublished": "2024-01-01"
     })} />
-    <link rel="me" href="https://github.com/eanorambuena" />
-    <link rel="me" href="https://linkedin.com/in/eanorambuena" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": siteUrl
+        }
+      ]
+    })} />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <style>
       @import "tailwindcss";
+
       .gradient-text {
         color: #c084fc;
         background: linear-gradient(to right, #c084fc, #3b82f6);
@@ -98,6 +192,7 @@ const ogImageH = 630
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
       *:focus-visible {
         outline: 2px solid #a855f7;
         outline-offset: 2px;
@@ -149,6 +244,7 @@ const ogImageH = 630
             <div class="flex flex-col gap-1.5">
               <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">GitHub</a>
               <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">LinkedIn</a>
+              <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">X / Twitter</a>
               <a href="https://linktr.ee/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">Linktree</a>
             </div>
           </div>

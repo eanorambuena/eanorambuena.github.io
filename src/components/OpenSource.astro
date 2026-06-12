@@ -31,12 +31,36 @@ import { es, en } from '../i18n/translations'
             if (entry.isIntersecting) {
               const src = iframe.dataset.src
               const start = iframe.dataset.start
-              iframe.src = `${src}?autoplay=1&start=${start}`
+              const muted = localStorage.getItem('portfolio-muted') === 'true'
+              iframe.src = `${src}?autoplay=1&mute=1&start=${start}`
               observer.disconnect()
             }
           })
         }, { threshold: 0.3 })
         observer.observe(iframe)
+
+        window.addEventListener('mutechange', function (e) {
+          try {
+            iframe.contentWindow.postMessage(JSON.stringify({
+              event: 'command',
+              func: e.detail.muted ? 'mute' : 'unMute',
+              args: []
+            }), '*')
+          } catch (_) {}
+        })
+
+        if (localStorage.getItem('portfolio-muted') === 'true') {
+          iframe.addEventListener('load', function onLoad() {
+            try {
+              iframe.contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'mute',
+                args: []
+              }), '*')
+            } catch (_) {}
+            iframe.removeEventListener('load', onLoad)
+          })
+        }
       }
     </script>
     <div class="max-w-lg mx-auto">

@@ -16,7 +16,21 @@ export default function Navbar() {
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [muted, setMuted] = useState(false)
+  const [muted, setMuted] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('portfolio-muted') === 'true'
+    }
+    return false
+  })
+
+  const toggleMute = () => {
+    setMuted((prev) => {
+      const next = !prev
+      localStorage.setItem('portfolio-muted', String(next))
+      window.dispatchEvent(new CustomEvent('mutechange', { detail: { muted: next } }))
+      return next
+    })
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -122,11 +136,11 @@ export default function Navbar() {
             <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
           <button
-            onClick={() => setMuted(!muted)}
-            class="p-2 text-zinc-300 hover:text-white transition-colors"
+            onClick={toggleMute}
+            class="p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
             aria-label={muted ? 'Unmute sound' : 'Mute sound'}
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {muted ? (
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
               ) : (

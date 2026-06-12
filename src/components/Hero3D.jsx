@@ -1,8 +1,21 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float } from '@react-three/drei'
-import { useRef, useMemo, useEffect, useState } from 'react'
-import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
+import { useRef, useMemo, useEffect, useState, Suspense, lazy } from 'react'
 import * as THREE from 'three'
+
+const PostProcessing = lazy(() =>
+  import('@react-three/postprocessing').then((mod) => ({
+    default: function PostProcessingWrapper({ children }) {
+      return (
+        <mod.EffectComposer multisampling={0}>
+          <mod.Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
+          <mod.ChromaticAberration offset={[0.0005, 0.0005]} />
+          {children}
+        </mod.EffectComposer>
+      )
+    },
+  }))
+)
 
 function TorusKnot() {
   const meshRef = useRef()
@@ -127,7 +140,7 @@ function StarField() {
   )
 }
 
-function Scene() {
+function Scene({ isLowEnd }) {
   return (
     <>
       <fog attach="fog" args={['#000000', 5, 30]} />
@@ -137,16 +150,27 @@ function Scene() {
       <TorusKnot />
       <OrbitalRing />
       <StarField />
-      <EffectComposer>
-        <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
-        <ChromaticAberration offset={[0.0005, 0.0005]} />
-      </EffectComposer>
+      {!isLowEnd && (
+        <Suspense fallback={null}>
+          <PostProcessing />
+        </Suspense>
+      )}
     </>
+  )
+}
+
+function getLowEnd() {
+  if (typeof navigator === 'undefined') return false
+  return (
+    navigator.hardwareConcurrency <= 4 ||
+    navigator.deviceMemory <= 4 ||
+    /mobile|android|iphone/i.test(navigator.userAgent)
   )
 }
 
 export default function Hero3D() {
   const [reduced, setReduced] = useState(false)
+  const [isLowEnd, setIsLowEnd] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -156,12 +180,23 @@ export default function Hero3D() {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
+  useEffect(() => {
+    setIsLowEnd(getLowEnd())
+  }, [])
+
   if (reduced) return null
+
+  const dpr = isLowEnd ? [1, 1] : [1, 1.5]
+  const antialias = !isLowEnd
 
   return (
     <div class="w-full h-full" aria-hidden="true">
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
-        <Scene />
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 50 }}
+        dpr={dpr}
+        gl={{ antialias, preserveDrawingBuffer: false, powerPreference: 'high-performance' }}
+      >
+        <Scene isLowEnd={isLowEnd} />
       </Canvas>
     </div>
   )

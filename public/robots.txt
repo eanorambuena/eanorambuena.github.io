@@ -14,4 +14,7 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://eanorambuena.github.io/sitemap.xml
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://eanorambuena.github.io/sitemap-index.xml
