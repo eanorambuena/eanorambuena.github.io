@@ -6,8 +6,8 @@ const links = [
   { labelKey: 'about', href: '#about' },
   { labelKey: 'experience', href: '#experience' },
   { labelKey: 'projects', href: '#projects' },
-  { labelKey: 'skills', href: '#skills' },
   { labelKey: 'opensource', href: '#opensource' },
+  { labelKey: 'skills', href: '#skills' },
   { labelKey: 'contact', href: '#contact' },
 ]
 
@@ -91,9 +91,13 @@ export default function Navbar() {
             <Switch.Root
               checked={lang === 'en'}
               onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
-              class="w-9 h-5 rounded-full bg-white/10 data-[state=checked]:bg-purple-600 relative transition-colors duration-200"
+              class="w-9 h-5 rounded-full relative transition-colors duration-200"
+              style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
             >
-              <Switch.Thumb class="block w-3.5 h-3.5 rounded-full bg-white translate-x-0.5 data-[state=checked]:translate-x-[18px] transition-transform duration-200" />
+              <Switch.Thumb
+                class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
+                style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
+              />
             </Switch.Root>
             <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
@@ -154,9 +158,13 @@ export default function Navbar() {
               <Switch.Root
                 checked={lang === 'en'}
                 onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
-                class="w-9 h-5 rounded-full bg-white/10 data-[state=checked]:bg-purple-600 relative transition-colors duration-200"
+                class="w-9 h-5 rounded-full relative transition-colors duration-200"
+                style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
               >
-                <Switch.Thumb class="block w-3.5 h-3.5 rounded-full bg-white translate-x-0.5 data-[state=checked]:translate-x-[18px] transition-transform duration-200" />
+                <Switch.Thumb
+                  class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
+                  style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
+                />
               </Switch.Root>
               <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
             </div>

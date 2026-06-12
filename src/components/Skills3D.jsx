@@ -103,12 +103,12 @@ export default function Skills3D() {
         <BoxCard key={g.title} group={g} reduced={reduced} />
       ))}
       <style>{`
-        @keyframes skill-glow {
-          0%, 100% { box-shadow: 0 0 4px rgba(168,85,247,0.05), inset 0 0 4px rgba(168,85,247,0.02); }
-          50% { box-shadow: 0 0 12px rgba(168,85,247,0.12), inset 0 0 8px rgba(168,85,247,0.05); }
+        @keyframes skill-pulse-key {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 4px rgba(168,85,247,0.05), inset 0 0 4px rgba(168,85,247,0.02); }
+          50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(168,85,247,0.2), inset 0 0 10px rgba(168,85,247,0.08); }
         }
         .skill-pulse {
-          animation: skill-glow 3s ease-in-out infinite;
+          animation: skill-pulse-key 2.5s ease-in-out infinite;
         }
         .skill-pulse:hover {
           animation: none;
