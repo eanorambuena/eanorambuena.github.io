@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, Environment } from '@react-three/drei'
-import { useRef, useMemo, useEffect, useState } from 'react'
+import { useRef, useMemo, useEffect, useState, Suspense } from 'react'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -137,7 +137,9 @@ function Scene({ isLowEnd }) {
       <TorusKnot />
       <OrbitalRing />
       <StarField />
-      <Environment preset="night" />
+      <Suspense fallback={null}>
+        <Environment preset="night" />
+      </Suspense>
       {!isLowEnd && (
         <EffectComposer>
           <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
