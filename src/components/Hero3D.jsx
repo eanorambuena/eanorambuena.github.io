@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float } from '@react-three/drei'
+import { Float, Environment } from '@react-three/drei'
 import { useRef, useMemo, useEffect, useState } from 'react'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
@@ -137,6 +137,7 @@ function Scene({ isLowEnd }) {
       <TorusKnot />
       <OrbitalRing />
       <StarField />
+      <Environment preset="night" />
       {!isLowEnd && (
         <EffectComposer>
           <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
@@ -182,7 +183,7 @@ export default function Hero3D() {
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
         dpr={dpr}
-        gl={{ antialias, preserveDrawingBuffer: false, powerPreference: 'high-performance' }}
+        gl={{ antialias, powerPreference: 'high-performance' }}
       >
         <Scene isLowEnd={isLowEnd} />
       </Canvas>
