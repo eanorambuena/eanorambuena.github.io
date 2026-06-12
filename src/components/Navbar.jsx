@@ -115,7 +115,7 @@ export default function Navbar() {
             >
               <span
                 class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
-                style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
+                style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
               />
             </button>
             <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
@@ -165,12 +165,12 @@ export default function Navbar() {
               >
                 <span
                   class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
-                  style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
-                />
-              </button>
-              <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
-            </div>
+                style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
+              />
+            </button>
+            <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
+        </div>
         </div>
       )}
     </nav>
