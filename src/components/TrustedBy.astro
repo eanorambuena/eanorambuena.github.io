@@ -46,12 +46,12 @@ const companies = [
           <div class="absolute top-0 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-500/40 to-blue-500/40 rounded-full" />
           {
             c.inline ? (
-              <div class="text-white w-full h-full flex items-center justify-center ${c.inlineClass || 'p-7'}" set:html={c.logo} />
+              <div class={`text-white w-full h-full flex items-center justify-center ${c.inlineClass || 'p-5'}`} set:html={c.logo} />
             ) : (
               <img
                 src={c.logo}
                 alt={`${c.name} logo`}
-                class="${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain"
+                class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain`}
                 loading="lazy"
               />
             )
