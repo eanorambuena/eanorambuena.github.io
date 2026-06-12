@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import * as Switch from '@radix-ui/react-switch'
 import { useLang } from '../i18n/useLang.jsx'
 
 const links = [
@@ -85,25 +86,16 @@ export default function Navbar() {
               />
             </div>
           </button>
-          <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10">
-            <button
-              onClick={() => setLang('es')}
-              class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
-                lang === 'es' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              aria-pressed={lang === 'es'}
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
+            <Switch.Root
+              checked={lang === 'en'}
+              onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
+              class="w-9 h-5 rounded-full bg-white/10 data-[state=checked]:bg-purple-600 relative transition-colors duration-200"
             >
-              ES
-            </button>
-            <button
-              onClick={() => setLang('en')}
-              class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
-                lang === 'en' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              aria-pressed={lang === 'en'}
-            >
-              EN
-            </button>
+              <Switch.Thumb class="block w-3.5 h-3.5 rounded-full bg-white translate-x-0.5 data-[state=checked]:translate-x-[18px] transition-transform duration-200" />
+            </Switch.Root>
+            <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
         </div>
         <div class="hidden md:flex items-center gap-1">
@@ -113,7 +105,7 @@ export default function Navbar() {
               href={href}
               onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
               aria-current={active === href ? 'page' : undefined}
-              class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${
+              class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline ${
                 active === href
                   ? 'text-white bg-white/10'
                   : 'text-zinc-300 hover:text-white hover:bg-white/5'
@@ -148,7 +140,7 @@ export default function Navbar() {
                 href={href}
                 onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
                 aria-current={active === href ? 'page' : undefined}
-                class={`px-4 py-3 text-sm rounded-lg text-left transition-all ${
+                class={`px-4 py-3 text-sm rounded-lg text-left transition-all no-underline ${
                   active === href
                     ? 'text-white bg-white/10'
                     : 'text-zinc-300 hover:text-white hover:bg-white/5'
@@ -157,25 +149,16 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
-            <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10 mt-2 self-start">
-              <button
-                onClick={() => setLang('es')}
-                class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
-                  lang === 'es' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                aria-pressed={lang === 'es'}
+            <div class="flex items-center gap-2 mt-2 self-start">
+              <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
+              <Switch.Root
+                checked={lang === 'en'}
+                onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
+                class="w-9 h-5 rounded-full bg-white/10 data-[state=checked]:bg-purple-600 relative transition-colors duration-200"
               >
-                ES
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
-                  lang === 'en' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
-                }`}
-                aria-pressed={lang === 'en'}
-              >
-                EN
-              </button>
+                <Switch.Thumb class="block w-3.5 h-3.5 rounded-full bg-white translate-x-0.5 data-[state=checked]:translate-x-[18px] transition-transform duration-200" />
+              </Switch.Root>
+              <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
             </div>
           </div>
         </div>

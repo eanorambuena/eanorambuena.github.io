@@ -24,12 +24,12 @@ const groups = [
   },
 ]
 
-function BoxCard({ group }) {
+function BoxCard({ group, reduced }) {
   const [open, setOpen] = useState(false)
 
   return (
     <div
-      class="relative flex flex-col items-center py-5 px-3 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-purple-500/20 transition-all duration-300 cursor-pointer select-none"
+      class={`relative flex flex-col items-center py-5 px-3 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-purple-500/20 transition-all duration-300 cursor-pointer select-none ${reduced ? '' : 'skill-pulse'}`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onClick={() => setOpen((v) => !v)}
@@ -100,8 +100,20 @@ export default function Skills3D() {
   return (
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
       {groups.map((g) => (
-        <BoxCard key={g.title} group={g} />
+        <BoxCard key={g.title} group={g} reduced={reduced} />
       ))}
+      <style>{`
+        @keyframes skill-glow {
+          0%, 100% { box-shadow: 0 0 4px rgba(168,85,247,0.05), inset 0 0 4px rgba(168,85,247,0.02); }
+          50% { box-shadow: 0 0 12px rgba(168,85,247,0.12), inset 0 0 8px rgba(168,85,247,0.05); }
+        }
+        .skill-pulse {
+          animation: skill-glow 3s ease-in-out infinite;
+        }
+        .skill-pulse:hover {
+          animation: none;
+        }
+      `}</style>
     </div>
   )
 }
