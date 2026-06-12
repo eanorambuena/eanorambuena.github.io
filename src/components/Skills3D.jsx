@@ -30,8 +30,9 @@ const groups = [
 
 function SkillItem({ label, color, index, total, isOpen }) {
   const groupRef = useRef()
-  const openStart = useRef(0)
-  const wasOpen = useRef(false)
+  const startTime = useRef(0)
+  const prevOpen = useRef(false)
+  const fromState = useRef({ x: 0, y: 0, z: 0, s: 0.5, r: 0 })
 
   const angle = (index / total) * Math.PI * 2 - Math.PI / 2
   const spreadR = 0.8
@@ -42,19 +43,38 @@ function SkillItem({ label, color, index, total, isOpen }) {
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return
-    if (isOpen && !wasOpen.current) { openStart.current = clock.elapsedTime; wasOpen.current = true }
-    else if (!isOpen && wasOpen.current) { openStart.current = clock.elapsedTime; wasOpen.current = false }
 
-    const elapsed = clock.elapsedTime - openStart.current
-    const stagger = index * 0.05
-    const phase = Math.min(1, Math.max(0, (elapsed - stagger) / 0.3))
-    const eased = phase * phase * (3 - 2 * phase)
+    const now = clock.elapsedTime
+    if (isOpen !== prevOpen.current) {
+      prevOpen.current = isOpen
+      startTime.current = now
+      const p = groupRef.current.position
+      const s = groupRef.current.scale
+      fromState.current = { x: p.x, y: p.y, z: p.z, s: s.x, r: groupRef.current.rotation.z }
+    }
 
-    groupRef.current.position.x = isOpen ? spreadX * eased : 0
-    groupRef.current.position.y = isOpen ? spreadY * eased : restY
-    groupRef.current.position.z = isOpen ? 0.7 * eased : 0
-    const s = isOpen ? 1.0 : 0.5 + 0.5 * (1 - eased)
-    groupRef.current.scale.set(s, s, s)
+    const elapsed = now - startTime.current
+    const stagger = index * 0.06
+    const phase = Math.min(1, Math.max(0, (elapsed - stagger) / 0.35))
+    if (phase === 0 && elapsed < stagger) return
+
+    const c1 = 1.5
+    const eased = phase < 1
+      ? 1 + c1 * Math.pow(phase - 1, 3) + (c1 + 1) * Math.pow(phase - 1, 2)
+      : 1
+
+    const toX = isOpen ? spreadX : 0
+    const toY = isOpen ? spreadY : restY
+    const toZ = isOpen ? 0.7 : 0
+    const toS = isOpen ? 1.0 : 0.5
+    const toR = isOpen ? 0 : 0.5
+    const from = fromState.current
+
+    groupRef.current.position.x = from.x + (toX - from.x) * eased
+    groupRef.current.position.y = from.y + (toY - from.y) * eased
+    groupRef.current.position.z = from.z + (toZ - from.z) * eased
+    groupRef.current.scale.setScalar(from.s + (toS - from.s) * eased)
+    groupRef.current.rotation.z = from.r + (toR - from.r) * eased
   })
 
   return (
@@ -127,7 +147,9 @@ function BoxSkillGroup({ group, column }) {
         role="button"
         aria-label={`${group.title} skills`}
       >
-        <primitive object={coloredScene} scale={3.5} />
+        <group rotation={[-Math.PI / 4.5, 0, 0]}>
+          <primitive object={coloredScene} scale={3.5} />
+        </group>
 
         <Html position={[0, 1.0, 0]} center>
           <div style={{

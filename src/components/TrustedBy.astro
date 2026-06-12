@@ -2,11 +2,11 @@
 import { es, en } from '../i18n/translations'
 
 const companies = [
-  { name: 'Antofagasta Minerals', subtitle: 'Minería', logo: 'https://www.logo.wine/a/logo/Antofagasta_PLC/Antofagasta_PLC-Logo.wine.svg' },
-  { name: 'Procel', subtitle: 'Fintech', logo: 'https://www.acofuz.com/static/highways/img/clients/procel-logo.png' },
-  { name: 'Acofuz', subtitle: 'Construcción', logo: 'https://www.acofuz.com/static/highways/img/apple-touch-icon.png' },
-  { name: 'NeuralWorks', subtitle: 'IA / ML', logo: 'https://www.neuralworks.cl/NW-logo-white.svg' },
-  { name: 'Universidad Católica', subtitle: 'Educación', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Marca-uc.svg' },
+  { subtitle: 'Minería', logo: 'https://www.logo.wine/a/logo/Antofagasta_PLC/Antofagasta_PLC-Logo.wine.svg' },
+  { subtitle: 'Fintech', logo: 'https://www.procelservicios.cl/img/logo.png' },
+  { subtitle: 'Construcción', logo: 'https://www.acofuz.com/static/highways/img/apple-touch-icon.png' },
+  { subtitle: 'IA / ML', logo: 'https://www.neuralworks.cl/NW-logo-white.svg' },
+  { subtitle: 'Educación', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Marca-uc.svg' },
 ]
 ---
 
@@ -27,14 +27,14 @@ const companies = [
       {[...companies, ...companies].map((c, i) => (
         <div
           key={i}
-          class="flex-shrink-0 w-56 h-32 bg-zinc-900/60 backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col items-center justify-center px-4 hover:border-purple-500/30 hover:bg-zinc-900/80 transition-all duration-300 relative overflow-hidden"
+          class="flex-shrink-0 w-48 h-28 bg-zinc-900/60 backdrop-blur-sm border border-white/10 rounded-2xl flex flex-col items-center justify-center px-3 hover:border-purple-500/30 hover:bg-zinc-900/80 transition-all duration-300 relative overflow-hidden"
         >
           <div class="absolute top-0 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-500/40 to-blue-500/40 rounded-full" />
-          <div class="flex items-center justify-center h-10 mb-2">
+          <div class="flex items-center justify-center h-14 mb-1">
             <img
               src={c.logo}
-              alt={`${c.name} logo`}
-              class="max-h-full max-w-[130px] object-contain"
+              alt={`${c.subtitle} logo`}
+              class="max-h-full max-w-[120px] object-contain"
               loading="lazy"
             />
           </div>
