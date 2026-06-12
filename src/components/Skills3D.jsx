@@ -1,7 +1,5 @@
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, ContactShadows, Float } from '@react-three/drei'
-import { useRef, useState, useEffect, useMemo } from 'react'
-import * as THREE from 'three'
+import { useState, useEffect } from 'react'
+import { Package, PackageOpen } from 'lucide-react'
 
 const groups = [
   {
@@ -26,214 +24,95 @@ const groups = [
   },
 ]
 
-function SkillItem({ label, color, index, total, isOpen }) {
-  const groupRef = useRef()
-  const startTime = useRef(0)
-  const prevOpen = useRef(false)
-  const fromState = useRef({ x: 0, y: 0, z: 0, s: 0.5, r: 0 })
-
-  const angle = (index / total) * Math.PI * 2 - Math.PI / 2
-  const spreadR = 0.8
-  const spreadX = Math.cos(angle) * spreadR
-  const spreadZ = Math.sin(angle) * spreadR * 0.35
-  const spreadY = (index - (total - 1) / 2) * 0.35
-  const restY = (index - (total - 1) / 2) * 0.2
-
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return
-
-    const now = clock.elapsedTime
-    if (isOpen !== prevOpen.current) {
-      prevOpen.current = isOpen
-      startTime.current = now
-      const p = groupRef.current.position
-      const s = groupRef.current.scale
-      fromState.current = { x: p.x, y: p.y, z: p.z, s: s.x, r: groupRef.current.rotation.z }
-    }
-
-    const elapsed = now - startTime.current
-    const stagger = index * 0.06
-    const phase = Math.min(1, Math.max(0, (elapsed - stagger) / 0.35))
-    if (phase === 0 && elapsed < stagger) return
-
-    const c1 = 1.5
-    const eased = phase < 1
-      ? 1 + c1 * Math.pow(phase - 1, 3) + (c1 + 1) * Math.pow(phase - 1, 2)
-      : 1
-
-    const toX = isOpen ? spreadX : 0
-    const toY = isOpen ? spreadY : restY
-    const toZ = isOpen ? 0.9 : -0.4
-    const toS = isOpen ? 1.0 : 0.3
-    const toR = isOpen ? 0 : 0.6
-    const from = fromState.current
-
-    groupRef.current.position.x = from.x + (toX - from.x) * eased
-    groupRef.current.position.y = from.y + (toY - from.y) * eased
-    groupRef.current.position.z = from.z + (toZ - from.z) * eased
-    groupRef.current.scale.setScalar(from.s + (toS - from.s) * eased)
-    groupRef.current.rotation.z = from.r + (toR - from.r) * eased
-  })
+function SkillTag({ label, color, index, total, isOpen }) {
+  const n = total
+  const spread = 2.0
+  const startAngle = -spread / 2 + Math.PI / 2
+  const step = n > 1 ? spread / (n - 1) : 0
+  const angle = startAngle + index * step
+  const r = 60
+  const tx = Math.cos(angle) * r
+  const ty = Math.sin(angle) * r
 
   return (
-    <group ref={groupRef}>
-      <mesh>
-        <boxGeometry args={[0.5, 0.15, 0.2]} />
-        <meshStandardMaterial
-          color={isOpen ? color : '#2a2a3e'}
-          metalness={0.5}
-          roughness={0.3}
-        />
-      </mesh>
-      <Html position={[0, 0, 0.11]} center>
-        <div style={{
-          color: isOpen ? '#fff' : '#e4e4e7',
-          fontSize: '13px',
-          fontWeight: 700,
-          whiteSpace: 'nowrap',
-          fontFamily: 'Inter, sans-serif',
-          letterSpacing: '0.03em',
-          textShadow: isOpen ? `0 0 14px ${color}aa` : '0 0 4px rgba(0,0,0,0.9)',
-          pointerEvents: 'none',
-        }}>
-          {label}
-        </div>
-      </Html>
-    </group>
+    <span
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        fontSize: '12px',
+        fontWeight: 600,
+        padding: '4px 10px',
+        borderRadius: '9999px',
+        whiteSpace: 'nowrap',
+        pointerEvents: 'none',
+        transitionProperty: 'transform, opacity, background-color, border-color',
+        transitionDuration: '350ms',
+        transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        transitionDelay: isOpen ? `${index * 35}ms` : `${(total - 1 - index) * 25}ms`,
+        color: isOpen ? '#e4e4e7' : 'transparent',
+        backgroundColor: isOpen ? `${color}18` : 'transparent',
+        border: isOpen ? `1px solid ${color}44` : '1px solid transparent',
+        transform: isOpen
+          ? `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px))`
+          : 'translate(-50%, -50%) scale(0.3)',
+        opacity: isOpen ? 1 : 0,
+      }}
+    >
+      {label}
+    </span>
   )
 }
 
-function BoxModel({ color, isOpen }) {
-  const flaps = useRef([])
-  const bw = 0.5, bh = 0.22, bd = 0.4, ft = 0.015, fw = 0.06
-
-  const edgeGeom = useMemo(
-    () => new THREE.EdgesGeometry(new THREE.BoxGeometry(bw, bh, bd)),
-    []
-  )
-
-  useFrame(() => {
-    const target = isOpen ? 0.7 : 0
-    const signs = [1, -1, -1, 1]
-    const axes = ['rotationX', 'rotationX', 'rotationZ', 'rotationZ']
-    for (let i = 0; i < 4; i++) {
-      const f = flaps.current[i]
-      if (f) f[axes[i]] += (target * signs[i] - f[axes[i]]) * 0.06
-    }
-  })
-
-  const flapConfigs = [
-    { pos: [0, bh / 2, bd / 2], size: [bw - 0.04, ft, fw] },
-    { pos: [0, bh / 2, -bd / 2], size: [bw - 0.04, ft, fw] },
-    { pos: [-bw / 2, bh / 2, 0], size: [fw, ft, bd - 0.04] },
-    { pos: [bw / 2, bh / 2, 0], size: [fw, ft, bd - 0.04] },
-  ]
+function BoxCard({ group }) {
+  const [open, setOpen] = useState(false)
 
   return (
-    <group rotation={[Math.PI / 4.5, 0, 0]} scale={3.5}>
-      <mesh>
-        <boxGeometry args={[bw, bh, bd]} />
-        <meshStandardMaterial color={color} roughness={0.6} metalness={0.05} />
-      </mesh>
-      <mesh position={[0, bh / 2 + 0.004, 0]}>
-        <boxGeometry args={[bw - 0.08, 0.006, bd - 0.08]} />
-        <meshStandardMaterial color="#12121e" roughness={1} metalness={0} />
-      </mesh>
-      {flapConfigs.map((f, i) => (
-        <group key={i} ref={(el) => (flaps.current[i] = el)} position={f.pos}>
-          <mesh>
-            <boxGeometry args={f.size} />
-            <meshStandardMaterial color={color} roughness={0.5} metalness={0.05} />
-          </mesh>
-        </group>
-      ))}
-      <lineSegments geometry={edgeGeom}>
-        <lineBasicMaterial color={color} transparent opacity={0.4} />
-      </lineSegments>
-    </group>
-  )
-}
-
-function BoxSkillGroup({ group, column }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const n = group.skills.length
-  const x = (column - 1.5) * 2.0
-
-  return (
-    <Float speed={0.8 + column * 0.1} rotationIntensity={0.04} floatIntensity={0.12}>
-      <group
-        position={[x, 0.15, 0]}
-        onPointerEnter={() => setIsOpen(true)}
-        onPointerLeave={() => setIsOpen(false)}
-        onClick={() => setIsOpen((v) => !v)}
-        onFocus={() => setIsOpen(true)}
-        onBlur={() => setIsOpen(false)}
-        tabIndex={0}
-        role="button"
-        aria-label={`${group.title} skills`}
+    <div
+      class="relative flex flex-col items-center py-6 px-3 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-purple-500/20 transition-all duration-300 cursor-pointer select-none min-h-[200px]"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen((v) => !v)}
+      tabIndex={0}
+      role="button"
+      aria-label={`${group.title} skills`}
+      onFocus={() => setOpen(true)}
+      onBlur={() => setOpen(false)}
+    >
+      <div
+        class="flex items-center justify-center mb-2 transition-all duration-300"
+        style={{
+          transform: open ? 'scale(1.08)' : 'scale(1)',
+        }}
       >
-        <BoxModel color={group.color} isOpen={isOpen} />
-
-        <Html position={[0, 1.0, 0]} center>
-          <div style={{
-            color: group.color,
-            fontSize: '16px',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.18em',
-            fontFamily: 'Inter, sans-serif',
-            textShadow: `0 0 24px ${group.color}88`,
-            pointerEvents: 'none',
-          }}>
-            {group.title}
-          </div>
-        </Html>
-
-        {group.skills.map((skill, i) => (
-          <group key={skill} position={[0, (i - (n - 1) / 2) * 0.18, 0]}>
-            <SkillItem label={skill} color={group.color} index={i} total={n} isOpen={isOpen} />
-          </group>
+        {open ? (
+          <PackageOpen size={64} strokeWidth={1.5} color={group.color} />
+        ) : (
+          <Package size={64} strokeWidth={1.5} color={group.color} />
+        )}
+      </div>
+      <div class="relative w-full flex-1">
+        {group.skills.map((s, i) => (
+          <SkillTag
+            key={s}
+            label={s}
+            color={group.color}
+            index={i}
+            total={group.skills.length}
+            isOpen={open}
+          />
         ))}
-      </group>
-    </Float>
-  )
-}
-
-function Scene() {
-  const groupRef = useRef()
-  const autoRotate = useRef(0)
-
-  useFrame(({ clock, mouse }) => {
-    autoRotate.current = clock.elapsedTime * 0.15
-    if (groupRef.current) {
-      const targetY = mouse.x * 0.1 + Math.sin(autoRotate.current) * 0.05
-      const targetX = -mouse.y * 0.04 + Math.sin(autoRotate.current * 0.5) * 0.02
-      groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.03
-      groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.03
-    }
-  })
-
-  return (
-    <>
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={1.5} />
-      <directionalLight position={[-3, 2, 4]} intensity={0.6} color="#a855f7" />
-      <pointLight position={[0, 5, 0]} intensity={0.5} color="#3b82f6" />
-
-      <group position={[0, 0.3, 0]} ref={groupRef}>
-        {groups.map((g, i) => (
-          <BoxSkillGroup key={g.title} group={g} column={i} />
-        ))}
-      </group>
-
-      <ContactShadows
-        position={[0, -0.4, 0]}
-        opacity={0.25}
-        scale={10}
-        blur={3}
-        far={3}
-      />
-    </>
+      </div>
+      <span
+        class="text-xs font-bold uppercase tracking-[0.18em] transition-all duration-300 mt-auto"
+        style={{
+          color: open ? group.color : '#71717a',
+          textShadow: open ? `0 0 20px ${group.color}44` : 'none',
+        }}
+      >
+        {group.title}
+      </span>
+    </div>
   )
 }
 
@@ -249,21 +128,11 @@ export default function Skills3D() {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
-  if (reduced) return null
-
   return (
-    <div class="w-full h-[550px] md:h-[650px]" aria-label="3D skills boxes">
-      <Canvas
-        camera={{ position: [0, 0.5, 7.5], fov: 40 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true }}
-        onCreated={({ gl }) => {
-          gl.toneMapping = 3
-          gl.toneMappingExposure = 1.2
-        }}
-      >
-        <Scene />
-      </Canvas>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+      {groups.map((g) => (
+        <BoxCard key={g.title} group={g} />
+      ))}
     </div>
   )
 }

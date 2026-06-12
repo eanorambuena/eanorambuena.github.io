@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/useLang.jsx'
 
 const links = [
-  { labelKey: 'projects', href: '#projects' },
+  { labelKey: 'about', href: '#about' },
   { labelKey: 'experience', href: '#experience' },
+  { labelKey: 'projects', href: '#projects' },
   { labelKey: 'skills', href: '#skills' },
   { labelKey: 'opensource', href: '#opensource' },
   { labelKey: 'contact', href: '#contact' },
@@ -84,21 +85,20 @@ export default function Navbar() {
               />
             </div>
           </button>
-          <div class="flex items-center gap-0.5 bg-purple-500/10 rounded-lg border border-purple-500/20 p-0.5">
+          <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10">
             <button
               onClick={() => setLang('es')}
-              class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
-                lang === 'es' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+              class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
+                lang === 'es' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
               }`}
               aria-pressed={lang === 'es'}
             >
               ES
             </button>
-            <span class="text-purple-500/30 text-xs select-none">|</span>
             <button
               onClick={() => setLang('en')}
-              class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
-                lang === 'en' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+              class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
+                lang === 'en' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
               }`}
               aria-pressed={lang === 'en'}
             >
@@ -157,21 +157,20 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
-            <div class="flex items-center gap-0.5 bg-purple-500/10 rounded-lg border border-purple-500/20 p-0.5 mt-2 self-start">
+            <div class="flex bg-white/5 rounded-lg p-0.5 border border-white/10 mt-2 self-start">
               <button
                 onClick={() => setLang('es')}
-                class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
-                  lang === 'es' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+                class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
+                  lang === 'es' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
                 }`}
                 aria-pressed={lang === 'es'}
               >
                 ES
               </button>
-              <span class="text-purple-500/30 text-xs select-none">|</span>
               <button
                 onClick={() => setLang('en')}
-                class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
-                  lang === 'en' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+                class={`text-xs font-mono font-semibold px-3 py-1.5 rounded-md transition-all duration-200 ${
+                  lang === 'en' ? 'bg-purple-600 text-white shadow-sm' : 'text-zinc-400 hover:text-zinc-200'
                 }`}
                 aria-pressed={lang === 'en'}
               >

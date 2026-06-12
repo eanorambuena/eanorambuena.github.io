@@ -1,7 +1,8 @@
 const es = {
   nav: {
-    projects: 'Proyectos',
+    about: 'Sobre mí',
     experience: 'Experiencia',
+    projects: 'Proyectos',
     skills: 'Skills',
     opensource: 'Open Source',
     contact: 'Contacto',
@@ -77,8 +78,9 @@ const es = {
 
 const en = {
   nav: {
-    projects: 'Projects',
+    about: 'About',
     experience: 'Experience',
+    projects: 'Projects',
     skills: 'Skills',
     opensource: 'Open Source',
     contact: 'Contact',
