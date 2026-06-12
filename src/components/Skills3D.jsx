@@ -73,7 +73,7 @@ function BoxCard({ group, reduced }) {
               border: `1px solid ${open ? `${group.color}44` : 'transparent'}`,
               transform: open ? 'translateY(0)' : 'translateY(-8px)',
               opacity: open ? 1 : 0,
-              transitionDelay: open ? `${i * 60}ms` : `${(group.skills.length - 1 - i) * 40}ms`,
+              transitionDelay: open ? `${i * 60}ms` : `${(group.skills.length - 1 - i) * 60}ms`,
               transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
           >
