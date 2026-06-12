@@ -1,9 +1,7 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Html, ContactShadows, Float, useGLTF } from '@react-three/drei'
+import { Html, ContactShadows, Float } from '@react-three/drei'
 import { useRef, useState, useEffect, useMemo } from 'react'
 import * as THREE from 'three'
-
-useGLTF.preload('/models/box.glb')
 
 const groups = [
   {
@@ -105,34 +103,61 @@ function SkillItem({ label, color, index, total, isOpen }) {
   )
 }
 
+function BoxModel({ color, isOpen }) {
+  const flaps = useRef([])
+  const bw = 0.5, bh = 0.22, bd = 0.4, ft = 0.015, fw = 0.06
+
+  const edgeGeom = useMemo(
+    () => new THREE.EdgesGeometry(new THREE.BoxGeometry(bw, bh, bd)),
+    []
+  )
+
+  useFrame(() => {
+    const target = isOpen ? 0.7 : 0
+    const signs = [1, -1, -1, 1]
+    const axes = ['rotationX', 'rotationX', 'rotationZ', 'rotationZ']
+    for (let i = 0; i < 4; i++) {
+      const f = flaps.current[i]
+      if (f) f[axes[i]] += (target * signs[i] - f[axes[i]]) * 0.06
+    }
+  })
+
+  const flapConfigs = [
+    { pos: [0, bh / 2, bd / 2], size: [bw - 0.04, ft, fw] },
+    { pos: [0, bh / 2, -bd / 2], size: [bw - 0.04, ft, fw] },
+    { pos: [-bw / 2, bh / 2, 0], size: [fw, ft, bd - 0.04] },
+    { pos: [bw / 2, bh / 2, 0], size: [fw, ft, bd - 0.04] },
+  ]
+
+  return (
+    <group rotation={[Math.PI / 4.5, 0, 0]} scale={3.5}>
+      <mesh>
+        <boxGeometry args={[bw, bh, bd]} />
+        <meshStandardMaterial color={color} roughness={0.6} metalness={0.05} />
+      </mesh>
+      <mesh position={[0, bh / 2 + 0.004, 0]}>
+        <boxGeometry args={[bw - 0.08, 0.006, bd - 0.08]} />
+        <meshStandardMaterial color="#12121e" roughness={1} metalness={0} />
+      </mesh>
+      {flapConfigs.map((f, i) => (
+        <group key={i} ref={(el) => (flaps.current[i] = el)} position={f.pos}>
+          <mesh>
+            <boxGeometry args={f.size} />
+            <meshStandardMaterial color={color} roughness={0.5} metalness={0.05} />
+          </mesh>
+        </group>
+      ))}
+      <lineSegments geometry={edgeGeom}>
+        <lineBasicMaterial color={color} transparent opacity={0.4} />
+      </lineSegments>
+    </group>
+  )
+}
+
 function BoxSkillGroup({ group, column }) {
   const [isOpen, setIsOpen] = useState(false)
   const n = group.skills.length
   const x = (column - 1.5) * 2.0
-  const { scene } = useGLTF('/models/box.glb')
-
-  const coloredScene = useMemo(() => {
-    const s = scene.clone()
-    s.traverse((child) => {
-      if (child.isMesh && child.material) {
-        child.material = child.material.clone()
-        child.material.emissive = new THREE.Color(group.color)
-        child.material.emissiveIntensity = 0.12
-        child.material.roughness = 0.7
-        child.material.metalness = 0.0
-        child.material.needsUpdate = true
-
-        const edges = new THREE.EdgesGeometry(child.geometry)
-        const lineMat = new THREE.LineBasicMaterial({
-          color: group.color,
-          transparent: true,
-          opacity: 0.4,
-        })
-        child.add(new THREE.LineSegments(edges, lineMat))
-      }
-    })
-    return s
-  }, [scene, group.color])
 
   return (
     <Float speed={0.8 + column * 0.1} rotationIntensity={0.04} floatIntensity={0.12}>
@@ -147,9 +172,7 @@ function BoxSkillGroup({ group, column }) {
         role="button"
         aria-label={`${group.title} skills`}
       >
-        <group rotation={[Math.PI / 4.5, 0, 0]}>
-          <primitive object={coloredScene} scale={3.5} />
-        </group>
+        <BoxModel color={group.color} isOpen={isOpen} />
 
         <Html position={[0, 1.0, 0]} center>
           <div style={{
