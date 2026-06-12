@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, Environment } from '@react-three/drei'
-import { useRef, useMemo, useEffect, useState, Suspense } from 'react'
+import { useRef, useEffect, useState, useMemo } from 'react'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -28,22 +28,11 @@ function TorusKnot() {
       <group>
         <mesh ref={meshRef}>
           <torusKnotGeometry args={[1, 0.35, 128, 16]} />
-          <meshPhysicalMaterial
-            metalness={0.9}
-            roughness={0.1}
-            clearcoat={0.6}
-            clearcoatRoughness={0.2}
-            envMapIntensity={3}
-          />
+          <meshStandardMaterial metalness={0.9} roughness={0.1} color="#a855f7" />
         </mesh>
         <mesh ref={wireRef} scale={[1.015, 1.015, 1.015]}>
           <torusKnotGeometry args={[1, 0.35, 128, 16]} />
-          <meshBasicMaterial
-            color="#a855f7"
-            wireframe
-            transparent
-            opacity={0.12}
-          />
+          <meshBasicMaterial color="#a855f7" wireframe transparent opacity={0.12} />
         </mesh>
       </group>
     </Float>
@@ -77,13 +66,7 @@ function OrbitalRing() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={200} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial
-        size={0.025}
-        color="#818cf8"
-        transparent
-        opacity={0.4}
-        sizeAttenuation
-      />
+      <pointsMaterial size={0.025} color="#818cf8" transparent opacity={0.4} sizeAttenuation />
     </points>
   )
 }
@@ -105,9 +88,7 @@ function StarField() {
   }, [])
 
   useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.rotation.y = clock.getElapsedTime() * 0.005
-    }
+    if (ref.current) ref.current.rotation.y = clock.getElapsedTime() * 0.005
   })
 
   return (
@@ -115,53 +96,31 @@ function StarField() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial
-        size={0.02}
-        color="#a78bfa"
-        transparent
-        opacity={0.12}
-        sizeAttenuation
-        blending={THREE.AdditiveBlending}
-      />
+      <pointsMaterial size={0.02} color="#a78bfa" transparent opacity={0.12} sizeAttenuation blending={THREE.AdditiveBlending} />
     </points>
   )
 }
 
-function Scene({ isLowEnd }) {
+function Scene() {
   return (
     <>
       <fog attach="fog" args={['#000000', 5, 30]} />
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[5, 5, 5]} intensity={2} color="#a855f7" />
-      <directionalLight position={[-3, -2, 4]} intensity={1} color="#3b82f6" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={3} color="#a855f7" />
+      <directionalLight position={[-3, -2, 4]} intensity={1.5} color="#3b82f6" />
       <TorusKnot />
       <OrbitalRing />
       <StarField />
-      <Suspense fallback={null}>
-        <Environment preset="night" />
-      </Suspense>
-      {!isLowEnd && (
-        <EffectComposer>
-          <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
-          <ChromaticAberration offset={[0.0005, 0.0005]} />
-        </EffectComposer>
-      )}
+      <EffectComposer>
+        <Bloom luminanceThreshold={0.08} luminanceSmoothing={0.9} intensity={0.4} />
+        <ChromaticAberration offset={[0.0005, 0.0005]} />
+      </EffectComposer>
     </>
-  )
-}
-
-function getLowEnd() {
-  if (typeof navigator === 'undefined') return false
-  return (
-    navigator.hardwareConcurrency <= 4 ||
-    navigator.deviceMemory <= 4 ||
-    /mobile|android|iphone/i.test(navigator.userAgent)
   )
 }
 
 export default function Hero3D() {
   const [reduced, setReduced] = useState(false)
-  const [isLowEnd, setIsLowEnd] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -171,23 +130,12 @@ export default function Hero3D() {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
-  useEffect(() => {
-    setIsLowEnd(getLowEnd())
-  }, [])
-
   if (reduced) return null
 
-  const dpr = isLowEnd ? [1, 1] : [1, 1.5]
-  const antialias = !isLowEnd
-
   return (
-    <div class="w-full h-full" aria-hidden="true">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
-        dpr={dpr}
-        gl={{ antialias, powerPreference: 'high-performance' }}
-      >
-        <Scene isLowEnd={isLowEnd} />
+    <div className="w-full h-full" aria-hidden="true">
+      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: true }}>
+        <Scene />
       </Canvas>
     </div>
   )
