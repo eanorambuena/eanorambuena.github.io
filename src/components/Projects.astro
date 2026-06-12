@@ -5,6 +5,7 @@ const projects = [
   {
     title: 'Emmy.js',
     descKey: 'emmy',
+    image: '/projects/emmyjs.png',
     tags: ['TypeScript', 'Web Components', 'Open Source'],
     links: [
       { labelEs: 'GitHub →', labelEn: 'GitHub →', url: 'https://github.com/emmyjs/emmy-dom' },
@@ -68,27 +69,35 @@ const descES = {
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((p, i) => (
-        <div data-reveal data-delay={i * 100}>
-          <div class="group relative bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/40 rounded-2xl p-6 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
-            <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${p.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 pointer-events-none" />
-            <h3 class="text-2xl font-bold text-white mb-2 relative">{p.title}</h3>
-            <p class="text-zinc-300 text-lg mb-4 leading-relaxed relative">
-              <span data-lang="es">{descES[p.descKey]}</span>
-              <span data-lang="en" hidden>{descEN[p.descKey]}</span>
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4 relative">
-              {p.tags.map((tag) => (
-                <span class="text-sm px-3 py-1.5 rounded-full bg-purple-900/30 text-purple-300 border border-purple-500/20">{tag}</span>
-              ))}
-            </div>
-            <div class="flex flex-wrap gap-3 relative">
-              {p.links.map((l) => (
-                <a href={l.url} target="_blank" rel="noopener noreferrer" class="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium">
-                  <span data-lang="es">{l.labelEs}</span>
-                  <span data-lang="en" hidden>{l.labelEn}</span>
-                </a>
-              ))}
+          <div data-reveal data-delay={i * 100}>
+            <div class="group relative bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/40 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
+              {p.image && (
+                <div class="relative h-44 overflow-hidden">
+                  <img src={p.image} alt={p.title} class="w-full h-full object-cover object-top" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent" />
+                </div>
+              )}
+              <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${p.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
+            <div class="p-6">
+              <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 pointer-events-none" />
+              <h3 class="text-2xl font-bold text-white mb-2 relative">{p.title}</h3>
+              <p class="text-zinc-300 text-lg mb-4 leading-relaxed relative">
+                <span data-lang="es">{descES[p.descKey]}</span>
+                <span data-lang="en" hidden>{descEN[p.descKey]}</span>
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4 relative">
+                {p.tags.map((tag) => (
+                  <span class="text-sm px-3 py-1.5 rounded-full bg-purple-900/30 text-purple-300 border border-purple-500/20">{tag}</span>
+                ))}
+              </div>
+              <div class="flex flex-wrap gap-3 relative">
+                {p.links.map((l) => (
+                  <a href={l.url} target="_blank" rel="noopener noreferrer" class="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium">
+                    <span data-lang="es">{l.labelEs}</span>
+                    <span data-lang="en" hidden>{l.labelEn}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
