@@ -40,7 +40,7 @@ function BoxCard({ group, reduced }) {
       onBlur={() => setOpen(false)}
     >
       <div
-        class="flex items-center justify-center mb-1 transition-all duration-500"
+        className="flex items-center justify-center mb-1 transition-all duration-500"
         style={{
           transform: open ? 'scale(1.08)' : 'scale(1)',
         }}
@@ -53,7 +53,7 @@ function BoxCard({ group, reduced }) {
       </div>
 
       <span
-        class="text-xs font-bold uppercase tracking-[0.18em] transition-all duration-500 mb-2"
+        className="text-xs font-bold uppercase tracking-[0.18em] transition-all duration-500 mb-2"
         style={{
           color: open ? group.color : '#71717a',
           textShadow: open ? `0 0 20px ${group.color}44` : 'none',
@@ -62,11 +62,11 @@ function BoxCard({ group, reduced }) {
         {group.title}
       </span>
 
-      <div class="flex flex-wrap justify-center gap-1.5 min-h-[52px]">
+      <div className="flex flex-wrap justify-center gap-1.5 min-h-[52px]">
         {group.skills.map((s, i) => (
           <span
             key={s}
-            class="text-[11px] font-semibold px-2.5 py-1 rounded-full transition-all duration-500"
+            className="text-[11px] font-semibold px-2.5 py-1 rounded-full transition-all duration-500"
             style={{
               color: open ? '#e4e4e7' : 'transparent',
               backgroundColor: open ? `${group.color}18` : 'transparent',
@@ -98,7 +98,7 @@ export default function Skills3D() {
   }, [])
 
   return (
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
       {groups.map((g) => (
         <BoxCard key={g.title} group={g} reduced={reduced} />
       ))}
