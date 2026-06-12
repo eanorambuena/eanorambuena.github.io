@@ -96,14 +96,38 @@ import { es, en } from '../i18n/translations'
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168,85,247,0.06), transparent), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59,130,246,0.05), transparent);"></div>
     <Navbar client:load />
     <slot />
-    <footer class="relative z-10 text-center text-zinc-300 text-sm py-12 border-t border-white/10">
-      <div class="max-w-md mx-auto space-y-2">
-        <p>Emmanuel Norambuena</p>
-        <a href="mailto:eanorambuena@uc.cl" class="text-zinc-300 hover:text-purple-400 transition-colors inline-block py-2">eanorambuena@uc.cl</a>
-        <p class="text-xs text-zinc-300">
-          <span data-lang="es">{es.footer.built}</span>
-          <span data-lang="en" hidden>{en.footer.built}</span>
-        </p>
+    <footer class="relative z-10 border-t border-white/10">
+      <div class="max-w-5xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div class="space-y-3">
+            <p class="text-white font-semibold">Emmanuel Norambuena</p>
+            <p class="text-sm text-zinc-400">Product Engineer basado en Chile.</p>
+            <a href="mailto:eanorambuena@uc.cl" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors inline-block">eanorambuena@uc.cl</a>
+          </div>
+          <div class="space-y-3">
+            <p class="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Links</p>
+            <div class="flex flex-col gap-1.5">
+              <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">GitHub</a>
+              <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">LinkedIn</a>
+              <a href="https://linktr.ee/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-zinc-400 hover:text-purple-400 transition-colors">Linktree</a>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <p class="text-zinc-500 text-xs font-semibold uppercase tracking-wider">Stack</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">Astro</span>
+              <span class="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">React</span>
+              <span class="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">Three.js</span>
+              <span class="text-xs px-2 py-1 rounded-md bg-zinc-800 text-zinc-400">Tailwind</span>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-white/5 pt-6 text-center">
+          <p class="text-xs text-zinc-500">
+            <span data-lang="es">{es.footer.built}</span>
+            <span data-lang="en" hidden>{en.footer.built}</span>
+          </p>
+        </div>
       </div>
     </footer>
     <script>
