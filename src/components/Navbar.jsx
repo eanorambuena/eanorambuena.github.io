@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import * as Switch from '@radix-ui/react-switch'
 import { useLang } from '../i18n/useLang.jsx'
 
 const links = [
@@ -108,17 +107,17 @@ export default function Navbar() {
         <div class="flex items-center gap-3">
           <div class="hidden md:flex items-center gap-2">
             <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
-            <Switch.Root
-              checked={lang === 'en'}
-              onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
-              class="w-9 h-5 rounded-full relative transition-colors duration-200"
+            <button
+              onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+              class="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
               style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
+              aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
             >
-              <Switch.Thumb
+              <span
                 class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
                 style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
               />
-            </Switch.Root>
+            </button>
             <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
           <button
@@ -158,17 +157,17 @@ export default function Navbar() {
             ))}
             <div class="flex items-center gap-2 mt-2 self-start">
               <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
-              <Switch.Root
-                checked={lang === 'en'}
-                onCheckedChange={(c) => setLang(c ? 'en' : 'es')}
-                class="w-9 h-5 rounded-full relative transition-colors duration-200"
+              <button
+                onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+                class="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
                 style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
+                aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
               >
-                <Switch.Thumb
+                <span
                   class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
                   style={{ transform: lang === 'en' ? 'translateX(18px)' : 'translateX(2px)' }}
                 />
-              </Switch.Root>
+              </button>
               <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
             </div>
           </div>
