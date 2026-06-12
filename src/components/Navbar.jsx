@@ -84,25 +84,25 @@ export default function Navbar() {
           : 'bg-black/40'
       }`}
     >
-      <div class="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
-      <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-3">
+      <div className="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-3">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            class="flex-shrink-0 bg-transparent border-none p-0 outline-none focus:outline-none focus:ring-0"
+            className="flex-shrink-0 bg-transparent border-none p-0 outline-none focus:outline-none focus:ring-0"
             aria-label="Scroll to top"
           >
-            <div class="w-10 h-10 rounded-full overflow-hidden">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
               <img
                 src="https://avatars.githubusercontent.com/u/38821970?v=4"
                 alt="Emmanuel Norambuena"
-                class="w-full h-full object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </button>
-          <span class="hidden sm:block text-sm font-semibold text-zinc-200">Emmanuel Norambuena</span>
+          <span className="hidden sm:block text-sm font-semibold text-zinc-200">Emmanuel Norambuena</span>
         </div>
-        <div class="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1">
           {links.map(({ labelKey, href }) => (
             <a
               key={href}
@@ -119,55 +119,55 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <div class="flex items-center gap-3">
-          <div class="hidden md:flex items-center gap-2">
-            <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
+        <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
+            <span className="text-xs font-mono font-semibold text-zinc-400">ES</span>
             <button
               onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
-              class="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
+              className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
               style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
               aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
             >
               <span
-                class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
+                className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
                 style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
               />
             </button>
-            <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
+            <span className="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
           <button
             onClick={toggleMute}
-            class="p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
+            className="p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
             aria-label={muted ? 'Unmute sound' : 'Mute sound'}
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {muted ? (
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
               ) : (
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
               )}
             </svg>
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            class="md:hidden p-3 text-zinc-300 hover:text-white transition-colors"
+            className="md:hidden p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" class="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
-          <div class="px-6 py-4 flex flex-col gap-2">
+        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
+          <div className="px-6 py-4 flex flex-col gap-2">
             {links.map(({ labelKey, href }) => (
               <a
                 key={href}
@@ -183,20 +183,20 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
-            <div class="flex items-center gap-2 mt-2 self-start">
-              <span class="text-xs font-mono font-semibold text-zinc-400">ES</span>
+            <div className="flex items-center gap-2 mt-2 self-start">
+              <span className="text-xs font-mono font-semibold text-zinc-400">ES</span>
               <button
                 onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
-                class="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
+                className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
                 style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
                 aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
               >
                 <span
-                  class="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
+                  className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
                 style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
               />
             </button>
-            <span class="text-xs font-mono font-semibold text-zinc-400">EN</span>
+            <span className="text-xs font-mono font-semibold text-zinc-400">EN</span>
           </div>
         </div>
         </div>
