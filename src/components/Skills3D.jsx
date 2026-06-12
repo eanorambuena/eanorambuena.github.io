@@ -65,9 +65,9 @@ function SkillItem({ label, color, index, total, isOpen }) {
 
     const toX = isOpen ? spreadX : 0
     const toY = isOpen ? spreadY : restY
-    const toZ = isOpen ? 0.7 : 0
-    const toS = isOpen ? 1.0 : 0.5
-    const toR = isOpen ? 0 : 0.5
+    const toZ = isOpen ? 0.9 : -0.4
+    const toS = isOpen ? 1.0 : 0.3
+    const toR = isOpen ? 0 : 0.6
     const from = fromState.current
 
     groupRef.current.position.x = from.x + (toX - from.x) * eased
@@ -147,7 +147,7 @@ function BoxSkillGroup({ group, column }) {
         role="button"
         aria-label={`${group.title} skills`}
       >
-        <group rotation={[-Math.PI / 4.5, 0, 0]}>
+        <group rotation={[Math.PI / 4.5, 0, 0]}>
           <primitive object={coloredScene} scale={3.5} />
         </group>
 

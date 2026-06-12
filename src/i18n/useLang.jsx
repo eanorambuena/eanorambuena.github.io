@@ -22,12 +22,15 @@ export function useLang() {
     return () => window.removeEventListener(LANG_EVENT, handler)
   }, [])
 
-  const toggleLang = useCallback(() => {
-    const next = lang === 'es' ? 'en' : 'es'
+  const setLangAndPersist = useCallback((next) => {
     localStorage.setItem(STORAGE_KEY, next)
     setLang(next)
     window.dispatchEvent(new CustomEvent(LANG_EVENT))
-  }, [lang])
+  }, [])
 
-  return { lang, toggleLang, t: lang === 'es' ? es : en }
+  const toggleLang = useCallback(() => {
+    setLangAndPersist(lang === 'es' ? 'en' : 'es')
+  }, [lang, setLangAndPersist])
+
+  return { lang, toggleLang, setLang: setLangAndPersist, t: lang === 'es' ? es : en }
 }

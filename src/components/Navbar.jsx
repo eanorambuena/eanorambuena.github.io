@@ -10,7 +10,7 @@ const links = [
 ]
 
 export default function Navbar() {
-  const { lang, toggleLang, t } = useLang()
+  const { lang, setLang, t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -84,13 +84,27 @@ export default function Navbar() {
               />
             </div>
           </button>
-          <button
-            onClick={toggleLang}
-            class="text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 hover:text-purple-200 transition-all border border-purple-500/30"
-            aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
-          >
-            {lang === 'es' ? 'EN' : 'ES'}
-          </button>
+          <div class="flex items-center gap-0.5 bg-purple-500/10 rounded-lg border border-purple-500/20 p-0.5">
+            <button
+              onClick={() => setLang('es')}
+              class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
+                lang === 'es' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+              }`}
+              aria-pressed={lang === 'es'}
+            >
+              ES
+            </button>
+            <span class="text-purple-500/30 text-xs select-none">|</span>
+            <button
+              onClick={() => setLang('en')}
+              class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
+                lang === 'en' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+              }`}
+              aria-pressed={lang === 'en'}
+            >
+              EN
+            </button>
+          </div>
         </div>
         <div class="hidden md:flex items-center gap-1">
           {links.map(({ labelKey, href }) => (
@@ -143,6 +157,27 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
+            <div class="flex items-center gap-0.5 bg-purple-500/10 rounded-lg border border-purple-500/20 p-0.5 mt-2 self-start">
+              <button
+                onClick={() => setLang('es')}
+                class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
+                  lang === 'es' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+                }`}
+                aria-pressed={lang === 'es'}
+              >
+                ES
+              </button>
+              <span class="text-purple-500/30 text-xs select-none">|</span>
+              <button
+                onClick={() => setLang('en')}
+                class={`text-xs font-mono font-bold px-2 py-1 rounded-md transition-all ${
+                  lang === 'en' ? 'bg-purple-500/30 text-purple-200 shadow-sm' : 'text-purple-400 hover:text-purple-300'
+                }`}
+                aria-pressed={lang === 'en'}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       )}
