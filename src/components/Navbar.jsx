@@ -113,7 +113,7 @@ export default function Navbar() {
           </button>
           <span className="hidden sm:block text-sm font-semibold text-primary">Emmanuel Norambuena</span>
         </div>
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-3">
           {links.map(({ labelKey, href }) => (
             <a
               key={href}
