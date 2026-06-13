@@ -45,7 +45,7 @@ export const logos = {
   },
   OSUC: {
     inline: true,
-    inlineClass: 'p-9',
+    inlineClass: 'p-12',
     dark: osucSvgDark,
     light: osucSvgLight,
   },
