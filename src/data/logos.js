@@ -30,6 +30,7 @@ export const logos = {
   Acofuz: {
     dark: '/acofuz-logo.png',
     light: '/acofuz-light.png',
+    imgClass: 'max-h-[95%] max-w-[95%]',
   },
   NeuralWorks: {
     dark: '/nw-logo.svg',
