@@ -29,13 +29,14 @@ export const logos = {
   },
   Acofuz: {
     dark: '/acofuz-logo.png',
-    light: 'https://media.licdn.com/dms/image/v2/D4E16AQGAVDXGweMITg/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1739238357931?e=2147483647&v=beta&t=T_2qiYgun5QZC7393VolA5x-Y99VedL_Lr9CQaicNAE',
+    light: '/acofuz-light.png',
   },
   NeuralWorks: {
     dark: '/nw-logo.svg',
     light: '/nw-logo.svg',
     filterDark: 'brightness(0) invert(1)',
     filterLight: 'brightness(0)',
+    imgClass: 'max-h-[90%] max-w-[90%]',
   },
   'Universidad Católica': {
     dark: 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Marca-uc.svg',
@@ -57,6 +58,6 @@ export const logos = {
   },
   'Aguas Andinas': {
     dark: 'https://www.aguasandinas.cl/o/aguas-home-theme/images/logo-aguasandinas.png',
-    light: 'https://camacoes.cl/wp-content/uploads/2021/08/logos-socios-aguas-andinas.png',
+    light: '/aguas-light.png',
   },
 }

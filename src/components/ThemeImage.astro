@@ -1,0 +1,30 @@
+---
+interface Props {
+  dark: string
+  light?: string
+  alt: string
+  class?: string
+  inline?: boolean
+  inlineClass?: string
+}
+
+const { dark, light, alt, inline, inlineClass } = Astro.props
+const cls = Astro.props.class || ''
+const hasLight = light && light !== dark
+---
+
+{
+  inline ? (
+    <>
+      <div class={`dark-only ${cls} ${inlineClass || ''}`} set:html={dark} />
+      <div class={`light-only ${cls} ${inlineClass || ''}`} set:html={light} />
+    </>
+  ) : hasLight ? (
+    <>
+      <img src={dark} alt={alt} class={`dark-only ${cls}`} loading="lazy" />
+      <img src={light} alt={alt} class={`light-only ${cls}`} loading="lazy" />
+    </>
+  ) : (
+    <img src={dark} alt={alt} class={cls} loading="lazy" />
+  )
+}

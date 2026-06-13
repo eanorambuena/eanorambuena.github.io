@@ -1,9 +1,9 @@
 ---
 import { es, en } from '../i18n/translations'
 import { logos } from '../data/logos'
+import ThemeImage from './ThemeImage.astro'
 
 const companies = Object.entries(logos).map(([name, entry]) => ({ name, ...entry }))
-
 const isFiltered = (entry) => entry.filterDark || entry.filterLight
 ---
 
@@ -37,7 +37,7 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
               <img
                 src={c.dark}
                 alt={`${c.name} logo`}
-                class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain theme-filter`}
+                class={`${c.imgClass || 'max-h-[85%] max-w-[85%]'} object-contain theme-filter`}
                 loading="lazy"
               />
             ) : c.dark !== c.light ? (
@@ -45,13 +45,13 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
                 <img
                   src={c.dark}
                   alt={`${c.name} logo`}
-                  class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain dark-only`}
+                  class={`${c.imgClass || 'max-h-[85%] max-w-[85%]'} object-contain dark-only`}
                   loading="lazy"
                 />
                 <img
                   src={c.light}
                   alt={`${c.name} logo`}
-                  class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain light-only`}
+                  class={`${c.imgClass || 'max-h-[85%] max-w-[85%]'} object-contain light-only`}
                   loading="lazy"
                 />
               </>
@@ -59,7 +59,7 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
               <img
                 src={c.dark}
                 alt={`${c.name} logo`}
-                class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain`}
+                class={`${c.imgClass || 'max-h-[85%] max-w-[85%]'} object-contain`}
                 loading="lazy"
               />
             )
@@ -75,12 +75,13 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
     width: max-content;
     will-change: transform;
   }
-  .dark-only { display: block; }
-  .light-only { display: none; }
-  :global(.light) .dark-only { display: none; }
-  :global(.light) .light-only { display: block; }
+  .dark-only { display: block; opacity: 1; transition: opacity 0.4s ease; }
+  .light-only { display: none; opacity: 0; transition: opacity 0.4s ease; }
+  :global(.light) .dark-only { display: none; opacity: 0; }
+  :global(.light) .light-only { display: block; opacity: 1; }
   .theme-filter {
     filter: brightness(0) invert(1);
+    transition: filter 0.4s ease;
   }
   :global(.light) .theme-filter {
     filter: brightness(0);
