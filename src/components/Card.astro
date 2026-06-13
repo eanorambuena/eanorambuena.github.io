@@ -13,7 +13,7 @@ const linkProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } 
 
 <Tag
   {...linkProps}
-  class={`group block relative bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 hover:border-accent/40 rounded-2xl transition-all duration-500 overflow-hidden no-underline ${
+  class={`group block relative bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 hover:border-accent/40 rounded-2xl transition-all duration-500 overflow-hidden no-underline h-full flex flex-col ${
     noHover ? '' : 'hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/10'
   } ${Astro.props.class || ''}`}
 >

@@ -69,18 +69,18 @@ export default function HeroContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.8 }}
       >
-        <button
-          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-white transition-all duration-300"
-        >
-          {t.hero.btnProjects}
-        </button>
         <a
           href="mailto:eanorambuena@uc.cl"
-          className="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95"
+          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-white transition-all duration-300 text-base"
         >
           {t.hero.btnContact}
         </a>
+        <button
+          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+          className="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 text-base"
+        >
+          {t.hero.btnProjects}
+        </button>
       </motion.div>
       <motion.div
         className="flex gap-5 text-secondary pt-2"
