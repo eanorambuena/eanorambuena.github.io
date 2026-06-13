@@ -1,6 +1,7 @@
 ---
 import { es, en } from '../i18n/translations'
 import AnimatedSection from './AnimatedSection.jsx'
+import Badge from './Badge.astro'
 
 const experiences = [
   {
@@ -75,7 +76,7 @@ const experiences = [
                 </p>
                 <div class="flex flex-wrap gap-2">
                   {exp.tags.map((tag) => (
-                    <span class="text-sm px-3 py-1 rounded-full bg-accent/20 text-primary border border-accent/20">{tag}</span>
+                    <Badge>{tag}</Badge>
                   ))}
                 </div>
               </div>

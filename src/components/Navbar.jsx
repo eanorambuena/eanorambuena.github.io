@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/useLang.jsx'
-import { AnimatePresence, motion } from 'motion/react'
+import IconButton from './IconButton'
+import ToggleSwitch from './ToggleSwitch'
 
 const links = [
   { labelKey: 'about', href: '#about' },
@@ -143,50 +144,32 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-3">
           <div className="hidden md:flex items-center gap-2">
-            <span className="text-xs font-mono font-semibold text-muted">ES</span>
-            <button
-              onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
-              className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
-              style={{ backgroundColor: lang === 'en' ? 'var(--accent)' : 'var(--border)' }}
-              aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
-            >
-              <span
-                className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
-                style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
-              />
-            </button>
-            <span className="text-xs font-mono font-semibold text-muted">EN</span>
+            <ToggleSwitch
+              checked={lang === 'en'}
+              onChange={() => setLang(lang === 'en' ? 'es' : 'en')}
+              ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
+              leftLabel="ES"
+              rightLabel="EN"
+            />
           </div>
-          <button
+          <IconButton
             onClick={toggleTheme}
-            className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            animateKey={theme}
+            ariaLabel={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={theme}
-                initial={{ rotate: -90, scale: 0, opacity: 0 }}
-                animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                exit={{ rotate: 90, scale: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="flex"
-              >
-                {theme === 'dark' ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                  </svg>
-                )}
-              </motion.span>
-            </AnimatePresence>
-          </button>
-          <button
+            {theme === 'dark' ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </IconButton>
+          <IconButton
             onClick={toggleMute}
-            className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10"
-            aria-label={muted ? 'Unmute sound' : 'Mute sound'}
+            ariaLabel={muted ? 'Unmute sound' : 'Mute sound'}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               {muted ? (
@@ -195,11 +178,11 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
               )}
             </svg>
-          </button>
-          <button
+          </IconButton>
+          <IconButton
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            className="md:hidden"
+            ariaLabel={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
@@ -210,7 +193,7 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
-          </button>
+          </IconButton>
         </div>
       </div>
       {menuOpen && (
@@ -232,46 +215,29 @@ export default function Navbar() {
               </a>
             ))}
             <div className="flex items-center gap-2 mt-2 self-start">
-              <button
+              <IconButton
                 onClick={toggleTheme}
-                className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative"
-                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                animateKey={theme}
+                ariaLabel={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={theme}
-                    initial={{ rotate: -90, scale: 0, opacity: 0 }}
-                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                    exit={{ rotate: 90, scale: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="flex"
-                  >
-                    {theme === 'dark' ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                    ) : (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                      </svg>
-                    )}
-                  </motion.span>
-                </AnimatePresence>
-              </button>
-              <span className="text-xs font-mono font-semibold text-muted">ES</span>
-              <button
-                onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
-                className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
-                style={{ backgroundColor: lang === 'en' ? 'var(--accent)' : 'var(--border)' }}
-                aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
-              >
-                <span
-                  className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200"
-                style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
+                {theme === 'dark' ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </IconButton>
+              <ToggleSwitch
+                checked={lang === 'en'}
+                onChange={() => setLang(lang === 'en' ? 'es' : 'en')}
+                ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
+                leftLabel="ES"
+                rightLabel="EN"
               />
-            </button>
-            <span className="text-xs font-mono font-semibold text-muted">EN</span>
-          </div>
+            </div>
         </div>
         </div>
       )}

@@ -1,6 +1,8 @@
 ---
 import { es, en } from '../i18n/translations'
 import AnimatedSection from './AnimatedSection.jsx'
+import Card from './Card.astro'
+import Badge from './Badge.astro'
 
 const projects = [
   {
@@ -79,10 +81,7 @@ const descES = {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((p, i) => (
           <AnimatedSection client:load delay={i * 0.1}>
-            <a
-              href={`/projects/${p.slug}`}
-              class="group block relative bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 hover:border-accent/40 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/10 overflow-hidden cursor-pointer no-underline"
-            >
+            <Card href={`/projects/${p.slug}`} color={p.color}>
               {p.iframe ? (
                 <div class="relative h-44 overflow-hidden bg-surface">
                   <div class="w-[250%] h-[250%] origin-top-left scale-[0.4]">
@@ -96,9 +95,7 @@ const descES = {
                   <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/40 to-transparent" />
                 </div>
               )}
-              <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${p.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
             <div class="p-6">
-              <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/0 via-transparent to-accent-secondary/0 group-hover:from-accent/10 group-hover:to-accent-secondary/10 transition-all duration-500 pointer-events-none" />
               <h3 class="text-2xl font-bold text-primary mb-2 relative">
                 <span data-lang="es">{p.titleEs}</span>
                 <span data-lang="en" hidden>{p.titleEn}</span>
@@ -109,7 +106,7 @@ const descES = {
               </p>
               <div class="flex flex-wrap gap-2 mb-4 relative">
                 {p.tags.map((tag) => (
-                  <span class="text-sm px-3 py-1.5 rounded-full bg-accent/20 text-primary border border-accent/20">{tag}</span>
+                  <Badge>{tag}</Badge>
                 ))}
               </div>
               <div class="flex flex-wrap gap-3 relative">
@@ -121,7 +118,7 @@ const descES = {
                 ))}
               </div>
             </div>
-          </a>
+          </Card>
         </AnimatedSection>
       ))}
     </div>
