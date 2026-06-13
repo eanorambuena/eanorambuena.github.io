@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+'use client'
+import { useState } from 'react'
+import { motion } from 'motion/react'
 import { Package, PackageOpen } from 'lucide-react'
 
 const groups = [
@@ -24,96 +26,105 @@ const groups = [
   },
 ]
 
-function BoxCard({ group, reduced }) {
-  const [open, setOpen] = useState(false)
+const floatAnimation = (i) => ({
+  y: [0, -6, 0],
+  transition: {
+    duration: 3 + i * 0.5,
+    repeat: Infinity,
+    ease: 'easeInOut',
+    delay: i * 0.3,
+  },
+})
+
+function BoxCard({ group, index }) {
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div
-      class={`relative flex flex-col items-center py-5 px-3 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-purple-500/20 transition-all duration-300 cursor-pointer select-none ${reduced ? '' : 'skill-pulse'}`}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onClick={() => setOpen((v) => !v)}
+    <motion.div
+      className="relative flex flex-col items-center py-5 px-3 rounded-2xl bg-zinc-900/40 border cursor-pointer select-none"
+      style={{
+        borderColor: isHovered ? `${group.color}44` : 'rgba(255,255,255,0.05)',
+      }}
+      animate={floatAnimation(index)}
+      whileHover={{
+        scale: 1.08,
+        transition: { type: 'spring', stiffness: 300, damping: 12 },
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      onTap={() => setIsHovered((v) => !v)}
+      whileTap={{ scale: 0.95 }}
       tabIndex={0}
       role="button"
       aria-label={`${group.title} skills`}
-      onFocus={() => setOpen(true)}
-      onBlur={() => setOpen(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
     >
-      <div
-        className="flex items-center justify-center mb-1 transition-all duration-500"
-        style={{
-          transform: open ? 'scale(1.08)' : 'scale(1)',
+      <motion.div
+        className="flex items-center justify-center mb-1"
+        animate={{
+          scale: isHovered ? 1.12 : 1,
+          rotate: isHovered ? [0, -5, 5, -5, 0] : 0,
         }}
+        transition={{ duration: isHovered ? 0.4 : 0.3 }}
       >
-        {open ? (
+        {isHovered ? (
           <PackageOpen size={56} strokeWidth={1.5} color={group.color} />
         ) : (
           <Package size={56} strokeWidth={1.5} color={group.color} />
         )}
-      </div>
+      </motion.div>
 
-      <span
-        className="text-xs font-bold uppercase tracking-[0.18em] transition-all duration-500 mb-2"
-        style={{
-          color: open ? group.color : '#71717a',
-          textShadow: open ? `0 0 20px ${group.color}44` : 'none',
+      <motion.span
+        className="text-xs font-bold uppercase tracking-[0.18em] mb-2"
+        animate={{
+          color: isHovered ? group.color : '#71717a',
+          textShadow: isHovered ? `0 0 20px ${group.color}44` : 'none',
         }}
+        transition={{ duration: 0.3 }}
       >
         {group.title}
-      </span>
+      </motion.span>
 
       <div className="flex flex-wrap justify-center gap-1.5 min-h-[52px]">
         {group.skills.map((s, i) => (
-          <span
+          <motion.span
             key={s}
-            className="text-[11px] font-semibold px-2.5 py-1 rounded-full transition-all duration-500"
-            style={{
-              color: open ? '#e4e4e7' : 'transparent',
-              backgroundColor: open ? `${group.color}18` : 'transparent',
-              border: `1px solid ${open ? `${group.color}44` : 'transparent'}`,
-              transform: open ? 'translateY(0)' : 'translateY(-8px)',
-              opacity: open ? 1 : 0,
-              transitionDelay: open ? `${i * 60}ms` : `${(group.skills.length - 1 - i) * 60}ms`,
-              transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
+            initial={{ opacity: 0, y: -8, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              color: '#e4e4e7',
+              backgroundColor: `${group.color}18`,
+              border: `1px solid ${group.color}44`,
+            }}
+            transition={{
+              delay: 0.1 + i * 0.05,
+              duration: 0.4,
+              ease: [0.34, 1.56, 0.64, 1],
+            }}
+            whileHover={{
+              scale: 1.15,
+              backgroundColor: `${group.color}30`,
+              transition: { duration: 0.2 },
             }}
           >
             {s}
-          </span>
+          </motion.span>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 export default function Skills3D() {
-  const [reduced, setReduced] = useState(false)
-
-  useEffect(() => {
-    if (typeof window.matchMedia !== 'function') return
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReduced(mq.matches)
-    const handler = (e) => setReduced(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
-      {groups.map((g) => (
-        <BoxCard key={g.title} group={g} reduced={reduced} />
+      {groups.map((g, i) => (
+        <BoxCard key={g.title} group={g} index={i} />
       ))}
-      <style>{`
-        @keyframes skill-pulse-key {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 4px rgba(168,85,247,0.05), inset 0 0 4px rgba(168,85,247,0.02); }
-          50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(168,85,247,0.2), inset 0 0 10px rgba(168,85,247,0.08); }
-        }
-        .skill-pulse {
-          animation: skill-pulse-key 2.5s ease-in-out infinite;
-        }
-        .skill-pulse:hover {
-          animation: none;
-        }
-      `}</style>
     </div>
   )
 }
