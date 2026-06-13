@@ -11,6 +11,7 @@ const repos = [
     lang: 'TypeScript',
     url: 'https://github.com/emmyjs/emmy-dom',
     color: 'from-purple-500 to-blue-500',
+    iframe: 'https://emmyjs.pages.dev',
   },
   {
     name: 'Kalmate',
@@ -19,6 +20,15 @@ const repos = [
     lang: 'Vue',
     url: 'https://github.com/eanorambuena/kalmate',
     color: 'from-blue-500 to-cyan-500',
+    image: '/projects/kalmate.png',
+  },
+  {
+    name: 'Sígueme',
+    descEs: 'App de rastreo GPS en tiempo real con React Native, Expo, Supabase y MapLibre. Compartí tu ubicación con quien quieras.',
+    descEn: 'Real-time GPS tracking app with React Native, Expo, Supabase and MapLibre. Share your location with anyone.',
+    lang: 'TypeScript',
+    url: 'https://github.com/eanorambuena/sigueme',
+    color: 'from-green-500 to-emerald-500',
   },
 ]
 ---
@@ -40,6 +50,19 @@ const repos = [
       {repos.map((repo, i) => (
         <AnimatedSection client:load delay={i * 0.1}>
           <Card href={repo.url} color={repo.color}>
+            {repo.iframe ? (
+              <div class="relative h-44 overflow-hidden bg-surface" transition:name={`${repo.name}-media`}>
+                <div class="w-[250%] h-[250%] origin-top-left scale-[0.4]">
+                  <iframe src={repo.iframe} title={repo.name} class="w-full h-full border-0" loading="lazy" style="pointer-events: none;" />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/60 to-transparent" />
+              </div>
+            ) : repo.image && (
+              <div class="relative h-44 overflow-hidden" transition:name={`${repo.name}-media`}>
+                <img src={repo.image} alt={repo.name} class="w-full h-full object-cover object-top" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/40 to-transparent" />
+              </div>
+            )}
             <div class="p-6 flex-1 flex flex-col">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
