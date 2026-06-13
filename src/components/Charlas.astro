@@ -1,0 +1,18 @@
+---
+import { es, en } from '../i18n/translations'
+import Section from '../components/Section.astro'
+import AnimatedSection from '../components/AnimatedSection.astro'
+import YouTubePlayer from '../components/YouTubePlayer.jsx'
+---
+
+<Section subtitle={es.charlas.subtitle} subtitleEn={en.charlas.subtitle} title={es.charlas.title} titleEn={en.charlas.title}>
+  <AnimatedSection client:load className="space-y-6">
+    <div class="aspect-video max-w-2xl mx-auto rounded-2xl overflow-hidden bg-surface-elevated/60 border border-surface/10">
+      <YouTubePlayer client:load videoId="WSNAkqKNt94" start={685} />
+    </div>
+    <p class="text-center text-sm text-muted">
+      <span data-lang="es">{es.charlas.desc}</span>
+      <span data-lang="en" hidden>{en.charlas.desc}</span>
+    </p>
+  </AnimatedSection>
+</Section>

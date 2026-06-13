@@ -81,16 +81,6 @@ const repos = [
       ))}
     </div>
 
-    <AnimatedSection client:load className="space-y-6 mb-12">
-      <div class="aspect-video max-w-2xl mx-auto rounded-2xl overflow-hidden bg-surface-elevated/60 border border-surface/10">
-        <div id="yt-player"></div>
-      </div>
-      <p class="text-center text-sm text-muted">
-        <span data-lang="es">Functional Web Components — Charla sobre emmy-dom en el ciclo de charlas de Open Source UC</span>
-        <span data-lang="en" hidden>Functional Web Components — Talk about emmy-dom at Open Source UC talk series</span>
-      </p>
-    </AnimatedSection>
-
     <div class="text-center">
       <a
         href="https://github.com/eanorambuena"
@@ -106,43 +96,4 @@ const repos = [
   </div>
 </section>
 
-<script>
-  let player = null
 
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('yt-player', {
-      height: '100%',
-      width: '100%',
-      videoId: 'WSNAkqKNt94',
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        start: 685,
-        enablejsapi: 1,
-      },
-      events: {
-        onReady: (e) => {
-          const stored = localStorage.getItem('portfolio-muted')
-          if (stored === 'false') {
-            e.target.unMute()
-          }
-        },
-      },
-    })
-  }
-
-  const tag = document.createElement('script')
-  tag.src = 'https://www.youtube.com/iframe_api'
-  const first = document.getElementsByTagName('script')[0]
-  first.parentNode.insertBefore(tag, first)
-
-  window.addEventListener('mutechange', (e) => {
-    if (player && player.unMute) {
-      if (e.detail.muted) {
-        player.mute()
-      } else {
-        player.unMute()
-      }
-    }
-  })
-</script>

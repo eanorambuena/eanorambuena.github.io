@@ -9,6 +9,7 @@ const links = [
   { labelKey: 'experience', href: '#experience' },
   { labelKey: 'projects', href: '#projects' },
   { labelKey: 'opensource', href: '#opensource' },
+  { labelKey: 'charlas', href: '#charlas' },
   { labelKey: 'skills', href: '#skills' },
   { labelKey: 'contact', href: '#contact' },
 ]

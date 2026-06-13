@@ -5,6 +5,7 @@ const es = {
     projects: 'Proyectos',
     skills: 'Skills',
     opensource: 'Open Source',
+    charlas: 'Charlas',
     contact: 'Contacto',
   },
   hero: {
@@ -61,6 +62,11 @@ const es = {
     desc: 'Herramientas que he construido y compartido con la comunidad.',
     viewAll: 'Ver todas las contribuciones en GitHub →',
   },
+  charlas: {
+    subtitle: 'Charlas',
+    title: 'Hablando en Público',
+    desc: 'Charla sobre Functional Web Components con emmy-dom en el ciclo de charlas de Open Source UC.',
+  },
   contact: {
     subtitle: 'Construyamos',
     title: 'Hablemos',
@@ -85,6 +91,7 @@ const en = {
     projects: 'Projects',
     skills: 'Skills',
     opensource: 'Open Source',
+    charlas: 'Talks',
     contact: 'Contact',
   },
   hero: {
@@ -140,6 +147,11 @@ const en = {
     title: 'Building in Public',
     desc: 'Tools I\'ve built and shared with the community.',
     viewAll: 'View all contributions on GitHub →',
+  },
+  charlas: {
+    subtitle: 'Talks',
+    title: 'Speaking in Public',
+    desc: 'Talk about Functional Web Components with emmy-dom at the Open Source UC talk series.',
   },
   contact: {
     subtitle: "Let's Build",
