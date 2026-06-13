@@ -85,7 +85,7 @@ const descES = {
               {p.iframe ? (
                 <div class="relative h-44 overflow-hidden bg-surface" transition:name={`${p.slug}-media`}>
                   <div class="w-[250%] h-[250%] origin-top-left scale-[0.4]">
-                    <iframe src={p.iframe} title={p.titleEs} class="w-full h-full border-0" loading="lazy" style="pointer-events: none;" />
+                    <iframe src={p.iframe} title={p.titleEs} class="w-full h-full border-0" loading="lazy" sandbox="allow-scripts" allow="geolocation 'none'" style="pointer-events: none;" />
                   </div>
                   <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/60 to-transparent" />
                 </div>
