@@ -1,0 +1,1 @@
+import{j as n}from"./jsx-runtime.u17CrQMm.js";import{m as e}from"./proxy.69OAftBd.js";function m({children:i,className:t="",delay:o=0}){return n.jsx(e.div,{initial:{opacity:0,y:40},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"-60px"},transition:{duration:.6,delay:o,ease:[.22,1,.36,1]},className:t,children:i})}export{m as default};
