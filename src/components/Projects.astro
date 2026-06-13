@@ -27,6 +27,7 @@ const projects = [
     descKey: 'peer',
     tags: ['Next.js', 'React', 'PostgreSQL', 'AWS'],
     links: [],
+    iframe: 'https://idsapp.vercel.app/',
     color: 'from-green-500 to-teal-500',
   },
   {
@@ -34,7 +35,8 @@ const projects = [
     titleEn: 'Kalmate: Financial Terminal',
     descKey: 'kalmate',
     tags: ['Nuxt 3', 'Vue', 'TypeScript', 'Yahoo Finance'],
-    links: [{ labelEs: 'Demo →', labelEn: 'Live Demo →', url: 'https://kalmate.app' }],
+    links: [{ labelEs: 'Demo →', labelEn: 'Live Demo →', url: 'https://kalmate.pages.dev' }],
+    iframe: 'https://kalmate.pages.dev',
     color: 'from-blue-500 to-cyan-500',
   },
 ]
@@ -74,7 +76,12 @@ const descES = {
       {projects.map((p, i) => (
           <AnimatedSection client:load delay={i * 0.1}>
             <div class="group relative bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/40 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
-              {p.image && (
+              {p.iframe ? (
+                <div class="relative h-44 overflow-hidden bg-black">
+                  <iframe src={p.iframe} title={p.titleEs} class="w-full h-full border-0" loading="lazy" style="scale: 0.4; transform-origin: 0 0; width: 250%; height: 250%; pointer-events: none;" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/60 to-transparent" />
+                </div>
+              ) : p.image && (
                 <div class="relative h-44 overflow-hidden">
                   <img src={p.image} alt={p.titleEs} class="w-full h-full object-cover object-top" loading="lazy" />
                   <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent" />
