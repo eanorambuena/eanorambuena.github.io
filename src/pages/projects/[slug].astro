@@ -14,79 +14,75 @@ const projects: Record<string, any> = {
   neuralworks: {
     titleEs: 'NeuralWorks — Gestión de Clientes',
     titleEn: 'NeuralWorks — Client Management',
-    tags: ['React', 'TypeScript', 'User Management', 'Dashboard'],
+    tags: ['React', 'TypeScript', 'Dashboard'],
     image: '/projects/neural.png',
     color: 'from-emerald-500 to-teal-500',
     featuresEs: [
-      'Acceso basado en roles (admin, manager, agente)',
-      'Actualizaciones en tiempo real vía WebSockets',
-      'Ciclo de vida completo del cliente: lead a conversión',
-      'Panel de métricas con gráficos interactivos',
-      'Gestión de documentos e historial de interacciones',
-      'Reportes exportables en PDF y CSV',
+      'Sistema de puntos y recompensas para usuarios',
+      'Revisión de historial de compras por usuario',
+      'Filtrado avanzado por correo electrónico',
     ],
     featuresEn: [
-      'Role-based access (admin, manager, agent)',
-      'Real-time updates via WebSockets',
-      'Full client lifecycle: lead to conversion',
-      'Metrics dashboard with interactive charts',
-      'Document management and interaction history',
-      'Exportable reports in PDF and CSV',
+      'Points and rewards system for users',
+      'Purchase history review per user',
+      'Advanced email filtering',
     ],
-    longDescEs: 'Dashboard de gestión de clientes y administración de usuarios construido para NeuralWorks. Sistema completo con acceso basado en roles, actualizaciones en tiempo real mediante WebSockets, y ciclo de vida completo del cliente desde lead hasta conversión. Incluye panel de métricas con gráficos interactivos, gestión de documentos, historial de interacciones y reportes exportables. Construido con React, TypeScript y arquitectura modular escalable.',
-    longDescEn: 'Client management and user administration dashboard built for NeuralWorks. Complete system with role-based access, real-time updates via WebSockets, and full client lifecycle from lead to conversion. Includes metrics dashboard with interactive charts, document management, interaction history, and exportable reports. Built with React, TypeScript, and scalable modular architecture.',
+    longDescEs: 'Dashboard de gestión de clientes construido para NeuralWorks. Incluye sistema de puntos, historial de compras por usuario y filtrado avanzado por correo electrónico. Construido con React, TypeScript y arquitectura modular.',
+    longDescEn: 'Client management dashboard built for NeuralWorks. Includes points system, per-user purchase history, and advanced email filtering. Built with React, TypeScript, and modular architecture.',
   },
   smartlokus: {
     titleEs: 'Smartlokus: GIS para Minería',
     titleEn: 'Smartlokus: GIS App for Mining',
-    tags: ['React', 'TypeScript', 'GIS', 'Vite', 'FastAPI', 'PostgreSQL'],
+    tags: ['React', 'TypeScript', 'GIS', 'Vite'],
     image: '/projects/emmyjs.png',
     color: 'from-orange-500 to-red-500',
+    testimonialEs: '"Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base." — Compañero de equipo',
+    testimonialEn: '"Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was." — Team member',
     featuresEs: [
-      'Visualización de 50,000+ puntos geoespaciales',
-      'Mapas interactivos con capas personalizables',
-      'Análisis espacial en tiempo real',
-      'Backend con FastAPI, Django y PostgreSQL/PostGIS',
-      'Herramientas de medición y filtros por atributos',
-      'Exportación de datos y visualización 3D del terreno',
+      'Frontend scaffolded desde cero, escalable y mantenible',
+      'Integración vía API con backend Python',
+      'Comunicación constante con equipo backend para integraciones',
+      'Visualización de datos geoespaciales con mapas interactivos',
+      'Arquitectura extensible para nuevas funcionalidades',
     ],
     featuresEn: [
-      '50,000+ geospatial data point visualization',
-      'Interactive maps with customizable layers',
-      'Real-time spatial analysis',
-      'Backend with FastAPI, Django and PostgreSQL/PostGIS',
-      'Measurement tools and attribute filters',
-      'Data export and 3D terrain visualization',
+      'Frontend scaffolded from scratch, scalable and maintainable',
+      'API integration with Python backend',
+      'Constant collaboration with backend team',
+      'Geospatial data visualization with interactive maps',
+      'Extensible architecture for future features',
     ],
-    longDescEs: 'Aplicación GIS de visualización de datos geoespaciales construida para Acofuz, utilizada por Procel y Antofagasta Minerals. Maneja 50,000+ puntos de datos geoespaciales con mapas interactivos, capas personalizables y análisis espacial en tiempo real. Integra backend completo con FastAPI, Django y PostgreSQL con PostGIS. Incluye herramientas de medición, filtros por atributos, exportación de datos y visualización 3D del terreno.',
-    longDescEn: 'GIS visualization app built for Acofuz, used by Procel and Antofagasta Minerals. Handles 50,000+ geospatial data points with interactive maps, customizable layers, and real-time spatial analysis. Complete backend integration with FastAPI, Django, and PostgreSQL with PostGIS. Includes measurement tools, attribute filters, data export, and 3D terrain visualization.',
+    longDescEs: 'Aplicación GIS de visualización de datos geoespaciales construida para Acofuz, utilizada por Procel y Antofagasta Minerals. Frontend desarrollado desde cero con React, TypeScript y Vite, con arquitectura escalable y mantenible. Integración vía API con backend Python para procesamiento de datos geoespaciales.',
+    longDescEn: 'GIS visualization app built for Acofuz, used by Procel and Antofagasta Minerals. Frontend built from scratch with React, TypeScript, and Vite, with scalable and maintainable architecture. API integration with Python backend for geospatial data processing.',
   },
   loopaas: {
     titleEs: 'Loopaas: Coevaluaciones Universitarias',
     titleEn: 'Loopaas: Peer Evaluation Platform',
-    tags: ['Next.js', 'React', 'PostgreSQL', 'AWS', 'TypeScript'],
+    tags: ['Next.js', 'React', 'PostgreSQL', 'Supabase', 'Auth0'],
     iframe: 'https://idsapp.vercel.app/',
     color: 'from-green-500 to-teal-500',
     featuresEs: [
-      '1,500+ estudiantes concurrentes',
-      'Reducción del 60% en tiempo de corrección manual',
-      'Rúbricas personalizables por evaluación',
-      'Feedback inmediato para estudiantes',
-      'Autenticación SSO integrada',
-      'Paneles de administración para profesores',
-      'Informes automáticos de rendimiento',
+      'Evaluaciones peer-to-peer anónimas',
+      'Crear, editar y eliminar criterios y sus porcentajes',
+      'Control de asistencia por escaneo QR',
+      'SSO con Supabase y Auth0',
+      'Generación de informes de notas descargables',
+      'SEO optimizado',
+      'Dashboard en tiempo real para profesores',
+      'Reemplazo de Google Forms + GScript que saturaba PCs con 16 GB RAM',
     ],
     featuresEn: [
-      '1,500+ concurrent students',
-      '60% reduction in manual grading time',
-      'Customizable rubrics per evaluation',
-      'Instant feedback for students',
-      'Integrated SSO authentication',
-      'Admin dashboards for professors',
-      'Automatic performance reports',
+      'Anonymous peer-to-peer evaluations',
+      'Create, edit, and delete criteria with custom percentages',
+      'QR code attendance tracking',
+      'SSO with Supabase and Auth0',
+      'Grade report generation',
+      'SEO optimized',
+      'Real-time dashboard for professors',
+      'Replaced Google Forms + GScript that saturated PCs with 16 GB RAM',
     ],
-    longDescEs: 'Plataforma de coevaluaciones universitarias que sirve a 1,500+ estudiantes concurrentes con dashboards en tiempo real. Redujo tiempo de corrección manual en 60% en 3+ universidades. Los estudiantes pueden evaluar a sus pares mediante rúbricas personalizables, recibir feedback inmediato y visualizar su progreso. Arquitectura escalable con Next.js, React, PostgreSQL y AWS. Incluye autenticación SSO, generación automática de informes y paneles de administración para profesores.',
-    longDescEn: 'Peer evaluation platform serving 1,500+ concurrent students with real-time dashboards. Cut manual grading time by 60% across 3+ universities. Students evaluate peers using customizable rubrics, receive instant feedback, and track their progress. Scalable architecture with Next.js, React, PostgreSQL, and AWS. Includes SSO authentication, automatic report generation, and admin dashboards for professors.',
+    longDescEs: 'Plataforma de coevaluaciones universitarias. Los estudiantes se evalúan entre sí de forma anónima con criterios personalizables. Incluye control de asistencia por QR, SSO con Supabase y Auth0, informes de notas descargables y SEO optimizado. Originalmente era un Google Form cuyo procesamiento con GScript saturaba cualquier PC, incluso con 16 GB de RAM. Construido con Next.js, React, PostgreSQL, Supabase y Auth0.',
+    longDescEn: 'Peer evaluation platform. Students evaluate each other anonymously with customizable criteria. Includes QR attendance tracking, SSO with Supabase and Auth0, downloadable grade reports, and SEO optimization. Originally a Google Form whose GScript processing saturated any PC, even with 16 GB of RAM. Built with Next.js, React, PostgreSQL, Supabase, and Auth0.',
   },
   kalmate: {
     titleEs: 'Kalmate: Terminal Financiera',
@@ -211,6 +207,20 @@ if (!project) {
           </div>
         </div>
       </AnimatedSection>
+
+      {project.testimonialEs && (
+        <AnimatedSection client:load delay={0.4}>
+          <div class="relative bg-surface-elevated/60 backdrop-blur-sm border border-accent/20 rounded-2xl overflow-hidden p-8 md:p-12 text-center">
+            <svg class="w-8 h-8 text-accent/40 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-lg md:text-xl text-primary italic leading-relaxed max-w-2xl mx-auto">
+              <span data-lang="es">{project.testimonialEs}</span>
+              <span data-lang="en" hidden>{project.testimonialEn}</span>
+            </p>
+          </div>
+        </AnimatedSection>
+      )}
     </div>
   </main>
 </Layout>
