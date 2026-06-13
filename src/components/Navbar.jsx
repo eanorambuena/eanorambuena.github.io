@@ -80,7 +80,7 @@ export default function Navbar() {
       }`}
     >
       <div className="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-accent to-accent-secondary z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="px-6 h-16 flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
