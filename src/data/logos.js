@@ -21,11 +21,11 @@ const osucSvgLight = `<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w
 export const logos = {
   'Antofagasta Minerals': {
     dark: 'https://expandemineria.cl/wp-content/uploads/2024/05/AMSA-Logo-300x94.png',
-    light: 'https://expandemineria.cl/wp-content/uploads/2024/05/AMSA-Logo-300x94.png',
+    light: 'https://www.aminerals.cl/images/default-source/logos-amsa/logo-amsa.svg',
   },
   Procel: {
     dark: 'https://www.procelservicios.cl/img/logo.png',
-    light: 'https://www.aminerals.cl/images/default-source/logos-amsa/logo-amsa.svg',
+    light: 'https://www.procelservicios.cl/img/logo.png',
   },
   Acofuz: {
     dark: '/acofuz-logo.png',
