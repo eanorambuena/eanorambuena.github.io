@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/useLang.jsx'
+import { useTheme } from '../hooks/useTheme.jsx'
 import IconButton from './IconButton'
 import AccessibilityMenu from './AccessibilityMenu'
 
@@ -25,21 +26,7 @@ export default function Navbar() {
     }
     return true
   })
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('portfolio-theme')
-      if (saved) return saved
-      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-    }
-    return 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('light', theme === 'light')
-    localStorage.setItem('portfolio-theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((prev) => prev === 'dark' ? 'light' : 'dark')
+  const { theme, toggleTheme } = useTheme()
 
   const toggleMute = () => {
     setMuted((prev) => {
