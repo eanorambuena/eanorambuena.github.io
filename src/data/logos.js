@@ -29,7 +29,7 @@ export const logos = {
   },
   Acofuz: {
     dark: '/acofuz-logo.png',
-    light: '/acofuz-logo.png',
+    light: 'https://media.licdn.com/dms/image/v2/D4E16AQGAVDXGweMITg/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1739238357931?e=2147483647&v=beta&t=T_2qiYgun5QZC7393VolA5x-Y99VedL_Lr9CQaicNAE',
   },
   NeuralWorks: {
     dark: '/nw-logo.svg',
