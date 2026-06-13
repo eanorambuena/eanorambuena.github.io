@@ -103,8 +103,8 @@ const es = {
       },
       {
         name: 'Marcelo Orellana',
-        role: 'Acofuz',
-        text: 'Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base.',
+        role: 'HoTS @ Acofuz',
+        text: 'Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base, gracias a Emma.',
       },
     ],
   },
@@ -215,8 +215,8 @@ const en = {
       },
       {
         name: 'Marcelo Orellana',
-        role: 'Acofuz',
-        text: 'Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was.',
+        role: 'HoTS @ Acofuz',
+        text: 'Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was, thanks to Emma.',
       },
     ],
   },
