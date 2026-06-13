@@ -1,6 +1,7 @@
+import { forwardRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 
-export default function IconButton({ onClick, ariaLabel, animateKey, children, className = '', ...rest }) {
+const IconButton = forwardRef(({ onClick, ariaLabel, animateKey, children, className = '', ...rest }, ref) => {
   const shared = {
     onClick,
     'aria-label': ariaLabel,
@@ -10,6 +11,7 @@ export default function IconButton({ onClick, ariaLabel, animateKey, children, c
   if (animateKey === undefined) {
     return (
       <button
+        ref={ref}
         {...shared}
         className={`p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 ${className}`}
       >
@@ -20,6 +22,7 @@ export default function IconButton({ onClick, ariaLabel, animateKey, children, c
 
   return (
     <button
+      ref={ref}
       {...shared}
       className={`p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative ${className}`}
     >
@@ -37,4 +40,6 @@ export default function IconButton({ onClick, ariaLabel, animateKey, children, c
       </AnimatePresence>
     </button>
   )
-}
+})
+
+export default IconButton
