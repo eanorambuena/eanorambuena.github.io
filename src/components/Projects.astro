@@ -1,5 +1,6 @@
 ---
 import { es, en } from '../i18n/translations'
+import AnimatedSection from './AnimatedSection.jsx'
 
 const projects = [
   {
@@ -51,7 +52,7 @@ const descES = {
 
 <section id="projects" class="py-36 px-4 relative bg-white/[.02]">
   <div class="max-w-5xl mx-auto">
-    <div data-reveal class="text-center mb-20">
+    <AnimatedSection client:load className="text-center mb-20">
       <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
         <span data-lang="es">{es.projects.subtitle}</span>
         <span data-lang="en" hidden>{en.projects.subtitle}</span>
@@ -64,10 +65,10 @@ const descES = {
         <span data-lang="es">{es.projects.desc}</span>
         <span data-lang="en" hidden>{en.projects.desc}</span>
       </p>
-    </div>
+    </AnimatedSection>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((p, i) => (
-          <div data-reveal data-delay={i * 100}>
+          <AnimatedSection client:load delay={i * 0.1}>
             <div class="group relative bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/40 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
               {p.image && (
                 <div class="relative h-44 overflow-hidden">
@@ -98,7 +99,7 @@ const descES = {
               </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       ))}
     </div>
   </div>

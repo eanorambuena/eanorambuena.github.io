@@ -1,5 +1,6 @@
 ---
 import { es, en } from '../i18n/translations'
+import AnimatedSection from './AnimatedSection.jsx'
 ---
 
 <section id="about" class="py-28 px-4 relative bg-white/[.02] overflow-hidden">
@@ -18,7 +19,7 @@ import { es, en } from '../i18n/translations'
   </div>
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent z-10" />
   <div class="max-w-3xl mx-auto relative z-10">
-    <div data-reveal class="text-center mb-12">
+    <AnimatedSection client:load className="text-center mb-12">
       <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
         <span data-lang="es">{es.about.subtitle}</span>
         <span data-lang="en" hidden>{en.about.subtitle}</span>
@@ -27,8 +28,8 @@ import { es, en } from '../i18n/translations'
         <span data-lang="es">{es.about.title}</span>
         <span data-lang="en" hidden>{en.about.title}</span>
       </h2>
-    </div>
-    <div data-reveal data-delay="100">
+    </AnimatedSection>
+    <AnimatedSection client:load delay={0.1}>
       <div class="bg-zinc-900/60 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 space-y-5 text-zinc-300 text-xl leading-relaxed max-w-2xl mx-auto">
         <p data-lang="es" set:html={es.about.p1} />
         <p data-lang="en" hidden set:html={en.about.p1} />
@@ -37,6 +38,6 @@ import { es, en } from '../i18n/translations'
         <p data-lang="es" set:html={es.about.p3} />
         <p data-lang="en" hidden set:html={en.about.p3} />
       </div>
-    </div>
+    </AnimatedSection>
   </div>
 </section>

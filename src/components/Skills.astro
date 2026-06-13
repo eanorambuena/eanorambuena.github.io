@@ -1,11 +1,12 @@
 ---
 import { es, en } from '../i18n/translations'
+import AnimatedSection from './AnimatedSection.jsx'
 import Skills3D from './Skills3D.jsx'
 ---
 
 <section id="skills" class="py-28 px-4 relative">
   <div class="max-w-5xl mx-auto">
-    <div data-reveal class="text-center mb-16">
+    <AnimatedSection client:load className="text-center mb-16">
       <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
         <span data-lang="es">{es.skills.subtitle}</span>
         <span data-lang="en" hidden>{en.skills.subtitle}</span>
@@ -14,7 +15,7 @@ import Skills3D from './Skills3D.jsx'
         <span data-lang="es">{es.skills.title}</span>
         <span data-lang="en" hidden>{en.skills.title}</span>
       </h2>
-    </div>
+    </AnimatedSection>
     <Skills3D client:visible />
   </div>
 </section>

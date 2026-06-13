@@ -198,16 +198,6 @@ const dateModified = new Date().toISOString().split('T')[0]
         outline-offset: 2px;
         border-radius: 8px;
       }
-      [data-reveal] {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      [data-reveal].visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
           animation-duration: 0.01ms !important;
@@ -301,26 +291,7 @@ const dateModified = new Date().toISOString().split('T')[0]
       window.addEventListener('langchange', function() {
         applyLang(localStorage.getItem('portfolio-lang') || 'es')
       })
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var delay = entry.target.getAttribute('data-delay') || 0
-              setTimeout(function() {
-                entry.target.classList.add('visible')
-              }, parseInt(delay, 10))
-              observer.unobserve(entry.target)
-            }
-          })
-        }, { rootMargin: '0px 0px -60px 0px' })
-        document.querySelectorAll('[data-reveal]').forEach(function(el) {
-          observer.observe(el)
-        })
-      } else {
-        document.querySelectorAll('[data-reveal]').forEach(function(el) {
-          el.classList.add('visible')
-        })
-      }
+
     })();
     </script>
   </body>

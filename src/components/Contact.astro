@@ -1,9 +1,10 @@
 ---
 import { es, en } from '../i18n/translations'
+import AnimatedSection from './AnimatedSection.jsx'
 ---
 
 <section id="contact" class="py-36 px-4 relative">
-  <div class="max-w-2xl mx-auto text-center">
+  <AnimatedSection client:load className="max-w-2xl mx-auto text-center">
     <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
       <span data-lang="es">{es.contact.subtitle}</span>
       <span data-lang="en" hidden>{en.contact.subtitle}</span>
@@ -43,5 +44,5 @@ import { es, en } from '../i18n/translations'
       <span data-lang="es">Basado en Chile · Open a remoto · Conectado al ecosistema startup chileno</span>
       <span data-lang="en" hidden>Based in Chile · Open to remote · Connected to the Chilean startup ecosystem</span>
     </p>
-  </div>
+  </AnimatedSection>
 </section>
