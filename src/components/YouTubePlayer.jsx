@@ -1,10 +1,9 @@
-import { onMounted, onUnmounted } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function YouTubePlayer({ videoId, start = 0 }) {
   const [playerId] = useState(`yt-player-${Math.random().toString(36).slice(2, 8)}`)
 
-  onMounted(() => {
+  useEffect(() => {
     if (!document.querySelector('#yt-iframe-api')) {
       const tag = document.createElement('script')
       tag.id = 'yt-iframe-api'
@@ -53,7 +52,7 @@ export default function YouTubePlayer({ videoId, start = 0 }) {
       window.removeEventListener('mutechange', onMuteChange)
       if (player?.destroy) player.destroy()
     }
-  })
+  }, [videoId, start, playerId])
 
   return <div id={playerId} className="w-full h-full" />
 }
