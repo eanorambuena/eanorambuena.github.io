@@ -1,6 +1,73 @@
 import { useState, useEffect, useRef } from 'react'
 import IconButton from './IconButton'
 
+function ToggleSwitch({ id, label, checked, onChange }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span id={id} className="text-sm text-primary flex-1">{label}</span>
+      <button
+        onClick={onChange}
+        className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer flex-shrink-0"
+        style={{ backgroundColor: checked ? 'var(--accent)' : 'var(--border)' }}
+        role="switch"
+        aria-checked={checked}
+        aria-labelledby={id}
+      >
+        <span className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200" style={{ transform: checked ? 'translateX(16px)' : 'translateX(1px)' }} />
+      </button>
+    </div>
+  )
+}
+
+function A11yControls({ reduceMotion, setReduceMotion, highContrast, setHighContrast, fontSize, setFontSize, onReset }) {
+  return (
+    <div className="space-y-4">
+      <ToggleSwitch
+        id="a11y-reduce-motion"
+        label="Reducir movimiento"
+        checked={reduceMotion}
+        onChange={() => setReduceMotion(!reduceMotion)}
+      />
+
+      <ToggleSwitch
+        id="a11y-high-contrast"
+        label="Alto contraste"
+        checked={highContrast}
+        onChange={() => setHighContrast(!highContrast)}
+      />
+
+      <div>
+        <p className="text-sm text-primary mb-2" id="a11y-font-label">Tamaño de fuente</p>
+        <div className="flex items-center gap-3" role="group" aria-labelledby="a11y-font-label">
+          <button
+            onClick={() => setFontSize(Math.max(70, fontSize - 10))}
+            className="p-1.5 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 text-sm font-bold"
+            aria-label="Reducir tamaño de fuente"
+          >
+            A−
+          </button>
+          <span className="text-xs text-muted font-mono w-8 text-center" aria-live="polite" aria-atomic="true" aria-label={`Tamaño actual: ${fontSize} por ciento`}>{fontSize}%</span>
+          <button
+            onClick={() => setFontSize(Math.min(150, fontSize + 10))}
+            className="p-1.5 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 text-sm font-bold"
+            aria-label="Aumentar tamaño de fuente"
+          >
+            A+
+          </button>
+        </div>
+      </div>
+
+      <button
+        onClick={onReset}
+        className="w-full text-xs text-muted hover:text-primary transition-colors py-1"
+        aria-label="Restablecer todos los ajustes de accesibilidad"
+      >
+        Restablecer
+      </button>
+    </div>
+  )
+}
+
 export default function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
   const panelRef = useRef(null)
@@ -63,6 +130,12 @@ export default function AccessibilityMenu() {
     return () => window.removeEventListener('keydown', handler)
   }, [open])
 
+  function handleReset() {
+    setReduceMotion(false)
+    setHighContrast(false)
+    setFontSize(100)
+  }
+
   return (
     <div className="relative">
       <IconButton
@@ -89,63 +162,15 @@ export default function AccessibilityMenu() {
             className="absolute right-0 top-full mt-2 z-50 w-64 bg-surface-elevated border border-surface/20 rounded-xl shadow-2xl shadow-black/30 p-4 space-y-4"
           >
             <h2 className="text-xs font-semibold text-muted uppercase tracking-wider">Accesibilidad</h2>
-
-            <div className="flex items-center justify-between">
-              <span id="a11y-reduce-motion" className="text-sm text-primary">Reducir movimiento</span>
-              <button
-                onClick={() => setReduceMotion(!reduceMotion)}
-                className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer flex-shrink-0"
-                style={{ backgroundColor: reduceMotion ? 'var(--accent)' : 'var(--border)' }}
-                role="switch"
-                aria-checked={reduceMotion}
-                aria-labelledby="a11y-reduce-motion"
-              >
-                <span className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200" style={{ transform: reduceMotion ? 'translateX(16px)' : 'translateX(1px)' }} />
-              </button>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <span id="a11y-high-contrast" className="text-sm text-primary">Alto contraste</span>
-              <button
-                onClick={() => setHighContrast(!highContrast)}
-                className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer flex-shrink-0"
-                style={{ backgroundColor: highContrast ? 'var(--accent)' : 'var(--border)' }}
-                role="switch"
-                aria-checked={highContrast}
-                aria-labelledby="a11y-high-contrast"
-              >
-                <span className="block w-3.5 h-3.5 rounded-full bg-white transition-transform duration-200" style={{ transform: highContrast ? 'translateX(16px)' : 'translateX(1px)' }} />
-              </button>
-            </div>
-
-            <div>
-              <p className="text-sm text-primary mb-2" id="a11y-font-label">Tamaño de fuente</p>
-              <div className="flex items-center gap-3" role="group" aria-labelledby="a11y-font-label">
-                <button
-                  onClick={() => setFontSize(Math.max(70, fontSize - 10))}
-                  className="p-1.5 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 text-sm font-bold"
-                  aria-label="Reducir tamaño de fuente"
-                >
-                  A−
-                </button>
-                <span className="text-xs text-muted font-mono w-8 text-center" aria-live="polite" aria-atomic="true" aria-label={`Tamaño actual: ${fontSize} por ciento`}>{fontSize}%</span>
-                <button
-                  onClick={() => setFontSize(Math.min(150, fontSize + 10))}
-                  className="p-1.5 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 text-sm font-bold"
-                  aria-label="Aumentar tamaño de fuente"
-                >
-                  A+
-                </button>
-              </div>
-            </div>
-
-            <button
-              onClick={() => { setReduceMotion(false); setHighContrast(false); setFontSize(100) }}
-              className="w-full text-xs text-muted hover:text-primary transition-colors py-1"
-              aria-label="Restablecer todos los ajustes de accesibilidad"
-            >
-              Restablecer
-            </button>
+            <A11yControls
+              reduceMotion={reduceMotion}
+              setReduceMotion={setReduceMotion}
+              highContrast={highContrast}
+              setHighContrast={setHighContrast}
+              fontSize={fontSize}
+              setFontSize={setFontSize}
+              onReset={handleReset}
+            />
           </div>
         </>
       )}
