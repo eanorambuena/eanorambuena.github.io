@@ -15,17 +15,6 @@ const repos = [
     color: 'from-purple-500 to-blue-500',
   },
   {
-    name: 'eanorambuena.github.io',
-    descEs: 'Este portfolio. Astro + React + Three.js + Tailwind v4. Diseño Bloomberg-style con tema oscuro/claro.',
-    descEn: 'This portfolio. Astro + React + Three.js + Tailwind v4. Bloomberg-style design with dark/light theme.',
-    lang: 'Astro',
-    stars: '12',
-    downloads: null,
-    npm: null,
-    url: 'https://github.com/eanorambuena/eanorambuena.github.io',
-    color: 'from-green-500 to-teal-500',
-  },
-  {
     name: 'Kalmate',
     descEs: 'Terminal financiera estilo Bloomberg con datos Yahoo Finance en tiempo real. Nuxt 3, TradingView charts, sin API keys.',
     descEn: 'Bloomberg-style financial terminal with real-time Yahoo Finance data. Nuxt 3, TradingView charts, no API keys needed.',
@@ -56,7 +45,7 @@ const repos = [
       </p>
     </AnimatedSection>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
       {repos.map((repo, i) => (
         <AnimatedSection client:load delay={i * 0.1}>
           <a
