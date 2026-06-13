@@ -35,7 +35,7 @@ const es = {
     desc: 'Experiencia en startups construyendo productos que escalan.',
     items: [
       {
-        role: 'Ingeniero de Software Fullstack',
+        role: 'Ingeniero de Software Fullstack Intern',
         desc: 'Arquitecté despliegue cross-platform con Expo/EAS y migré el UI de React Native Paper a Tamagui. Reduje costos de IA de $200 a $0 con Cursor Rules. Desplegué APIs serverless en AWS con SST y Pulumi.',
       },
       {
