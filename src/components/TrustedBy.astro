@@ -40,6 +40,21 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
                 class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain theme-filter`}
                 loading="lazy"
               />
+            ) : c.dark !== c.light ? (
+              <>
+                <img
+                  src={c.dark}
+                  alt={`${c.name} logo`}
+                  class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain dark-only`}
+                  loading="lazy"
+                />
+                <img
+                  src={c.light}
+                  alt={`${c.name} logo`}
+                  class={`${c.imgClass || 'max-h-[70%] max-w-[75%]'} object-contain light-only`}
+                  loading="lazy"
+                />
+              </>
             ) : (
               <img
                 src={c.dark}
