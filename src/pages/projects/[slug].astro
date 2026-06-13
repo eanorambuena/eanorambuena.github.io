@@ -41,8 +41,14 @@ const projects: Record<string, any> = {
     longDescEs: 'Trabajé como Fullstack Software Engineer en el proyecto HOP de NeuralWorks, un Point of Sale (POS) para Tablets. Lideré la migración de la UI legacy de React Native Paper a Tamagui, diseñé e implementé el módulo completo de inventario (cliente + servidor), y optimicé la infraestructura cloud con AWS, SST y Docker. También implementé Cursor Rules que redujeron los costos de IA de >$200/mes a $0, y establecí flujos de Atomic PRs para eliminar cuellos de botella en el equipo.',
     longDescEn: 'Worked as a Fullstack Software Engineer on NeuralWorks internal HOP project, a Point of Sale (POS) for Tablets. Led the UI migration from legacy React Native Paper to Tamagui, designed and implemented the complete inventory module (client + server), and optimized cloud infrastructure with AWS, SST and Docker. Also implemented Cursor Rules that reduced AI costs from >$200/mo to $0, and established Atomic PR workflows to eliminate team bottlenecks.',
     links: [],
-    testimonialEs: '"Emmanuel ha demostrado un muy buen desempeño durante su práctica. Trabaja con autonomía, entrega código de alta calidad y logra abordar tareas complejas. No se limita a implementar lo asignado: toma iniciativa para mejorar el código existente y crear componentes reutilizables que benefician a todo el equipo." — Sofía Schwarzenberg, Technical Product Manager @ NeuralWorks',
-    testimonialEn: '"Emmanuel demonstrated very good performance during his internship. He works autonomously, delivers high-quality code, and tackles complex tasks. He does not limit himself to implementing what is assigned: he takes initiative to improve existing code and create reusable components that benefit the entire team." — Sofía Schwarzenberg, Technical Product Manager @ NeuralWorks',
+    testimonials: [
+      {
+        author: 'Sofía Schwarzenberg',
+        role: 'Technical Product Manager @ NeuralWorks',
+        textEs: '"Emmanuel ha demostrado un muy buen desempeño durante su práctica. Trabaja con autonomía, entrega código de alta calidad y logra abordar tareas complejas. No se limita a implementar lo asignado: toma iniciativa para mejorar el código existente y crear componentes reutilizables que benefician a todo el equipo."',
+        textEn: '"Emmanuel demonstrated very good performance during his internship. He works autonomously, delivers high-quality code, and tackles complex tasks. He does not limit himself to implementing what is assigned: he takes initiative to improve existing code and create reusable components that benefit the entire team."',
+      },
+    ],
   },
   smartlokus: {
     titleEs: 'Smartlokus: GIS para Minería',
@@ -50,8 +56,20 @@ const projects: Record<string, any> = {
     tags: ['React', 'TypeScript', 'GIS', 'Vite'],
     iframe: 'https://procel.acofuz.com/login',
     color: 'from-orange-500 to-red-500',
-    testimonialEs: '"Emma es de las personas que cuando conversas con él te das cuenta que vale la pena. Tiene un gran conocimiento pero comparte su conocimiento con el resto del equipo, enseñando de una manera agradable y clara. Es de las personas que dice que hará algo y realmente lo cumple." — Jorge Araneda, Tech Lead @ Gosocket / Co-Founder Acofuz',
-    testimonialEn: '"Emma is one of those people that when you talk to him, you realize he is worth it. He has great knowledge but shares it with the rest of the team, teaching in a pleasant and clear way. He is the kind of person who says he will do something and actually does it." — Jorge Araneda, Tech Lead @ Gosocket / Co-Founder Acofuz',
+    testimonials: [
+      {
+        author: 'Jorge Araneda',
+        role: 'Tech Lead @ Gosocket / Co-Founder Acofuz',
+        textEs: '"Emma es de las personas que cuando conversas con él te das cuenta que vale la pena. Tiene un gran conocimiento pero comparte su conocimiento con el resto del equipo, enseñando de una manera agradable y clara. Es de las personas que dice que hará algo y realmente lo cumple."',
+        textEn: '"Emma is one of those people that when you talk to him, you realize he is worth it. He has great knowledge but shares it with the rest of the team, teaching in a pleasant and clear way. He is the kind of person who says he will do something and actually does it."',
+      },
+      {
+        author: 'Compañero de equipo',
+        role: 'Acofuz',
+        textEs: '"Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base."',
+        textEn: '"Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was."',
+      },
+    ],
     featuresEs: [
       'Frontend scaffolded desde cero, escalable y mantenible',
       'Integración vía API con backend Python',
@@ -194,15 +212,18 @@ if (!project) {
               <span data-lang="en" hidden>{project.longDescEn}</span>
             </p>
 
-            {project.testimonialEs && (
+            {project.testimonials && project.testimonials.length > 0 && (
               <div class="mt-10 p-8 rounded-2xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-accent/10 relative overflow-hidden">
                 <div class={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${project.color}`} />
                 <svg class="w-10 h-10 text-accent/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p class="text-xl md:text-2xl text-primary font-light leading-relaxed italic">
-                  <span data-lang="es">{project.testimonialEs}</span>
-                  <span data-lang="en" hidden>{project.testimonialEn}</span>
+                <p class="text-xl md:text-2xl text-primary font-light leading-relaxed italic mb-2">
+                  <span data-lang="es">{project.testimonials[0].textEs}</span>
+                  <span data-lang="en" hidden>{project.testimonials[0].textEn}</span>
+                </p>
+                <p class="text-sm text-muted font-medium">
+                  — {project.testimonials[0].author}{project.testimonials[0].role ? `, ${project.testimonials[0].role}` : ''}
                 </p>
               </div>
             )}
@@ -271,20 +292,23 @@ if (!project) {
             </AnimatedSection>
           )}
 
-          {project.testimonialEs && (
+          {project.testimonials && project.testimonials.length > 1 && project.testimonials.slice(1).map((t) => (
             <AnimatedSection client:load delay={0.25}>
               <div class="bg-surface-elevated/40 backdrop-blur-sm border border-border/50 rounded-2xl p-8 relative overflow-hidden">
                 <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.color}`} />
                 <svg class="w-8 h-8 text-accent/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
-                <p class="text-base text-primary italic leading-relaxed">
-                  <span data-lang="es">{project.testimonialEs}</span>
-                  <span data-lang="en" hidden>{project.testimonialEn}</span>
+                <p class="text-base text-primary italic leading-relaxed mb-2">
+                  <span data-lang="es">{t.textEs}</span>
+                  <span data-lang="en" hidden>{t.textEn}</span>
+                </p>
+                <p class="text-xs text-muted font-medium">
+                  — {t.author}{t.role ? `, ${t.role}` : ''}
                 </p>
               </div>
             </AnimatedSection>
-          )}
+          ))}
         </div>
 
         <div class="space-y-6">
