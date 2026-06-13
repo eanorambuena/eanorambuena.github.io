@@ -57,6 +57,6 @@ export const logos = {
   },
   'Aguas Andinas': {
     dark: 'https://www.aguasandinas.cl/o/aguas-home-theme/images/logo-aguasandinas.png',
-    light: 'https://www.aguasandinas.cl/o/aguas-home-theme/images/logo-aguasandinas.png',
+    light: 'https://camacoes.cl/wp-content/uploads/2021/08/logos-socios-aguas-andinas.png',
   },
 }
