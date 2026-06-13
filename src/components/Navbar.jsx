@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/useLang.jsx'
 import IconButton from './IconButton'
-import ToggleSwitch from './ToggleSwitch'
 
 const links = [
   { labelKey: 'about', href: '#about' },
@@ -143,15 +142,13 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-2">
-            <ToggleSwitch
-              checked={lang === 'en'}
-              onChange={() => setLang(lang === 'en' ? 'es' : 'en')}
-              ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
-              leftLabel="ES"
-              rightLabel="EN"
-            />
-          </div>
+          <IconButton
+            onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+            animateKey={lang}
+            ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
+          >
+            <span className="text-base">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
+          </IconButton>
           <IconButton
             onClick={toggleTheme}
             animateKey={theme}
@@ -169,6 +166,7 @@ export default function Navbar() {
           </IconButton>
           <IconButton
             onClick={toggleMute}
+            animateKey={muted}
             ariaLabel={muted ? 'Unmute sound' : 'Mute sound'}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -216,6 +214,13 @@ export default function Navbar() {
             ))}
             <div className="flex items-center gap-2 mt-2 self-start">
               <IconButton
+                onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
+                animateKey={lang}
+                ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
+              >
+                <span className="text-base">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
+              </IconButton>
+              <IconButton
                 onClick={toggleTheme}
                 animateKey={theme}
                 ariaLabel={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -230,13 +235,6 @@ export default function Navbar() {
                   </svg>
                 )}
               </IconButton>
-              <ToggleSwitch
-                checked={lang === 'en'}
-                onChange={() => setLang(lang === 'en' ? 'es' : 'en')}
-                ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
-                leftLabel="ES"
-                rightLabel="EN"
-              />
             </div>
         </div>
         </div>

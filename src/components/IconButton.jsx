@@ -26,10 +26,10 @@ export default function IconButton({ onClick, ariaLabel, animateKey, children, c
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={animateKey}
-          initial={{ rotate: -90, scale: 0, opacity: 0 }}
-          animate={{ rotate: 0, scale: 1, opacity: 1 }}
-          exit={{ rotate: 90, scale: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          initial={{ scale: 0.75, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.75, opacity: 0 }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
           className="flex"
         >
           {children}
