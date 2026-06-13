@@ -23,33 +23,15 @@ export default function YouTubePlayer({ videoId, start = 0 }) {
         width: '100%',
         videoId,
         playerVars: {
-          autoplay: 1,
-          mute: 1,
           start,
           enablejsapi: 1,
-        },
-        events: {
-          onReady: () => {
-            const stored = localStorage.getItem('portfolio-muted')
-            if (stored === 'false' && player?.unMute) {
-              player.unMute()
-            }
-          },
         },
       })
     }
 
-    function onMuteChange(e) {
-      if (player?.unMute) {
-        e.detail.muted ? player.mute() : player.unMute()
-      }
-    }
-
-    window.addEventListener('mutechange', onMuteChange)
     initPlayer()
 
     return () => {
-      window.removeEventListener('mutechange', onMuteChange)
       if (player?.destroy) player.destroy()
     }
   }, [videoId, start, playerId])
