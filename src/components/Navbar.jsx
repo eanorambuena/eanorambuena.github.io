@@ -19,9 +19,10 @@ export default function Navbar() {
   const [progress, setProgress] = useState(0)
   const [muted, setMuted] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('portfolio-muted') === 'true'
+      const stored = localStorage.getItem('portfolio-muted')
+      if (stored !== null) return stored === 'true'
     }
-    return false
+    return true
   })
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
