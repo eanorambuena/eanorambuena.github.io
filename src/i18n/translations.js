@@ -18,7 +18,7 @@ const es = {
     subtitle: 'Sobre mí',
     title: 'Builder en Chile',
     p1: "Soy un product engineer que desarrolla rápido y piensa en sistemas. He construido plataformas para <strong>1,500+ usuarios concurrentes</strong>, reducido costos de infraestructura de IA de <strong>$200/usuario a $0</strong>, y contribuido herramientas open source con <strong>1,000+ descargas totales en npm</strong>.",
-    p2: 'En la <strong>Pontificia Universidad Católica de Chile</strong>, diseñé una plataforma de evaluación entre pares que redujo el tiempo de corrección en 60%. En <strong>NeuralWorks</strong>, lideré una migración frontend que eliminó $200/mes por usuario en costos de IA.',
+    p2: 'En la <strong>Pontificia Universidad Católica de Chile</strong>, diseñé una plataforma de coevaluación que redujo el tiempo de corrección en 60%. En <strong>NeuralWorks</strong>, lideré una migración frontend que eliminó $200/mes por usuario en costos de IA.',
     p3: 'Conozco el ecosistema startup chileno — desde <strong>Platanus</strong> hasta <strong>Startup Chile</strong> — y busco un equipo fundador donde pueda ser dueño de productos, no solo de features. Desarrollo rápido, pienso en sistemas, y estoy construyendo hacia la próxima gran empresa tecnológica de Latinoamérica.',
   },
   projects: {
@@ -41,7 +41,7 @@ const es = {
       },
       {
         role: 'Arquitecto de Aplicaciones',
-        desc: 'Diseñé plataforma de evaluación entre pares para 1,500+ estudiantes UC con Next.js y React. Migré base de datos en Supabase y reduje tiempo de corrección manual en 60%.',
+        desc: 'Diseñé plataforma de coevaluación para 1,500+ estudiantes UC con Next.js y React. Migré base de datos en Supabase y reduje tiempo de corrección manual en 60%.',
       },
       {
         role: 'Coordinador General',
