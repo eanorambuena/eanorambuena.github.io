@@ -87,8 +87,13 @@ export default function Navbar() {
   }, [])
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setActive(`#${id}`)
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+      setActive(`#${id}`)
+    } else {
+      window.location.href = `/#${id}`
+    }
     setMenuOpen(false)
   }
 
@@ -123,7 +128,7 @@ export default function Navbar() {
             <a
               key={href}
               href={href}
-              onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
+              onClick={(e) => { if (document.getElementById(href.slice(1))) { e.preventDefault(); scrollTo(href.slice(1)) } }}
               aria-current={active === href ? 'page' : undefined}
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline ${
                 active === href
@@ -214,7 +219,7 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
-                onClick={(e) => { e.preventDefault(); scrollTo(href.slice(1)) }}
+                onClick={(e) => { if (document.getElementById(href.slice(1))) { e.preventDefault(); scrollTo(href.slice(1)) } }}
                 aria-current={active === href ? 'page' : undefined}
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all no-underline ${
                   active === href
