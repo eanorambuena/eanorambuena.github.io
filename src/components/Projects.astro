@@ -4,7 +4,8 @@ import AnimatedSection from './AnimatedSection.jsx'
 
 const projects = [
   {
-    title: 'NeuralWorks — Gestión de Clientes',
+    titleEs: 'NeuralWorks — Gestión de Clientes',
+    titleEn: 'NeuralWorks — Client Management',
     descKey: 'neural',
     image: '/projects/neural.png',
     tags: ['React', 'TypeScript', 'User Management', 'Dashboard'],
@@ -12,7 +13,8 @@ const projects = [
     color: 'from-emerald-500 to-teal-500',
   },
   {
-    title: 'GIS App for Mining',
+    titleEs: 'App GIS para Minería',
+    titleEn: 'GIS App for Mining',
     descKey: 'gis',
     image: '/projects/emmyjs.png',
     tags: ['React', 'TypeScript', 'GIS', 'Vite'],
@@ -20,14 +22,16 @@ const projects = [
     color: 'from-orange-500 to-red-500',
   },
   {
-    title: 'Peer Evaluation Platform',
+    titleEs: 'Evaluación entre Pares',
+    titleEn: 'Peer Evaluation Platform',
     descKey: 'peer',
     tags: ['Next.js', 'React', 'PostgreSQL', 'AWS'],
     links: [],
     color: 'from-green-500 to-teal-500',
   },
   {
-    title: 'Kalmate',
+    titleEs: 'Kalmate',
+    titleEn: 'Kalmate',
     descKey: 'kalmate',
     tags: ['Nuxt 3', 'Vue', 'TypeScript', 'Yahoo Finance'],
     links: [{ labelEs: 'Demo →', labelEn: 'Live Demo →', url: 'https://kalmate.app' }],
@@ -72,14 +76,17 @@ const descES = {
             <div class="group relative bg-zinc-900/60 backdrop-blur-sm border border-white/10 hover:border-purple-500/40 rounded-2xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 overflow-hidden">
               {p.image && (
                 <div class="relative h-44 overflow-hidden">
-                  <img src={p.image} alt={p.title} class="w-full h-full object-cover object-top" loading="lazy" />
+                  <img src={p.image} alt={p.titleEs} class="w-full h-full object-cover object-top" loading="lazy" />
                   <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent" />
                 </div>
               )}
               <div class={`absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b ${p.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
             <div class="p-6">
               <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10 transition-all duration-500 pointer-events-none" />
-              <h3 class="text-2xl font-bold text-white mb-2 relative">{p.title}</h3>
+              <h3 class="text-2xl font-bold text-white mb-2 relative">
+                <span data-lang="es">{p.titleEs}</span>
+                <span data-lang="en" hidden>{p.titleEn}</span>
+              </h3>
               <p class="text-zinc-300 text-lg mb-4 leading-relaxed relative">
                 <span data-lang="es">{descES[p.descKey]}</span>
                 <span data-lang="en" hidden>{descEN[p.descKey]}</span>
