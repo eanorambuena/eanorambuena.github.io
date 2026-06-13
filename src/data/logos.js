@@ -32,7 +32,7 @@ export const logos = {
     light: '/acofuz-light.png',
     imgClass: 'max-h-[110%] max-w-[110%]',
     darkImgClass: 'max-h-[70%] max-w-[70%]',
-    lightImgClass: 'max-h-[150%] max-w-[150%]',
+    lightImgClass: 'max-h-[180%] max-w-[180%]',
   },
   NeuralWorks: {
     dark: '/nw-logo.svg',
@@ -63,6 +63,6 @@ export const logos = {
     dark: 'https://www.aguasandinas.cl/o/aguas-home-theme/images/logo-aguasandinas.png',
     light: '/aguas-light.png',
     imgClass: 'max-h-[90%] max-w-[90%]',
-    lightImgClass: 'max-h-[150%] max-w-[150%]',
+    lightImgClass: 'max-h-[120%] max-w-[120%]',
   },
 }

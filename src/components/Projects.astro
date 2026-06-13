@@ -109,14 +109,6 @@ const descES = {
                   <Badge>{tag}</Badge>
                 ))}
               </div>
-              <div class="flex flex-wrap gap-3 relative">
-                {p.links.map((l) => (
-                  <a href={l.url} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent transition-colors font-medium" onclick="event.stopPropagation()">
-                    <span data-lang="es">{l.labelEs}</span>
-                    <span data-lang="en" hidden>{l.labelEn}</span>
-                  </a>
-                ))}
-              </div>
             </div>
           </Card>
         </AnimatedSection>
