@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.jsx'
 import { es, en } from '../i18n/translations'
 import 'flag-icons/css/flag-icons.min.css'
+import ClientRouter from 'astro/components/ClientRouter.astro'
 const site = Astro.site
 const siteUrl = site?.origin || 'https://eanorambuena.github.io'
 const ogImage = `${siteUrl}/og-image.svg`
@@ -35,6 +36,7 @@ const dateModified = new Date().toISOString().split('T')[0]
     <link rel="me" href="https://github.com/eanorambuena" />
     <link rel="me" href="https://linkedin.com/in/eanorambuena" />
     <link rel="me" href="https://x.com/eanorambuena" />
+    <ClientRouter />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

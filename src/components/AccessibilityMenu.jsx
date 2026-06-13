@@ -44,7 +44,9 @@ export default function AccessibilityMenu() {
         ariaLabel="Accessibility menu"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+          <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.5 9v5h3l2.5 5h-2l-2-4H11l-1 2H8l2-4-1-4z" />
         </svg>
       </IconButton>
       {open && (
