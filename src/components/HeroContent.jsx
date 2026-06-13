@@ -71,7 +71,7 @@ export default function HeroContent() {
       >
         <button
           onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-primary transition-all duration-300"
+          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-white transition-all duration-300"
         >
           {t.hero.btnProjects}
         </button>
