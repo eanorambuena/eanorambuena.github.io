@@ -51,7 +51,7 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
                 <img
                   src={c.light}
                   alt={`${c.name} logo`}
-                  class={`${c.imgClass || 'max-h-[90%] max-w-[90%]'} object-contain light-only`}
+                  class={`${c.lightImgClass || c.imgClass || 'max-h-[90%] max-w-[90%]'} object-contain light-only`}
                   loading="lazy"
                 />
               </>
