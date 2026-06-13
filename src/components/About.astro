@@ -1,6 +1,7 @@
 ---
 import { es, en } from '../i18n/translations'
 import AnimatedSection from './AnimatedSection.jsx'
+import CVDialog from './CVDialog.jsx'
 ---
 
 <section id="about" class="py-28 px-4 relative bg-surface-white/[.02] overflow-hidden">
@@ -30,13 +31,25 @@ import AnimatedSection from './AnimatedSection.jsx'
       </h2>
     </AnimatedSection>
     <AnimatedSection client:load delay={0.1}>
-      <div class="bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 rounded-2xl p-8 md:p-10 space-y-5 text-secondary text-xl leading-relaxed max-w-2xl mx-auto">
+      <div class="bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 rounded-2xl p-8 md:p-10 space-y-5 text-secondary text-xl leading-relaxed max-w-2xl mx-auto about-text">
         <p data-lang="es" set:html={es.about.p1} />
         <p data-lang="en" hidden set:html={en.about.p1} />
         <p data-lang="es" set:html={es.about.p2} />
         <p data-lang="en" hidden set:html={en.about.p2} />
         <p data-lang="es" set:html={es.about.p3} />
         <p data-lang="en" hidden set:html={en.about.p3} />
+        <div class="pt-4 flex flex-wrap gap-4 items-center">
+          <span class="text-xs text-muted font-mono tracking-widest uppercase">
+            <span data-lang="es">{es.about.educationLabel}</span>
+            <span data-lang="en" hidden>{en.about.educationLabel}</span>
+          </span>
+          <span class="text-primary font-semibold">Computer Engineering</span>
+          <span class="text-muted">·</span>
+          <span class="text-secondary">Pontificia Universidad Católica de Chile</span>
+        </div>
+        <div class="pt-2">
+          <CVDialog client:load labelEs={es.about.downloadCV} labelEn={en.about.downloadCV} />
+        </div>
       </div>
     </AnimatedSection>
   </div>

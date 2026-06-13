@@ -60,7 +60,7 @@ export default function HeroContent() {
           transition={{ duration: 0.4, delay: 0.6 }}
         >
           {t.hero.desc}
-          <span className="text-accent/80"> {t.hero.descAccent}</span>
+          <span className="hero-metric"> {t.hero.descAccent}</span>
         </motion.p>
       </div>
       <motion.div

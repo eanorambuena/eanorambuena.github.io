@@ -246,6 +246,25 @@ const dateModified = new Date().toISOString().split('T')[0]
         -webkit-text-fill-color: transparent;
       }
 
+      .metric {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.1em;
+      }
+      .hero-metric {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .about-text strong {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      @media (max-width: 768px) {
+        .metric, .about-text strong {
+          font-size: 1em;
+        }
+      }
+
       *:focus-visible {
         outline: 2px solid var(--accent);
         outline-offset: 2px;
