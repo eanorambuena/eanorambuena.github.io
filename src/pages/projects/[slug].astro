@@ -1,0 +1,216 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import AnimatedSection from '../../components/AnimatedSection.jsx'
+import { es, en } from '../../i18n/translations'
+
+export async function getStaticPaths() {
+  const slugs = ['neuralworks', 'smartlokus', 'loopaas', 'kalmate']
+  return slugs.map((slug) => ({ params: { slug } }))
+}
+
+const { slug } = Astro.params
+
+const projects: Record<string, any> = {
+  neuralworks: {
+    titleEs: 'NeuralWorks — Gestión de Clientes',
+    titleEn: 'NeuralWorks — Client Management',
+    tags: ['React', 'TypeScript', 'User Management', 'Dashboard'],
+    image: '/projects/neural.png',
+    color: 'from-emerald-500 to-teal-500',
+    featuresEs: [
+      'Acceso basado en roles (admin, manager, agente)',
+      'Actualizaciones en tiempo real vía WebSockets',
+      'Ciclo de vida completo del cliente: lead a conversión',
+      'Panel de métricas con gráficos interactivos',
+      'Gestión de documentos e historial de interacciones',
+      'Reportes exportables en PDF y CSV',
+    ],
+    featuresEn: [
+      'Role-based access (admin, manager, agent)',
+      'Real-time updates via WebSockets',
+      'Full client lifecycle: lead to conversion',
+      'Metrics dashboard with interactive charts',
+      'Document management and interaction history',
+      'Exportable reports in PDF and CSV',
+    ],
+    longDescEs: 'Dashboard de gestión de clientes y administración de usuarios construido para NeuralWorks. Sistema completo con acceso basado en roles, actualizaciones en tiempo real mediante WebSockets, y ciclo de vida completo del cliente desde lead hasta conversión. Incluye panel de métricas con gráficos interactivos, gestión de documentos, historial de interacciones y reportes exportables. Construido con React, TypeScript y arquitectura modular escalable.',
+    longDescEn: 'Client management and user administration dashboard built for NeuralWorks. Complete system with role-based access, real-time updates via WebSockets, and full client lifecycle from lead to conversion. Includes metrics dashboard with interactive charts, document management, interaction history, and exportable reports. Built with React, TypeScript, and scalable modular architecture.',
+  },
+  smartlokus: {
+    titleEs: 'Smartlokus: GIS para Minería',
+    titleEn: 'Smartlokus: GIS App for Mining',
+    tags: ['React', 'TypeScript', 'GIS', 'Vite', 'FastAPI', 'PostgreSQL'],
+    image: '/projects/emmyjs.png',
+    color: 'from-orange-500 to-red-500',
+    featuresEs: [
+      'Visualización de 50,000+ puntos geoespaciales',
+      'Mapas interactivos con capas personalizables',
+      'Análisis espacial en tiempo real',
+      'Backend con FastAPI, Django y PostgreSQL/PostGIS',
+      'Herramientas de medición y filtros por atributos',
+      'Exportación de datos y visualización 3D del terreno',
+    ],
+    featuresEn: [
+      '50,000+ geospatial data point visualization',
+      'Interactive maps with customizable layers',
+      'Real-time spatial analysis',
+      'Backend with FastAPI, Django and PostgreSQL/PostGIS',
+      'Measurement tools and attribute filters',
+      'Data export and 3D terrain visualization',
+    ],
+    longDescEs: 'Aplicación GIS de visualización de datos geoespaciales construida para Acofuz, utilizada por Procel y Antofagasta Minerals. Maneja 50,000+ puntos de datos geoespaciales con mapas interactivos, capas personalizables y análisis espacial en tiempo real. Integra backend completo con FastAPI, Django y PostgreSQL con PostGIS. Incluye herramientas de medición, filtros por atributos, exportación de datos y visualización 3D del terreno.',
+    longDescEn: 'GIS visualization app built for Acofuz, used by Procel and Antofagasta Minerals. Handles 50,000+ geospatial data points with interactive maps, customizable layers, and real-time spatial analysis. Complete backend integration with FastAPI, Django, and PostgreSQL with PostGIS. Includes measurement tools, attribute filters, data export, and 3D terrain visualization.',
+  },
+  loopaas: {
+    titleEs: 'Loopaas: Coevaluaciones Universitarias',
+    titleEn: 'Loopaas: Peer Evaluation Platform',
+    tags: ['Next.js', 'React', 'PostgreSQL', 'AWS', 'TypeScript'],
+    iframe: 'https://idsapp.vercel.app/',
+    color: 'from-green-500 to-teal-500',
+    featuresEs: [
+      '1,500+ estudiantes concurrentes',
+      'Reducción del 60% en tiempo de corrección manual',
+      'Rúbricas personalizables por evaluación',
+      'Feedback inmediato para estudiantes',
+      'Autenticación SSO integrada',
+      'Paneles de administración para profesores',
+      'Informes automáticos de rendimiento',
+    ],
+    featuresEn: [
+      '1,500+ concurrent students',
+      '60% reduction in manual grading time',
+      'Customizable rubrics per evaluation',
+      'Instant feedback for students',
+      'Integrated SSO authentication',
+      'Admin dashboards for professors',
+      'Automatic performance reports',
+    ],
+    longDescEs: 'Plataforma de coevaluaciones universitarias que sirve a 1,500+ estudiantes concurrentes con dashboards en tiempo real. Redujo tiempo de corrección manual en 60% en 3+ universidades. Los estudiantes pueden evaluar a sus pares mediante rúbricas personalizables, recibir feedback inmediato y visualizar su progreso. Arquitectura escalable con Next.js, React, PostgreSQL y AWS. Incluye autenticación SSO, generación automática de informes y paneles de administración para profesores.',
+    longDescEn: 'Peer evaluation platform serving 1,500+ concurrent students with real-time dashboards. Cut manual grading time by 60% across 3+ universities. Students evaluate peers using customizable rubrics, receive instant feedback, and track their progress. Scalable architecture with Next.js, React, PostgreSQL, and AWS. Includes SSO authentication, automatic report generation, and admin dashboards for professors.',
+  },
+  kalmate: {
+    titleEs: 'Kalmate: Terminal Financiera',
+    titleEn: 'Kalmate: Financial Terminal',
+    tags: ['Nuxt 3', 'Vue', 'TypeScript', 'Yahoo Finance', 'TradingView'],
+    iframe: 'https://kalmate.pages.dev',
+    color: 'from-blue-500 to-cyan-500',
+    featuresEs: [
+      'Datos de mercado en tiempo real vía Yahoo Finance API',
+      'Dashboard categorizado: Equities, Forex, Bonds, Commodities, Crypto',
+      'Portafolio con seguimiento de P&L',
+      'Alertas inteligentes con notificaciones del navegador',
+      'Screener con filtros, presets y ordenamiento',
+      'Noticias financieras integradas',
+      'Cacheo inteligente del servidor (30s quotes, 5min history)',
+      'Atajos de teclado para navegación eficiente',
+    ],
+    featuresEn: [
+      'Real-time market data via Yahoo Finance API',
+      'Categorized dashboard: Equities, Forex, Bonds, Commodities, Crypto',
+      'Portfolio with P&L tracking',
+      'Smart alerts with browser notifications',
+      'Screener with filters, presets, and sorting',
+      'Integrated financial news',
+      'Intelligent server caching (30s quotes, 5min history)',
+      'Keyboard shortcuts for efficient navigation',
+    ],
+    longDescEs: 'Terminal financiera estilo Bloomberg con datos de mercado en tiempo real vía Yahoo Finance API. Construido con Nuxt 3, Vue 3, TypeScript y TradingView charts. Dashboard categorizado (Equities, Forex, Bonds, Commodities, Crypto), portafolio con P&L, alertas inteligentes con notificaciones del navegador, screener con filtros y presets, y noticias financieras. Cacheo inteligente del servidor y atajos de teclado para navegación eficiente. Sin necesidad de API keys.',
+    longDescEn: 'Bloomberg-style financial terminal with real-time market data via Yahoo Finance API. Built with Nuxt 3, Vue 3, TypeScript, and TradingView charts. Categorized dashboard (Equities, Forex, Bonds, Commodities, Crypto), portfolio with P&L tracking, smart alerts with browser notifications, screener with filters and presets, and financial news. Intelligent server caching and keyboard shortcuts for efficient navigation. No API keys required.',
+  },
+}
+
+const project = projects[slug as keyof typeof projects]
+
+if (!project) {
+  return Astro.redirect('/404')
+}
+---
+
+<Layout>
+  <main id="main-content" class="relative z-10 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 py-24 md:py-32">
+      <AnimatedSection client:load className="mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors font-mono mb-12 group"
+        >
+          <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span data-lang="es">Volver al inicio</span>
+          <span data-lang="en" hidden>Back to home</span>
+        </a>
+      </AnimatedSection>
+
+      <AnimatedSection client:load delay={0.1}>
+        <div class="relative bg-surface-elevated/60 backdrop-blur-sm border border-border rounded-2xl overflow-hidden mb-12">
+          <div class={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${project.color}`} />
+          <div class="p-8 md:p-12">
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag) => (
+                <span class="text-sm px-3 py-1.5 rounded-full bg-accent/20 text-primary border border-accent/20">{tag}</span>
+              ))}
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold text-primary mb-6">
+              <span data-lang="es">{project.titleEs}</span>
+              <span data-lang="en" hidden>{project.titleEn}</span>
+            </h1>
+            <p class="text-secondary text-lg md:text-xl leading-relaxed max-w-3xl">
+              <span data-lang="es">{project.longDescEs}</span>
+              <span data-lang="en" hidden>{project.longDescEn}</span>
+            </p>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection client:load delay={0.2}>
+        <div class="relative bg-surface-elevated/60 backdrop-blur-sm border border-border rounded-2xl overflow-hidden mb-12">
+          {project.iframe ? (
+            <div class="relative w-full" style="aspect-ratio: 16/10;">
+              <iframe
+                src={project.iframe}
+                title={project.titleEs}
+                class="w-full h-full border-0"
+                loading="lazy"
+                style="pointer-events: none;"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/20 to-transparent pointer-events-none" />
+            </div>
+          ) : (
+            <div class="relative w-full" style="aspect-ratio: 16/10;">
+              <img
+                src={project.image}
+                alt={project.titleEs}
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/20 to-transparent pointer-events-none" />
+            </div>
+          )}
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection client:load delay={0.3}>
+        <div class="relative bg-surface-elevated/60 backdrop-blur-sm border border-border rounded-2xl overflow-hidden">
+          <div class="p-8 md:p-12">
+            <h2 class="text-2xl font-bold text-primary mb-8">
+              <span data-lang="es">Características</span>
+              <span data-lang="en" hidden>Features</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {project.featuresEs.map((feat, i) => (
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-surface/50 border border-border/50">
+                  <div class={`w-2 h-2 mt-2 rounded-full bg-gradient-to-b ${project.color} shrink-0`} />
+                  <span class="text-secondary text-base">
+                    <span data-lang="es">{feat}</span>
+                    <span data-lang="en" hidden>{project.featuresEn[i]}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </main>
+</Layout>

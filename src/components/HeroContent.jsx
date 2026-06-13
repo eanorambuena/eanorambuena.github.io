@@ -21,7 +21,7 @@ const socialLinks = [
 ]
 
 const titleWords = [
-  { text: 'Emmanuel', className: 'text-white' },
+  { text: 'Emmanuel', className: 'text-primary' },
   { text: 'Norambuena', className: 'gradient-text' },
 ]
 
@@ -32,7 +32,7 @@ export default function HeroContent() {
     <div className="space-y-8">
       <div className="space-y-4">
         <motion.p
-          className="text-purple-400 font-mono text-sm tracking-widest uppercase"
+          className="text-accent font-mono text-sm tracking-widest uppercase"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
@@ -54,13 +54,13 @@ export default function HeroContent() {
           ))}
         </h1>
         <motion.p
-          className="text-2xl text-zinc-300 leading-relaxed max-w-lg"
+          className="text-2xl text-secondary leading-relaxed max-w-lg"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
         >
           {t.hero.desc}
-          <span className="text-purple-400/80"> {t.hero.descAccent}</span>
+          <span className="text-accent/80"> {t.hero.descAccent}</span>
         </motion.p>
       </div>
       <motion.div
@@ -71,19 +71,19 @@ export default function HeroContent() {
       >
         <button
           onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-3.5 bg-purple-600 hover:bg-purple-500 rounded-xl font-medium text-white transition-all duration-300"
+          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-primary transition-all duration-300"
         >
           {t.hero.btnProjects}
         </button>
         <a
           href="mailto:eanorambuena@uc.cl"
-          className="px-8 py-3.5 border border-purple-500/30 hover:border-purple-500/60 rounded-xl font-medium text-zinc-300 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
+          className="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95"
         >
           {t.hero.btnContact}
         </a>
       </motion.div>
       <motion.div
-        className="flex gap-5 text-zinc-300 pt-2"
+        className="flex gap-5 text-secondary pt-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 1.0 }}
@@ -94,7 +94,7 @@ export default function HeroContent() {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-300 hover:text-purple-400 hover:scale-110 transition-all duration-200"
+            className="text-secondary hover:text-accent hover:scale-110 transition-all duration-200"
             aria-label={link.label}
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

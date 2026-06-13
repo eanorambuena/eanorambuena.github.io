@@ -26,7 +26,7 @@ const companies = [
 
 <section class="py-28 overflow-hidden">
   <div class="text-center mb-12">
-    <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-3">
+    <p class="text-accent font-mono text-sm tracking-widest uppercase mb-3">
       <span data-lang="es">{es.trustedBy.subtitle}</span>
       <span data-lang="en" hidden>{en.trustedBy.subtitle}</span>
     </p>
@@ -41,12 +41,12 @@ const companies = [
       {[...companies, ...companies].map((c, i) => (
         <div
           key={i}
-          class={`flex-shrink-0 w-48 h-28 ${i < companies.length * 2 - 1 ? 'mr-8' : ''} bg-zinc-900/60 backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center px-4 hover:border-purple-500/30 hover:bg-zinc-900/80 transition-all duration-300 relative overflow-hidden`}
+          class={`flex-shrink-0 w-48 h-28 ${i < companies.length * 2 - 1 ? 'mr-8' : ''} bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 rounded-2xl flex items-center justify-center px-4 hover:border-accent/30 hover:bg-surface-elevated/80 transition-all duration-300 relative overflow-hidden`}
         >
-          <div class="absolute top-0 left-4 right-4 h-0.5 bg-gradient-to-r from-purple-500/40 to-blue-500/40 rounded-full" />
+          <div class="absolute top-0 left-4 right-4 h-0.5 bg-gradient-to-r from-accent/40 to-accent-secondary/40 rounded-full" />
           {
             c.inline ? (
-              <div class={`text-white w-full h-full flex items-center justify-center ${c.inlineClass || 'p-5'}`} set:html={c.logo} />
+              <div class={`text-primary w-full h-full flex items-center justify-center ${c.inlineClass || 'p-5'}`} set:html={c.logo} />
             ) : (
               <img
                 src={c.logo}

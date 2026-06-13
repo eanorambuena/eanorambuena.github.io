@@ -41,9 +41,9 @@ function BoxCard({ group, index }) {
 
   return (
     <motion.div
-      className="relative flex flex-col items-center py-5 px-3 rounded-2xl bg-zinc-900/40 border cursor-pointer select-none"
+      className="relative flex flex-col items-center py-5 px-3 rounded-2xl bg-surface-elevated/40 border cursor-pointer select-none"
       style={{
-        borderColor: isHovered ? `${group.color}44` : 'rgba(255,255,255,0.05)',
+        borderColor: isHovered ? `${group.color}44` : 'var(--border)',
       }}
       animate={floatAnimation(index)}
       whileHover={{
@@ -78,7 +78,7 @@ function BoxCard({ group, index }) {
       <motion.span
         className="text-xs font-bold uppercase tracking-[0.18em] mb-2"
         animate={{
-          color: isHovered ? group.color : '#71717a',
+          color: isHovered ? group.color : 'var(--muted)',
           textShadow: isHovered ? `0 0 20px ${group.color}44` : 'none',
         }}
         transition={{ duration: 0.3 }}
@@ -96,7 +96,7 @@ function BoxCard({ group, index }) {
               opacity: 1,
               y: 0,
               scale: 1,
-              color: '#e4e4e7',
+              color: 'var(--primary)',
               backgroundColor: `${group.color}18`,
               border: `1px solid ${group.color}44`,
             }}

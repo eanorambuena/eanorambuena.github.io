@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/useLang.jsx'
+import { AnimatePresence, motion } from 'motion/react'
 
 const links = [
   { labelKey: 'about', href: '#about' },
@@ -22,6 +23,21 @@ export default function Navbar() {
     }
     return false
   })
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('portfolio-theme')
+      if (saved) return saved
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+    }
+    return 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('light', theme === 'light')
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme((prev) => prev === 'dark' ? 'light' : 'dark')
 
   const toggleMute = () => {
     setMuted((prev) => {
@@ -80,11 +96,11 @@ export default function Navbar() {
     <nav
       class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/50'
-          : 'bg-black/40'
+          ? 'bg-surface/80 backdrop-blur-xl border-b border-surface/10 shadow-lg shadow-surface/50'
+          : 'bg-surface/40'
       }`}
     >
-      <div className="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
+      <div className="fixed top-16 left-0 h-0.5 bg-gradient-to-r from-accent to-accent-secondary z-50 transition-all duration-150" style={{ width: `${progress}%` }} aria-hidden="true" />
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button
@@ -100,7 +116,7 @@ export default function Navbar() {
               />
             </div>
           </button>
-          <span className="hidden sm:block text-sm font-semibold text-zinc-200">Emmanuel Norambuena</span>
+          <span className="hidden sm:block text-sm font-semibold text-primary">Emmanuel Norambuena</span>
         </div>
         <div className="hidden md:flex items-center gap-1">
           {links.map(({ labelKey, href }) => (
@@ -111,8 +127,8 @@ export default function Navbar() {
               aria-current={active === href ? 'page' : undefined}
               class={`px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline ${
                 active === href
-                  ? 'text-white bg-white/10'
-                  : 'text-zinc-300 hover:text-white hover:bg-white/5'
+                  ? 'text-primary bg-surface-white/10'
+                  : 'text-secondary hover:text-primary hover:bg-surface-white/5'
               }`}
             >
               {t.nav[labelKey]}
@@ -121,11 +137,11 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-3">
           <div className="hidden md:flex items-center gap-2">
-            <span className="text-xs font-mono font-semibold text-zinc-400">ES</span>
+            <span className="text-xs font-mono font-semibold text-muted">ES</span>
             <button
               onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
               className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
-              style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
+              style={{ backgroundColor: lang === 'en' ? 'var(--accent)' : 'var(--border)' }}
               aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
             >
               <span
@@ -133,11 +149,37 @@ export default function Navbar() {
                 style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
               />
             </button>
-            <span className="text-xs font-mono font-semibold text-zinc-400">EN</span>
+            <span className="text-xs font-mono font-semibold text-muted">EN</span>
           </div>
           <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={theme}
+                initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="flex"
+              >
+                {theme === 'dark' ? (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </motion.span>
+            </AnimatePresence>
+          </button>
+          <button
             onClick={toggleMute}
-            className="p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
+            className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10"
             aria-label={muted ? 'Unmute sound' : 'Mute sound'}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -150,7 +192,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 rounded-lg text-zinc-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10"
+            className="md:hidden p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -166,7 +208,7 @@ export default function Navbar() {
         </div>
       </div>
       {menuOpen && (
-        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
+        <div id="mobile-menu" role="navigation" aria-label="Mobile navigation" className="md:hidden bg-surface/95 backdrop-blur-xl border-b border-surface/10">
           <div className="px-6 py-4 flex flex-col gap-2">
             {links.map(({ labelKey, href }) => (
               <a
@@ -176,19 +218,45 @@ export default function Navbar() {
                 aria-current={active === href ? 'page' : undefined}
                 class={`px-4 py-3 text-sm rounded-lg text-left transition-all no-underline ${
                   active === href
-                    ? 'text-white bg-white/10'
-                    : 'text-zinc-300 hover:text-white hover:bg-white/5'
+                    ? 'text-primary bg-surface-white/10'
+                    : 'text-secondary hover:text-primary hover:bg-surface-white/5'
                 }`}
               >
                 {t.nav[labelKey]}
               </a>
             ))}
             <div className="flex items-center gap-2 mt-2 self-start">
-              <span className="text-xs font-mono font-semibold text-zinc-400">ES</span>
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative"
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={theme}
+                    initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="flex"
+                  >
+                    {theme === 'dark' ? (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                      </svg>
+                    )}
+                  </motion.span>
+                </AnimatePresence>
+              </button>
+              <span className="text-xs font-mono font-semibold text-muted">ES</span>
               <button
                 onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
                 className="w-9 h-5 rounded-full relative transition-colors duration-200 border-0 cursor-pointer"
-                style={{ backgroundColor: lang === 'en' ? '#9333ea' : 'rgba(255,255,255,0.1)' }}
+                style={{ backgroundColor: lang === 'en' ? 'var(--accent)' : 'var(--border)' }}
                 aria-label={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
               >
                 <span
@@ -196,7 +264,7 @@ export default function Navbar() {
                 style={{ transform: lang === 'en' ? 'translateX(16px)' : 'translateX(1px)' }}
               />
             </button>
-            <span className="text-xs font-mono font-semibold text-zinc-400">EN</span>
+            <span className="text-xs font-mono font-semibold text-muted">EN</span>
           </div>
         </div>
         </div>

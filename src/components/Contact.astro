@@ -5,7 +5,7 @@ import AnimatedSection from './AnimatedSection.jsx'
 
 <section id="contact" class="py-36 px-4 relative">
   <AnimatedSection client:load className="max-w-2xl mx-auto text-center">
-    <p class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-4">
+    <p class="text-accent font-mono text-sm tracking-widest uppercase mb-4">
       <span data-lang="es">{es.contact.subtitle}</span>
       <span data-lang="en" hidden>{en.contact.subtitle}</span>
     </p>
@@ -13,14 +13,14 @@ import AnimatedSection from './AnimatedSection.jsx'
       <span data-lang="es">{es.contact.title}</span>
       <span data-lang="en" hidden>{en.contact.title}</span>
     </h2>
-    <p class="text-zinc-300 text-xl mb-10 max-w-lg mx-auto leading-relaxed">
+    <p class="text-secondary text-xl mb-10 max-w-lg mx-auto leading-relaxed">
       <span data-lang="es">{es.contact.desc}</span>
       <span data-lang="en" hidden>{en.contact.desc}</span>
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a
         href="mailto:eanorambuena@uc.cl"
-        class="px-8 py-3.5 bg-purple-600 hover:bg-purple-500 rounded-xl font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 active:scale-95"
+        class="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 active:scale-95"
       >
         <span data-lang="es">{es.contact.btnEmail}</span>
         <span data-lang="en" hidden>{en.contact.btnEmail}</span>
@@ -29,18 +29,18 @@ import AnimatedSection from './AnimatedSection.jsx'
         href="https://linkedin.com/in/eanorambuena"
         target="_blank"
         rel="noopener noreferrer"
-        class="px-8 py-3.5 border border-purple-500/30 hover:border-purple-500/60 rounded-xl font-medium text-zinc-300 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
+        class="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95"
       >
         <span data-lang="es">{es.contact.btnLinkedin}</span>
         <span data-lang="en" hidden>{en.contact.btnLinkedin}</span>
       </a>
     </div>
-    <div class="flex gap-6 justify-center mt-10 text-zinc-300">
-      <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-purple-400 hover:scale-110 transition-all duration-200 text-sm font-medium">GitHub</a>
-      <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-purple-400 hover:scale-110 transition-all duration-200 text-sm font-medium">X</a>
-      <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-purple-400 hover:scale-110 transition-all duration-200 text-sm font-medium">LinkedIn</a>
+    <div class="flex gap-6 justify-center mt-10 text-secondary">
+      <a href="https://github.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent hover:scale-110 transition-all duration-200 text-sm font-medium">GitHub</a>
+      <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent hover:scale-110 transition-all duration-200 text-sm font-medium">X</a>
+      <a href="https://linkedin.com/in/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent hover:scale-110 transition-all duration-200 text-sm font-medium">LinkedIn</a>
     </div>
-    <p class="text-zinc-300 text-sm mt-8">
+    <p class="text-secondary text-sm mt-8">
       <span data-lang="es">Basado en Chile · Open a remoto · Conectado al ecosistema startup chileno</span>
       <span data-lang="en" hidden>Based in Chile · Open to remote · Connected to the Chilean startup ecosystem</span>
     </p>
