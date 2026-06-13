@@ -101,6 +101,11 @@ const es = {
         role: 'Technical Product Manager @ NeuralWorks',
         text: 'Emmanuel ha demostrado un muy buen desempeño durante su práctica. Trabaja con autonomía, entrega código de alta calidad y logra abordar tareas complejas. No se limita a implementar lo asignado: toma iniciativa para mejorar el código existente y crear componentes reutilizables que benefician a todo el equipo.',
       },
+      {
+        name: 'Marcelo Orellana',
+        role: 'Acofuz',
+        text: 'Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base.',
+      },
     ],
   },
 }
@@ -207,6 +212,11 @@ const en = {
         name: 'Sofía Schwarzenberg',
         role: 'Technical Product Manager @ NeuralWorks',
         text: 'Emmanuel demonstrated very good performance during his internship. He works autonomously, delivers high-quality code, and tackles complex tasks. He does not limit himself to implementing what is assigned: he takes initiative to improve existing code and create reusable components that benefit the entire team.',
+      },
+      {
+        name: 'Marcelo Orellana',
+        role: 'Acofuz',
+        text: 'Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was.',
       },
     ],
   },
