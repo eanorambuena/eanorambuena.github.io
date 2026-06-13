@@ -147,7 +147,7 @@ export default function Navbar() {
             animateKey={lang}
             ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
           >
-            <span className="text-base">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
+            <span className="text-lg leading-none">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
           </IconButton>
           <IconButton
             onClick={toggleTheme}
@@ -218,7 +218,7 @@ export default function Navbar() {
                 animateKey={lang}
                 ariaLabel={`Switch to ${lang === 'en' ? 'Spanish' : 'English'}`}
               >
-                <span className="text-base">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
+            <span className="text-lg leading-none">{lang === 'en' ? '🇪🇸' : '🇺🇸'}</span>
               </IconButton>
               <IconButton
                 onClick={toggleTheme}
