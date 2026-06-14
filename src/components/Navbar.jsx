@@ -113,6 +113,12 @@ export default function Navbar() {
               {t.nav[labelKey]}
             </a>
           ))}
+            <a
+              href="/buy-me-a-coffee"
+              class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-accent hover:text-accent-secondary border border-accent/20 hover:border-accent-secondary/40"
+            >
+              {t.nav.donar}
+            </a>
         </div>
         <div className="flex items-center gap-3">
           <IconButton
@@ -173,6 +179,12 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
+              <a
+                href="/buy-me-a-coffee"
+                class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-accent border border-accent/20"
+              >
+                {t.nav.donar}
+              </a>
             <div className="flex items-center gap-2 mt-2 self-start">
               <IconButton
                 onClick={() => setLang(lang === 'en' ? 'es' : 'en')}

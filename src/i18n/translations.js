@@ -7,6 +7,7 @@ const es = {
     skills: 'Skills',
     opensource: 'Open Source',
     charlas: 'Charlas',
+    donar: 'Donar',
     contact: 'Contacto',
   },
   hero: {
@@ -137,6 +138,7 @@ const en = {
     skills: 'Skills',
     opensource: 'Open Source',
     charlas: 'Talks',
+    donar: 'Donate',
     contact: 'Contact',
   },
   hero: {
@@ -258,4 +260,22 @@ const en = {
   },
 }
 
-export { es, en }
+const donateEs = {
+  subtitle: 'Apoya mi trabajo',
+  title: 'Invítame un café',
+  desc: 'Si mi trabajo te ha sido útil, considera hacer una donación. Los fondos ayudan a mantener mis proyectos open source y a crear más herramientas gratuitas.',
+  buda: 'Donar con Buda (cripto en Chile)',
+  budaDesc: 'Recibe al instante, sin comisiones. Solo necesitas una cuenta Buda.',
+  thanks: 'Gracias por tu apoyo!',
+}
+
+const donateEn = {
+  subtitle: 'Support my work',
+  title: 'Buy Me a Coffee',
+  desc: 'If my work has been useful to you, consider making a donation. Funds help maintain my open source projects and create more free tools.',
+  buda: 'Donate with Buda (crypto in Chile)',
+  budaDesc: 'Instant, no fees. You just need a Buda account.',
+  thanks: 'Thank you for your support!',
+}
+
+export { es, en, donateEs, donateEn }
