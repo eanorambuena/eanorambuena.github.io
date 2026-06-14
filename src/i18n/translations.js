@@ -21,7 +21,6 @@ const es = {
     p1: "Soy un product engineer que desarrolla rápido y piensa en sistemas. He construido plataformas para <strong>1,500+ usuarios concurrentes</strong>, reducido costos de infraestructura de IA de <strong>$200/usuario a $0</strong>, y contribuido herramientas open source con <strong>1,000+ descargas totales en npm</strong>.",
     p2: 'En la <strong>Pontificia Universidad Católica de Chile</strong>, diseñé una plataforma de coevaluación que redujo el tiempo de corrección en 60%. En <strong>NeuralWorks</strong>, lideré una migración frontend que eliminó $200/mes por usuario en costos de IA.',
     p3: 'Conozco el ecosistema startup chileno — desde <strong>Platanus</strong> hasta <strong>Startup Chile</strong> — y busco un equipo fundador donde pueda ser dueño de productos, no solo de features. Desarrollo rápido, pienso en sistemas, y estoy construyendo hacia la próxima gran empresa tecnológica de Latinoamérica.',
-    educationLabel: 'Educación',
     downloadCV: 'Descargar CV',
   },
   projects: {
@@ -61,6 +60,24 @@ const es = {
     title: 'Building in Public',
     desc: 'Herramientas que he construido y compartido con la comunidad.',
     viewAll: 'Ver todas las contribuciones en GitHub →',
+  },
+  education: {
+    subtitle: 'Formación',
+    title: 'Educación',
+    items: [
+      {
+        school: 'Pontificia Universidad Católica de Chile',
+        degree: 'Ingeniería Civil en Computación',
+        period: '2021 - 2026',
+        gpa: '6.19/7.0',
+      },
+      {
+        school: 'Maastricht University',
+        degree: 'Liberal Arts and Sciences (Intercambio)',
+        period: 'Ago 2024 - Mar 2025',
+        note: 'Curso destacado: Advanced Instructional Design',
+      },
+    ],
   },
   charlas: {
     subtitle: 'Charlas',
@@ -133,7 +150,6 @@ const en = {
     p1: "I'm a product engineer who ships fast and thinks in systems. I've built platforms serving <strong>1,500+ concurrent users</strong>, reduced AI infrastructure costs from <strong>$200/user to $0</strong>, and contributed open source tools with <strong>1,000+ total npm downloads</strong>.",
     p2: 'At <strong>Pontificia Universidad Católica de Chile</strong>, I architected a peer evaluation platform that cut grading time by 60%. At <strong>NeuralWorks</strong>, I led a frontend migration that eliminated $200/month per user in AI tooling costs.',
     p3: 'I know the Chilean startup ecosystem — from <strong>Platanus</strong> to <strong>Startup Chile</strong> — and I\'m looking for a founding team where I can own products, not just features. I ship fast, think in systems, and I\'m building toward the next great LatAm tech company.',
-    educationLabel: 'Education',
     downloadCV: 'Download CV',
   },
   projects: {
@@ -173,6 +189,24 @@ const en = {
     title: 'Building in Public',
     desc: 'Tools I\'ve built and shared with the community.',
     viewAll: 'View all contributions on GitHub →',
+  },
+  education: {
+    subtitle: 'Education',
+    title: 'Education',
+    items: [
+      {
+        school: 'Pontificia Universidad Católica de Chile',
+        degree: 'Computer Engineering',
+        period: '2021 - 2026',
+        gpa: '6.19/7.0',
+      },
+      {
+        school: 'Maastricht University',
+        degree: 'Liberal Arts and Sciences (Exchange)',
+        period: 'Aug 2024 - Mar 2025',
+        note: 'Notable course: Advanced Instructional Design',
+      },
+    ],
   },
   charlas: {
     subtitle: 'Talks',

@@ -73,7 +73,9 @@ const dateModified = new Date().toISOString().split('T')[0]
     <meta property="og:image" content={ogImagePng} />
     <meta property="og:image:width" content={String(ogImageW)} />
     <meta property="og:image:height" content={String(ogImageH)} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="Emmanuel Norambuena — Product Engineer & Builder" />
+    <meta property="og:image:secure_url" content={ogImagePng} />
     <meta property="og:site_name" content="Emmanuel Norambuena" />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -85,6 +87,9 @@ const dateModified = new Date().toISOString().split('T')[0]
     <meta name="twitter:title" content="Emmanuel Norambuena — Product Engineer & Builder" />
     <meta name="twitter:description" content="Product Engineer chileno. AI infrastructure, full-stack, real-time systems." />
     <meta name="twitter:image" content={ogImagePng} />
+
+    <meta property="al:web:url" content={siteUrl} />
+    <meta property="al:web:should_fallback" content="true" />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
