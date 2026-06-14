@@ -18,6 +18,11 @@ const projects: Record<string, any> = {
     image: '/projects/neural-app.png',
     costImage: '/projects/neural-costs.png',
     color: 'from-emerald-500 to-teal-500',
+    metrics: [
+      { value: '$200→$0', labelEs: 'Costos IA/mes', labelEn: 'AI costs/mo' },
+      { value: '500+', labelEs: 'Usuarios concurrentes', labelEn: 'Concurrent users' },
+      { value: '7.2→5.9GB', labelEs: 'Swap de memoria', labelEn: 'Memory swap' },
+    ],
     featuresEs: [
       'Migración UI de React Native Paper a Tamagui con Design Tokens',
       'Módulo Fullstack de control y edición de inventario (POS)',
@@ -56,6 +61,10 @@ const projects: Record<string, any> = {
     tags: ['React', 'TypeScript', 'GIS', 'Vite'],
     iframe: 'https://procel.acofuz.com/login',
     color: 'from-orange-500 to-red-500',
+    metrics: [
+      { value: '100%', labelEs: 'Frontend desde cero', labelEn: 'Scaffolded from scratch' },
+      { value: 'GIS', labelEs: 'Visualización minera', labelEn: 'Mining visualization' },
+    ],
     testimonials: [
       {
         author: 'Jorge Araneda',
@@ -94,6 +103,11 @@ const projects: Record<string, any> = {
     tags: ['Next.js', 'React', 'PostgreSQL', 'Supabase', 'Auth0'],
     iframe: 'https://idsapp.vercel.app/',
     color: 'from-green-500 to-teal-500',
+    metrics: [
+      { value: '1,500+', labelEs: 'Estudiantes', labelEn: 'Students' },
+      { value: '60%', labelEs: 'Menos tiempo corrección', labelEn: 'Less grading time' },
+      { value: '16GB', labelEs: 'RAM ya no satura', labelEn: 'RAM no longer saturated' },
+    ],
     featuresEs: [
       'Evaluaciones peer-to-peer anónimas',
       'Crear, editar y eliminar criterios y sus porcentajes',
@@ -123,6 +137,11 @@ const projects: Record<string, any> = {
     tags: ['Nuxt 3', 'Vue', 'TypeScript', 'Yahoo Finance', 'TradingView'],
     iframe: 'https://kalmate.pages.dev',
     color: 'from-blue-500 to-cyan-500',
+    metrics: [
+      { value: '6', labelEs: 'Mercados en vivo', labelEn: 'Live markets' },
+      { value: '30s', labelEs: 'Cache de quotes', labelEn: 'Quote cache' },
+      { value: '0', labelEs: 'API keys necesarias', labelEn: 'API keys needed' },
+    ],
     featuresEs: [
       'Datos de mercado en tiempo real vía Yahoo Finance API',
       'Dashboard categorizado: Equities, Forex, Bonds, Commodities, Crypto',
@@ -213,6 +232,20 @@ if (!project) {
               <span data-lang="es">{project.longDescEs}</span>
               <span data-lang="en" hidden>{project.longDescEn}</span>
             </p>
+
+            {project.metrics && project.metrics.length > 0 && (
+              <div class="mt-8 grid grid-cols-3 gap-4">
+                {project.metrics.map((m) => (
+                  <div class="bg-surface/40 border border-border/30 rounded-xl p-4 text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-accent">{m.value}</div>
+                    <div class="text-xs text-secondary mt-1">
+                      <span data-lang="es">{m.labelEs}</span>
+                      <span data-lang="en" hidden>{m.labelEn}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {project.testimonials && project.testimonials.length > 0 && (
               <div class="mt-10 p-8 rounded-2xl bg-gradient-to-br from-accent/5 to-accent-secondary/5 border border-accent/10 relative overflow-hidden">
