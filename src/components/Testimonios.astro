@@ -5,7 +5,7 @@ import AnimatedSection from './AnimatedSection.jsx'
 
 <section id="testimonios" aria-label={es.testimonios.subtitle} class="relative py-16 md:py-20 px-6 overflow-hidden">
   <div class="max-w-5xl mx-auto">
-    <AnimatedSection client:load className="space-y-4 mb-10 text-center">
+    <AnimatedSection client:load className="space-y-4 mb-8 text-center">
       <p class="text-accent text-sm font-semibold tracking-widest uppercase">
         <span data-lang="es">{es.testimonios.subtitle}</span>
         <span data-lang="en" hidden>{en.testimonios.subtitle}</span>
@@ -16,31 +16,29 @@ import AnimatedSection from './AnimatedSection.jsx'
       </h2>
     </AnimatedSection>
 
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
       {es.testimonios.items.map((item, i) => (
-        <AnimatedSection client:load delay={i * 0.1}>
-          <blockquote class="h-full bg-surface-elevated/40 backdrop-blur-sm border border-surface/10 rounded-2xl p-4 md:p-5 flex flex-col">
-            <footer class="mb-2">
-              <span class="text-sm font-bold text-primary block">
-                <span data-lang="es">{item.name}</span>
-                <span data-lang="en" hidden>{en.testimonios.items[i].name}</span>
-              </span>
-              <span class="text-xs text-secondary block mt-0.5">
-                <span data-lang="es">{item.role}</span>
-                <span data-lang="en" hidden>{en.testimonios.items[i].role}</span>
-              </span>
-            </footer>
-            <div class="flex items-start gap-2">
-              <svg class="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              <p class="text-secondary text-sm leading-relaxed italic">
-                <span data-lang="es">"{item.text}"</span>
-                <span data-lang="en" hidden>"{en.testimonios.items[i].text}"</span>
-              </p>
-            </div>
-          </blockquote>
-        </AnimatedSection>
+        <blockquote class="bg-surface-elevated/40 backdrop-blur-sm border border-surface/10 rounded-2xl p-4 flex flex-col gap-2">
+          <footer>
+            <span class="text-sm font-bold text-primary block">
+              <span data-lang="es">{item.name}</span>
+              <span data-lang="en" hidden>{en.testimonios.items[i].name}</span>
+            </span>
+            <span class="text-xs text-secondary block">
+              <span data-lang="es">{item.role}</span>
+              <span data-lang="en" hidden>{en.testimonios.items[i].role}</span>
+            </span>
+          </footer>
+          <div class="flex items-start gap-1.5">
+            <svg class="w-3 h-3 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-secondary text-sm leading-snug italic">
+              <span data-lang="es">"{item.text}"</span>
+              <span data-lang="en" hidden>"{en.testimonios.items[i].text}"</span>
+            </p>
+          </div>
+        </blockquote>
       ))}
     </div>
   </div>
