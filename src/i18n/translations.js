@@ -2,6 +2,7 @@ const es = {
   nav: {
     about: 'Sobre mí',
     experience: 'Experiencia',
+    education: 'Educación',
     projects: 'Proyectos',
     skills: 'Skills',
     opensource: 'Open Source',
@@ -67,7 +68,7 @@ const es = {
     items: [
       {
         school: 'Pontificia Universidad Católica de Chile',
-        degree: 'Ingeniería Civil en Computación',
+        degree: 'Ingeniero Civil de Industrias con diploma en Computación',
         period: '2021 - 2026',
         gpa: '6.19/7.0',
       },
@@ -104,11 +105,6 @@ const es = {
     title: 'Lo que dicen de mí',
     items: [
       {
-        name: 'Alejandro Held',
-        role: 'Game Developer & Computer Science Student, PUC',
-        text: 'Tuve el privilegio de trabajar con Emmanuel en múltiples contextos exigentes. Destaca su capacidad de traducir requisitos complejos en soluciones sólidas. Su compromiso con la ejecución, liderazgo natural y habilidad para gestionar equipos demuestran que es un profesional extremadamente confiable y proactivo.',
-      },
-      {
         name: 'Jorge Araneda',
         role: 'Tech Lead @ Gosocket | Profesor Diplomado UC | Co-Founder Acofuz',
         text: 'Emma es de las personas que cuando conversas con él te das cuenta que vale la pena. Tiene un gran conocimiento pero comparte su conocimiento con el resto del equipo, enseñando de una manera agradable y clara. Es de las personas que dice que hará algo y realmente lo cumple. Trabajar con él ha sido un placer.',
@@ -123,6 +119,11 @@ const es = {
         role: 'Head of Tech and Sales @ Acofuz',
         text: 'Trabajar en el frontend de Smartlokus fue muy fácil gracias a lo extensible y ordenado del código base, gracias a Emma.',
       },
+      {
+        name: 'Alejandro Held',
+        role: 'Game Developer & Computer Science Student, PUC',
+        text: 'Tuve el privilegio de trabajar con Emmanuel en múltiples contextos exigentes. Destaca su capacidad de traducir requisitos complejos en soluciones sólidas. Su compromiso con la ejecución, liderazgo natural y habilidad para gestionar equipos demuestran que es un profesional extremadamente confiable y proactivo.',
+      },
     ],
   },
 }
@@ -131,6 +132,7 @@ const en = {
   nav: {
     about: 'About',
     experience: 'Experience',
+    education: 'Education',
     projects: 'Projects',
     skills: 'Skills',
     opensource: 'Open Source',
@@ -233,11 +235,6 @@ const en = {
     title: 'What People Say',
     items: [
       {
-        name: 'Alejandro Held',
-        role: 'Game Developer & Computer Science Student, PUC',
-        text: 'I had the privilege of working with Emmanuel in multiple demanding contexts. His ability to translate complex requirements into solid, well-structured solutions stands out. His commitment to execution, natural leadership, and ability to manage teams prove he is an extremely reliable and proactive professional.',
-      },
-      {
         name: 'Jorge Araneda',
         role: 'Tech Lead @ Gosocket | Profesor Diplomado UC | Co-Founder Acofuz',
         text: 'Emma is one of those people that when you talk to him, you realize he is worth it. He has great knowledge but shares it with the rest of the team, teaching in a pleasant and clear way. He is the kind of person who says he will do something and actually does it. Working with him has been a pleasure.',
@@ -249,8 +246,13 @@ const en = {
       },
       {
         name: 'Marcelo Orellana',
-        role: 'HoTS @ Acofuz',
+        role: 'Head of Tech and Sales @ Acofuz',
         text: 'Working on the Smartlokus frontend was very easy thanks to how extensible and clean the codebase was, thanks to Emma.',
+      },
+      {
+        name: 'Alejandro Held',
+        role: 'Game Developer & Computer Science Student, PUC',
+        text: 'I had the privilege of working with Emmanuel in multiple demanding contexts. His ability to translate complex requirements into solid, well-structured solutions stands out. His commitment to execution, natural leadership, and ability to manage teams prove he is an extremely reliable and proactive professional.',
       },
     ],
   },

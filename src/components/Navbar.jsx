@@ -6,8 +6,8 @@ import AccessibilityMenu from './AccessibilityMenu'
 
 const links = [
   { labelKey: 'about', href: '#about' },
-  { labelKey: 'education', href: '#education' },
   { labelKey: 'experience', href: '#experience' },
+  { labelKey: 'education', href: '#education' },
   { labelKey: 'projects', href: '#projects' },
   { labelKey: 'opensource', href: '#opensource' },
   { labelKey: 'skills', href: '#skills' },

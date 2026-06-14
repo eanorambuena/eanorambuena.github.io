@@ -71,13 +71,13 @@ export default function HeroContent() {
       >
         <a
           href="mailto:eanorambuena@uc.cl"
-          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-white transition-all duration-300 text-base"
+          className="px-8 py-3.5 bg-accent hover:bg-accent rounded-xl font-medium text-white transition-all duration-300 text-base no-underline"
         >
           {t.hero.btnContact}
         </a>
         <button
           onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 text-base"
+          className="px-8 py-3.5 border border-accent/30 hover:border-accent/60 rounded-xl font-medium text-secondary hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 text-base bg-transparent"
         >
           {t.hero.btnProjects}
         </button>
