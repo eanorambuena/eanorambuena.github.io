@@ -7,7 +7,7 @@ const groups = [
   {
     title: 'Frontend',
     color: '#a855f7',
-    skills: ['React', 'TypeScript', 'Next.js', 'Vue', 'Tailwind CSS', 'Vite', 'i18n'],
+    skills: ['React', 'TypeScript', 'Next.js', 'Nuxt', 'Vue', 'Tailwind CSS', 'Vite', 'i18n'],
   },
   {
     title: 'Mobile',
