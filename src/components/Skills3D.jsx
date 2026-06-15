@@ -12,17 +12,17 @@ const groups = [
   {
     title: 'Mobile',
     color: '#3b82f6',
-    skills: ['React Native', 'Tamagui', 'Expo'],
+    skills: ['React Native', 'Tamagui', 'Expo', 'Zustand', 'Reanimated', 'Expo Router', 'MMKV', 'Skia'],
   },
   {
     title: 'Backend',
     color: '#22c55e',
-    skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'SST', 'Serverless'],
+    skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'Hono', 'Drizzle ORM'],
   },
   {
-    title: 'DevOps',
+    title: 'Cloud & DevOps',
     color: '#f97316',
-    skills: ['AWS', 'Azure', 'Docker', 'Git', 'CI/CD', 'Linux'],
+    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'CI/CD', 'Linux'],
   },
 ]
 
