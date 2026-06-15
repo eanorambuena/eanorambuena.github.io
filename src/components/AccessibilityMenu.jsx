@@ -72,6 +72,7 @@ export default function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
   const panelRef = useRef(null)
   const triggerRef = useRef(null)
+  const mobileTriggerRef = useRef(null)
   const [reduceMotion, setReduceMotion] = useState(() => {
     if (typeof window !== 'undefined') return document.documentElement.classList.contains('reduce-motion')
     return false
@@ -112,6 +113,7 @@ export default function AccessibilityMenu() {
       if (e.key === 'Escape') {
         setOpen(false)
         triggerRef.current?.focus()
+        mobileTriggerRef.current?.focus()
       }
       if (e.key === 'Tab' && open && panelRef.current) {
         const focusable = panelRef.current.querySelectorAll('button, [tabindex]:not([tabindex="-1"])')
@@ -136,44 +138,77 @@ export default function AccessibilityMenu() {
     setFontSize(100)
   }
 
-  return (
-    <div className="relative">
-      <IconButton
-        ref={triggerRef}
-        onClick={() => setOpen(!open)}
-        ariaLabel="Menú de accesibilidad"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
-          <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
-        </svg>
-      </IconButton>
-      {open && (
-        <>
-          <div className="fixed inset-0 z-40" onClick={() => { setOpen(false); triggerRef.current?.focus() }} aria-hidden="true" />
-          <div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Opciones de accesibilidad"
-            className="absolute right-0 top-full mt-2 z-50 w-64 bg-surface-elevated border border-surface/20 rounded-xl shadow-2xl shadow-black/30 p-4 space-y-4"
-          >
-            <h2 className="text-xs font-semibold text-muted uppercase tracking-wider">Accesibilidad</h2>
-            <A11yControls
-              reduceMotion={reduceMotion}
-              setReduceMotion={setReduceMotion}
-              highContrast={highContrast}
-              setHighContrast={setHighContrast}
-              fontSize={fontSize}
-              setFontSize={setFontSize}
-              onReset={handleReset}
-            />
-          </div>
-        </>
-      )}
+  const panelContent = (
+    <div
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Opciones de accesibilidad"
+      className="z-50 w-64 bg-surface-elevated border border-surface/20 rounded-xl shadow-2xl shadow-black/30 p-4 space-y-4"
+    >
+      <h2 className="text-xs font-semibold text-muted uppercase tracking-wider">Accesibilidad</h2>
+      <A11yControls
+        reduceMotion={reduceMotion}
+        setReduceMotion={setReduceMotion}
+        highContrast={highContrast}
+        setHighContrast={setHighContrast}
+        fontSize={fontSize}
+        setFontSize={setFontSize}
+        onReset={handleReset}
+      />
     </div>
+  )
+
+  return (
+    <>
+      <div className="hidden md:block relative">
+        <IconButton
+          ref={triggerRef}
+          onClick={() => setOpen(!open)}
+          ariaLabel="Menú de accesibilidad"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+            <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
+          </svg>
+        </IconButton>
+        {open && (
+          <>
+            <div className="fixed inset-0 z-40" onClick={() => { setOpen(false); triggerRef.current?.focus() }} aria-hidden="true" />
+            <div className="absolute right-0 top-full mt-2">
+              {panelContent}
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        {open && (
+          <>
+            <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
+            <div className="absolute bottom-16 right-0">
+              {panelContent}
+            </div>
+          </>
+        )}
+        <button
+          ref={mobileTriggerRef}
+          onClick={() => setOpen(!open)}
+          className="w-14 h-14 rounded-full bg-accent text-white shadow-2xl shadow-accent/40 hover:shadow-accent/60 hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative z-50"
+          aria-label="Menú de accesibilidad"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+        >
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+            <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
+          </svg>
+        </button>
+      </div>
+    </>
   )
 }
