@@ -12,7 +12,7 @@ const groups = [
   {
     title: 'Mobile',
     color: '#3b82f6',
-    skills: ['React Native', 'Tamagui', 'Expo', 'Zustand', 'Reanimated', 'Expo Router', 'MMKV', 'Skia'],
+    skills: ['React Native', 'Tamagui', 'Expo', 'Expo Router', 'EAS'],
   },
   {
     title: 'Backend',
