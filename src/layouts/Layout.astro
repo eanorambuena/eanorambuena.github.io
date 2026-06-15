@@ -383,6 +383,13 @@ const dateModified = new Date().toISOString().split('T')[0]
     </footer>
     <script>
     (function(){
+      (function(){
+        var origWarn = console.warn
+        console.warn = function(m) {
+          if (typeof m === 'string' && m.includes('THREE.Clock')) return
+          origWarn.apply(console, arguments)
+        }
+      })()
       console.clear()
       var easter = [
         '\n  %c  🥚  You found the easter egg!',
