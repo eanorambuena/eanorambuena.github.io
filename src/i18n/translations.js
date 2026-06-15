@@ -94,7 +94,7 @@ const es = {
     btnLinkedin: 'Conectar en LinkedIn →',
   },
   footer: {
-    built: 'Hecho con Astro, React & Three.js',
+    built: 'Hecho con ❤️ por Emmanuel Norambuena',
   },
   trustedBy: {
     subtitle: 'Confianza',
@@ -225,7 +225,7 @@ const en = {
     btnLinkedin: 'Connect on LinkedIn →',
   },
   footer: {
-    built: 'Built with Astro, React & Three.js',
+    built: 'Built with ❤️ by Emmanuel Norambuena',
   },
   trustedBy: {
     subtitle: 'Trust',
