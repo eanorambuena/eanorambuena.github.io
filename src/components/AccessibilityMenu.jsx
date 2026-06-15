@@ -59,7 +59,7 @@ function A11yControls({ reduceMotion, setReduceMotion, highContrast, setHighCont
 
       <button
         onClick={onReset}
-        className="w-full text-xs text-secondary hover:text-primary transition-colors py-1.5 rounded-lg border border-border/50 hover:border-border"
+        className="w-full text-xs font-semibold text-accent hover:text-white transition-colors py-1.5 rounded-lg border border-accent/30 hover:border-accent hover:bg-accent/10"
         aria-label="Restablecer todos los ajustes de accesibilidad"
       >
         Restablecer
