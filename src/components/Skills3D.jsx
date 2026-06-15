@@ -7,12 +7,12 @@ const groups = [
   {
     title: 'Frontend',
     color: '#a855f7',
-    skills: ['React', 'TypeScript', 'Next.js', 'Vue', 'Tailwind CSS', 'Vite'],
+    skills: ['React', 'TypeScript', 'Next.js', 'Vue', 'Tailwind CSS', 'Vite', 'i18n'],
   },
   {
     title: 'Mobile',
     color: '#3b82f6',
-    skills: ['React Native', 'Tamagui', 'Expo', 'Expo Go', 'Expo Router', 'EAS', 'i18n', 'React Native Paper'],
+    skills: ['React Native', 'Tamagui', 'Expo', 'Expo Go', 'Expo Router', 'EAS', 'React Native Paper'],
   },
   {
     title: 'Backend',
@@ -22,7 +22,7 @@ const groups = [
   {
     title: 'Cloud & DevOps',
     color: '#f97316',
-    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'CI/CD', 'Linux'],
+    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'CI/CD', 'Linux', 'Firebase'],
   },
 ]
 
