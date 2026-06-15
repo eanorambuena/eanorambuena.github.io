@@ -84,7 +84,7 @@ const es = {
   charlas: {
     subtitle: 'Charlas',
     title: 'Hablando en Público',
-    desc: 'Charla sobre Functional Web Components con emmy-dom en el ciclo de charlas de Open Source UC.',
+    desc: 'Charlas sobre Functional Web Components con emmy-dom: Open Source UC y presentación de la librería.',
   },
   contact: {
     subtitle: 'Construyamos',
@@ -215,7 +215,7 @@ const en = {
   charlas: {
     subtitle: 'Talks',
     title: 'Speaking in Public',
-    desc: 'Talk about Functional Web Components with emmy-dom at the Open Source UC talk series.',
+    desc: 'Talks about Functional Web Components with emmy-dom: Open Source UC talk and library showcase.',
   },
   contact: {
     subtitle: "Let's Build",
