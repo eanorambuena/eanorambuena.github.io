@@ -22,7 +22,7 @@ const groups = [
   {
     title: 'Cloud & DevOps',
     color: '#f97316',
-    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'CI/CD', 'Linux', 'Firebase'],
+    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'Bitbucket', 'Azure DevOps', 'CI/CD', 'Linux', 'Firebase'],
   },
 ]
 
