@@ -130,6 +130,7 @@ const projects: Record<string, any> = {
     ],
     longDescEs: 'Plataforma de coevaluaciones universitarias. Los estudiantes se evalúan entre sí de forma anónima con criterios personalizables. Incluye control de asistencia por QR, SSO con Supabase y Auth0, informes de notas descargables y SEO optimizado. Originalmente era un Google Form cuyo procesamiento con GScript saturaba cualquier PC, incluso con 16 GB de RAM. Construido con Next.js, React, PostgreSQL, Supabase y Auth0.',
     longDescEn: 'Peer evaluation platform. Students evaluate each other anonymously with customizable criteria. Includes QR attendance tracking, SSO with Supabase and Auth0, downloadable grade reports, and SEO optimization. Originally a Google Form whose GScript processing saturated any PC, even with 16 GB of RAM. Built with Next.js, React, PostgreSQL, Supabase, and Auth0.',
+    links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://idsapp.vercel.app/' }],
   },
   kalmate: {
     titleEs: 'Kalmate: Terminal Financiera',
@@ -151,6 +152,8 @@ const projects: Record<string, any> = {
       'Noticias financieras integradas',
       'Cacheo inteligente del servidor (30s quotes, 5min history)',
       'Atajos de teclado para navegación eficiente',
+      'Pipeline visual de nodos: conecta inputs (Symbol, Currency, Price Feed) con procesadores (Kalman Filter, SMA, RSI, EMA, Forecast) y outputs (Chart, Alert, Telegram, Email)',
+      'Ejecución DAG con orden topológico y caché inteligente por nodo',
     ],
     featuresEn: [
       'Real-time market data via Yahoo Finance API',
@@ -161,9 +164,12 @@ const projects: Record<string, any> = {
       'Integrated financial news',
       'Intelligent server caching (30s quotes, 5min history)',
       'Keyboard shortcuts for efficient navigation',
+      'Automated visual data pipeline: connect inputs (Symbol, Currency, Price Feed) with processors (Kalman Filter, SMA, RSI, EMA, Forecast) and outputs (Chart, Alert, Telegram, Email)',
+      'DAG execution engine with topological ordering and per-node caching',
     ],
-    longDescEs: 'Terminal financiera estilo Bloomberg con datos de mercado en tiempo real vía Yahoo Finance API. Construido con Nuxt 3, Vue 3, TypeScript y TradingView charts. Dashboard categorizado (Equities, Forex, Bonds, Commodities, Crypto), portafolio con P&L, alertas inteligentes con notificaciones del navegador, screener con filtros y presets, y noticias financieras. Cacheo inteligente del servidor y atajos de teclado para navegación eficiente. Sin necesidad de API keys.',
-    longDescEn: 'Bloomberg-style financial terminal with real-time market data via Yahoo Finance API. Built with Nuxt 3, Vue 3, TypeScript, and TradingView charts. Categorized dashboard (Equities, Forex, Bonds, Commodities, Crypto), portfolio with P&L tracking, smart alerts with browser notifications, screener with filters and presets, and financial news. Intelligent server caching and keyboard shortcuts for efficient navigation. No API keys required.',
+    longDescEs: 'Terminal financiera estilo Bloomberg con datos de mercado en tiempo real vía Yahoo Finance API. Construido con Nuxt 3, Vue 3, TypeScript y TradingView charts. Dashboard categorizado (Equities, Forex, Bonds, Commodities, Crypto), portafolio con P&L, alertas inteligentes con notificaciones del navegador, screener con filtros y presets, noticias financieras, y pipeline visual de nodos para análisis de datos (Filtro de Kalman, SMA, RSI, EMA, Forecast). Cacheo inteligente del servidor y atajos de teclado para navegación eficiente. Sin necesidad de API keys.',
+    longDescEn: 'Bloomberg-style financial terminal with real-time market data via Yahoo Finance API. Built with Nuxt 3, Vue 3, TypeScript, and TradingView charts. Categorized dashboard (Equities, Forex, Bonds, Commodities, Crypto), portfolio with P&L tracking, smart alerts with browser notifications, screener with filters and presets, financial news, and a visual node pipeline for data analysis (Kalman Filter, SMA, RSI, EMA, Forecast). Intelligent server caching and keyboard shortcuts for efficient navigation. No API keys required.',
+    links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://kalmate.pages.dev' }],
   },
 }
 
