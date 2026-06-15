@@ -114,6 +114,12 @@ export default function Navbar() {
             </a>
           ))}
             <a
+              href="/news"
+              class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-secondary hover:text-primary hover:bg-surface-white/5"
+            >
+              {t.nav.news}
+            </a>
+            <a
               href="/buy-me-a-coffee"
               class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-[#00c853] hover:text-[#00e060] border border-[#00c853]/30 hover:border-[#00c853]/60"
             >
@@ -179,6 +185,12 @@ export default function Navbar() {
                 {t.nav[labelKey]}
               </a>
             ))}
+              <a
+                href="/news"
+                class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-secondary hover:text-primary hover:bg-surface-white/5"
+              >
+                {t.nav.news}
+              </a>
               <a
                 href="/buy-me-a-coffee"
                 class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-[#00c853] border border-[#00c853]/30"

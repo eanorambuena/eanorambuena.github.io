@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const newsItems = [
+  {
+    kindEs: 'Prensa',
+    kindEn: 'Press',
+    date: '2020-03-30',
+    source: 'Matemáticas UC',
+    url: 'https://www.mat.uc.cl/noticias/2020-03-30/taller-de-investigacion-matematica-inicio-sus-clases-en-linea.html',
+    titleEs: 'Taller de investigación matemática inició sus clases en línea',
+    titleEn: 'Mathematical Research Workshop Started Its Classes Online',
+    summaryEs: 'Nota de Matemáticas UC sobre el inicio en modalidad online del taller de investigación matemática.',
+    summaryEn: 'Mathematics UC article about the start of the mathematical research workshop in online format.',
+  },
+  {
+    kindEs: 'Aparición',
+    kindEn: 'Feature',
+    date: '',
+    source: 'Open Source UC',
+    url: 'https://osuc.dev/about/',
+    titleEs: 'About de Open Source UC',
+    titleEn: 'Open Source UC About Page',
+    summaryEs: 'Página de la comunidad Open Source UC donde aparezco como parte del equipo y trayectoria de la organización.',
+    summaryEn: 'Open Source UC community page where I appear as part of the team and organization history.',
+  },
+  {
+    kindEs: 'Aparición',
+    kindEn: 'Feature',
+    date: '',
+    source: 'Instagram',
+    url: 'https://www.instagram.com/reel/CzB-wLVuWg8/',
+    titleEs: 'Reel en Instagram',
+    titleEn: 'Instagram Reel',
+    summaryEs: 'Publicación en formato reel donde también aparezco.',
+    summaryEn: 'Reel-format post where I also appear.',
+  },
+  {
+    kindEs: 'Prensa',
+    kindEn: 'Press',
+    date: '',
+    source: 'Ingeniería UC',
+    url: 'https://www.ing.uc.cl/noticias/novatos-y-novatas-reciben-reconocimiento-en-ceremonia-de-matricula-de-honor/',
+    titleEs: 'Novatos y novatas reciben reconocimiento en ceremonia de Matrícula de Honor',
+    titleEn: 'Freshmen Receive Recognition at the Honors Enrollment Ceremony',
+    summaryEs: 'Nota de Ingeniería UC sobre la ceremonia de Matrícula de Honor, donde también aparezco.',
+    summaryEn: 'Engineering UC article about the Honors Enrollment Ceremony, where I also appear.',
+  },
+  {
+    kindEs: 'Documento',
+    kindEn: 'Document',
+    date: '2018',
+    source: 'Olimpiada de Matemática de Chile',
+    url: 'https://www.olimpiadadematematica.cl/images/FinalONM2018.pdf',
+    titleEs: 'Final ONM 2018 (PDF)',
+    titleEn: 'ONM 2018 Final (PDF)',
+    summaryEs: 'Documento oficial en PDF de la Olimpiada Nacional de Matemática 2018, donde aparezco mencionado.',
+    summaryEn: 'Official PDF document for the 2018 National Math Olympiad final, where I am mentioned.',
+  },
+]
+---
+
+<Layout>
+  <main id="main-content" class="relative z-10 min-h-screen px-6 pt-28 pb-20">
+    <section class="max-w-5xl mx-auto">
+      <p class="text-accent text-sm font-mono tracking-widest uppercase mb-3" data-lang="es">Prensa</p>
+      <p class="text-accent text-sm font-mono tracking-widest uppercase mb-3" data-lang="en" hidden>Newsroom</p>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-5" data-lang="es">Noticias, prensa y apariciones</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-5" data-lang="en" hidden>News, Press, and Features</h1>
+
+      <p class="text-secondary text-lg leading-relaxed max-w-3xl" data-lang="es">
+        Esta sección reúne apariciones en prensa, noticias y menciones donde participo o soy citado.
+      </p>
+      <p class="text-secondary text-lg leading-relaxed max-w-3xl" data-lang="en" hidden>
+        This section gathers press mentions, news, and pages where I am featured or referenced.
+      </p>
+    </section>
+
+    <section class="max-w-5xl mx-auto mt-10 space-y-4">
+      {newsItems.map((item) => (
+        <article class="group rounded-2xl border border-border bg-surface-elevated p-6 transition-colors hover:border-accent/40">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-accent/10 text-accent border border-accent/30" data-lang="es">
+              {item.kindEs}
+            </span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-accent/10 text-accent border border-accent/30" data-lang="en" hidden>
+              {item.kindEn}
+            </span>
+            <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-surface text-muted border border-border">
+              {item.source}
+            </span>
+            {item.date ? (
+              <time class="text-xs text-muted font-mono tracking-wide" datetime={item.date}>{item.date}</time>
+            ) : (
+              <>
+                <span class="text-xs text-muted font-mono tracking-wide" data-lang="es">Fecha no indicada</span>
+                <span class="text-xs text-muted font-mono tracking-wide" data-lang="en" hidden>Date not specified</span>
+              </>
+            )}
+          </div>
+
+          <h2 class="text-xl md:text-2xl font-semibold text-primary leading-snug mb-2" data-lang="es">{item.titleEs}</h2>
+          <h2 class="text-xl md:text-2xl font-semibold text-primary leading-snug mb-2" data-lang="en" hidden>{item.titleEn}</h2>
+
+          <p class="text-secondary mb-5" data-lang="es">{item.summaryEs}</p>
+          <p class="text-secondary mb-5" data-lang="en" hidden>{item.summaryEn}</p>
+
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-accent hover:text-accent-secondary transition-colors no-underline font-medium"
+          >
+            <span data-lang="es">Ver noticia</span>
+            <span data-lang="en" hidden>Read article</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h6M5 5v14h14v-6" />
+            </svg>
+          </a>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
