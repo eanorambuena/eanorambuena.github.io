@@ -115,7 +115,7 @@ export default function Navbar() {
           ))}
             <a
               href="/buy-me-a-coffee"
-              class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-accent hover:text-accent-secondary border border-accent/20 hover:border-accent-secondary/40"
+              class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-[#00c853] hover:text-[#00e060] border border-[#00c853]/30 hover:border-[#00c853]/60"
             >
               {t.nav.donar}
             </a>
@@ -181,7 +181,7 @@ export default function Navbar() {
             ))}
               <a
                 href="/buy-me-a-coffee"
-                class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-accent border border-accent/20"
+                class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-[#00c853] border border-[#00c853]/30"
               >
                 {t.nav.donar}
               </a>
