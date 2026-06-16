@@ -1,0 +1,20 @@
+Emmanuel Norambuena — Product Engineer
+
+Chileno, Ingeniería Civil Industrial mención Computación en la Pontificia Universidad Católica de Chile (PUC), con GPA 6.19/7.0.
+
+Construyo productos digitales full-stack: apps web/mobile, sistemas en tiempo real e infraestructura IA. Reduje costos de IA de >$200/mes a $0 implementando Cursor Rules.
+
+Experiencia:
+- NeuralWorks: Fullstack Software Engineer Intern. Arquitecté deploy mobile cross-platform con Expo/EAS, migré UI de Paper a Tamagui (30+ screens en 3 semanas), desplegué APIs serverless en AWS con SST/Pulumi para 500+ usuarios concurrentes.
+- Acofuz (Freelance): Software Engineer. Frontend GIS para minería (React, TypeScript, FastAPI, Django, PostgreSQL). Cliente: Procel (Antofagasta Minerals).
+- IDS UC: Application Architect / Full Stack. Plataforma de coevaluaciones para 1,500+ estudiantes UC con ownership completo: diseño, frontend, backend, CI/CD.
+
+Proyectos destacados:
+- Kalmate: terminal financiera estilo Bloomberg con datos de Yahoo Finance
+- emmy-dom: Functional Web Components
+- Loopaa: coevaluaciones para universidades
+
+Tecnologías: TypeScript, Python, React, Next.js, Node.js, FastAPI, React Native, Expo, PostgreSQL, Supabase, AWS, Docker, Tailwind CSS.
+
+Web: https://eanorambuena.cl
+GitHub: https://github.com/eanorambuena
