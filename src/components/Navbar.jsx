@@ -10,7 +10,6 @@ const links = [
   { labelKey: 'education', href: '#education' },
   { labelKey: 'projects', href: '#projects' },
   { labelKey: 'opensource', href: '#opensource' },
-  { labelKey: 'skills', href: '#skills' },
   { labelKey: 'contact', href: '#contact' },
 ]
 
