@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/generate-presskit.js && astro build",
+    "build": "node scripts/generate-presskit.js && astro build && cp dist/sitemap-index.xml dist/sitemap.xml",
     "preview": "astro preview",
     "deploy": "pnpm build && npx gh-pages -d dist -t",
     "generate-presskit": "node scripts/generate-presskit.js"
