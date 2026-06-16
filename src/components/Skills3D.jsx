@@ -17,7 +17,7 @@ const groups = [
   {
     title: 'Backend',
     color: '#22c55e',
-    skills: ['Node.js', 'Python', 'Django', 'FastAPI', 'PostgreSQL', 'REST APIs', 'Hono', 'Drizzle ORM', 'Supabase', 'Swagger'],
+    skills: ['Node.js', 'Python', 'Django', 'FastAPI', 'PostgreSQL', 'REST APIs', 'Hono', 'Drizzle ORM', 'Supabase', 'Swagger', 'OpenAPI'],
   },
   {
     title: 'Cloud & DevOps',
