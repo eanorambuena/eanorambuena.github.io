@@ -92,12 +92,12 @@ const newsItems = [
         const isInstagram = item.url.includes('instagram.com')
         const isPdf = item.url.endsWith('.pdf')
         return (
-          <article class="group relative bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 hover:border-accent/40 rounded-2xl transition-all duration-500 overflow-hidden hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/10">
+          <article class="group relative bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 hover:border-accent/40 rounded-2xl transition-all duration-500 overflow-hidden hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent/10 cursor-pointer" onclick={`window.open('${item.url}', '_blank', 'noopener,noreferrer')`}>
             <div class={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${color} z-10 opacity-80 group-hover:opacity-100 transition-opacity`} />
             <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/0 via-transparent to-accent-secondary/0 group-hover:from-accent/[0.04] group-hover:to-accent-secondary/[0.04] transition-all duration-500 pointer-events-none" />
 
             {isInstagram ? (
-              <a href={item.url} target="_blank" rel="noopener noreferrer" class="block relative w-full no-underline" style="aspect-ratio: 16/9;">
+              <div class="block relative w-full" style="aspect-ratio: 16/9;">
                 <div class="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-yellow-500 opacity-40 group-hover:opacity-60 transition-opacity" />
                 <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/30 to-transparent" />
                 <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
@@ -115,9 +115,9 @@ const newsItems = [
                     </svg>
                   </span>
                 </div>
-              </a>
+              </div>
             ) : isPdf ? (
-              <a href={item.url} target="_blank" rel="noopener noreferrer" class="block relative w-full no-underline" style="aspect-ratio: 16/9;">
+              <div class="block relative w-full" style="aspect-ratio: 16/9;">
                 <div class="absolute inset-0 bg-gradient-to-br from-red-500 via-rose-500 to-orange-500 opacity-30 group-hover:opacity-50 transition-opacity" />
                 <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/30 to-transparent" />
                 <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
@@ -135,7 +135,7 @@ const newsItems = [
                     </svg>
                   </span>
                 </div>
-              </a>
+              </div>
             ) : (
             <div class="relative w-full" style="aspect-ratio: 21/9;">
               <iframe
@@ -177,20 +177,6 @@ const newsItems = [
 
               <p class="text-secondary text-sm leading-relaxed mb-3" data-lang="es">{item.summaryEs}</p>
               <p class="text-secondary text-sm leading-relaxed mb-3" data-lang="en" hidden>{item.summaryEn}</p>
-
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-accent hover:text-accent-secondary transition-colors no-underline font-medium text-sm"
-              >
-                <span data-lang="es">Ver noticia</span>
-                <span data-lang="en" hidden>Read article</span>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h6M5 5v14h14v-6" />
-                </svg>
-              </a>
             </div>
           </article>
         )
