@@ -1,0 +1,16 @@
+Emmanuel Norambuena — Product Engineer
+
+Chileno, Licenciatura en Matemáticas de la Pontificia Universidad Católica de Chile.
+
+Construyo productos digitales full-stack: apps web/mobile, sistemas en tiempo real e infraestructura IA. Reduje costos de IA de >$200/mes a $0 implementando Cursor Rules.
+
+Proyectos destacados:
+- emmy-dom: Functional Web Components
+- Kalmate: terminal financiera estilo Bloomberg con datos de Yahoo Finance
+- Loopaa: coevaluaciones para universidades, 1,500+ estudiantes
+- NeuralWorks: POS para tablets, 500+ usuarios concurrentes
+
+Tecnologías: TypeScript, Python, Go, React, Vue, Nuxt, Node.js, PostgreSQL, Redis, Docker, Kubernetes, TensorFlow, FastAPI, Cursor/Claude.
+
+Web: https://eanorambuena.cl
+GitHub: https://github.com/eanorambuena

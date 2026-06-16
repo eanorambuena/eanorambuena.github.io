@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-presskit.js && astro build",
     "preview": "astro preview",
-    "deploy": "pnpm build && npx gh-pages -d dist -t"
+    "deploy": "pnpm build && npx gh-pages -d dist -t",
+    "generate-presskit": "node scripts/generate-presskit.js"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
@@ -28,6 +29,8 @@
     "three": "^0.184.0"
   },
   "devDependencies": {
+    "@types/archiver": "^8.0.0",
+    "archiver": "^8.0.0",
     "detect-gpu": "^5.0.70",
     "typescript": "^6.0.3"
   }
