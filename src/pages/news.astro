@@ -153,8 +153,8 @@ const newsItems = [
             </div>
             )}
 
-            <div class="p-8 md:p-10">
-              <div class="flex flex-wrap items-center gap-3 mb-3">
+            <div class="p-5 md:p-6">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
                 <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-accent/15 text-primary border border-accent/10" data-lang="es">
                   {item.kindEs}
                 </span>
@@ -174,11 +174,11 @@ const newsItems = [
                 )}
               </div>
 
-              <h2 class="text-xl md:text-2xl font-bold text-primary leading-snug mb-3" data-lang="es">{item.titleEs}</h2>
-              <h2 class="text-xl md:text-2xl font-bold text-primary leading-snug mb-3" data-lang="en" hidden>{item.titleEn}</h2>
+              <h2 class="text-xl md:text-2xl font-bold text-primary leading-snug mb-2" data-lang="es">{item.titleEs}</h2>
+              <h2 class="text-xl md:text-2xl font-bold text-primary leading-snug mb-2" data-lang="en" hidden>{item.titleEn}</h2>
 
-              <p class="text-secondary text-sm leading-relaxed mb-5" data-lang="es">{item.summaryEs}</p>
-              <p class="text-secondary text-sm leading-relaxed mb-5" data-lang="en" hidden>{item.summaryEn}</p>
+              <p class="text-secondary text-sm leading-relaxed mb-3" data-lang="es">{item.summaryEs}</p>
+              <p class="text-secondary text-sm leading-relaxed mb-3" data-lang="en" hidden>{item.summaryEn}</p>
 
               <a
                 href={item.url}
