@@ -216,7 +216,7 @@ export default function AccessibilityMenu() {
         <button
           ref={mobileTriggerRef}
           onClick={() => setOpen(!open)}
-          className="w-10 h-10 rounded-xl inline-flex items-center justify-center text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative z-50"
+          className="w-10 h-10 rounded-xl inline-flex items-center justify-center text-primary bg-surface-elevated hover:bg-surface-elevated/80 transition-colors relative z-50 shadow-lg"
           aria-label="Menú de accesibilidad"
           aria-expanded={open}
           aria-haspopup="dialog"
