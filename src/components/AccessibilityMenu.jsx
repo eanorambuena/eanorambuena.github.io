@@ -216,12 +216,13 @@ export default function AccessibilityMenu() {
         <button
           ref={mobileTriggerRef}
           onClick={() => setOpen(!open)}
-          className="w-14 h-14 rounded-full bg-accent text-white shadow-2xl shadow-accent/40 hover:shadow-accent/60 hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative z-50"
+          className="w-10 h-10 rounded-full transition-all duration-200 border-0 flex items-center justify-center relative z-50"
+          style={{ backgroundColor: open ? 'var(--accent)' : 'var(--border)' }}
           aria-label="Menú de accesibilidad"
           aria-expanded={open}
           aria-haspopup="dialog"
         >
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
             <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
