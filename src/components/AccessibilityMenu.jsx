@@ -204,7 +204,7 @@ export default function AccessibilityMenu() {
         )}
       </div>
 
-      <div className="md:hidden fixed bottom-6 right-6 z-50">
+      <div className="md:hidden">
         {open && (
           <>
             <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
@@ -216,7 +216,7 @@ export default function AccessibilityMenu() {
         <button
           ref={mobileTriggerRef}
           onClick={() => setOpen(!open)}
-          className="w-10 h-10 rounded-xl inline-flex items-center justify-center text-primary bg-surface-elevated hover:bg-surface-elevated/80 transition-colors relative z-50 shadow-lg"
+          className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-xl inline-flex items-center justify-center text-primary bg-surface-elevated hover:bg-surface-elevated/80 transition-colors shadow-lg"
           aria-label="Menú de accesibilidad"
           aria-expanded={open}
           aria-haspopup="dialog"
