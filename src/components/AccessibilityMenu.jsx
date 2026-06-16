@@ -57,13 +57,16 @@ function A11yControls({ reduceMotion, setReduceMotion, highContrast, setHighCont
         </div>
       </div>
 
-      <button
-        onClick={onReset}
-        className="w-full text-xs font-semibold text-accent hover:text-white transition-colors py-1.5 rounded-lg border border-accent/30 hover:border-accent hover:bg-accent/10"
-        aria-label="Restablecer todos los ajustes de accesibilidad"
-      >
-        Restablecer
-      </button>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onReset}
+          className="p-1.5 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 text-sm font-bold"
+          aria-label="Restablecer todos los ajustes de accesibilidad"
+        >
+          ⟳
+        </button>
+        <span className="text-sm text-secondary">Restablecer</span>
+      </div>
     </div>
   )
 }
