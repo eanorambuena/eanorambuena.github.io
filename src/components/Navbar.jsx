@@ -10,6 +10,7 @@ const links = [
   { labelKey: 'education', href: '#education' },
   { labelKey: 'projects', href: '#projects' },
   { labelKey: 'opensource', href: '#opensource' },
+  { labelKey: 'skills', href: '#skills' },
   { labelKey: 'contact', href: '#contact' },
 ]
 
@@ -118,12 +119,6 @@ export default function Navbar() {
             >
               {t.nav.news}
             </a>
-            <a
-              href="/buy-me-a-coffee"
-              class="px-4 py-2 text-sm rounded-lg transition-all duration-200 no-underline text-[#00c853] hover:text-[#00e060] border border-[#00c853]/30 hover:border-[#00c853]/60"
-            >
-              {t.nav.donar}
-            </a>
         </div>
         <div className="flex items-center gap-3">
           <IconButton
@@ -189,12 +184,6 @@ export default function Navbar() {
                 class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-secondary hover:text-primary hover:bg-surface-white/5"
               >
                 {t.nav.news}
-              </a>
-              <a
-                href="/buy-me-a-coffee"
-                class="px-4 py-3 text-sm rounded-lg text-left transition-all no-underline text-[#00c853] border border-[#00c853]/30"
-              >
-                {t.nav.donar}
               </a>
             <div className="flex items-center gap-2 mt-2 self-start">
               <IconButton
