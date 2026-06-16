@@ -112,6 +112,22 @@ export default function AccessibilityMenu() {
   }, [open])
 
   useEffect(() => {
+    function handleClickOutside(e) {
+      if (!open) return
+      const panel = panelRef.current
+      const trigger = triggerRef.current
+      const mobileTrigger = mobileTriggerRef.current
+      if (!panel || panel.contains(e.target)) return
+      if (trigger && trigger.contains(e.target)) return
+      if (mobileTrigger && mobileTrigger.contains(e.target)) return
+      setOpen(false)
+      triggerRef.current?.focus()
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [open])
+
+  useEffect(() => {
     const handler = (e) => {
       if (e.key === 'Escape') {
         setOpen(false)
