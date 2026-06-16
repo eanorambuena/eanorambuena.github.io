@@ -3,13 +3,35 @@ import Navbar from '../components/Navbar.jsx'
 import { es, en } from '../i18n/translations'
 import 'flag-icons/css/flag-icons.min.css'
 import ClientRouter from 'astro/components/ClientRouter.astro'
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  ogImageAlt?: string
+  canonicalUrl?: string
+}
+
+const props = Astro.props as Props
+
 const site = Astro.site
 const siteUrl = site?.origin || 'https://eanorambuena.github.io'
-const ogImage = `${siteUrl}/og-image.svg`
+const path = Astro.url.pathname.replace(/\/+$/, '') || ''
+const canonicalUrl = props.canonicalUrl || (path ? `${siteUrl}${path}/` : siteUrl)
+
 const ogImagePng = `${siteUrl}/og-image.png`
 const ogImageW = 1200
 const ogImageH = 630
 const dateModified = new Date().toISOString().split('T')[0]
+
+const defaultTitle = 'Emmanuel Norambuena — Product Engineer & Builder'
+const defaultDescription = 'Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, full-stack, real-time systems, Web Components, emmy-dom. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios.'
+const defaultOgImage = `${siteUrl}/og-image.png`
+const defaultOgImageAlt = 'Emmanuel Norambuena — Product Engineer & Builder'
+
+const metaTitle = props.title || defaultTitle
+const metaDescription = props.description || defaultDescription
+const metaOgImage = props.ogImage || defaultOgImage
+const metaOgImageAlt = props.ogImageAlt || defaultOgImageAlt
 ---
 
 <!DOCTYPE html>
@@ -17,8 +39,8 @@ const dateModified = new Date().toISOString().split('T')[0]
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emmanuel Norambuena — Product Engineer & Builder</title>
-    <meta name="description" content="Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, full-stack, real-time systems, Web Components, emmy-dom. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios." />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
     <meta name="author" content="Emmanuel Norambuena" />
     <meta name="keywords" content="eanorambuena, Emmanuel Norambuena, Product Engineer Chile, AI infrastructure, full-stack developer Chile, React developer, Three.js, NeuralWorks, Pontificia Universidad Católica de Chile, startup Chile, desarrollo web Chile, emmy-dom, emmy.js, Functional Web Components, TypeScript, React Native, Tamagui, Expo, Astro, Tailwind CSS, Node.js, PostgreSQL, AWS, Docker, open source Chile, real-time systems, AI cost optimization, GIS development, PUC Chile, OSUC, Open Source UC" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
@@ -30,9 +52,8 @@ const dateModified = new Date().toISOString().split('T')[0]
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/og-image.svg" />
-    <link rel="canonical" href={siteUrl} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="es" href={siteUrl} />
-    <link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />
     <link rel="alternate" hreflang="x-default" href={siteUrl} />
     <link rel="me" href="https://github.com/eanorambuena" />
     <link rel="me" href="https://linkedin.com/in/eanorambuena" />
@@ -68,15 +89,15 @@ const dateModified = new Date().toISOString().split('T')[0]
     </script>
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
-    <meta property="og:title" content="Emmanuel Norambuena — Product Engineer & Builder | AI, Web Components, Full-Stack" />
-    <meta property="og:description" content="Product Engineer chileno. AI infrastructure, Web Components (emmy-dom), full-stack, real-time systems. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios." />
-    <meta property="og:image" content={ogImagePng} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={metaOgImage} />
     <meta property="og:image:width" content={String(ogImageW)} />
     <meta property="og:image:height" content={String(ogImageH)} />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="Emmanuel Norambuena — Product Engineer & Builder" />
-    <meta property="og:image:secure_url" content={ogImagePng} />
+    <meta property="og:image:alt" content={metaOgImageAlt} />
+    <meta property="og:image:secure_url" content={metaOgImage} />
     <meta property="og:site_name" content="Emmanuel Norambuena" />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -85,11 +106,11 @@ const dateModified = new Date().toISOString().split('T')[0]
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@eanorambuena" />
     <meta name="twitter:site" content="@eanorambuena" />
-    <meta name="twitter:title" content="Emmanuel Norambuena — Product Engineer & Builder | AI, Web Components, Full-Stack" />
-    <meta name="twitter:description" content="Product Engineer chileno. AI infrastructure, Functional Web Components, full-stack, real-time systems. Creator de emmy-dom." />
-    <meta name="twitter:image" content={ogImagePng} />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={metaOgImage} />
 
-    <meta property="al:web:url" content={siteUrl} />
+    <meta property="al:web:url" content={canonicalUrl} />
     <meta property="al:web:should_fallback" content="true" />
 
     <script type="application/ld+json" set:html={JSON.stringify({
