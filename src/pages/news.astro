@@ -137,19 +137,17 @@ const newsItems = [
                 </div>
               </a>
             ) : (
-            <div class="relative w-full" style="aspect-ratio: 16/9;">
-              <div class="w-[250%] h-[250%] origin-top-left scale-[0.4]">
-                <iframe
-                  src={item.url}
-                  title={item.titleEs}
-                  class="w-full h-full border-0"
-                  loading="lazy"
-                  sandbox="allow-scripts"
-                  allow="geolocation 'none'"
-                  style="pointer-events: none;"
-                />
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/10 to-transparent pointer-events-none" />
+            <div class="relative w-full" style="aspect-ratio: 21/9;">
+              <iframe
+                src={item.url}
+                title={item.titleEs}
+                class="w-full h-full border-0"
+                loading="lazy"
+                sandbox="allow-scripts"
+                allow="geolocation 'none'"
+                style="pointer-events: none;"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/30 to-transparent pointer-events-none" />
             </div>
             )}
 
