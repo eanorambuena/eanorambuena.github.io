@@ -13,7 +13,7 @@ const IconButton = forwardRef(({ onClick, ariaLabel, animateKey, children, class
       <button
         ref={ref}
         {...shared}
-        className={`p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 ${className}`}
+        className={`w-10 h-10 rounded-xl inline-flex items-center justify-center text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 ${className}`}
       >
         {children}
       </button>
@@ -24,7 +24,7 @@ const IconButton = forwardRef(({ onClick, ariaLabel, animateKey, children, class
     <button
       ref={ref}
       {...shared}
-      className={`p-2 rounded-lg text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative ${className}`}
+      className={`w-10 h-10 rounded-xl inline-flex items-center justify-center text-secondary hover:text-primary transition-colors bg-surface-white/5 hover:bg-surface-white/10 relative ${className}`}
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
