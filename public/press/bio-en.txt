@@ -1,6 +1,6 @@
 Emmanuel Norambuena — Product Engineer
 
-Chilean, B.S. in Engineering (Computer Science) at Pontificia Universidad Católica de Chile (PUC), GPA 6.19/7.0.
+Chilean, B.S. in Industrial Engineering with a minor in Computer Science at Pontificia Universidad Católica de Chile (PUC), GPA 6.19/7.0.
 
 Full-stack digital product builder: web/mobile apps, real-time systems, and AI infrastructure. Reduced AI costs from >$200/mo to $0 by implementing Cursor Rules.
 

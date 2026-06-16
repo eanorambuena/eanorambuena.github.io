@@ -1,6 +1,6 @@
 Emmanuel Norambuena — Product Engineer
 
-Chileno, Ingeniería Civil en Computación en la Pontificia Universidad Católica de Chile (PUC), con GPA 6.19/7.0.
+Chileno, Ingeniería Civil Industrial mención Computación en la Pontificia Universidad Católica de Chile (PUC), con GPA 6.19/7.0.
 
 Construyo productos digitales full-stack: apps web/mobile, sistemas en tiempo real e infraestructura IA. Reduje costos de IA de >$200/mes a $0 implementando Cursor Rules.
 
