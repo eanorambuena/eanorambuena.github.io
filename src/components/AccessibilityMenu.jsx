@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import IconButton from './IconButton'
 
 function ToggleSwitch({ id, label, checked, onChange }) {
@@ -204,30 +205,34 @@ export default function AccessibilityMenu() {
         )}
       </div>
 
-      <div className="md:hidden">
-        {open && (
-          <>
-            <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
-            <div className="fixed bottom-20 right-6 z-50 max-w-[calc(100vw-2rem)]">
-              {panelContent}
-            </div>
-          </>
-        )}
-        <button
-          ref={mobileTriggerRef}
-          onClick={() => setOpen(!open)}
-          className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-xl inline-flex items-center justify-center text-primary bg-surface-elevated hover:bg-surface-elevated/80 transition-colors shadow-lg"
-          aria-label="Menú de accesibilidad"
-          aria-expanded={open}
-          aria-haspopup="dialog"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
-            <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
-          </svg>
-        </button>
-      </div>
+      <div className="md:hidden" />
+      {typeof document !== 'undefined' && createPortal(
+        <>
+          {open && (
+            <>
+              <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
+              <div className="fixed bottom-20 right-6 z-50 max-w-[calc(100vw-2rem)]">
+                {panelContent}
+              </div>
+            </>
+          )}
+          <button
+            ref={mobileTriggerRef}
+            onClick={() => setOpen(!open)}
+            className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-xl inline-flex items-center justify-center text-primary bg-surface-elevated hover:bg-surface-elevated/80 transition-colors shadow-lg"
+            aria-label="Menú de accesibilidad"
+            aria-expanded={open}
+            aria-haspopup="dialog"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+              <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 12h8M12 10v6l-2 2M12 16l2 2" />
+            </svg>
+          </button>
+        </>,
+        document.body
+      )}
     </>
   )
 }
