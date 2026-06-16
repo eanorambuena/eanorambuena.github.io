@@ -1,28 +1,31 @@
 import type { APIRoute } from 'astro'
+import { readFileSync } from 'fs'
 
-const site = 'https://eanorambuena.github.io'
+export const GET: APIRoute = async ({ site }) => {
+  const siteUrl = site?.origin || 'https://eanorambuena.github.io'
 
-const pages = [
-  { loc: '/', priority: '1.0' },
-  { loc: '/news/', priority: '0.9' },
-  { loc: '/buy-me-a-coffee/', priority: '0.6' },
-  { loc: '/projects/neuralworks/', priority: '0.8' },
-  { loc: '/projects/smartlokus/', priority: '0.8' },
-  { loc: '/projects/loopaas/', priority: '0.8' },
-  { loc: '/projects/kalmate/', priority: '0.8' },
-]
+  const pages = [
+    { loc: '', priority: '1.0' },
+    { loc: 'news/', priority: '0.9' },
+    { loc: 'buy-me-a-coffee/', priority: '0.6' },
+    { loc: 'projects/neuralworks/', priority: '0.8' },
+    { loc: 'projects/smartlokus/', priority: '0.8' },
+    { loc: 'projects/loopaas/', priority: '0.8' },
+    { loc: 'projects/kalmate/', priority: '0.8' },
+  ]
 
-export const GET: APIRoute = async () => {
   const lastmod = new Date().toISOString().split('T')[0]
 
-  const urls = pages.map(
-    (p) => `  <url>
-    <loc>${site}${p.loc}</loc>
+  const urls = pages
+    .map(
+      (p) => `  <url>
+    <loc>${siteUrl}/${p.loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${p.priority}</priority>
   </url>`
-  ).join('\n')
+    )
+    .join('\n')
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

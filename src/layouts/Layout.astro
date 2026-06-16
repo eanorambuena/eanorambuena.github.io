@@ -32,6 +32,23 @@ const metaTitle = props.title || defaultTitle
 const metaDescription = props.description || defaultDescription
 const metaOgImage = props.ogImage || defaultOgImage
 const metaOgImageAlt = props.ogImageAlt || defaultOgImageAlt
+
+const breadcrumbLabels: Record<string, string> = {
+  '': 'Inicio',
+  'news': 'Noticias',
+  'buy-me-a-coffee': 'Donar',
+  'projects': 'Proyectos',
+}
+
+const pathParts = Astro.url.pathname.replace(/\/+$/, '').split('/').filter(Boolean)
+const breadcrumbs: { name: string; url: string }[] = [{ name: 'Inicio', url: siteUrl }]
+let currentPath = ''
+for (const part of pathParts) {
+  currentPath += '/' + part
+  const label = breadcrumbLabels[part] || part
+  const url = siteUrl + currentPath + '/'
+  breadcrumbs.push({ name: label.charAt(0).toUpperCase() + label.slice(1), url })
+}
 ---
 
 <!DOCTYPE html>
@@ -239,14 +256,12 @@ const metaOgImageAlt = props.ogImageAlt || defaultOgImageAlt
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Inicio",
-          "item": siteUrl
-        }
-      ]
+      "itemListElement": breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": b.name,
+        "item": b.url
+      }))
     })} />
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -366,6 +381,26 @@ const metaOgImageAlt = props.ogImageAlt || defaultOgImageAlt
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background-image: radial-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background: radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--accent) 6%, transparent), transparent), radial-gradient(ellipse 60% 40% at 80% 100%, color-mix(in srgb, var(--accent-secondary) 5%, transparent), transparent);"></div>
     <Navbar client:load />
+    {breadcrumbs.length > 1 && (
+      <nav aria-label="Breadcrumb" class="relative z-10 max-w-5xl mx-auto px-6 pt-2 pb-1">
+        <ol class="flex flex-wrap items-center gap-1.5 text-sm text-muted font-mono">
+          {breadcrumbs.map((b, i) => (
+            <li class="flex items-center gap-1.5">
+              {i > 0 && (
+                <svg class="w-3 h-3 text-muted/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+              {i < breadcrumbs.length - 1 ? (
+                <a href={new URL(b.url).pathname} class="hover:text-accent transition-colors no-underline">{b.name}</a>
+              ) : (
+                <span class="text-primary font-medium" aria-current="page">{b.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    )}
     <slot />
     <footer class="relative z-10 border-t border-border">
       <div class="max-w-5xl mx-auto px-6 py-12">
