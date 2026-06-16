@@ -1,16 +1,20 @@
 Emmanuel Norambuena — Product Engineer
 
-Chilean, Bachelor's in Mathematics from Pontificia Universidad Católica de Chile.
+Chilean, B.S. in Engineering (Computer Science) at Pontificia Universidad Católica de Chile (PUC), GPA 6.19/7.0.
 
 Full-stack digital product builder: web/mobile apps, real-time systems, and AI infrastructure. Reduced AI costs from >$200/mo to $0 by implementing Cursor Rules.
 
-Key projects:
-- emmy-dom: Functional Web Components
-- Kalmate: Bloomberg-style financial terminal powered by Yahoo Finance
-- Loopaa: peer evaluation platform for universities, 1,500+ students
-- NeuralWorks: POS system for tablets, 500+ concurrent users
+Experience:
+- NeuralWorks: Fullstack Software Engineer Intern. Architected cross-platform mobile deployment with Expo/EAS, led UI migration from Paper to Tamagui (30+ screens in 3 weeks), deployed serverless APIs on AWS with SST/Pulumi for 500+ concurrent users.
+- Acofuz (Freelance): Software Engineer. GIS frontend for mining industry (React, TypeScript, FastAPI, Django, PostgreSQL). Client: Procel (Antofagasta Minerals).
+- IDS UC: Application Architect / Full Stack. Built peer evaluation platform for 1,500+ UC students with full ownership: design, frontend, backend, CI/CD.
 
-Technologies: TypeScript, Python, Go, React, Vue, Nuxt, Node.js, PostgreSQL, Redis, Docker, Kubernetes, TensorFlow, FastAPI, Cursor/Claude.
+Key projects:
+- Kalmate: Bloomberg-style financial terminal powered by Yahoo Finance
+- emmy-dom: Functional Web Components
+- Loopaa: peer evaluation platform for universities
+
+Technologies: TypeScript, Python, React, Next.js, Node.js, FastAPI, React Native, Expo, PostgreSQL, Supabase, AWS, Docker, Tailwind CSS.
 
 Web: https://eanorambuena.cl
 GitHub: https://github.com/eanorambuena
