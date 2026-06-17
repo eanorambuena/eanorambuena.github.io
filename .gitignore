@@ -27,3 +27,4 @@ dist-ssr
 *.sw?
 .astro/
 # old emmy.js files
+public/press/presskit.zip
