@@ -180,7 +180,7 @@ if (!project) {
 }
 ---
 
-<Layout title={`${project.titleEs} | Emmanuel Norambuena`} description={project.longDescEs} ogImage={project.image ? new URL(project.image, Astro.site).href : undefined} ogImageAlt={project.titleEs}>
+<Layout title={`${project.titleEs} | Emmanuel Norambuena`} description={project.longDescEs.slice(0, 160).split(' ').slice(0, -1).join(' ') + '.'} ogImage={project.image ? new URL(project.image, Astro.site).href : undefined} ogImageAlt={project.titleEs}>
   <main id="main-content" class="relative z-10 min-h-screen">
     <div class="max-w-5xl mx-auto px-4 py-24 md:py-32">
       <AnimatedSection client:load className="mb-8">

@@ -9,9 +9,12 @@ interface Props {
   ogImage?: string
   ogImageAlt?: string
   canonicalUrl?: string
+  noindex?: boolean
 }
 
 const props = Astro.props as Props
+
+const noindex = props.noindex === true
 
 const site = Astro.site
 const siteUrl = site?.origin || 'https://eanorambuena.github.io'
@@ -32,7 +35,7 @@ function localISO(date) {
 const dateModified = localISO(new Date())
 
 const defaultTitle = 'Emmanuel Norambuena — Product Engineer & Builder'
-const defaultDescription = 'Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, full-stack, real-time systems, Web Components, emmy-dom. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios.'
+const defaultDescription = 'Product Engineer chileno especializado en AI infrastructure, full-stack y real-time systems. Redujo costos de IA de $200 a $0. Creador de emmy-dom y Kalmate.'
 const defaultOgImage = `${siteUrl}/og-image.png`
 const defaultOgImageAlt = 'Emmanuel Norambuena — Product Engineer & Builder'
 
@@ -68,7 +71,7 @@ for (const part of pathParts) {
     <meta name="description" content={metaDescription} />
     <meta name="author" content="Emmanuel Norambuena" />
     <meta name="keywords" content="eanorambuena, Emmanuel Norambuena, Product Engineer Chile, AI infrastructure, full-stack developer Chile, React developer, Three.js, NeuralWorks, Pontificia Universidad Católica de Chile, startup Chile, desarrollo web Chile, emmy-dom, emmy.js, Functional Web Components, TypeScript, React Native, Tamagui, Expo, Astro, Tailwind CSS, Node.js, PostgreSQL, AWS, Docker, open source Chile, real-time systems, AI cost optimization, GIS development, PUC Chile, OSUC, Open Source UC" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large'} />
     <meta name="revisit-after" content="7 days" />
     <meta name="theme-color" id="theme-color-meta" content="#0a0a0a" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -79,6 +82,7 @@ for (const part of pathParts) {
     <link rel="apple-touch-icon" href="/og-image.svg" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="es" href={siteUrl} />
+    <link rel="alternate" hreflang="en" href={siteUrl} />
     <link rel="alternate" hreflang="x-default" href={siteUrl} />
     <link rel="me" href="https://github.com/eanorambuena" />
     <link rel="me" href="https://linkedin.com/in/eanorambuena" />
@@ -270,6 +274,17 @@ for (const part of pathParts) {
         "name": b.name,
         "item": b.url
       }))
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://neuralworks.cl/#organization",
+      "name": "NeuralWorks SpA",
+      "url": "https://neuralworks.cl",
+      "description": "Startup chilena de tecnología que desarrolla soluciones POS para tablets con React Native, AWS y Tamagui.",
+      "foundingDate": "2021",
+      "founder": { "@type": "Person", "name": "Vicente Sánchez" },
+      "address": { "@type": "PostalAddress", "addressCountry": "CL" }
     })} />
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />

@@ -14,6 +14,62 @@ import Contact from '../components/Contact.astro';
 ---
 
 <Layout>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "name": "Functional Web Components con emmy-dom — Open Source UC",
+        "description": "Charla sobre Functional Web Components con emmy-dom en Open Source UC.",
+        "thumbnailUrl": "https://img.youtube.com/vi/mt6ZmbUyLFo/maxresdefault.jpg",
+        "uploadDate": "2024-01-01",
+        "embedUrl": "https://www.youtube.com/embed/mt6ZmbUyLFo",
+        "contentUrl": "https://www.youtube.com/watch?v=mt6ZmbUyLFo"
+      },
+      {
+        "@type": "VideoObject",
+        "name": "emmy-dom: Functional Web Components Library",
+        "description": "Presentación de la librería emmy-dom de Functional Web Components.",
+        "thumbnailUrl": "https://img.youtube.com/vi/n9PxnO6gkg0/maxresdefault.jpg",
+        "uploadDate": "2024-01-01",
+        "embedUrl": "https://www.youtube.com/embed/n9PxnO6gkg0",
+        "contentUrl": "https://www.youtube.com/watch?v=n9PxnO6gkg0"
+      }
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Featured Projects",
+    "description": "Real products shipped for real users — from open source to fintech to mining.",
+    "numberOfItems": 4,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://eanorambuena.github.io/projects/neuralworks/",
+        "name": "NeuralWorks — Fullstack POS"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://eanorambuena.github.io/projects/smartlokus/",
+        "name": "Smartlokus: GIS App for Mining"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "url": "https://eanorambuena.github.io/projects/loopaas/",
+        "name": "Loopaas: Peer Evaluation Platform"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "url": "https://eanorambuena.github.io/projects/kalmate/",
+        "name": "Kalmate: Financial Terminal"
+      }
+    ]
+  })} />
   <main id="main-content" class="relative z-10">
     <Hero />
     <About />
