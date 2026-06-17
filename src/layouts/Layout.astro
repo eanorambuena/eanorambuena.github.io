@@ -21,7 +21,15 @@ const canonicalUrl = props.canonicalUrl || (path ? `${siteUrl}${path}/` : siteUr
 const ogImagePng = `${siteUrl}/og-image.png`
 const ogImageW = 1200
 const ogImageH = 630
-const dateModified = new Date().toISOString().split('T')[0]
+function localISO(date) {
+  const o = -date.getTimezoneOffset()
+  const s = o >= 0 ? '+' : '-'
+  const p = n => String(Math.abs(n)).padStart(2, '0')
+  return date.getFullYear() + '-' + p(date.getMonth()+1) + '-' + p(date.getDate()) +
+    'T' + p(date.getHours()) + ':' + p(date.getMinutes()) + ':' + p(date.getSeconds()) +
+    s + p(o/60) + ':' + p(o%60)
+}
+const dateModified = localISO(new Date())
 
 const defaultTitle = 'Emmanuel Norambuena — Product Engineer & Builder'
 const defaultDescription = 'Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, full-stack, real-time systems, Web Components, emmy-dom. Reduje costos de IA de $200/u a $0. Construí plataformas para 1,500+ usuarios.'
@@ -249,9 +257,9 @@ for (const part of pathParts) {
       "mainEntity": {
         "@id": siteUrl + "#person"
       },
-      "dateCreated": "2024-01-01",
+      "dateCreated": "2024-01-01T00:00:00-03:00",
       "dateModified": dateModified,
-      "datePublished": "2024-01-01"
+      "datePublished": "2024-01-01T00:00:00-03:00"
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
