@@ -65,4 +65,9 @@ export const logos = {
     imgClass: 'max-h-[90%] max-w-[90%]',
     lightImgClass: 'max-h-[120%] max-w-[120%]',
   },
+  Metro: {
+    dark: '/metro-logo-dark.svg',
+    light: '/metro-logo-light.svg',
+    imgClass: 'max-h-[80%] max-w-[80%]',
+  },
 }
