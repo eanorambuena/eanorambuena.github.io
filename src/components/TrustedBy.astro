@@ -104,3 +104,28 @@ const isFiltered = (entry) => entry.filterDark || entry.filterLight
     track.addEventListener('mouseleave', () => { speed = 1.2 })
   }
 </script>
+
+<script>
+  (function() {
+    var remoteLogos = [
+      'https://expandemineria.cl/wp-content/uploads/2024/05/AMSA-Logo-300x94.png',
+      'https://www.aminerals.cl/images/default-source/logos-amsa/logo-amsa.svg',
+      'https://www.procelservicios.cl/img/logo.png',
+      'https://upload.wikimedia.org/wikipedia/commons/d/d8/Marca-uc.svg',
+      'https://www.aguasandinas.cl/o/aguas-home-theme/images/logo-aguasandinas.png'
+    ]
+
+    function prefetch() {
+      remoteLogos.forEach(function(src) {
+        var img = new Image()
+        img.src = src
+      })
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(prefetch, { timeout: 5000 })
+    } else {
+      setTimeout(prefetch, 2000)
+    }
+  })()
+</script>
