@@ -35,7 +35,7 @@ function localISO(date) {
 const dateModified = localISO(new Date())
 
 const defaultTitle = 'Emmanuel Norambuena — Product Engineer & Builder'
-const defaultDescription = 'Product Engineer chileno especializado en AI infrastructure, full-stack y real-time systems. Redujo costos de IA de $200 a $0. Creador de emmy-dom y Kalmate.'
+const defaultDescription = 'Product Engineer chileno. Desarrollo rápido y pienso en sistemas. Plataformas para 1,500+ usuarios concurrentes, reducción de costos de IA de $200 a $0. Creador de emmy-dom y Kalmate.'
 const defaultOgImage = `${siteUrl}/og-image.png`
 const defaultOgImageAlt = 'Emmanuel Norambuena — Product Engineer & Builder'
 
@@ -70,6 +70,7 @@ for (const part of pathParts) {
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
     <meta name="author" content="Emmanuel Norambuena" />
+    <meta name="application-name" content="Emmanuel Norambuena" />
     <meta name="keywords" content="eanorambuena, Emmanuel Norambuena, Product Engineer Chile, AI infrastructure, full-stack developer Chile, React developer, Three.js, NeuralWorks, Pontificia Universidad Católica de Chile, startup Chile, desarrollo web Chile, emmy-dom, emmy.js, Functional Web Components, TypeScript, React Native, Tamagui, Expo, Astro, Tailwind CSS, Node.js, PostgreSQL, AWS, Docker, open source Chile, real-time systems, AI cost optimization, GIS development, PUC Chile, OSUC, Open Source UC" />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large'} />
     <meta name="revisit-after" content="7 days" />
@@ -151,9 +152,14 @@ for (const part of pathParts) {
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": siteUrl + "#website",
       "url": siteUrl,
       "name": "Emmanuel Norambuena",
       "alternateName": "Emmanuel Norambuena — Product Engineer & Builder",
+      "publisher": {
+        "@type": "Person",
+        "name": "Emmanuel Norambuena"
+      },
       "inLanguage": ["es-CL", "en-US"],
       "description": "Portfolio personal de Emmanuel Norambuena, Product Engineer chileno. AI infrastructure, Functional Web Components (emmy-dom), full-stack development, y real-time systems.",
       "image": ogImagePng,
