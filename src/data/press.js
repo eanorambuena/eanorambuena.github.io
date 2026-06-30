@@ -16,7 +16,7 @@ export const pressItems = [
     kindEn: 'Feature',
     date: '',
     source: 'Open Source UC',
-    url: 'https://osuc.dev/about/',
+    url: 'https://osuc.dev/about/#semester-2024-1',
     titleEs: 'Open Source UC — Miembro del equipo y comunidad',
     titleEn: 'Open Source UC — Team member and contributor',
     summaryEs: 'Miembro activo de la comunidad Open Source UC, contribuyendo a su crecimiento.',
@@ -57,6 +57,6 @@ export const pressItems = [
     titleEn: 'National Math Olympiad 2018 Final',
     summaryEs: 'Documento oficial de la Olimpiada Nacional de Matemática 2018.',
     summaryEn: 'Official PDF document for the 2018 National Math Olympiad final.',
-    clip: null,
+    clip: '/press/clippings/olimpiada.jpg',
   },
 ]
