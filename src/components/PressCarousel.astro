@@ -70,7 +70,8 @@ const kindIcon = {
               </div>
               <div class="flex items-center justify-between">
                 <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-accent/15 text-primary border border-accent/10">
-                  {item.kindEs}
+                  <span data-lang="es">{item.kindEs}</span>
+                  <span data-lang="en" hidden>{item.kindEn}</span>
                 </span>
                 {item.date ? (
                   <time class="text-[10px] text-muted font-mono">{item.date}</time>
