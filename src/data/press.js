@@ -19,8 +19,8 @@ export const pressItems = [
     url: 'https://osuc.dev/about/',
     titleEs: 'About de Open Source UC',
     titleEn: 'Open Source UC About Page',
-    summaryEs: 'Página de la comunidad Open Source UC donde aparezco como parte del equipo y trayectoria.',
-    summaryEn: 'Open Source UC community page where I appear as part of the team and organization history.',
+    summaryEs: 'Miembro activo de la comunidad Open Source UC, contribuyendo a su crecimiento.',
+    summaryEn: 'Active member of the Open Source UC community, contributing to its growth.',
     clip: '/press/clippings/osuc.jpg',
   },
   {
@@ -31,8 +31,8 @@ export const pressItems = [
     url: 'https://www.instagram.com/reel/CzB-wLVuWg8/',
     titleEs: 'Reel en Instagram',
     titleEn: 'Instagram Reel',
-    summaryEs: 'Publicación en formato reel donde también aparezco.',
-    summaryEn: 'Reel-format post where I also appear.',
+    summaryEs: 'Aparición en reel destacando desarrollo de software y tecnología.',
+    summaryEn: 'Feature in Instagram reel highlighting software development and tech.',
     clip: null,
   },
   {
