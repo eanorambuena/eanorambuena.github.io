@@ -1,0 +1,117 @@
+---
+import { pressItems } from '../data/press'
+
+const kindGradient = {
+  'Prensa': 'from-blue-500 to-cyan-500',
+  'Press': 'from-blue-500 to-cyan-500',
+  'Aparición': 'from-purple-500 to-pink-500',
+  'Feature': 'from-purple-500 to-pink-500',
+  'Documento': 'from-amber-500 to-orange-500',
+  'Document': 'from-amber-500 to-orange-500',
+}
+
+const kindIcon = {
+  'Prensa': 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  'Press': 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  'Aparición': 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+  'Feature': 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0zM19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+  'Documento': 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  'Document': 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+}
+---
+
+<section class="py-28 overflow-hidden">
+  <div class="text-center mb-12 px-4">
+    <p class="text-accent font-mono text-sm tracking-widest uppercase mb-3">
+      <span data-lang="es">Prensa</span>
+      <span data-lang="en" hidden>Press</span>
+    </p>
+    <h2 class="text-3xl md:text-4xl font-bold gradient-text">
+      <span data-lang="es">Apariciones en prensa</span>
+      <span data-lang="en" hidden>Press mentions</span>
+    </h2>
+    <p class="text-secondary max-w-lg mx-auto mt-4 text-sm">
+      <span data-lang="es">Noticias, entrevistas y menciones en medios y organizaciones.</span>
+      <span data-lang="en" hidden>News, interviews, and mentions across media and organizations.</span>
+    </p>
+  </div>
+
+  <div class="relative w-full overflow-hidden">
+    <div class="flex" id="press-marquee-track">
+      {[...pressItems, ...pressItems].map((item, i) => {
+        const gradient = kindGradient[item.kindEs] || 'from-gray-500 to-gray-600'
+        const icon = kindIcon[item.kindEs] || kindIcon['Documento']
+        return (
+          <div
+            key={i}
+            class="flex-shrink-0 w-72 h-48 mr-6 bg-surface-elevated/60 backdrop-blur-sm border border-surface/10 rounded-2xl hover:border-accent/30 hover:bg-surface-elevated/80 transition-all duration-300 relative overflow-hidden cursor-pointer"
+            onclick={`window.open('${item.url}', '_blank', 'noopener,noreferrer')`}
+          >
+            <div class={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${gradient} z-10 opacity-80`} />
+            <div class="absolute inset-0 bg-gradient-to-br from-accent/0 via-transparent to-accent-secondary/0 hover:from-accent/[0.04] hover:to-accent-secondary/[0.04] transition-all duration-500 pointer-events-none" />
+            <div class="p-5 h-full flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <svg class="w-4 h-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={icon} />
+                  </svg>
+                  <span class="text-xs font-medium text-secondary">{item.source}</span>
+                </div>
+                <h3 class="text-sm font-semibold text-primary leading-snug line-clamp-3" data-lang="es">{item.titleEs}</h3>
+                <h3 class="text-sm font-semibold text-primary leading-snug line-clamp-3" data-lang="en" hidden>{item.titleEn}</h3>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-accent/15 text-primary border border-accent/10">
+                  {item.kindEs}
+                </span>
+                {item.date ? (
+                  <time class="text-[10px] text-muted font-mono">{item.date}</time>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+
+  <div class="text-center mt-10">
+    <a
+      href="/news"
+      class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/15 text-primary font-medium hover:bg-accent/25 transition-all border border-accent/10 no-underline group"
+    >
+      <span data-lang="es">Ver todas las apariciones</span>
+      <span data-lang="en" hidden>View all mentions</span>
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  #press-marquee-track {
+    width: max-content;
+    will-change: transform;
+  }
+</style>
+
+<script>
+  const track = document.getElementById('press-marquee-track')
+  if (track) {
+    let pos = 0
+    let speed = 0.8
+    const half = track.scrollWidth / 2
+
+    function step() {
+      pos -= speed
+      if (pos <= -half) pos = 0
+      track.style.transform = `translateX(${pos}px)`
+      requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+
+    track.addEventListener('mouseenter', () => { speed = 0 })
+    track.addEventListener('mouseleave', () => { speed = 0.8 })
+  }
+</script>

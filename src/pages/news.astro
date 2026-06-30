@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { pressItems } from '../data/press'
 
 const kindColor = {
   'Prensa': 'from-blue-500 to-cyan-500',
@@ -10,63 +11,7 @@ const kindColor = {
   'Document': 'from-amber-500 to-orange-500',
 }
 
-const newsItems = [
-  {
-    kindEs: 'Prensa',
-    kindEn: 'Press',
-    date: '2020-03-30',
-    source: 'Matemáticas UC',
-    url: 'https://www.mat.uc.cl/noticias/2020-03-30/taller-de-investigacion-matematica-inicio-sus-clases-en-linea.html',
-    titleEs: 'Taller de investigación matemática inició sus clases en línea',
-    titleEn: 'Mathematical Research Workshop Started Its Classes Online',
-    summaryEs: 'Nota de Matemáticas UC sobre el inicio en modalidad online del taller de investigación matemática.',
-    summaryEn: 'Mathematics UC article about the start of the mathematical research workshop in online format.',
-  },
-  {
-    kindEs: 'Aparición',
-    kindEn: 'Feature',
-    date: '',
-    source: 'Open Source UC',
-    url: 'https://osuc.dev/about/',
-    titleEs: 'About de Open Source UC',
-    titleEn: 'Open Source UC About Page',
-    summaryEs: 'Página de la comunidad Open Source UC donde aparezco como parte del equipo y trayectoria de la organización.',
-    summaryEn: 'Open Source UC community page where I appear as part of the team and organization history.',
-  },
-  {
-    kindEs: 'Aparición',
-    kindEn: 'Feature',
-    date: '',
-    source: 'Instagram',
-    url: 'https://www.instagram.com/reel/CzB-wLVuWg8/',
-    titleEs: 'Reel en Instagram',
-    titleEn: 'Instagram Reel',
-    summaryEs: 'Publicación en formato reel donde también aparezco.',
-    summaryEn: 'Reel-format post where I also appear.',
-  },
-  {
-    kindEs: 'Prensa',
-    kindEn: 'Press',
-    date: '',
-    source: 'Ingeniería UC',
-    url: 'https://www.ing.uc.cl/noticias/novatos-y-novatas-reciben-reconocimiento-en-ceremonia-de-matricula-de-honor/',
-    titleEs: 'Novatos y novatas reciben reconocimiento en ceremonia de Matrícula de Honor',
-    titleEn: 'Freshmen Receive Recognition at the Honors Enrollment Ceremony',
-    summaryEs: 'Nota de Ingeniería UC sobre la ceremonia de Matrícula de Honor, donde también aparezco.',
-    summaryEn: 'Engineering UC article about the Honors Enrollment Ceremony, where I also appear.',
-  },
-  {
-    kindEs: 'Documento',
-    kindEn: 'Document',
-    date: '2018',
-    source: 'Olimpiada de Matemática de Chile',
-    url: '/news/FinalONM2018.pdf',
-    titleEs: 'Final ONM 2018 (PDF)',
-    titleEn: 'ONM 2018 Final (PDF)',
-    summaryEs: 'Documento oficial en PDF de la Olimpiada Nacional de Matemática 2018, donde aparezco mencionado.',
-    summaryEn: 'Official PDF document for the 2018 National Math Olympiad final, where I am mentioned.',
-  },
-]
+const newsItems = pressItems
 ---
 
 <Layout title="Noticias, prensa y apariciones | Emmanuel Norambuena" description="Apariciones en prensa, noticias y entrevistas de Emmanuel Norambuena, Product Engineer chileno. Menciones en medios, organizaciones y documentación académica.">
