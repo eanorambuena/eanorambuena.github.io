@@ -33,7 +33,7 @@ export const pressItems = [
     titleEn: 'Interview about Open Source UC on Instagram',
     summaryEs: 'Entrevista sobre la comunidad Open Source UC, proyectos de código abierto y el ecosistema tecnológico universitario.',
     summaryEn: 'Interview about Open Source UC, open source projects, and the university tech ecosystem.',
-    clip: null,
+    clip: '/press/clippings/instagram_reel.jpg',
   },
   {
     kindEs: 'Prensa',
