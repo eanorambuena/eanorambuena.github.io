@@ -9,6 +9,7 @@ export const pressItems = [
     titleEn: 'Mathematical Research Workshop Started Its Classes Online',
     summaryEs: 'Nota de Matemáticas UC sobre el inicio en modalidad online del taller de investigación matemática.',
     summaryEn: 'Mathematics UC article about the start of the mathematical research workshop in online format.',
+    clip: '/press/clippings/matematicas_uc.jpg',
   },
   {
     kindEs: 'Aparición',
@@ -20,6 +21,7 @@ export const pressItems = [
     titleEn: 'Open Source UC About Page',
     summaryEs: 'Página de la comunidad Open Source UC donde aparezco como parte del equipo y trayectoria.',
     summaryEn: 'Open Source UC community page where I appear as part of the team and organization history.',
+    clip: '/press/clippings/osuc.jpg',
   },
   {
     kindEs: 'Aparición',
@@ -31,6 +33,7 @@ export const pressItems = [
     titleEn: 'Instagram Reel',
     summaryEs: 'Publicación en formato reel donde también aparezco.',
     summaryEn: 'Reel-format post where I also appear.',
+    clip: null,
   },
   {
     kindEs: 'Prensa',
@@ -42,6 +45,7 @@ export const pressItems = [
     titleEn: 'Freshmen Receive Recognition at the Honors Enrollment Ceremony',
     summaryEs: 'Nota de Ingeniería UC sobre la ceremonia de Matrícula de Honor.',
     summaryEn: 'Engineering UC article about the Honors Enrollment Ceremony.',
+    clip: '/press/clippings/ingenieria_uc.jpg',
   },
   {
     kindEs: 'Documento',
@@ -53,5 +57,6 @@ export const pressItems = [
     titleEn: 'ONM 2018 Final',
     summaryEs: 'Documento oficial de la Olimpiada Nacional de Matemática 2018.',
     summaryEn: 'Official PDF document for the 2018 National Math Olympiad final.',
+    clip: null,
   },
 ]
