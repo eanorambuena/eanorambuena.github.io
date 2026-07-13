@@ -24,6 +24,20 @@ const groups = [
     color: '#f97316',
     skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'Bitbucket', 'Azure DevOps', 'CI/CD', 'Linux', 'Firebase'],
   },
+  {
+    title: 'Financial',
+    color: '#f59e0b',
+    skills: [
+      'RiskAmerica',
+      'Bloomberg Terminal',
+      'Financial Modeling',
+      'Yahoo Finance API',
+      'Kalman Filter',
+      'Python Quant',
+      'Market Data Analysis',
+      'TradingView',
+    ],
+  },
 ]
 
 const floatAnimation = (i) => ({
@@ -121,7 +135,7 @@ function BoxCard({ group, index }) {
 
 export default function Skills3D() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 max-w-5xl mx-auto">
       {groups.map((g, i) => (
         <BoxCard key={g.title} group={g} index={i} />
       ))}
