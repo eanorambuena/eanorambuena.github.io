@@ -52,7 +52,6 @@ const projects = [
     descKey: 'arby',
     tags: ['OpenCode', 'Python', 'LLM', 'Gemini', 'Whisper', 'Telegram', 'Oracle Cloud'],
     links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://arbybot.pages.dev' }],
-    iframe: 'https://arbybot.pages.dev',
     color: 'from-purple-500 to-pink-500',
   },
 ]
@@ -62,7 +61,7 @@ const descEN = {
   peer: 'Peer evaluation platform with QR attendance, SSO, anonymous peer reviews, and grade reports. Replaced Google Forms + GScript that saturated PCs with 16GB RAM.',
   gis: 'GIS app for mining built for Acofuz. Frontend scaffolded from scratch with extensible architecture. Python backend integration via API.',
   neural: 'Fullstack engineer en NeuralWorks. Migré UI a Tamagui, construí módulo de inventario POS, optimicé infraestructura AWS/Docker y reduje costos de IA de >$200/mes a $0 con Cursor Rules.',
-  arby: 'Autonomous AI agent with voice, vision, and task execution. Built with OpenCode, Gemini, Whisper, and Telegram. Multi-tenant architecture on Oracle Cloud.',
+  arby: 'Your own Jarvis in your phone: talk while driving or traveling and it builds real products. Voice, vision, Telegram. Powered by OpenCode, Gemini, Whisper.',
 }
 
 const descES = {
@@ -70,7 +69,7 @@ const descES = {
   peer: 'Plataforma de coevaluaciones con asistencia QR, SSO, evaluaciones anónimas entre pares e informes de notas. Reemplazó Google Forms + GScript que saturaba PCs con 16GB RAM.',
   gis: 'App GIS para minería construida para Acofuz. Frontend desde cero con arquitectura extensible. Integración vía API con backend Python.',
   neural: 'Fullstack engineer en NeuralWorks. Migré UI a Tamagui, construí módulo de inventario POS, optimicé infraestructura AWS/Docker y reduje costos de IA de >$200/mes a $0 con Cursor Rules.',
-  arby: 'Agente IA autónomo con voz, visión y ejecución de tareas. Construido con OpenCode, Gemini, Whisper y Telegram. Arquitectura multi-tenant en Oracle Cloud.',
+  arby: 'Tu propio Jarvis en el celular: habla mientras conduces o viajas y construye productos reales. Voz, visión, Telegram. Potenciado por OpenCode, Gemini, Whisper.',
 }
 ---
 
@@ -90,7 +89,7 @@ const descES = {
         <span data-lang="en" hidden>{en.projects.desc}</span>
       </p>
     </AnimatedSection>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
       {projects.map((p, i) => (
           <AnimatedSection client:load delay={i * 0.1}>
             <Card href={`/projects/${p.slug}`} color={p.color}>
