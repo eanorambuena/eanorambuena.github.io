@@ -4,7 +4,7 @@ import AnimatedSection from '../../components/AnimatedSection.jsx'
 import { es, en } from '../../i18n/translations'
 
 export async function getStaticPaths() {
-  const slugs = ['neuralworks', 'smartlokus', 'loopaas', 'kalmate']
+  const slugs = ['neuralworks', 'smartlokus', 'loopaas', 'kalmate', 'arby']
   return slugs.map((slug) => ({ params: { slug } }))
 }
 
@@ -170,6 +170,41 @@ const projects: Record<string, any> = {
     longDescEs: 'Terminal financiera estilo Bloomberg con datos de mercado en tiempo real vía Yahoo Finance API. Construido con Nuxt 3, Vue 3, TypeScript y TradingView charts. Dashboard categorizado (Equities, Forex, Bonds, Commodities, Crypto), portafolio con P&L, alertas inteligentes con notificaciones del navegador, screener con filtros y presets, noticias financieras, y pipeline visual de nodos para análisis de datos (Filtro de Kalman, SMA, RSI, EMA, Forecast). Cacheo inteligente del servidor y atajos de teclado para navegación eficiente. Sin necesidad de API keys.',
     longDescEn: 'Bloomberg-style financial terminal with real-time market data via Yahoo Finance API. Built with Nuxt 3, Vue 3, TypeScript, and TradingView charts. Categorized dashboard (Equities, Forex, Bonds, Commodities, Crypto), portfolio with P&L tracking, smart alerts with browser notifications, screener with filters and presets, financial news, and a visual node pipeline for data analysis (Kalman Filter, SMA, RSI, EMA, Forecast). Intelligent server caching and keyboard shortcuts for efficient navigation. No API keys required.',
     links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://kalmate.pages.dev' }],
+  },
+  arby: {
+    titleEs: 'Arby: Agente IA Autónomo',
+    titleEn: 'Arby: Autonomous AI Agent',
+    tags: ['OpenCode', 'Python', 'LLM', 'Gemini', 'Whisper', 'Telegram Bot', 'Oracle Cloud'],
+    iframe: 'https://arbybot.pages.dev',
+    color: 'from-purple-500 to-pink-500',
+    metrics: [
+      { value: '10+', labelEs: 'Usuarios activos', labelEn: 'Active users' },
+      { value: '4', labelEs: 'Canales (web/telegram/voz/img)', labelEn: 'Channels (web/telegram/voice/img)' },
+      { value: '$0', labelEs: 'Costo operacional', labelEn: 'Operating cost' },
+    ],
+    featuresEs: [
+      'Agente IA autónomo con interfaz web, Telegram, voz y visión',
+      'Arquitectura multi-tenant en Oracle Cloud con aislamiento de código',
+      'Generación y modificación de código por usuario mediante OpenCode',
+      'Procesamiento de imágenes con Gemini API',
+      'Transcripción de voz con Whisper para entrada manos libres',
+      'Ejecución autónoma de tareas: crear, modificar y desplegar código',
+      'Base de datos y sesiones aisladas por tenant',
+      'Límite de mensajes inteligente para escalar a modelo de pago',
+    ],
+    featuresEn: [
+      'Autonomous AI agent with web, Telegram, voice, and vision interfaces',
+      'Multi-tenant architecture on Oracle Cloud with code isolation',
+      'Per-user code generation and modification via OpenCode',
+      'Image processing with Gemini API',
+      'Voice transcription with Whisper for hands-free input',
+      'Autonomous task execution: create, modify, and deploy code',
+      'Isolated databases and sessions per tenant',
+      'Smart message limits for paid tier scalability',
+    ],
+    longDescEs: 'Agente de inteligencia artificial autónomo con múltiples canales de interacción: web, Telegram, comandos de voz y procesamiento de imágenes. Los usuarios pueden pedirle que modifique o cree código, y Arby lo ejecuta en un entorno multi-tenant aislado con sandboxing por usuario. Construido con OpenCode (fork open-source de Claude Code), Gemini para visión, Whisper para transcripción de voz, y Oracle Cloud para infraestructura. Diseñado para escalar con un modelo freemium.',
+    longDescEn: 'Autonomous AI agent with multiple interaction channels: web, Telegram, voice commands, and image processing. Users can ask it to create or modify code, and Arby executes it in an isolated multi-tenant environment with per-user sandboxing. Built with OpenCode (open-source fork of Claude Code), Gemini for vision, Whisper for voice transcription, and Oracle Cloud for infrastructure. Designed to scale with a freemium model.',
+    links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://arbybot.pages.dev' }],
   },
 }
 
