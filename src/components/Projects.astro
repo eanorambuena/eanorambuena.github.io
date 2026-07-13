@@ -50,8 +50,9 @@ const projects = [
     titleEn: 'Arby: Autonomous AI Agent',
     slug: 'arby',
     descKey: 'arby',
-    tags: ['OpenCode', 'Python', 'LLM', 'Gemini', 'Whisper', 'Telegram', 'Oracle Cloud'],
+    tags: ['OpenCode', 'Python', 'LLM', 'Gemini', 'Whisper', 'Telegram', 'Oracle Cloud', 'Multi-Tenant', 'Sandboxing'],
     links: [{ labelEs: 'Web →', labelEn: 'Web →', url: 'https://arbybot.pages.dev' }],
+    iframe: 'https://arbybot.pages.dev',
     color: 'from-purple-500 to-pink-500',
   },
 ]
@@ -89,7 +90,7 @@ const descES = {
         <span data-lang="en" hidden>{en.projects.desc}</span>
       </p>
     </AnimatedSection>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
       {projects.map((p, i) => (
           <AnimatedSection client:load delay={i * 0.1}>
             <Card href={`/projects/${p.slug}`} color={p.color}>
