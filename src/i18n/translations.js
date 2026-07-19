@@ -73,6 +73,7 @@ const es = {
         degree: 'Ingeniero Civil de Industrias con diploma en Computación',
         period: '2021 - 2026',
         gpa: '6.19/7.0',
+        note: 'Cursos avanzados: Tópicos Avanzados en Finanzas, Evaluación de Proyectos',
       },
       {
         school: 'Maastricht University',
@@ -205,6 +206,7 @@ const en = {
         degree: 'Computer Engineering',
         period: '2021 - 2026',
         gpa: '6.19/7.0',
+        note: 'Advanced courses: Advanced Topics in Finance, Project Evaluation',
       },
       {
         school: 'Maastricht University',
