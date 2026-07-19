@@ -16,7 +16,7 @@ import AnimatedSection from './AnimatedSection.jsx'
       </h2>
     </AnimatedSection>
 
-    <div class="max-w-3xl mx-auto space-y-6">
+    <div class="max-w-3xl mx-auto space-y-8">
       {es.education.items.map((item, i) => (
         <AnimatedSection client:load delay={i * 0.1}>
           <div class="bg-surface-elevated/40 backdrop-blur-sm border border-surface/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
@@ -40,9 +40,11 @@ import AnimatedSection from './AnimatedSection.jsx'
                 <span data-lang="es">{item.degree}</span>
                 <span data-lang="en" hidden>{en.education.items[i].degree}</span>
               </span>
-              <span class="text-xs text-muted block">
-                GPA: {item.gpa}
-              </span>
+              {item.gpa && (
+                <span class="text-xs text-muted block">
+                  GPA: {item.gpa}
+                </span>
+              )}
               {item.note && (
                 <span class="text-xs text-accent block mt-1 italic">
                   <span data-lang="es">{item.note}</span>
