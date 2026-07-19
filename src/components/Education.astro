@@ -16,7 +16,7 @@ import AnimatedSection from './AnimatedSection.jsx'
       </h2>
     </AnimatedSection>
 
-    <div class="max-w-3xl mx-auto space-y-8">
+    <div class="max-w-3xl mx-auto flex flex-col gap-8">
       {es.education.items.map((item, i) => (
         <AnimatedSection client:load delay={i * 0.1}>
           <div class="bg-surface-elevated/40 backdrop-blur-sm border border-surface/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
