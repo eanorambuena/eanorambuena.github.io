@@ -1,3 +1,5 @@
+import { GPA } from '../data/profile.js'
+
 const es = {
   nav: {
     about: 'Sobre mí',
@@ -72,7 +74,7 @@ const es = {
         school: 'Pontificia Universidad Católica de Chile',
         degree: 'Ingeniero Civil de Industrias con diploma en Computación',
         period: '2021 - 2026',
-        gpa: '6.19/7.0',
+        gpa: GPA,
         note: 'Cursos avanzados: Tópicos Avanzados en Finanzas, Evaluación de Proyectos',
       },
       {
@@ -205,7 +207,7 @@ const en = {
         school: 'Pontificia Universidad Católica de Chile',
         degree: 'Computer Engineering',
         period: '2021 - 2026',
-        gpa: '6.19/7.0',
+        gpa: GPA,
         note: 'Advanced courses: Advanced Topics in Finance, Project Evaluation',
       },
       {
