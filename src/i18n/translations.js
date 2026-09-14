@@ -43,6 +43,10 @@ const es = {
         desc: 'Arquitecté despliegue cross-platform con Expo/EAS y migré el UI de React Native Paper a Tamagui. Reduje costos de IA de $200 a $0 con Cursor Rules. Desplegué APIs serverless en AWS con SST y Pulumi.',
       },
       {
+        role: 'Analista de Automatización de Procesos y Sistemas',
+        desc: 'Mapeé y optimicé flujos de trabajo académicos complejos usando metodologías BPMN. Diseñé pipelines automatizados de extremo a extremo con Power Automate, Power Apps, SharePoint Lists y Microsoft Teams para reducir el trabajo manual. Desarrollé modelos ETL con Power Query M para procesar datasets académicos a gran escala. Construí dashboards y KPIs para decisiones ejecutivas sobre oferta de cursos, vacantes y ocupación de espacios.',
+      },
+      {
         role: 'Ingeniero de Software (Front-End)',
         desc: 'Construí app de visualización GIS desde cero para una minera global. Backend completo con FastAPI, Django y PostgreSQL. Frontend con React, TypeScript, Vite y Azure DevOps.',
       },
@@ -174,6 +178,10 @@ const en = {
       {
         role: 'Fullstack Software Engineer Intern',
         desc: 'Architected cross-platform deployment with Expo/EAS and led UI migration from React Native Paper to Tamagui. Reduced AI costs from $200 to $0 using Cursor Rules. Deployed serverless APIs on AWS with SST and Pulumi.',
+      },
+      {
+        role: 'Process & Systems Automation Analyst',
+        desc: 'Mapped and optimized complex academic workflows using BPMN methodologies. Architected end-to-end automated pipelines with Power Automate, Power Apps, SharePoint Lists, and Microsoft Teams to reduce manual overhead. Developed ETL data models using Power Query M to process large-scale academic datasets. Built analytical dashboards and KPIs to track course offerings, vacancy rates, and spatial occupancy for executive decision-making.',
       },
       {
         role: 'Software Engineer (Front-End)',
