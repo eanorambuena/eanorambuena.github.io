@@ -22,12 +22,12 @@ const groups = [
   {
     title: 'Cloud & DevOps',
     color: '#f97316',
-    skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'Bitbucket', 'Azure DevOps', 'CI/CD', 'Linux', 'Firebase'],
+    skills: ['AWS', 'GCP', 'BigQuery', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'Bitbucket', 'Azure DevOps', 'CI/CD', 'Linux', 'Firebase'],
   },
   {
-    title: 'Data & Automation',
+    title: 'Automation',
     color: '#06b6d4',
-    skills: ['GCP', 'BigQuery', 'Power Automate', 'Power Apps', 'Power Query M', 'BPMN', 'SharePoint'],
+    skills: ['Power Automate', 'Power Apps', 'Power Query M', 'BPMN', 'SharePoint'],
   },
   {
     title: 'Financial',
