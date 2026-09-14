@@ -1,17 +1,5 @@
 export const pressItems = [
   {
-    kindEs: 'Prensa',
-    kindEn: 'Press',
-    date: '2020-03-30',
-    source: 'Matemáticas UC',
-    url: 'https://www.mat.uc.cl/noticias/2020-03-30/taller-de-investigacion-matematica-inicio-sus-clases-en-linea.html',
-    titleEs: 'Taller de investigación matemática inició sus clases en línea',
-    titleEn: 'Mathematical Research Workshop Started Its Classes Online',
-    summaryEs: 'Nota de Matemáticas UC sobre el inicio en modalidad online del taller de investigación matemática.',
-    summaryEn: 'Mathematics UC article about the start of the mathematical research workshop in online format.',
-    clip: '/press/clippings/matematicas_uc.jpg',
-  },
-  {
     kindEs: 'Aparición',
     kindEn: 'Feature',
     date: '',
@@ -46,6 +34,18 @@ export const pressItems = [
     summaryEs: 'Nota de Ingeniería UC sobre la ceremonia de Matrícula de Honor.',
     summaryEn: 'Engineering UC article about the Honors Enrollment Ceremony.',
     clip: '/press/clippings/ingenieria_uc.jpg',
+  },
+  {
+    kindEs: 'Prensa',
+    kindEn: 'Press',
+    date: '2020-03-30',
+    source: 'Matemáticas UC',
+    url: 'https://www.mat.uc.cl/noticias/2020-03-30/taller-de-investigacion-matematica-inicio-sus-clases-en-linea.html',
+    titleEs: 'Taller de investigación matemática inició sus clases en línea',
+    titleEn: 'Mathematical Research Workshop Started Its Classes Online',
+    summaryEs: 'Nota de Matemáticas UC sobre el inicio en modalidad online del taller de investigación matemática.',
+    summaryEn: 'Mathematics UC article about the start of the mathematical research workshop in online format.',
+    clip: '/press/clippings/matematicas_uc.jpg',
   },
   {
     kindEs: 'Documento',

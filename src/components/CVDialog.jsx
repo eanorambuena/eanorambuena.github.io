@@ -1,5 +1,25 @@
 import { useState, useRef, useEffect } from 'react'
 
+// EmailJS: create a free account at emailjs.com, then set these IDs.
+// The public key is meant to be exposed client-side by design.
+const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY'
+
+async function notifyCVDownload({ email, service, date }) {
+  if (EMAILJS_SERVICE_ID.startsWith('YOUR_')) return
+  try {
+    const emailjs = await import('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm')
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      lead_email: email || '(no proporcionado)',
+      lead_service: service || '(no proporcionado)',
+      date,
+    }, { publicKey: EMAILJS_PUBLIC_KEY })
+  } catch {
+    // Notification failure must never block the CV download.
+  }
+}
+
 const SERVICE_TYPES = [
   { value: 'fullstack', labelEs: 'Fullstack', labelEn: 'Fullstack' },
   { value: 'mobile', labelEs: 'Mobile (React Native)', labelEn: 'Mobile (React Native)' },
@@ -44,12 +64,14 @@ export default function CVDialog({ labelEs, labelEn }) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const date = new Date().toISOString()
     if (email || service) {
       try {
         const entries = JSON.parse(localStorage.getItem('cv-leads') || '[]')
-        entries.push({ email, service, date: new Date().toISOString() })
+        entries.push({ email, service, date })
         localStorage.setItem('cv-leads', JSON.stringify(entries))
       } catch {}
+      notifyCVDownload({ email, service, date })
     }
     setSubmitted(true)
     downloadCV()

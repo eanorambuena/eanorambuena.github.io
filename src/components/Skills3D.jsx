@@ -25,6 +25,11 @@ const groups = [
     skills: ['AWS', 'Azure', 'Docker', 'SST', 'Serverless', 'Pulumi', 'Git', 'Bitbucket', 'Azure DevOps', 'CI/CD', 'Linux', 'Firebase'],
   },
   {
+    title: 'Data & Automation',
+    color: '#06b6d4',
+    skills: ['GCP', 'BigQuery', 'Power Automate', 'Power Apps', 'Power Query M', 'BPMN', 'SharePoint'],
+  },
+  {
     title: 'Financial',
     color: '#f59e0b',
     skills: [
