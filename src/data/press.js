@@ -1,5 +1,17 @@
 export const pressItems = [
   {
+    kindEs: 'Prensa',
+    kindEn: 'Press',
+    date: '2025-10-08',
+    source: 'Semanario AED',
+    url: 'https://www.facebook.com/share/18kPC14NN5/',
+    titleEs: 'Alta convocatoria en limpieza del Estero Puangue',
+    titleEn: 'High Turnout at Estero Puangue Cleanup',
+    summaryEs: 'Cerca de 50 voluntarios, incluyendo estudiantes del curso SUS1000 (Sustentabilidad) de la Pontificia Universidad Católica de Chile, participaron en la segunda jornada de limpieza del Estero Puangue en Curacaví.',
+    summaryEn: 'About 50 volunteers, including students from the Pontificia Universidad Católica de Chile SUS1000 (Sustainability) course, took part in the second cleanup of the Estero Puangue stream in Curacaví.',
+    clip: '/press/clippings/estero_puangue.jpg',
+  },
+  {
     kindEs: 'Aparición',
     kindEn: 'Feature',
     date: '',
