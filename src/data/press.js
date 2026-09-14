@@ -21,7 +21,7 @@ export const pressItems = [
     titleEn: 'Open Source UC — Team member and contributor',
     summaryEs: 'Miembro activo de la comunidad Open Source UC, contribuyendo a su crecimiento.',
     summaryEn: 'Active member of the Open Source UC community, contributing to its growth.',
-    clip: '/press/clippings/osuc.jpg',
+    clip: '/press/clippings/osuc.png',
   },
   {
     kindEs: 'Aparición',
