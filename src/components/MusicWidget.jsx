@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import IconButton from './IconButton'
 
 export default function MusicWidget() {
   const [open, setOpen] = useState(false)
@@ -25,18 +26,19 @@ export default function MusicWidget() {
           />
         </div>
       )}
-      <button
+      <IconButton
         onClick={() => setOpen(!open)}
-        className="w-12 h-12 rounded-full inline-flex items-center justify-center text-white bg-accent hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-black/20"
-        aria-label={open ? 'Ocultar reproductor de música' : 'Mostrar reproductor de música'}
+        ariaLabel={open ? 'Ocultar reproductor de música' : 'Mostrar reproductor de música'}
+        className="shadow-lg"
         aria-expanded={open}
+        aria-haspopup="dialog"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 18V5l12-2v13" />
           <circle cx="6" cy="18" r="3" strokeWidth="1.5" />
           <circle cx="18" cy="16" r="3" strokeWidth="1.5" />
         </svg>
-      </button>
+      </IconButton>
     </div>
   )
 }
