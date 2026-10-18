@@ -50,7 +50,8 @@ function YouTubeTrack({ videoId, onEnded }) {
         videoId,
         width: '100%',
         height: '100%',
-        playerVars: { rel: 0, playsinline: 1 },
+        playerVars: { rel: 0, playsinline: 1, autoplay: 1 },
+        // autoplay is allowed because the station only mounts after the visitor pressed play
         events: { onStateChange: (e) => e.data === YT.PlayerState.ENDED && onEndedRef.current() },
       })
     })
@@ -124,6 +125,7 @@ function Embed({ track, onEnded }) {
 
 export default function RadioPlayer({ tracks }) {
   const [index, setIndex] = useState(0)
+  const [started, setStarted] = useState(false)
   const L = useLangKey()
   const track = tracks[index]
   const go = (i) => setIndex((i + tracks.length) % tracks.length)
@@ -144,7 +146,21 @@ export default function RadioPlayer({ tracks }) {
           <span className="text-xs text-muted font-mono">{index + 1} / {tracks.length}</span>
         </div>
         <div className="bg-black/40">
-          <Embed key={track.id} track={track} onEnded={() => go(index + 1)} />
+          {started ? (
+            <Embed key={track.id} track={track} onEnded={() => go(index + 1)} />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setStarted(true)}
+              className="group w-full flex flex-col items-center justify-center gap-4 py-20 cursor-pointer bg-gradient-to-br from-accent/20 to-accent-secondary/20 hover:from-accent/30 hover:to-accent-secondary/30 transition-colors"
+            >
+              <span className="flex items-center justify-center w-20 h-20 rounded-full bg-accent text-white shadow-lg shadow-accent/30 transition-transform group-hover:scale-110">
+                <svg className="w-9 h-9 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              </span>
+              <span className="text-primary font-semibold">{L === 'En' ? 'Start the radio' : 'Encender la radio'}</span>
+              <span className="text-xs text-muted">{L === 'En' ? 'Plays everything in a loop' : 'Suena todo en bucle'}</span>
+            </button>
+          )}
         </div>
         <div className="p-6">
           <p className="text-xs text-accent font-mono tracking-wider uppercase mb-1">{track[`kind${L}`]}</p>
@@ -159,7 +175,7 @@ export default function RadioPlayer({ tracks }) {
             </IconButton>
             <span className="text-xs text-muted">
               {autoNext
-                ? (L === 'En' ? 'Moves to the next track when it ends.' : 'Pasa a la siguiente pista al terminar.')
+                ? (L === 'En' ? 'Loops through every track. Press play inside the player to start this one.' : 'Recorre todas las pistas en bucle. Dale play dentro del reproductor para esta.')
                 : (L === 'En' ? 'Use “next” when it ends.' : 'Usa “siguiente” al terminar.')}
             </span>
           </div>
@@ -171,7 +187,7 @@ export default function RadioPlayer({ tracks }) {
           <li key={t.id}>
             <button
               type="button"
-              onClick={() => setIndex(i)}
+              onClick={() => { setStarted(true); setIndex(i) }}
               aria-current={i === index ? 'true' : undefined}
               className={`w-full text-left rounded-xl border px-4 py-3 transition-all cursor-pointer ${
                 i === index
