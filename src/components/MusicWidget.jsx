@@ -6,6 +6,28 @@ export default function MusicWidget() {
   // The player stays mounted once opened so the music keeps playing while minimized.
   const [mounted, setMounted] = useState(false)
   const rootRef = useRef(null)
+  const frameRef = useRef(null)
+  // Bandcamp doesn't expose play state, so we assume it's playing from the first
+  // click inside the embed until the track's length (135s) has elapsed.
+  const [playing, setPlaying] = useState(false)
+
+  useEffect(() => {
+    if (!mounted) return
+    let timer
+    const onBlur = () => {
+      if (timer || document.activeElement !== frameRef.current) return
+      setPlaying(true)
+      timer = setTimeout(() => {
+        timer = undefined
+        setPlaying(false)
+      }, 136000)
+    }
+    window.addEventListener('blur', onBlur)
+    return () => {
+      window.removeEventListener('blur', onBlur)
+      clearTimeout(timer)
+    }
+  }, [mounted])
 
   useEffect(() => {
     if (!open) return
@@ -44,6 +66,7 @@ export default function MusicWidget() {
             </IconButton>
           </div>
           <iframe
+            ref={frameRef}
             style={{ border: 0, width: '300px', height: '400px', display: 'block' }}
             src="https://bandcamp.com/EmbeddedPlayer/track=1912506246/size=large/bgcol=1c1c1e/linkcol=ab5cf7/tracklist=false/transparent=false/"
             seamless
@@ -51,6 +74,7 @@ export default function MusicWidget() {
           />
         </div>
       )}
+      <div className="flex items-center gap-3">
       <IconButton
         onClick={toggle}
         animateKey={open}
@@ -71,6 +95,26 @@ export default function MusicWidget() {
           </svg>
         )}
       </IconButton>
+      {playing && !open && (
+        <span
+          role="status"
+          aria-label="Música sonando"
+          className="flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1e]/90 backdrop-blur px-3 py-1.5 shadow-lg animate-[fadeIn_0.2s_ease-out]"
+        >
+          <span className="flex items-end gap-[3px] h-3.5" aria-hidden="true">
+            {[0, 0.2, 0.4].map((delay) => (
+              <span
+                key={delay}
+                className="w-[3px] h-full rounded-sm bg-[#ab5cf7] origin-bottom"
+                style={{ animation: `music-eq 0.9s ease-in-out ${delay}s infinite` }}
+              />
+            ))}
+          </span>
+          <span className="text-xs text-white/70 font-mono">Sonando</span>
+        </span>
+      )}
+      </div>
+      <style>{`@keyframes music-eq { 0%,100% { transform: scaleY(0.25) } 50% { transform: scaleY(1) } }`}</style>
     </div>
   )
 }
