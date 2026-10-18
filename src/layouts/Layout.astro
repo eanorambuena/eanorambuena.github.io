@@ -11,6 +11,7 @@ interface Props {
   ogImageAlt?: string
   canonicalUrl?: string
   noindex?: boolean
+  hideMusicWidget?: boolean
 }
 
 const props = Astro.props as Props
@@ -428,7 +429,7 @@ for (const part of pathParts) {
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background-image: radial-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px); background-size: 28px 28px;"></div>
     <div class="fixed inset-0 pointer-events-none z-[1]" style="background: radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--accent) 6%, transparent), transparent), radial-gradient(ellipse 60% 40% at 80% 100%, color-mix(in srgb, var(--accent-secondary) 5%, transparent), transparent);"></div>
     <Navbar client:load />
-    <MusicWidget client:idle />
+    {!props.hideMusicWidget && <MusicWidget client:idle />}
     {breadcrumbs.length > 1 && (
       <nav aria-label="Breadcrumb" class="relative z-10 max-w-5xl mx-auto px-6 pt-2 pb-1">
         <ol class="flex flex-wrap items-center gap-1.5 text-sm text-muted font-mono">
@@ -466,6 +467,7 @@ for (const part of pathParts) {
               <a href="https://x.com/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-muted hover:text-accent transition-colors">X / Twitter</a>
               <a href="https://linktr.ee/eanorambuena" target="_blank" rel="noopener noreferrer" class="text-sm text-muted hover:text-accent transition-colors">Linktree</a>
               <a href="/buy-me-a-coffee" class="text-sm text-[#00c853] hover:text-[#00e060] transition-colors">Donar</a>
+              <a href="/radio" class="text-sm text-muted hover:text-accent transition-colors">Radio</a>
               <a href="/news#press-kit" class="text-sm text-muted hover:text-accent transition-colors">Press Kit</a>
             </div>
           </div>

@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro'
+import RadioPlayer from '../components/RadioPlayer.jsx'
+import { radioTracks } from '../data/radio'
+---
+
+<Layout title="Radio | Emmanuel Norambuena" description="Radio de Emmanuel Norambuena: mi música, charlas y entrevistas en una sola estación." hideMusicWidget>
+  <main id="main-content" class="relative z-10 min-h-screen px-6 pt-16 pb-20">
+    <section class="max-w-5xl mx-auto mb-10">
+      <p class="text-accent text-sm font-mono tracking-widest uppercase mb-3">Radio</p>
+
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-5" data-lang="es">Estación de radio</h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-5" data-lang="en" hidden>Radio station</h1>
+
+      <p class="text-secondary text-lg leading-relaxed max-w-3xl" data-lang="es">
+        Mi música, mis charlas y entrevistas en una sola estación. Dale play y déjalo sonar.
+      </p>
+      <p class="text-secondary text-lg leading-relaxed max-w-3xl" data-lang="en" hidden>
+        My music, talks and interviews in a single station. Hit play and let it run.
+      </p>
+    </section>
+
+    <section class="max-w-5xl mx-auto">
+      <RadioPlayer client:load tracks={radioTracks} />
+    </section>
+  </main>
+</Layout>
