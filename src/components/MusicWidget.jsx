@@ -1,18 +1,41 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import IconButton from './IconButton'
 
 export default function MusicWidget() {
   const [open, setOpen] = useState(false)
+  // The player stays mounted once opened so the music keeps playing while minimized.
+  const [mounted, setMounted] = useState(false)
+  const rootRef = useRef(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onPointerDown = (e) => {
+      if (rootRef.current && !rootRef.current.contains(e.target)) setOpen(false)
+    }
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [open])
+
+  const toggle = () => {
+    setMounted(true)
+    setOpen(!open)
+  }
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
-      {open && (
-        <div className="w-[300px] max-w-[calc(100vw-3rem)] rounded-2xl overflow-hidden shadow-2xl shadow-black/40 border border-white/10 bg-[#1c1c1e] animate-[fadeIn_0.2s_ease-out]">
+    <div ref={rootRef} className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
+      {mounted && (
+        <div
+          inert={!open}
+          aria-hidden={!open}
+          className={`w-[300px] max-w-[calc(100vw-3rem)] rounded-2xl overflow-hidden shadow-2xl shadow-black/40 border border-white/10 bg-[#1c1c1e] transition-all duration-200 origin-bottom-left ${
+            open ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none absolute bottom-14 left-0'
+          }`}
+        >
           <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-white/10">
             <span className="text-xs text-white/60 font-mono">Now playing</span>
             <IconButton
               onClick={() => setOpen(false)}
-              ariaLabel="Cerrar reproductor"
+              ariaLabel="Minimizar reproductor"
               className="!w-7 !h-7 !rounded-md !text-white/60 hover:!text-white !bg-white/10 hover:!bg-white/20"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -29,7 +52,7 @@ export default function MusicWidget() {
         </div>
       )}
       <IconButton
-        onClick={() => setOpen(!open)}
+        onClick={toggle}
         animateKey={open}
         ariaLabel={open ? 'Ocultar reproductor de música' : 'Mostrar reproductor de música'}
         className="shadow-lg"
