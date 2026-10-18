@@ -29,13 +29,24 @@ export default function MusicWidget() {
     }
   }, [mounted])
 
+  // Minimize on any outside interaction. Listeners run in the capture phase so
+  // page elements that stop propagation (canvas, cards, links) can't swallow it.
   useEffect(() => {
     if (!open) return
-    const onPointerDown = (e) => {
-      if (rootRef.current && !rootRef.current.contains(e.target)) setOpen(false)
+    const onOutside = (e) => {
+      const root = rootRef.current
+      if (!root) return
+      const path = e.composedPath?.() ?? []
+      if (!path.includes(root) && !root.contains(e.target)) setOpen(false)
     }
-    document.addEventListener('pointerdown', onPointerDown)
-    return () => document.removeEventListener('pointerdown', onPointerDown)
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    const events = ['pointerdown', 'mousedown', 'touchstart']
+    events.forEach((ev) => window.addEventListener(ev, onOutside, true))
+    window.addEventListener('keydown', onKey)
+    return () => {
+      events.forEach((ev) => window.removeEventListener(ev, onOutside, true))
+      window.removeEventListener('keydown', onKey)
+    }
   }, [open])
 
   const toggle = () => {
