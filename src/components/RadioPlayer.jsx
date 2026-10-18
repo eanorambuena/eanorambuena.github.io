@@ -63,7 +63,32 @@ function YouTubeTrack({ videoId, onEnded }) {
   return <div ref={holder} className="absolute inset-0 [&>iframe]:w-full [&>iframe]:h-full" />
 }
 
+// Bandcamp and Instagram don't report when playback ends, so we count the
+// known duration from the viewer's first click inside the embed.
+function useTimedEnd(duration, onEnded) {
+  const onEndedRef = useRef(onEnded)
+  onEndedRef.current = onEnded
+  const frameRef = useRef(null)
+
+  useEffect(() => {
+    if (!duration) return
+    let timer
+    const onBlur = () => {
+      if (timer || document.activeElement !== frameRef.current) return
+      timer = setTimeout(() => onEndedRef.current(), (duration + 1) * 1000)
+    }
+    window.addEventListener('blur', onBlur)
+    return () => {
+      window.removeEventListener('blur', onBlur)
+      clearTimeout(timer)
+    }
+  }, [duration])
+
+  return frameRef
+}
+
 function Embed({ track, onEnded }) {
+  const frameRef = useTimedEnd(track.duration, onEnded)
   if (track.type === 'youtube') {
     return (
       <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
@@ -74,6 +99,7 @@ function Embed({ track, onEnded }) {
   if (track.type === 'bandcamp') {
     return (
       <iframe
+        ref={frameRef}
         className="block w-full border-0"
         style={{ height: '400px' }}
         src={`https://bandcamp.com/EmbeddedPlayer/track=${track.id}/size=large/bgcol=1c1c1e/linkcol=ab5cf7/tracklist=false/transparent=false/`}
@@ -84,6 +110,7 @@ function Embed({ track, onEnded }) {
   }
   return (
     <iframe
+      ref={frameRef}
       className="block w-full border-0 bg-white"
       style={{ height: '560px' }}
       src={`https://www.instagram.com/reel/${track.id}/embed`}
@@ -100,7 +127,7 @@ export default function RadioPlayer({ tracks }) {
   const L = useLangKey()
   const track = tracks[index]
   const go = (i) => setIndex((i + tracks.length) % tracks.length)
-  const autoNext = track.type === 'youtube'
+  const autoNext = track.type === 'youtube' || !!track.duration
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -132,7 +159,7 @@ export default function RadioPlayer({ tracks }) {
             </IconButton>
             <span className="text-xs text-muted">
               {autoNext
-                ? (L === 'En' ? 'Plays the next track automatically when it ends.' : 'Pasa solo a la siguiente pista al terminar.')
+                ? (L === 'En' ? 'Moves to the next track when it ends.' : 'Pasa a la siguiente pista al terminar.')
                 : (L === 'En' ? 'Use “next” when it ends.' : 'Usa “siguiente” al terminar.')}
             </span>
           </div>

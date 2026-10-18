@@ -2,6 +2,7 @@ export const radioTracks = [
   {
     type: 'bandcamp',
     id: '1912506246',
+    duration: 135,
     kindEs: 'Canción',
     kindEn: 'Song',
     titleEs: 'Second Floor (Kicking Stones)',
@@ -32,6 +33,7 @@ export const radioTracks = [
   {
     type: 'instagram',
     id: 'CzB-wLVuWg8',
+    duration: 62,
     kindEs: 'Entrevista',
     kindEn: 'Interview',
     titleEs: 'Entrevista sobre Open Source UC',
