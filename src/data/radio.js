@@ -11,6 +11,17 @@ export const radioTracks = [
     subtitleEn: 'MIRROR CRY — my music',
   },
   {
+    type: 'bandcamp',
+    id: '3771277447',
+    duration: 184,
+    kindEs: 'Canción',
+    kindEn: 'Song',
+    titleEs: 'Mirror Cry',
+    titleEn: 'Mirror Cry',
+    subtitleEs: 'MIRROR CRY — mi música',
+    subtitleEn: 'MIRROR CRY — my music',
+  },
+  {
     type: 'youtube',
     id: 'mt6ZmbUyLFo',
     kindEs: 'Charla',
