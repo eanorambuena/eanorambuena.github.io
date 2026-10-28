@@ -31,7 +31,7 @@ const es = {
   projects: {
     subtitle: 'Portafolio',
     title: 'Proyectos',
-    desc: 'Productos reales para usuarios reales — de open source a fintech a minería.',
+    desc: 'Productos reales para usuarios reales — de la universidad a open source, fintech y minería.',
   },
   experience: {
     subtitle: 'Carrera',
@@ -40,7 +40,7 @@ const es = {
     items: [
       {
         role: 'Analista de Automatización de Procesos y Sistemas',
-        desc: 'Automaticé flujos académicos con Power Automate, Power Apps y BPMN. Construí modelos ETL con Power Query M y dashboards de KPIs para la Dirección Académica UC.',
+        desc: 'Construí GEODA en 7 semanas: la plataforma interna de la Vicerrectoría Académica con más de 25 apps (generador de resoluciones, planes de mejora, motor de procesos BPMN y formularios) sobre TypeScript y Cloudflare Workers, con permisos por rol en el servidor, mutation testing y CI/CD. Además automaticé flujos académicos con Power Automate, Power Apps y BPMN, y construí modelos ETL con Power Query M y dashboards de KPIs.',
       },
       {
         role: 'Ingeniero de Software Fullstack Intern',
@@ -168,7 +168,7 @@ const en = {
   projects: {
     subtitle: 'Portfolio',
     title: 'Projects',
-    desc: 'Real products shipped for real users — from open source to fintech to mining.',
+    desc: 'Real products shipped for real users — from higher education to open source, fintech and mining.',
   },
   experience: {
     subtitle: 'Career',
@@ -177,7 +177,7 @@ const en = {
     items: [
       {
         role: 'Process & Systems Automation Analyst',
-        desc: 'Automated academic workflows using Power Automate, Power Apps, and BPMN. Built ETL models with Power Query M and KPI dashboards for the UC Academic Directorate.',
+        desc: 'Built GEODA in 7 weeks: the Academic Vice-Rectorate internal platform with 25+ apps (resolution generator, improvement plans, BPMN process engine and forms) on TypeScript and Cloudflare Workers, with server-side role permissions, mutation testing and CI/CD. Also automated academic workflows with Power Automate, Power Apps and BPMN, and built ETL models with Power Query M and KPI dashboards.',
       },
       {
         role: 'Fullstack Software Engineer Intern',

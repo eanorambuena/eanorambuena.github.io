@@ -6,6 +6,15 @@ import Badge from './Badge.astro'
 
 const projects = [
   {
+    titleEs: 'GEODA: Plataforma Académica UC',
+    titleEn: 'GEODA: UC Academic Operations Platform',
+    slug: 'geoda',
+    descKey: 'geoda',
+    tags: ['TypeScript', 'Cloudflare Workers', 'D1', 'Alpine.js', 'Vitest', 'Stryker'],
+    links: [],
+    color: 'from-blue-600 to-indigo-500',
+  },
+  {
     titleEs: 'NeuralWorks — Fullstack POS',
     titleEn: 'NeuralWorks — Fullstack POS',
     slug: 'neuralworks',
@@ -58,6 +67,7 @@ const projects = [
 ]
 
 const descEN = {
+  geoda: 'Internal platform for the UC Academic Vice-Rectorate, built in 7 weeks: 25+ apps replacing manual Word, Excel and email processes. Resolution generator, improvement plans, BPMN process engine and a form builder, with server-side role permissions.',
   kalmate: 'Bloomberg-style financial terminal with real-time market data via Yahoo Finance API, built with Nuxt 3 and TradingView charts.',
   peer: 'Peer evaluation platform with QR attendance, SSO, anonymous peer reviews, and grade reports. Replaced Google Forms + GScript that saturated PCs with 16GB RAM.',
   gis: 'GIS app for mining built for Acofuz. Frontend scaffolded from scratch with extensible architecture. Python backend integration via API.',
@@ -66,6 +76,7 @@ const descEN = {
 }
 
 const descES = {
+  geoda: 'Plataforma interna de la Vicerrectoría Académica UC construida en 7 semanas: más de 25 apps que reemplazan procesos manuales en Word, Excel y correo. Generador de resoluciones, planes de mejora, motor de procesos BPMN y creador de formularios, con permisos por rol en el servidor.',
   kalmate: 'Terminal financiera estilo Bloomberg con datos de mercado en tiempo real vía Yahoo Finance API, construido con Nuxt 3 y TradingView charts.',
   peer: 'Plataforma de coevaluaciones con asistencia QR, SSO, evaluaciones anónimas entre pares e informes de notas. Reemplazó Google Forms + GScript que saturaba PCs con 16GB RAM.',
   gis: 'App GIS para minería construida para Acofuz. Frontend desde cero con arquitectura extensible. Integración vía API con backend Python.',

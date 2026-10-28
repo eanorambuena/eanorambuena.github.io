@@ -4,13 +4,47 @@ import AnimatedSection from '../../components/AnimatedSection.jsx'
 import { es, en } from '../../i18n/translations'
 
 export async function getStaticPaths() {
-  const slugs = ['neuralworks', 'smartlokus', 'loopaas', 'kalmate', 'arby']
+  const slugs = ['geoda', 'neuralworks', 'smartlokus', 'loopaas', 'kalmate', 'arby']
   return slugs.map((slug) => ({ params: { slug } }))
 }
 
 const { slug } = Astro.params
 
 const projects: Record<string, any> = {
+  geoda: {
+    titleEs: 'GEODA: Plataforma Académica UC',
+    titleEn: 'GEODA: UC Academic Operations Platform',
+    tags: ['TypeScript', 'Alpine.js', 'Cloudflare Workers', 'D1', 'ExcelJS', 'Vitest', 'Playwright', 'Stryker', 'GitHub Actions'],
+    color: 'from-blue-600 to-indigo-500',
+    metrics: [
+      { value: '25+', labelEs: 'Apps en una plataforma', labelEn: 'Apps in one platform' },
+      { value: '751', labelEs: 'Commits en 7 semanas', labelEn: 'Commits in 7 weeks' },
+      { value: '113', labelEs: 'Pull requests', labelEn: 'Pull requests' },
+    ],
+    featuresEs: [
+      'Generador de resoluciones: un formulario produce la resolución en Word y los 4 anexos en Excel desde las plantillas oficiales, 100% en el navegador',
+      'Explorador de resoluciones: grafo dirigido de correlatos con búsqueda, historial y propuesta del siguiente número',
+      'Planes de mejora: KPIs, semáforo de estado, matriz de seguimiento, evidencias, importación desde Word y carta de cierre',
+      'Motor de procesos BPMN con editor visual de nodos (temporizador, decisión, paralelo), roles validados y guardado concurrente seguro',
+      'Plataforma de formularios: creador con vista previa, publicación al backend con registro automático de app y permisos, y asistente de IA por pregunta',
+      'Herramientas de datos: Programas a TXT, carta de calendarización, catálogo Data y VIZ, Migra y backup, ApiDocs y calendario general',
+      'Registro único de apps anidables y permisos por rol y capacidad (ver, editar, responder, aprobar) aplicados en el servidor (401/403)',
+      'Mutation testing con Stryker en módulos críticos, CI/CD por área, auditoría de dependencias y accesibilidad (skip link, foco visible, ARIA)',
+    ],
+    featuresEn: [
+      'Resolution generator: one form produces the Word resolution and the 4 Excel annexes from the official templates, 100% in the browser',
+      'Resolution explorer: directed graph of correlates with search, history and next-number suggestion',
+      'Improvement plans: KPIs, status traffic light, tracking matrix, evidence, Word import and closing letter',
+      'BPMN process engine with a visual node editor (timer, decision, parallel), validated roles and safe concurrent saves',
+      'Form platform: builder with preview, backend publishing with automatic app and permission registration, and a per-question AI assistant',
+      'Data tools: Programs to TXT, scheduling letter, Data and VIZ catalog, Migrate and backup, ApiDocs and a general calendar',
+      'Single app registry with nestable apps and role/capability permissions (view, edit, respond, approve) enforced server-side (401/403)',
+      'Stryker mutation testing on critical modules, per-area CI/CD, dependency audits and accessibility (skip link, focus-visible, ARIA)',
+    ],
+    longDescEs: 'Entre septiembre y octubre de 2026 construí GEODA (Gestión Operacional de la Dirección Académica), la plataforma web que digitaliza los procesos de la Vicerrectoría Académica de la UC. Partió con un solo problema, generar resoluciones de planes de estudio que se hacían a mano en Word y Excel, y creció a un ecosistema de más de 25 aplicaciones con control de acceso por rol, backend serverless en Cloudflare Workers + D1, motor de procesos y despliegue continuo. Usé IA como acelerador de desarrollo y mantuve las decisiones de producto y arquitectura.',
+    longDescEn: 'Between September and October 2026 I built GEODA (Gestión Operacional de la Dirección Académica), the web platform that digitizes the processes of the UC Academic Vice-Rectorate. It started with a single problem, generating study-plan resolutions that were produced by hand in Word and Excel, and grew into an ecosystem of 25+ applications with role-based access control, a serverless Cloudflare Workers + D1 backend, a process engine and continuous deployment. I used AI as a development accelerator and kept the product and architecture decisions.',
+    links: [],
+  },
   neuralworks: {
     titleEs: 'NeuralWorks — Fullstack POS',
     titleEn: 'NeuralWorks — Fullstack POS',
@@ -247,7 +281,7 @@ if (!project) {
               />
               <div class="absolute inset-0 bg-gradient-to-t from-surface-elevated via-surface-elevated/10 to-transparent pointer-events-none" />
             </div>
-          ) : (
+          ) : project.image && (
             <div class="relative w-full" style="aspect-ratio: 16/9;" transition:name={`${slug}-media`}>
               <img
                 src={project.image}
