@@ -40,7 +40,7 @@ const es = {
     items: [
       {
         role: 'Analista de Automatización de Procesos y Sistemas',
-        desc: 'Construí GEODA en 7 semanas: la plataforma interna de la Vicerrectoría Académica con más de 25 apps (generador de resoluciones, planes de mejora, motor de procesos BPMN y formularios) sobre TypeScript y Cloudflare Workers, con permisos por rol en el servidor, mutation testing y CI/CD. Además automaticé flujos académicos con Power Automate, Power Apps y BPMN, y construí modelos ETL con Power Query M y dashboards de KPIs.',
+        desc: 'Construí GEODA en 7 semanas: la plataforma interna de la Vicerrectoría Académica con más de 25 apps (generador de resoluciones, planes de mejora, motor de procesos BPMN y formularios) sobre TypeScript y Cloudflare Workers, con permisos por rol en el servidor, mutation testing y CI/CD. Además automaticé flujos académicos con Power Automate, Power Apps y BPMN, y construí modelos ETL con Power Query M y dashboards de KPIs para la Dirección Académica UC.',
       },
       {
         role: 'Ingeniero de Software Fullstack Intern',
@@ -177,7 +177,7 @@ const en = {
     items: [
       {
         role: 'Process & Systems Automation Analyst',
-        desc: 'Built GEODA in 7 weeks: the Academic Vice-Rectorate internal platform with 25+ apps (resolution generator, improvement plans, BPMN process engine and forms) on TypeScript and Cloudflare Workers, with server-side role permissions, mutation testing and CI/CD. Also automated academic workflows with Power Automate, Power Apps and BPMN, and built ETL models with Power Query M and KPI dashboards.',
+        desc: 'Built GEODA in 7 weeks: the Academic Vice-Rectorate internal platform with 25+ apps (resolution generator, improvement plans, BPMN process engine and forms) on TypeScript and Cloudflare Workers, with server-side role permissions, mutation testing and CI/CD. Also automated academic workflows with Power Automate, Power Apps and BPMN, and built ETL models with Power Query M and KPI dashboards for the UC Academic Directorate.',
       },
       {
         role: 'Fullstack Software Engineer Intern',
